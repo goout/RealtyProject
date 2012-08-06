@@ -3,7 +3,7 @@ package org.realty;
 public class Comment {
 
 	private String commentatorName;
-	private long id;
+	private int commentId;
 	private String text;
 
 	public Comment() {
@@ -13,8 +13,8 @@ public class Comment {
 		return commentatorName;
 	}
 
-	public long getid() {
-		return id;
+	public int getcommentId() {
+		return commentId;
 	}
 
 	public String gettext() {
@@ -25,8 +25,8 @@ public class Comment {
 		commentatorName = newVal;
 	}
 
-	public void setid(long newVal) {
-		id = newVal;
+	public void setcommentId(int newVal) {
+		commentId = newVal;
 	}
 
 	public void settext(String newVal) {

@@ -8,7 +8,7 @@ public class Advert {
 	private int coast;
 	private String description;
 	private String district;
-	private long id;
+	private int advertId;
 
 	public Advert() {
 
@@ -38,8 +38,8 @@ public class Advert {
 		return district;
 	}
 
-	public long getid() {
-		return id;
+	public int getadvertId() {
+		return advertId;
 	}
 
 	public void setaddedDate(String newVal) {
@@ -66,8 +66,8 @@ public class Advert {
 		district = newVal;
 	}
 
-	public void setid(long newVal) {
-		id = newVal;
+	public void setadvertId(int newVal) {
+		advertId = newVal;
 	}
 
 }

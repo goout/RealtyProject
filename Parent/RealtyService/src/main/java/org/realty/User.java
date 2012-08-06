@@ -2,7 +2,7 @@ package org.realty;
 
 public class User {
 
-	private long id;
+	private int userId;
 	private String name;
 	private String password;
 	private String phoneNumber;
@@ -11,8 +11,8 @@ public class User {
 
 	}
 
-	public long getid() {
-		return id;
+	public int getuserId() {
+		return userId;
 	}
 
 	public String getname() {
@@ -27,8 +27,8 @@ public class User {
 		return phoneNumber;
 	}
 
-	public void setid(long newVal) {
-		id = newVal;
+	public void setuserId(int newVal) {
+		userId = newVal;
 	}
 
 	public void setname(String newVal) {
