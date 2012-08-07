@@ -117,9 +117,9 @@ public class UserJdbcDAO {
 	}
 	
 	
-	 public List findAll()
+	 public List<User> findAll()
 	  {
-	   List users=new ArrayList();
+	   List<User> users=new ArrayList<User>();
 	   User user=null;
 	   try
 	   {
