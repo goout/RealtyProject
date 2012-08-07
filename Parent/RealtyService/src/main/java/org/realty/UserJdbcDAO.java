@@ -58,12 +58,13 @@ public class UserJdbcDAO {
 	public void update(User user) {
 
 		try {
-			String querystring = "UPDATE User SET name=?,passwordt=?,phone_number=?";
+			String querystring = "UPDATE User SET name=?,passwordt=?,phone_number=? WHERE user_id=?";
 			con = getConnection();
 			ptmt = con.prepareStatement(querystring);
 			ptmt.setString(1, user.getname());
 			ptmt.setString(2, user.getpassword());
 			ptmt.setString(3, user.getphoneNumber());
+			ptmt.setInt(4, user.getuserId());
 			ptmt.executeUpdate();
 
 		} catch (SQLException e) {
