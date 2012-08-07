@@ -1,20 +1,23 @@
 package org.realty;
 
+import java.sql.Date;
+
 public class Advert {
 
-	private String addedDate;
+	private Date addedDate;
 	private String adress;
 	private String category;
 	private int coast;
 	private String description;
 	private String district;
 	private int advertId;
+	private int userId;
 
 	public Advert() {
 
 	}
 
-	public String getaddedDate() {
+	public Date getaddedDate() {
 		return addedDate;
 	}
 
@@ -42,7 +45,7 @@ public class Advert {
 		return advertId;
 	}
 
-	public void setaddedDate(String newVal) {
+	public void setaddedDate(Date newVal) {
 		addedDate = newVal;
 	}
 
@@ -69,5 +72,16 @@ public class Advert {
 	public void setadvertId(int newVal) {
 		advertId = newVal;
 	}
+
+	public int getuserId() {
+		return userId;
+	}
+
+	public void setuserId(int userId) {
+		this.userId = userId;
+	}
+
+
+
 
 }

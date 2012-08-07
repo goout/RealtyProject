@@ -55,7 +55,7 @@ public class UserJdbcDAO {
 
 	}
 
-	public void update(User user) {
+	public void update(User user, int id) {
 
 		try {
 			String querystring = "UPDATE User SET name=?,passwordt=?,phone_number=? WHERE user_id=?";
@@ -64,7 +64,7 @@ public class UserJdbcDAO {
 			ptmt.setString(1, user.getname());
 			ptmt.setString(2, user.getpassword());
 			ptmt.setString(3, user.getphoneNumber());
-			ptmt.setInt(4, user.getuserId());
+			ptmt.setInt(4, id);
 			ptmt.executeUpdate();
 
 		} catch (SQLException e) {
