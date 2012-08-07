@@ -29,7 +29,7 @@ public class UserJdbcDAO {
 			String querystring = "INSERT INTO User VALUES(?,?,?,?)";
 			con = getConnection();
 			ptmt = con.prepareStatement(querystring);
-			ptmt.setString(1, String.valueOf(System.currentTimeMillis())); // ?
+			ptmt.setString(1, null);
 			ptmt.setString(2, user.getname());
 			ptmt.setString(3, user.getpassword());
 			ptmt.setString(4, user.getphoneNumber());
@@ -58,7 +58,7 @@ public class UserJdbcDAO {
 	public void update(User user) {
 
 		try {
-			String querystring = "UPDATE User SET name=?,password=?,phone_number=?";
+			String querystring = "UPDATE User SET name=?,passwordt=?,phone_number=?";
 			con = getConnection();
 			ptmt = con.prepareStatement(querystring);
 			ptmt.setString(1, user.getname());
