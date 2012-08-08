@@ -23,40 +23,17 @@ public class AdvertJdbcDAO extends AbstractDAO {
 
 	}
 
-	public void add(Advert advert) {
 
-		try {
-
-			con = createConnection();
-			ptmt = con.prepareStatement(SQL_ADD_ADVERT);
-			ptmt.setString(1, null);
-			ptmt.setDate(2, advert.getAddedDate());
-			ptmt.setString(3, advert.getCategory());
-			ptmt.setString(4, advert.getDistrict());
-			ptmt.setString(5, advert.getAdress());
-			ptmt.setInt(6, advert.getCoast());
-			ptmt.setString(7, advert.getDescription());
-			ptmt.setLong(8, advert.getUserId());
-			ptmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ptmt != null)
-					ptmt.close();
-				if (con != null)
-					con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
-
+	protected void addStep(Advert advert) throws SQLException {
+		ptmt = con.prepareStatement(SQL_ADD_ADVERT);
+		ptmt.setString(1, null);
+		ptmt.setDate(2, advert.getAddedDate());
+		ptmt.setString(3, advert.getCategory());
+		ptmt.setString(4, advert.getDistrict());
+		ptmt.setString(5, advert.getAdress());
+		ptmt.setInt(6, advert.getCoast());
+		ptmt.setString(7, advert.getDescription());
+		ptmt.setLong(8, advert.getUserId());
 	}
 
 	public void update(Advert advert, int id) {

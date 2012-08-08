@@ -21,39 +21,23 @@ public class CommentJdbcDAO extends AbstractDAO {
 	public CommentJdbcDAO() {
 
 	}
-
-	public void add(Comment comment, int userID, int advertId) {
-
-		try {
-
-			con = createConnection();
-			ptmt = con.prepareStatement(SQL_ADD_COMMENT);
-			ptmt.setString(1, null);
-			ptmt.setString(2, comment.getText());
-			ptmt.setInt(3, userID);
-			ptmt.setInt(4, advertId);
-			ptmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ptmt != null)
-					ptmt.close();
-				if (con != null)
-					con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
-
+	
+	
+	
+	protected void addStep(Comment comment, int userID, int advertId) throws SQLException {
+		ptmt = con.prepareStatement(SQL_ADD_COMMENT);
+		ptmt.setString(1, null);
+		ptmt.setString(2, comment.getText());
+		ptmt.setInt(3, userID);
+		ptmt.setInt(4, advertId);
 	}
+	
 
+	
+
+	
+	
+	
 	public void update(Comment comment, int id) {
 
 		try {

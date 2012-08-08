@@ -1,6 +1,7 @@
 package org.realty;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +13,10 @@ import static java.lang.System.out;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws SQLException
     {
+    	System.out.println( "Hello World! test" );
+    	
         System.out.println( "Hello World! test" );
         
         User test1 = new User();
@@ -23,10 +26,9 @@ public class App
    
         UserJdbcDAO addtest1 = new UserJdbcDAO();
         addtest1.add(test1);
+               
         
-        
-        
-        Advert test2 = new Advert();
+/*        Advert test2 = new Advert();
         test2.setAddedDate(new Date(System.currentTimeMillis()));
         test2.setCategory("Stest");
         test2.setDistrict("Oktjabr'skij");
@@ -38,16 +40,16 @@ public class App
         
         AdvertJdbcDAO addadverttest1 = new AdvertJdbcDAO();
         
-        addadverttest1.add(test2);
+        addadverttest1.add(test2);*/
         
-        List<Advert> adverts = new ArrayList<Advert>();
+/*       List<Advert> adverts = new ArrayList<Advert>();
         
-        adverts = addadverttest1.findAll();
+       adverts = addadverttest1.findAll();
         
-    	for (Advert o : adverts) {
+   	for (Advert o : adverts) {
 			out.printf("%10s %9s %12d %15d\n", o.getDistrict(), o.getAdress(), o.getCoast(),
 					o.getAdvertId());
-		}
+		}*/
         
         
     }

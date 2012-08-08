@@ -22,66 +22,27 @@ public class UserJdbcDAO extends AbstractDAO {
 	public UserJdbcDAO() {
 
 	}
-
-	public void add(User user) {
-
-		try {
-			con = createConnection();
-			ptmt = con.prepareStatement(SQL_ADD_USER);
-			ptmt.setString(1, null);
-			ptmt.setString(2, user.getName());
-			ptmt.setString(3, user.getPassword());
-			ptmt.setString(4, user.getPhoneNumber());
-			ptmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ptmt != null)
-					ptmt.close();
-				if (con != null)
-					con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
+	
+    
+	protected void addStep(User user) throws SQLException {
+	
+		ptmt = con.prepareStatement(SQL_ADD_USER);
+		ptmt.setString(1, null);
+		ptmt.setString(2, user.getName());
+		ptmt.setString(3, user.getPassword());
+		ptmt.setString(4, user.getPhoneNumber());
+		
 
 	}
 
-	public void update(User user, int id) {
 
-		try {
-			con = createConnection();
-			ptmt = con.prepareStatement(SQL_UPDATE_USER);
-			ptmt.setString(1, user.getName());
-			ptmt.setString(2, user.getPassword());
-			ptmt.setString(3, user.getPhoneNumber());
-			ptmt.setInt(4, id);
-			ptmt.executeUpdate();
+	public void updateStep(User user, int id) throws SQLException {
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ptmt != null)
-					ptmt.close();
-				if (con != null)
-					con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
+		ptmt = con.prepareStatement(SQL_UPDATE_USER);
+		ptmt.setString(1, user.getName());
+		ptmt.setString(2, user.getPassword());
+		ptmt.setString(3, user.getPhoneNumber());
+		ptmt.setInt(4, id);
 
 	}
 
@@ -148,4 +109,17 @@ public class UserJdbcDAO extends AbstractDAO {
 		}
 		return users;
 	}
+
+
+
+
+	
+
+
+
+
+
+
+	
+
 }
