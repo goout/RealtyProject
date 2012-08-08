@@ -16,11 +16,11 @@ public class Comment {
 		return commentatorName;
 	}*/
 
-	public int getcommentId() {
+	public int getCommentId() {
 		return commentId;
 	}
 
-	public String gettext() {
+	public String getText() {
 		return text;
 	}
 
@@ -28,27 +28,27 @@ public class Comment {
 		commentatorName = newVal;
 	}*/
 
-	public void setcommentId(int newVal) {
+	public void setCommentId(int newVal) {
 		commentId = newVal;
 	}
 
-	public void settext(String newVal) {
+	public void setText(String newVal) {
 		text = newVal;
 	}
 
-	public int getuserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setuserId(int userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
-	public int getadvertId() {
+	public int getAdvertId() {
 		return advertId;
 	}
 
-	public void setadvertId(int advertId) {
+	public void setAdvertId(int advertId) {
 		this.advertId = advertId;
 	}
 

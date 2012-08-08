@@ -5,82 +5,101 @@ import java.sql.Date;
 public class Advert {
 
 	private Date addedDate;
-	private String adress;
 	private String category;
+	private String district;
+	private String adress;
 	private int coast;
 	private String description;
-	private String district;
-	private int advertId;
-	private int userId;
+	private Long advertId;
+	private Long userId;
 
 	public Advert() {
 
 	}
 
-	public Date getaddedDate() {
+	public Date getAddedDate() {
 		return addedDate;
 	}
 
-	public String getadress() {
+	public String getAdress() {
 		return adress;
 	}
 
-	public String getcategory() {
+	public String getCategory() {
 		return category;
 	}
 
-	public int getcoast() {
+	public int getCoast() {
 		return coast;
 	}
 
-	public String getdescription() {
+	public String getDescription() {
 		return description;
 	}
 
-	public String getdistrict() {
+	public String getDistrict() {
 		return district;
 	}
 
-	public int getadvertId() {
+	public Long getAdvertId() {
 		return advertId;
 	}
 
-	public void setaddedDate(Date newVal) {
+	public void setAddedDate(Date newVal) {
 		addedDate = newVal;
 	}
 
-	public void setadress(String newVal) {
+	public void setAdress(String newVal) {
 		adress = newVal;
 	}
 
-	public void setcategory(String newVal) {
+	public void setCategory(String newVal) {
 		category = newVal;
 	}
 
-	public void setcoast(int newVal) {
+	public void setCoast(int newVal) {
 		coast = newVal;
 	}
 
-	public void setdescription(String newVal) {
+	public void setDescription(String newVal) {
 		description = newVal;
 	}
 
-	public void setdistrict(String newVal) {
+	public void setDistrict(String newVal) {
 		district = newVal;
 	}
 
-	public void setadvertId(int newVal) {
+	public void setAdvertId(Long newVal) {
 		advertId = newVal;
 	}
 
-	public int getuserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setuserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
+	@Override
+	public boolean equals(Object other) {
+		return (other instanceof Advert) && (advertId != null) ? advertId
+				.equals(((Advert) other).advertId) : (other == this);
+	}
+
+	@Override
+	public int hashCode() {
+		return (advertId != null) ? (this.getClass().hashCode() + advertId
+				.hashCode()) : super.hashCode();
+	}
+
+	
+	 @Override
+	    public String toString() {
+	        return String.format("Advert[addedDate=%s,category=%s,district=%s,adress=%s," +
+	        		" coast=%d, description=%s, advertId=%d, userId=%d]", 
+	            addedDate, category, district, adress, coast, description, advertId, userId);
+	    }
 
 
 
