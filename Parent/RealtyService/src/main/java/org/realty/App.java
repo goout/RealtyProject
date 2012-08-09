@@ -18,7 +18,7 @@ public class App
         	       
         
         User test1 = new User();
-        test1.setName("ivander");
+        test1.setName("ivander2");
         test1.setPassword("12345678");
         test1.setPhoneNumber("5123449");
    

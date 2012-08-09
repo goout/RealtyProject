@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractDAO<DOMAIN extends Object> {
 
@@ -20,10 +22,10 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 	final public void add(DOMAIN arg) {
 
 		try {
-			con = createConnection();
-			
+			connectionStep();
+			ptmt = con.prepareStatement(getAddSQL());
 			addStep(arg);
-			
+
 			ptmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -48,12 +50,12 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 	final public void update(DOMAIN arg, Long id) {
 
 		try {
-			con = createConnection();
-			
+			connectionStep();
+			ptmt = con.prepareStatement(getUpdateSQL());
 			updateStep(arg, id);
-			
+
 			ptmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -74,10 +76,87 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 
 	}
 
+	final public void delete(Long id) {
+
+		try {
+			connectionStep();
+			ptmt = con.prepareStatement(getDeleteSQL());
+			deleteStep(id);
+
+			ptmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ptmt != null)
+					ptmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+	public List<DOMAIN> findAll() {
+		List<DOMAIN> domains = new ArrayList<DOMAIN>();
+
+		try {
+			connectionStep();
+			ptmt = con.prepareStatement(getFindAllSQL());
+			rs = ptmt.executeQuery();
+
+			while (rs.next()) {
+
+				domains.add(findAllStep());
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ptmt != null)
+					ptmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		return domains;
+	}
+
+	protected void connectionStep() {
+		con = createConnection();
+	}
+
+	abstract protected String getFindAllSQL() throws SQLException;
+
+	abstract protected String getDeleteSQL() throws SQLException;
+
+	abstract protected String getUpdateSQL() throws SQLException;
+
+	abstract protected String getAddSQL() throws SQLException;
+
 	abstract protected void updateStep(DOMAIN arg, Long id) throws SQLException;
- 	
- 	abstract protected void addStep(DOMAIN arg) throws SQLException;
-	
+
+	abstract protected void addStep(DOMAIN arg) throws SQLException;
+
+	abstract protected void deleteStep(Long id) throws SQLException;
+
+	abstract protected DOMAIN findAllStep() throws SQLException;
 
 	public static Connection createConnection() {
 		Connection conn = null;

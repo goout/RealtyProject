@@ -1,11 +1,8 @@
 package org.realty;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 
@@ -14,10 +11,6 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 			+ "adress=?, coast=?, description=? WHERE advert_id=?";
 	private static final String SQL_DELETE_ADVERT = "DELETE FROM Advert WHERE advert_id=?";
 	private static final String SQL_ALL = "SELECT * FROM Advert";
-
-	Connection con = null;
-	PreparedStatement ptmt = null;
-	ResultSet rs = null;
 
 	public AdvertJdbcDAO() {
 
@@ -35,88 +28,66 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 		ptmt.setString(7, advert.getDescription());
 		ptmt.setLong(8, advert.getUserId());
 	}
+
 	@Override
 	protected void updateStep(Advert advert, Long id) throws SQLException {
 
-		
-			ptmt = con.prepareStatement(SQL_UPDATE_ADVERT);
-			ptmt.setDate(1, advert.getAddedDate());
-			ptmt.setString(2, advert.getCategory());
-			ptmt.setString(3, advert.getDistrict());
-			ptmt.setString(4, advert.getAdress());
-			ptmt.setInt(5, advert.getCoast());
-			ptmt.setString(6, advert.getDescription());
-			ptmt.setLong(7, id);
+		ptmt = con.prepareStatement(SQL_UPDATE_ADVERT);
+		ptmt.setDate(1, advert.getAddedDate());
+		ptmt.setString(2, advert.getCategory());
+		ptmt.setString(3, advert.getDistrict());
+		ptmt.setString(4, advert.getAdress());
+		ptmt.setInt(5, advert.getCoast());
+		ptmt.setString(6, advert.getDescription());
+		ptmt.setLong(7, id);
 
 	}
 
-	public void delete(int advertId) {
-
-		try {
-			con = createConnection();
-			ptmt = con.prepareStatement(SQL_DELETE_ADVERT);
-			ptmt.setInt(1, advertId);
-			ptmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ptmt != null)
-					ptmt.close();
-				if (con != null)
-					con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
-
+	@Override
+	protected void deleteStep(Long advertId) throws SQLException {
+		ptmt = con.prepareStatement(SQL_DELETE_ADVERT);
+		ptmt.setLong(1, advertId);
 	}
 
-	public List<Advert> findAll() {
-		List<Advert> adverts = new ArrayList<Advert>();
-		Advert advert = null;
-		try {
-
-			con = createConnection();
-			ptmt = con.prepareStatement(SQL_ALL);
-			rs = ptmt.executeQuery();
-			while (rs.next()) {
-				advert = new Advert();
-				advert.setAdvertId(rs.getLong(1));
-				advert.setAddedDate(rs.getDate(2));
-				advert.setCategory(rs.getString(3));
-				advert.setDistrict(rs.getString(4));
-				advert.setAdress(rs.getString(5));
-				advert.setCoast(rs.getInt(6));
-				advert.setDescription(rs.getString(7));
-				advert.setUserId(rs.getLong(8));
-
-				adverts.add(advert);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ptmt != null)
-					ptmt.close();
-				if (con != null)
-					con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
-		return adverts;
+	@Override
+	protected String getAddSQL() throws SQLException {
+		return SQL_ADD_ADVERT;
 	}
+
+	@Override
+	protected String getUpdateSQL() throws SQLException {
+		return SQL_UPDATE_ADVERT;
+	}
+
+	@Override
+	protected String getDeleteSQL() throws SQLException {
+		return SQL_DELETE_ADVERT;
+	}
+	
+	@Override
+	protected String getFindAllSQL() throws SQLException {
+		return SQL_ALL;
+	}
+	
+	
+	
+	@Override
+	protected Advert findAllStep() throws SQLException {
+		Advert advert = new Advert();
+		advert.setAdvertId(rs.getLong(1));
+		advert.setAddedDate(rs.getDate(2));
+		advert.setCategory(rs.getString(3));
+		advert.setDistrict(rs.getString(4));
+		advert.setAdress(rs.getString(5));
+		advert.setCoast(rs.getInt(6));
+		advert.setDescription(rs.getString(7));
+		advert.setUserId(rs.getLong(8));
+		return advert;
+	}
+	
+	
+	
+
+	
 
 }
