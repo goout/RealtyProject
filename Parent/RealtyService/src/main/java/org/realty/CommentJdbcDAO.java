@@ -2,7 +2,6 @@ package org.realty;
 
 import java.sql.SQLException;
 
-
 public class CommentJdbcDAO extends AbstractDAO<Comment> {
 
 	private static final String SQL_ADD_COMMENT = "INSERT INTO Comment VALUES(?,?,?,?)";
@@ -50,13 +49,12 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 	protected String getDeleteSQL() throws SQLException {
 		return SQL_DELETE_COMMENT;
 	}
-	
+
 	@Override
 	protected String getFindAllSQL() throws SQLException {
 		return SQL_ALL;
 	}
-	
-	
+
 	@Override
 	protected Comment findAllStep() throws SQLException {
 		Comment comment = new Comment();
@@ -66,9 +64,5 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 		comment.setAdvertId(rs.getInt(4));
 		return comment;
 	}
-	
-	
-
-	
 
 }

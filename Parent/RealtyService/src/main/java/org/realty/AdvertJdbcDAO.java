@@ -1,8 +1,6 @@
 package org.realty;
 
-
 import java.sql.SQLException;
-
 
 public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 
@@ -41,7 +39,6 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 
 	}
 
-	
 	@Override
 	protected Advert findAllStep() throws SQLException {
 		Advert advert = new Advert();
@@ -55,8 +52,7 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 		advert.setUserId(rs.getLong(8));
 		return advert;
 	}
-	
-	
+
 	@Override
 	protected void deleteStep(Long advertId) throws SQLException {
 		ptmt.setLong(1, advertId);
@@ -76,19 +72,10 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 	protected String getDeleteSQL() throws SQLException {
 		return SQL_DELETE_ADVERT;
 	}
-	
+
 	@Override
 	protected String getFindAllSQL() throws SQLException {
 		return SQL_ALL;
 	}
-	
-	
-	
-
-	
-	
-	
-
-	
 
 }

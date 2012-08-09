@@ -14,7 +14,7 @@ public class App {
 	public static void main(String[] args) throws SQLException {
 
 		User test1 = new User();
-		test1.setName("test");
+		test1.setName("tes45t");
 		test1.setPassword("12345678");
 		test1.setPhoneNumber("5123449");
 
@@ -22,18 +22,15 @@ public class App {
 
 		addtest1.add(test1);
 
-		 List<User> users = new ArrayList<User>();
-		
-		 users= addtest1.findAll();
-		 
-	
+		List<User> users = new ArrayList<User>();
 
-			for (User o : users) {
+		users = addtest1.findAll();
 
-				out.printf("%10d %9s %12s %15s\n", o.getUserId(),
-						o.getName(), o.getPassword(),o.getPhoneNumber());
-			}
-		
+		for (User o : users) {
+
+			out.printf("%10d %9s %12s %15s\n", o.getUserId(), o.getName(),
+					o.getPassword(), o.getPhoneNumber());
+		}
 
 	}
 }

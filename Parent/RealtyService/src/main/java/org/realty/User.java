@@ -55,11 +55,11 @@ public class User {
 				.hashCode()) : super.hashCode();
 	}
 
-	
-	 @Override
-	    public String toString() {
-	        return String.format("User[userId=%d,name=%s,password=%s,phoneNumber=%s]", 
-	            userId, name, password, phoneNumber);
-	    }
-	
+	@Override
+	public String toString() {
+		return String.format(
+				"User[userId=%d,name=%s,password=%s,phoneNumber=%s]", userId,
+				name, password, phoneNumber);
+	}
+
 }
