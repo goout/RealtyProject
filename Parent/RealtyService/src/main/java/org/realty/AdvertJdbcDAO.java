@@ -18,7 +18,6 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 
 	@Override
 	protected void addStep(Advert advert) throws SQLException {
-		ptmt = con.prepareStatement(SQL_ADD_ADVERT);
 		ptmt.setString(1, null);
 		ptmt.setDate(2, advert.getAddedDate());
 		ptmt.setString(3, advert.getCategory());
@@ -32,7 +31,6 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 	@Override
 	protected void updateStep(Advert advert, Long id) throws SQLException {
 
-		ptmt = con.prepareStatement(SQL_UPDATE_ADVERT);
 		ptmt.setDate(1, advert.getAddedDate());
 		ptmt.setString(2, advert.getCategory());
 		ptmt.setString(3, advert.getDistrict());
@@ -43,9 +41,24 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 
 	}
 
+	
+	@Override
+	protected Advert findAllStep() throws SQLException {
+		Advert advert = new Advert();
+		advert.setAdvertId(rs.getLong(1));
+		advert.setAddedDate(rs.getDate(2));
+		advert.setCategory(rs.getString(3));
+		advert.setDistrict(rs.getString(4));
+		advert.setAdress(rs.getString(5));
+		advert.setCoast(rs.getInt(6));
+		advert.setDescription(rs.getString(7));
+		advert.setUserId(rs.getLong(8));
+		return advert;
+	}
+	
+	
 	@Override
 	protected void deleteStep(Long advertId) throws SQLException {
-		ptmt = con.prepareStatement(SQL_DELETE_ADVERT);
 		ptmt.setLong(1, advertId);
 	}
 
@@ -71,19 +84,7 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 	
 	
 	
-	@Override
-	protected Advert findAllStep() throws SQLException {
-		Advert advert = new Advert();
-		advert.setAdvertId(rs.getLong(1));
-		advert.setAddedDate(rs.getDate(2));
-		advert.setCategory(rs.getString(3));
-		advert.setDistrict(rs.getString(4));
-		advert.setAdress(rs.getString(5));
-		advert.setCoast(rs.getInt(6));
-		advert.setDescription(rs.getString(7));
-		advert.setUserId(rs.getLong(8));
-		return advert;
-	}
+
 	
 	
 	

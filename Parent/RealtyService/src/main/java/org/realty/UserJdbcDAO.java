@@ -35,6 +35,17 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 
 	}
 
+	
+	@Override
+	protected User findAllStep() throws SQLException {
+		User user = new User();
+		user.setUserId(rs.getLong(1));
+		user.setName(rs.getString(2));
+		user.setPassword(rs.getString(3));
+		user.setPhoneNumber(rs.getString(4));
+		return user;
+	}
+	
 	@Override
 	protected void deleteStep(Long userId) throws SQLException {
 
@@ -61,16 +72,5 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 		return SQL_ALL;
 	}
 	
-
-	@Override
-	protected User findAllStep() throws SQLException {
-		User user = new User();
-		user.setUserId(rs.getLong(1));
-		user.setName(rs.getString(2));
-		user.setPassword(rs.getString(3));
-		user.setPhoneNumber(rs.getString(4));
-		return user;
-	}
-
 
 }

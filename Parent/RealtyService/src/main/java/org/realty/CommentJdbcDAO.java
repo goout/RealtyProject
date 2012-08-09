@@ -16,7 +16,6 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 
 	@Override
 	protected void addStep(Comment comment) throws SQLException {
-		ptmt = con.prepareStatement(SQL_ADD_COMMENT);
 		ptmt.setString(1, null);
 		ptmt.setString(2, comment.getText());
 		ptmt.setInt(3, comment.getUserId());
@@ -35,7 +34,6 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 	@Override
 	protected void deleteStep(Long commentId) throws SQLException {
 
-		ptmt = con.prepareStatement(SQL_DELETE_COMMENT);
 		ptmt.setLong(1, commentId);
 	}
 
