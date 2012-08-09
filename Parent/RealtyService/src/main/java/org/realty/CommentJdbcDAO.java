@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommentJdbcDAO extends AbstractDAO {
+public class CommentJdbcDAO extends AbstractDAO<Comment> {
 
 	private static final String SQL_ADD_COMMENT = "INSERT INTO Comment VALUES(?,?,?,?)";
 	private static final String SQL_UPDATE_COMMENT = "UPDATE Comment SET text=? WHERE comment_id=?";
@@ -23,48 +23,24 @@ public class CommentJdbcDAO extends AbstractDAO {
 	}
 	
 	
-	
-	protected void addStep(Comment comment, int userID, int advertId) throws SQLException {
+	@Override
+	protected void addStep(Comment comment) throws SQLException {
 		ptmt = con.prepareStatement(SQL_ADD_COMMENT);
 		ptmt.setString(1, null);
 		ptmt.setString(2, comment.getText());
-		ptmt.setInt(3, userID);
-		ptmt.setInt(4, advertId);
+		ptmt.setInt(3, comment.getUserId());
+		ptmt.setInt(4, comment.getAdvertId());
 	}
 	
+	
+	
+	@Override
+	public void updateStep(Comment comment, Long id) throws SQLException {
 
-	
-
-	
-	
-	
-	public void update(Comment comment, int id) {
-
-		try {
-			con = createConnection();
 			ptmt = con.prepareStatement(SQL_UPDATE_COMMENT);
 			ptmt.setString(1, comment.getText());
-			ptmt.setInt(2, id);
-			ptmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ptmt != null)
-					ptmt.close();
-				if (con != null)
-					con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
-
+			ptmt.setLong(2, id);
+			
 	}
 
 	public void delete(int commentId) {

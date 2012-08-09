@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserJdbcDAO extends AbstractDAO {
+public class UserJdbcDAO extends AbstractDAO<User> {
 
 	private static final String SQL_ADD_USER = "INSERT INTO User VALUES(?,?,?,?)";
 	private static final String SQL_UPDATE_USER = "UPDATE User SET name=?,passwordt=?,"
@@ -23,7 +23,7 @@ public class UserJdbcDAO extends AbstractDAO {
 
 	}
 	
-    
+	@Override
 	protected void addStep(User user) throws SQLException {
 	
 		ptmt = con.prepareStatement(SQL_ADD_USER);
@@ -35,14 +35,14 @@ public class UserJdbcDAO extends AbstractDAO {
 
 	}
 
-
-	public void updateStep(User user, int id) throws SQLException {
+	@Override
+	protected void updateStep(User user, Long id) throws SQLException {
 
 		ptmt = con.prepareStatement(SQL_UPDATE_USER);
 		ptmt.setString(1, user.getName());
 		ptmt.setString(2, user.getPassword());
 		ptmt.setString(3, user.getPhoneNumber());
-		ptmt.setInt(4, id);
+		ptmt.setLong(4, id);
 
 	}
 
@@ -109,6 +109,11 @@ public class UserJdbcDAO extends AbstractDAO {
 		}
 		return users;
 	}
+
+
+	
+
+
 
 
 

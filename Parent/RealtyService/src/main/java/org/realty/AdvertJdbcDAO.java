@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdvertJdbcDAO extends AbstractDAO {
+public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 
 	private static final String SQL_ADD_ADVERT = "INSERT INTO Advert VALUES(?,?,?,?,?,?,?,?)";
 	private static final String SQL_UPDATE_ADVERT = "UPDATE Advert SET added_date=?,category=?,district=?,"
@@ -23,7 +23,7 @@ public class AdvertJdbcDAO extends AbstractDAO {
 
 	}
 
-
+	@Override
 	protected void addStep(Advert advert) throws SQLException {
 		ptmt = con.prepareStatement(SQL_ADD_ADVERT);
 		ptmt.setString(1, null);
@@ -35,11 +35,10 @@ public class AdvertJdbcDAO extends AbstractDAO {
 		ptmt.setString(7, advert.getDescription());
 		ptmt.setLong(8, advert.getUserId());
 	}
+	@Override
+	protected void updateStep(Advert advert, Long id) throws SQLException {
 
-	public void update(Advert advert, int id) {
-
-		try {
-			con = createConnection();
+		
 			ptmt = con.prepareStatement(SQL_UPDATE_ADVERT);
 			ptmt.setDate(1, advert.getAddedDate());
 			ptmt.setString(2, advert.getCategory());
@@ -47,26 +46,7 @@ public class AdvertJdbcDAO extends AbstractDAO {
 			ptmt.setString(4, advert.getAdress());
 			ptmt.setInt(5, advert.getCoast());
 			ptmt.setString(6, advert.getDescription());
-			ptmt.setInt(7, id);
-			ptmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ptmt != null)
-					ptmt.close();
-				if (con != null)
-					con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
+			ptmt.setLong(7, id);
 
 	}
 

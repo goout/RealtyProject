@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public abstract class AbstractDAO {
+public abstract class AbstractDAO<DOMAIN extends Object> {
 
 	public static final String driverClassName = "com.mysql.jdbc.Driver";
 	public static final String connectionUrl = "jdbc:mysql://localhost:3306/REALTY";
@@ -17,11 +17,13 @@ public abstract class AbstractDAO {
 	PreparedStatement ptmt = null;
 	ResultSet rs = null;
 
-	final public <T> void add(T arg) {
+	final public void add(DOMAIN arg) {
 
 		try {
 			con = createConnection();
+			
 			addStep(arg);
+			
 			ptmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -43,13 +45,15 @@ public abstract class AbstractDAO {
 
 	}
 
-	final public <T> void update(T arg, Long id) {
+	final public void update(DOMAIN arg, Long id) {
 
 		try {
 			con = createConnection();
+			
 			updateStep(arg, id);
+			
 			ptmt.executeUpdate();
-
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -70,9 +74,9 @@ public abstract class AbstractDAO {
 
 	}
 
-	protected <T> void updateStep(T arg, Long id) {	}
-
-	protected <T> void addStep(T arg) {}
+	abstract protected void updateStep(DOMAIN arg, Long id) throws SQLException;
+ 	
+ 	abstract protected void addStep(DOMAIN arg) throws SQLException;
 	
 
 	public static Connection createConnection() {
