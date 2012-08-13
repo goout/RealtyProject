@@ -1,12 +1,20 @@
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+  
+Test Page<br/>
+<c:out value="This 222 is JSTL"/>  
+  
 <html>
+
 <head>
-<meta http-equiv="Page-Enter" content="BlendTrans(Duration=2.0)">
-<link rel="stylesheet" type="text/css" href="style/styl2e.css" />
-
-
-
 </head>
+
 <body>
+
+<c:out value="The numbers are: " /><br>
+<c:forEach var="num" begin="1" end="5" step="1">
+<c:out value="${num}" />
+<br>
+</c:forEach>
 
 	<div id="head">
 
@@ -35,7 +43,7 @@
 						<td width="100"></td>
 					</tr>
 				</thead>
-							<c:forEach items="${users}" var="usr">
+							<c:forEach items="${allusers}" var="usr">
 
 					<tr>
 
