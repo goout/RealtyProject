@@ -17,7 +17,7 @@ public class AllUserCommand implements Command{
 			HttpServletResponse response) throws ServletException, IOException {
 		
 		UserJdbcDAO ad = new UserJdbcDAO();
-		List<User> users = ad.findAll;
+		List<User> users = ad.findAll();
 		request.setAttribute("users", users);
 			
 		return "index.jsp";

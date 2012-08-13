@@ -15,7 +15,7 @@
   </properties>
 
   <dependencies>
-  
+
   <!-- JUnit testing framework -->
     <dependency>
       <groupId>junit</groupId>
@@ -23,13 +23,13 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-	
+
   <!-- MySQL database driver -->
 	<dependency>
 	   <groupId>mysql</groupId>
 	   <artifactId>mysql-connector-java</artifactId>
 	   <version>5.1.9</version>
 	</dependency>
-	
+
   </dependencies>
 </project>

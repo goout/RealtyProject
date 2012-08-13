@@ -24,7 +24,7 @@ public class AddUserCommand implements Command{
 	
 		User user = new User();
                 user.setName(userName);
-                user.SetPassword(password);
+                user.setPassword(password);
                 user.setPhoneNumber(phoneNumber);
 		ad.add(user);
 
