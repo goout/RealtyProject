@@ -26,6 +26,10 @@ public class App {
 
 		users = addtest1.findAll();
 
+		String delUserId = "31";
+		
+		addtest1.delete((Long)Long.parseLong(delUserId));
+		
 		for (User o : users) {
 
 			out.printf("%10d %9s %12s %15s\n", o.getUserId(), o.getName(),
