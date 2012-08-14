@@ -1,20 +1,13 @@
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
-  
-Test Page<br/>
-<c:out value="This 222 is JSTL"/>  
-  
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
 <html>
 
 <head>
 </head>
 
 <body>
-
-<c:out value="The numbers are: " /><br>
-<c:forEach var="num" begin="1" end="5" step="1">
-<c:out value="${num}" />
-<br>
-</c:forEach>
 
 	<div id="head">
 
@@ -43,19 +36,15 @@ Test Page<br/>
 						<td width="100"></td>
 					</tr>
 				</thead>
-							<c:forEach items="${allusers}" var="usr">
+				<c:forEach items="${allusers}" var="usr">
 
 					<tr>
-
-						<td>${usr.userId}</td>
-
-						<td>${usr.name}</td>
-
-						<td>${usr.password}</td>
-
-						<td>${usr.phoneNumber}</td>
-
-                        <td width="100"><a href="RealtyServlet?delUserId=${usr.id}&command=delUser" >Delete</a></td>  
+						<TD><c:out value="${usr.userId}" /></TD>
+						<TD><c:out value="${usr.name}" /></TD>
+						<TD><c:out value="${usr.password}" /></TD>
+						<TD><c:out value="${usr.phoneNumber}" /></TD>
+						<td width="100"><a
+							href="<c:url value='RealtyServlet?delUserId=${usr.userId}&command=delUser' />">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>

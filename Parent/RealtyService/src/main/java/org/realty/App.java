@@ -29,6 +29,8 @@ public class App {
 			out.printf("%10d %9s %12s %15s\n", o.getUserId(), o.getName(),
 					o.getPassword(), o.getPhoneNumber());
 		}
+		
+		//addtest1.delete(24L);
 
 	}
 }
