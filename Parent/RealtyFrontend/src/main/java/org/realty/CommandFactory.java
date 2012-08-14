@@ -10,6 +10,9 @@ public class CommandFactory {
 			put("addUser", new AddUserCommand());
 			put("allUser", new AllUserCommand());
 			put("delUser", new DelUserCommand());
+			put("addAdvert", new AddAdvertCommand());
+			put("allAdvert", new AllAdvertCommand());
+			put("delAdvert", new DelAdvertCommand());
 		}
 	};
 

@@ -18,6 +18,20 @@
 
 	<div id="content">
 
+		<div id="menu">
+<br/>
+			<ul id="menu">
+
+				<li><a href="#"><span>User</span></a></li>
+
+				<li><a href="Advert.jsp"><span>Advert</span></a></li>
+
+				<li><a href="#"><span>Comment</span></a></li>
+
+			</ul>
+
+		</div>
+
 
 		<div id="table">
 			<br />
