@@ -5,11 +5,11 @@
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
     <servlet>
-        <servlet-name>simple</servlet-name>
+        <servlet-name>RealtyServlet</servlet-name>
         <servlet-class>org.realty.RealtyServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>realty</servlet-name>
-        <url-pattern>/realty</url-pattern>
+        <servlet-name>RealtyServlet</servlet-name>
+        <url-pattern>/RealtyServlet</url-pattern>
     </servlet-mapping>
 </web-app>

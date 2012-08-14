@@ -13,22 +13,16 @@ import static java.lang.System.out;
 public class App {
 	public static void main(String[] args) throws SQLException {
 
-		User test1 = new User();
-		test1.setName("tes45t");
-		test1.setPassword("12345678");
-		test1.setPhoneNumber("5123449");
+	
 
 		UserJdbcDAO addtest1 = new UserJdbcDAO();
 
-		addtest1.add(test1);
+	
 
 		List<User> users = new ArrayList<User>();
 
 		users = addtest1.findAll();
 
-		String delUserId = "31";
-		
-		addtest1.delete((Long)Long.parseLong(delUserId));
 		
 		for (User o : users) {
 
