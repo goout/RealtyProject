@@ -24,7 +24,7 @@
 
 				<li><a href="/RealtyFrontend/RealtyServlet"><span>User</span></a></li>
 
-				<li><a href="Advert.jsp"><span>Advert</span></a></li>
+				<li><a href="RealtyServlet?command=allAdvert"><span>Advert</span></a></li>
 
 				<li><a href="#"><span>Comment</span></a></li>
 
@@ -74,28 +74,30 @@
 						<tr>
 							<td>Text:
 							<td>
-							<td><input type="text" size="30" name="category" id="1"></td>
+							<td><input type="text" size="30" name="text" id="1"></td>
 						</tr>
 
 
 						<tr>
-							<td>UserId:</td>
-							<td><select name="UserList" id="UserList">
+						<td>UserId:</td>
+							<td><select name="userId" id="userId">
 									<option value="select">Change UserId...</option>
 									<c:forEach var="usr" items="${allusers}">
-										<option value=<c:out value="${usr.userId}" />>${usr.name}</option>
+										<option value="<c:out value="${usr.userId}"/>"><c:out value="${usr.name}"/></option>
 									</c:forEach>
 							</select></td>
 						</tr>
 
 						<tr>
 							<td>AdvertId:</td>
-							<td><select name="AdvertList" id="AdvertList">
+							<td><select name="advertId" id="advertId">
 									<option value="select">Change AdvertId...</option>
 									<c:forEach var="adv" items="${alladverts}">
-										<option value=<c:out value="${adv.advertId}" />>${adv.description}</option>
+										<option value="<c:out value="${adv.advertId}"/>"><c:out value="${adv.description}"/></option>
 									</c:forEach>
 							</select></td>
+							
+							
 						</tr>
 
 
@@ -112,19 +114,7 @@
 	</div>
 
 	<br>
-	<Input name="command" type="hidden" value="allUser">
-	<table border="1" align="center">
-		<tr>
-			<td>UserId</td>
-			<td>Name</td>
-		</tr>
-		<c:forEach var="usr" items="${allusers}">
-			<TR>
-				<TD><c:out value="${usr.userId}" /></TD>
-				<TD><c:out value="${usr.name}" /></TD>
-			</TR>
-		</c:forEach>
-	</table>
+
 
 
 	<div id="footer"></div>

@@ -26,7 +26,7 @@
 
 				<li><a href="#"><span>Advert</span></a></li>
 
-				<li><a href="#"><span>Comment</span></a></li>
+				<li><a href="RealtyServlet?command=allComment"><span>Comment</span></a></li>
 
 			</ul>
 
@@ -35,7 +35,7 @@
 
 		<div id="table">
 			<br />
-
+		<form id="form3" action="RealtyServlet">
 			<table border="2" frame="below" width="100%" bordercolor=red>
 				<thead>
 					<tr>
@@ -70,11 +70,13 @@
 						<TD><c:out value="${adv.advertId}" /></TD>
 						<TD><c:out value="${adv.userId}" /></TD>
 						<td width="100"><a
-							href="<c:url value='RealtyServlet?delAdvertId=${adv.AdvertId}&command=delAdvert' />">Del</a></td>
+							href="<c:url value='RealtyServlet?delAdvertId=${adv.advertId}&command=delAdvert' />">Del</a></td>
+
+					
 					</tr>
 				</c:forEach>
 			</table>
-
+</form>
 
 			<br /> <br /> <br />
 			<fieldset>
@@ -91,7 +93,7 @@
 						<tr>
 							<td>District:
 							<td>
-							<td><input type="text" size="30" name="password" id="2"></td>
+							<td><input type="text" size="30" name="district" id="2"></td>
 						</tr>
 						<tr>
 							<td>Adress:
@@ -112,27 +114,31 @@
 
 						<tr>
 							<td>UserId:</td>
-							<td><select name="UserList" id="UserList">
+							<td><select name="userId" id="userId">
 									<option value="select">Change UserId...</option>
 									<c:forEach var="usr" items="${allusers}">
-										<option value=<c:out value="${usr.userId}" />>${usr.name}</option>
+										<option value="<c:out value="${usr.userId}"/>"><c:out value="${usr.name}"/></option>
 									</c:forEach>
 							</select></td>
+
+
 						</tr>
 
 					</table>
 					<br /> <input type="submit" value="Add" /> <input type="hidden"
 						name="command" value="addAdvert" />
-				</form>
-			</fieldset>
 
+				</form>
+
+			</fieldset>
+			
 
 
 		</div>
 
 	</div>
 
-<br>
+	<br>
 	<Input name="command" type="hidden" value="allUser">
 	<table border="1" align="center">
 		<tr>
@@ -147,8 +153,6 @@
 		</c:forEach>
 	</table>
 
-
-	<div id="footer"></div>
 
 
 </body>

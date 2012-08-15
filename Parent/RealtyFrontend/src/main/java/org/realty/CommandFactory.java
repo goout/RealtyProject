@@ -13,6 +13,9 @@ public class CommandFactory {
 			put("addAdvert", new AddAdvertCommand());
 			put("allAdvert", new AllAdvertCommand());
 			put("delAdvert", new DelAdvertCommand());
+			put("addComment", new AddCommentCommand());
+			put("allComment", new AllCommentCommand());
+			put("delComment", new DelCommentCommand());
 		}
 	};
 

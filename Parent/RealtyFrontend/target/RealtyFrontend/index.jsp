@@ -24,9 +24,9 @@
 
 				<li><a href="#"><span>User</span></a></li>
 
-				<li><a href="Advert.jsp"><span>Advert</span></a></li>
+				<li><a href="RealtyServlet?command=allAdvert"><span>Advert</span></a></li>
 
-				<li><a href="#"><span>Comment</span></a></li>
+				<li><a href="RealtyServlet?command=allComment"><span>Comment</span></a></li>
 
 			</ul>
 
