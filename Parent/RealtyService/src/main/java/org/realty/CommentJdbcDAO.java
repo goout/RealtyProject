@@ -17,8 +17,8 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 	protected void addStep(Comment comment) throws SQLException {
 		ptmt.setString(1, null);
 		ptmt.setString(2, comment.getText());
-		ptmt.setInt(3, comment.getUserId());
-		ptmt.setInt(4, comment.getAdvertId());
+		ptmt.setLong(3, comment.getUserId());
+		ptmt.setLong(4, comment.getAdvertId());
 	}
 
 	@Override
@@ -60,8 +60,8 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 		Comment comment = new Comment();
 		comment.setCommentId(rs.getInt(1));
 		comment.setText(rs.getString(2));
-		comment.setUserId(rs.getInt(3));
-		comment.setAdvertId(rs.getInt(4));
+		comment.setUserId(rs.getLong(3));
+		comment.setAdvertId(rs.getLong(4));
 		return comment;
 	}
 

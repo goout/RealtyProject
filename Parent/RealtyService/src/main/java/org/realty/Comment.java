@@ -5,8 +5,8 @@ public class Comment {
 	//private String commentatorName;
 	private int commentId;
 	private String text;
-	private int userId;
-	private int advertId;
+	private Long userId;
+	private Long advertId;
 	
 
 	public Comment() {
@@ -36,19 +36,19 @@ public class Comment {
 		text = newVal;
 	}
 
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
-	public int getAdvertId() {
+	public Long getAdvertId() {
 		return advertId;
 	}
 
-	public void setAdvertId(int advertId) {
+	public void setAdvertId(Long advertId) {
 		this.advertId = advertId;
 	}
 
