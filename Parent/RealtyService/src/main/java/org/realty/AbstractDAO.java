@@ -18,6 +18,7 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 	Connection con = null;
 	PreparedStatement ptmt = null;
 	ResultSet rs = null;
+	
 
 	final public void add(DOMAIN arg) {
 
@@ -105,6 +106,35 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 
 	}
 
+	public  List<DOMAIN> request() {
+		List<DOMAIN> domains = new ArrayList<DOMAIN>();
+		try {
+			connectionStep();
+			ptmt = con.prepareStatement(getRequestSQL());
+			rs = ptmt.executeQuery();
+          
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ptmt != null)
+					ptmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		return domains;
+	}
+
+	
 	public List<DOMAIN> findAll() {
 		List<DOMAIN> domains = new ArrayList<DOMAIN>();
 
@@ -137,11 +167,15 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 		}
 		return domains;
 	}
-
+	
+	
+	
 	protected void connectionStep() {
 		con = createConnection();
 	}
 
+	abstract protected String getRequestSQL() throws SQLException;
+	
 	abstract protected String getFindAllSQL() throws SQLException;
 
 	abstract protected String getDeleteSQL() throws SQLException;

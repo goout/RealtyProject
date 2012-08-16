@@ -78,4 +78,10 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 		return SQL_ALL;
 	}
 
+	@Override
+	protected String getRequestSQL() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

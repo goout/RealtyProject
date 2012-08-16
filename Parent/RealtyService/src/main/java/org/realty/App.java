@@ -1,5 +1,6 @@
 package org.realty;
 
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,8 @@ public class App {
 		}
 		
 		//addtest1.delete(24L);
+		
+
 
 	}
 }

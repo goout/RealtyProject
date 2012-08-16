@@ -16,13 +16,15 @@ public class CommandFactory {
 			put("addComment", new AddCommentCommand());
 			put("allComment", new AllCommentCommand());
 			put("delComment", new DelCommentCommand());
+			put("signIn", new AuthenticationCommand());
+			put("indexGuest", new IndexGuestCommand());
 		}
 	};
 
 	public static Command getCommand(String commandName) {
 
 		Command command = commands.get(commandName);
-		return command != null ? command : new AllUserCommand();
+		return command != null ? command : new IndexGuestCommand();
 	}
 
 

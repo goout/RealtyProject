@@ -22,7 +22,7 @@
 			<br />
 			<ul id="menu">
 
-				<li><a href="/RealtyFrontend/RealtyServlet"><span>User</span></a></li>
+				<li><a href="RealtyServlet?command=allUser"><span>User</span></a></li>
 
 				<li><a href="#"><span>Advert</span></a></li>
 

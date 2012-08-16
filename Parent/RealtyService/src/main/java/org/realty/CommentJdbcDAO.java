@@ -65,4 +65,10 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 		return comment;
 	}
 
+	@Override
+	protected String getRequestSQL() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

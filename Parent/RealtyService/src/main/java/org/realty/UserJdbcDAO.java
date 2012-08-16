@@ -10,6 +10,8 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 			+ "phone_number=? WHERE user_id=?";
 	private static final String SQL_DELETE_USER = "DELETE FROM User WHERE user_id=?";
 	private static final String SQL_ALL = "SELECT * FROM User";
+	private static final String SQL_NAME_PASS = "SELECT name,passwordt FROM User";
+	
 
 	public UserJdbcDAO() {
 
@@ -70,6 +72,12 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 	@Override
 	protected String getFindAllSQL() throws SQLException {
 		return SQL_ALL;
+	}
+
+	@Override
+	protected String getRequestSQL() throws SQLException {
+		// TODO Auto-generated method stub
+		return SQL_NAME_PASS;
 	}
 	
 

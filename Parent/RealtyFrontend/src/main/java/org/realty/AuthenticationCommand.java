@@ -1,0 +1,56 @@
+package org.realty;
+
+import static java.lang.System.out;
+
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.realty.User;
+import org.realty.UserJdbcDAO;
+
+public class AuthenticationCommand implements Command {
+
+	@Override
+	public String execute(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		UserJdbcDAO ad = new UserJdbcDAO();
+		List<User> registeredUsers = ad.findAll();
+
+		out.printf("baza  %s,%s", registeredUsers.get(1).getName(),
+				registeredUsers.get(1).getPassword());
+		out.printf("zapros%s,%s", request.getParameter("name"),
+				request.getParameter("passwordt"));
+
+		Boolean fl=false;
+
+		try {
+
+			for (User user : registeredUsers) {
+
+				if (user.getName().equalsIgnoreCase(
+						request.getParameter("name"))
+						&& user.getPassword().equalsIgnoreCase(
+								request.getParameter("passwordt"))) {
+					out.println("User Authenticated");
+					fl = true;
+					break;
+				} else {
+					out.println("You are not an authentic person");
+					fl = false;
+				}
+			}
+
+		} catch (Exception e) {
+			System.out.println("Exception is ;" + e);
+		}
+
+		return fl ? "RealtyServlet?command=allUser": "RealtyServlet?command=indexGuest";
+	}
+}
