@@ -10,6 +10,9 @@
 <body>
 
 	<div id="head">
+		<form id="form1" action="RealtyServlet">
+		<input type="button" value="Log out" onclick="location.href='RealtyServlet?command=logOut'" />
+
 
 		<h1>Realty</h1>
 		<h2>Comment Page</h2>

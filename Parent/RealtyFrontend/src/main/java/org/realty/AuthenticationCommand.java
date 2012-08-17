@@ -10,7 +10,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 import org.realty.User;
 import org.realty.UserJdbcDAO;
 
@@ -20,6 +20,7 @@ public class AuthenticationCommand implements Command {
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
 		UserJdbcDAO ad = new UserJdbcDAO();
 		List<User> registeredUsers = ad.findAll();
 
@@ -28,7 +29,7 @@ public class AuthenticationCommand implements Command {
 		out.printf("zapros%s,%s", request.getParameter("name"),
 				request.getParameter("passwordt"));
 
-		Boolean fl=false;
+		Boolean fl = false;
 
 		try {
 
@@ -40,6 +41,10 @@ public class AuthenticationCommand implements Command {
 								request.getParameter("passwordt"))) {
 					out.println("User Authenticated");
 					fl = true;
+					UsrInfo ui = new UsrInfo();
+					ui.Login(request.getParameter("name"));
+					session.setAttribute("userInfo", ui);
+
 					break;
 				} else {
 					out.println("You are not an authentic person");
@@ -51,6 +56,7 @@ public class AuthenticationCommand implements Command {
 			System.out.println("Exception is ;" + e);
 		}
 
-		return fl ? "RealtyServlet?command=allUser": "RealtyServlet?command=indexGuest";
+		return fl ? "RealtyServlet?command=allUser"
+				: "RealtyServlet?command=indexGuest";
 	}
 }
