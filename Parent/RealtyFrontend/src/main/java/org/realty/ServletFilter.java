@@ -1,6 +1,7 @@
 package org.realty;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -34,11 +35,15 @@ public class ServletFilter implements Filter {
 		HttpSession session = httpRequest.getSession();
 
 		UsrInfo User = (UsrInfo) session.getAttribute("userInfo");
+		 if (User == null)
+		 User = new UsrInfo();
+		 //httpRequest.
+        List<Roles> roles = CommandFactory.getRoles(httpRequest.getRequestURI());
 
-		if (User.IsLogin() == "false") {
-			httpResponse.sendRedirect("Authentication.jsp");
+        if (User.IsLogin() == "true" || (roles.contains(Roles.ANONYMOUS))) {
+            chain.doFilter(request, response);
 		} else {
-			chain.doFilter(request, response);
+            httpResponse.sendRedirect("Authentication.jsp");
 		}
 	}
 }

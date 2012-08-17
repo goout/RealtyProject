@@ -4,6 +4,7 @@ public class UsrInfo {
 
 	private String UserName = "";
 	private boolean LoginFlag = false;
+	private boolean isAdmin = false;
 
 	public UsrInfo() {
 	}

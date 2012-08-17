@@ -3,27 +3,27 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-    <display-name>Archetype Created Web Application</display-name>
-    <servlet>
-        <servlet-name>RealtyServlet</servlet-name>
-        <servlet-class>org.realty.RealtyServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RealtyServlet</servlet-name>
-        <url-pattern>/RealtyServlet</url-pattern>
-    </servlet-mapping>
-    
-    	<filter>
+	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>RealtyServlet</servlet-name>
+		<servlet-class>org.realty.RealtyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RealtyServlet</servlet-name>
+		<url-pattern>/RealtyServlet</url-pattern>
+	</servlet-mapping>
+
+	<filter>
 		<filter-name>ServletFilter</filter-name>
 		<filter-class>
 			org.realty.ServletFilter
 		</filter-class>
 	</filter>
 
-        <!-- All pages under /faces/restricted/ are sucured with login page -->
-         <filter-mapping>
-		<filter-name>AuthenticationFilter</filter-name>
+	<!-- All pages under /faces/restricted/ are sucured with login page -->
+	<filter-mapping>
+		<filter-name>ServletFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-    
+
 </web-app>
