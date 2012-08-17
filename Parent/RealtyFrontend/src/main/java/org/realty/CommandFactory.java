@@ -23,19 +23,20 @@ public class CommandFactory {
 
     private static Map<String, List<Roles>> role = new HashMap<String, List<Roles>>() {
         {
-            put("/RealtyServlet?command=addUser", Arrays.asList(Roles.ANONYMOUS, Roles.ADMIN));
-            put("/RealtyServlet?command=allUser",  Arrays.asList(Roles.ADMIN));
-            put("/RealtyServlet?command=delUser",  Arrays.asList(Roles.ADMIN));
-            put("/RealtyServlet?command=addAdvert",  Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("/RealtyServlet?command=allAdvert",  Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("/RealtyServlet?command=delAdvert", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("/RealtyServlet?command=addComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("/RealtyServlet?command=allComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
-            put("/RealtyServlet?command=delComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("/RealtyServlet?command=signIn", Arrays.asList(Roles.ANONYMOUS));
-            put("/RealtyServlet?command=indexGuest", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
-            put("/RealtyServlet?command=LogOut", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("/RealtyFrontend/Authentication.jsp", Arrays.asList(Roles.ANONYMOUS));
+            put("/RealtyFrontend/RealtyServlet?command=addUser", Arrays.asList(Roles.ANONYMOUS, Roles.ADMIN));
+            put("/RealtyFrontend/RealtyServlet?command=allUser",  Arrays.asList(Roles.ADMIN));
+            put("/RealtyFrontend/RealtyServlet?command=delUser",  Arrays.asList(Roles.ADMIN));
+            put("/RealtyFrontend/RealtyServlet?command=addAdvert",  Arrays.asList(Roles.LOGGED, Roles.ADMIN));
+            put("/RealtyFrontend/RealtyServlet?command=allAdvert",  Arrays.asList(Roles.LOGGED, Roles.ADMIN));
+            put("/RealtyFrontend/RealtyServlet?command=delAdvert", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
+            put("/RealtyFrontend/RealtyServlet?command=addComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
+            put("/RealtyFrontend/RealtyServlet?command=allComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
+            put("/RealtyFrontend/RealtyServlet?command=delComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
+            put("/RealtyFrontend/RealtyServlet?command=signIn", Arrays.asList(Roles.ANONYMOUS));
+            put("/RealtyFrontend/RealtyServlet?command=indexGuest", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
+            put("/RealtyFrontend/RealtyServlet?command=LogOut", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
+            put("/RealtyFrontend/Authentication.jsp?null", Arrays.asList(Roles.ANONYMOUS));
+            put("/RealtyFrontend/RealtyServlet?null", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
         }
     };
 

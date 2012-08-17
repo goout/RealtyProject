@@ -1,6 +1,7 @@
 package org.realty;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.Filter;
@@ -34,13 +35,26 @@ public class ServletFilter implements Filter {
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		HttpSession session = httpRequest.getSession();
 
-		UsrInfo User = (UsrInfo) session.getAttribute("userInfo");
-		 if (User == null)
-		 User = new UsrInfo();
-		 //httpRequest.
-        List<Roles> roles = CommandFactory.getRoles(httpRequest.getRequestURI());
+		UsrInfo user = (UsrInfo) session.getAttribute("userInfo");
+		 if (user == null)
+		 user = new UsrInfo();
+		List<Roles> currentUser = null;
 
-        if (User.IsLogin() == "true" || (roles.contains(Roles.ANONYMOUS))) {
+        if(user.IsLogin()){
+            currentUser = Arrays.asList(Roles.LOGGED);
+           if(user.IsAdmin())
+                currentUser = Arrays.asList(Roles.ADMIN);
+        }    else
+           currentUser = Arrays.asList(Roles.ANONYMOUS);
+
+
+
+        List<Roles> roles = CommandFactory.getRoles(httpRequest.getRequestURI()+"?"+httpRequest.getQueryString());
+        System.out.printf("  %s"+"?"+"%s  ",httpRequest.getRequestURI(),httpRequest.getQueryString());
+
+
+
+        if ((roles.contains(currentUser))) {
             chain.doFilter(request, response);
 		} else {
             httpResponse.sendRedirect("Authentication.jsp");

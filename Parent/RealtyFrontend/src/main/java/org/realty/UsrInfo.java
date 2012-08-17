@@ -20,12 +20,18 @@ public class UsrInfo {
 
 	}
 		
-	public String IsLogin() {
+	public Boolean IsLogin() {
 		if (LoginFlag)
-			return "true";
-		return "false";
+			return true;
+		return false;
 	}
 
+
+    public Boolean IsAdmin() {
+        if (isAdmin)
+            return true;
+        return false;
+    }
 	
 	public String getUserName() {
 		return UserName;
