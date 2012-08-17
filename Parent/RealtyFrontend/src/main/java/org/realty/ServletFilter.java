@@ -33,6 +33,7 @@ public class ServletFilter implements Filter {
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		HttpSession session = httpRequest.getSession();
 
+		UsrInfo User = (UsrInfo) session.getAttribute("userInfo");
 
 		if (User.IsLogin() == "false") {
 			httpResponse.sendRedirect("Authentication.jsp");

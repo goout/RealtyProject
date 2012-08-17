@@ -18,6 +18,7 @@ public class CommandFactory {
 			put("delComment", new DelCommentCommand());
 			put("signIn", new AuthenticationCommand());
 			put("indexGuest", new IndexGuestCommand());
+			put("LogOut", new LogOutCommand());
 		}
 	};
 
