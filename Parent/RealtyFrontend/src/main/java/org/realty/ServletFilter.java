@@ -38,19 +38,19 @@ public class ServletFilter implements Filter {
 		UsrInfo user = (UsrInfo) session.getAttribute("userInfo");
 		 if (user == null)
 		 user = new UsrInfo();
-		List<Roles> currentUser = null;
+		Roles currentUser = null;
 
         if(user.IsLogin()){
-            currentUser = Arrays.asList(Roles.LOGGED);
+            currentUser = Roles.LOGGED;
            if(user.IsAdmin())
-                currentUser = Arrays.asList(Roles.ADMIN);
+                currentUser = Roles.ADMIN;
         }    else
-           currentUser = Arrays.asList(Roles.ANONYMOUS);
+           currentUser = Roles.ANONYMOUS;
 
 
 
         List<Roles> roles = CommandFactory.getRoles(httpRequest.getRequestURI()+"?"+httpRequest.getQueryString());
-        System.out.printf("  %s"+"?"+"%s  ",httpRequest.getRequestURI(),httpRequest.getQueryString());
+        System.out.printf("pppppppp  %s"+"?"+"%s  ",httpRequest.getRequestURI(),httpRequest.getQueryString());
 
 
 

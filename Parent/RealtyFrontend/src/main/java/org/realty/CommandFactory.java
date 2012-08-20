@@ -23,20 +23,20 @@ public class CommandFactory {
 
     private static Map<String, List<Roles>> role = new HashMap<String, List<Roles>>() {
         {
-            put("/RealtyFrontend/RealtyServlet?command=addUser", Arrays.asList(Roles.ANONYMOUS, Roles.ADMIN));
-            put("/RealtyFrontend/RealtyServlet?command=allUser",  Arrays.asList(Roles.ADMIN));
-            put("/RealtyFrontend/RealtyServlet?command=delUser",  Arrays.asList(Roles.ADMIN));
-            put("/RealtyFrontend/RealtyServlet?command=addAdvert",  Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("/RealtyFrontend/RealtyServlet?command=allAdvert",  Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("/RealtyFrontend/RealtyServlet?command=delAdvert", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("/RealtyFrontend/RealtyServlet?command=addComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("/RealtyFrontend/RealtyServlet?command=allComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
-            put("/RealtyFrontend/RealtyServlet?command=delComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("/RealtyFrontend/RealtyServlet?command=signIn", Arrays.asList(Roles.ANONYMOUS));
-            put("/RealtyFrontend/RealtyServlet?command=indexGuest", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
-            put("/RealtyFrontend/RealtyServlet?command=LogOut", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("/RealtyFrontend/Authentication.jsp?null", Arrays.asList(Roles.ANONYMOUS));
-            put("/RealtyFrontend/RealtyServlet?null", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
+            put("addUser", Arrays.asList(Roles.ANONYMOUS, Roles.ADMIN));
+            put("allUser",  Arrays.asList(Roles.ADMIN,Roles.LOGGED));
+            put("delUser",  Arrays.asList(Roles.ADMIN));
+            put("addAdvert",  Arrays.asList(Roles.LOGGED, Roles.ADMIN));
+            put("allAdvert",  Arrays.asList(Roles.LOGGED, Roles.ADMIN));
+            put("delAdvert", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
+            put("addComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
+            put("allComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
+            put("delComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
+            put("signIn", Arrays.asList(Roles.ANONYMOUS));
+            put("indexGuest", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
+            put("LogOut", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
+            put("Authentication.jsp", Arrays.asList(Roles.ANONYMOUS));
+            put("RealtyServlet?null", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
         }
     };
 
@@ -47,7 +47,50 @@ public class CommandFactory {
 	}
 
 	public static List<Roles> getRoles(String commandName) {
-        List<Roles> roles = role.get(commandName);
+        List<Roles> roles;
+        if(commandName.indexOf("addUser")!=-1)    {
+            roles = role.get("addUser");
+        }
+        if(commandName.indexOf("allUser")!=-1)    {
+            roles = role.get("allUser");
+        }
+        if(commandName.indexOf("delUser")!=-1)    {
+            roles = role.get("delUser");
+        }
+        if(commandName.indexOf("addAdvert")!=-1)    {
+            roles = role.get("addAdvert");
+        }
+        if(commandName.indexOf("allAdvert")!=-1)    {
+            roles = role.get("allAdvert");
+        }
+        if(commandName.indexOf("delAdvert")!=-1)    {
+            roles = role.get("delAdvert");
+        }
+        if(commandName.indexOf("addComment")!=-1)    {
+            roles = role.get("addComment");
+        }
+        if(commandName.indexOf("allComment")!=-1)    {
+            roles = role.get("allComment");
+        }
+        if(commandName.indexOf("delComment")!=-1)    {
+            roles = role.get("delComment");
+        }
+        if(commandName.indexOf("signIn")!=-1)    {
+         roles = role.get("signIn");
+        }
+        if(commandName.indexOf("indexGuest")!=-1)    {
+           roles = role.get("indexGuest");
+        }
+        if(commandName.indexOf("LogOut")!=-1)    {
+            roles = role.get("LogOut");
+        }
+        if(commandName.indexOf("LogOut")!=-1)    {
+            roles = role.get("LogOut");
+        }
+        if(commandName.indexOf("RealtyServlet?null")!=-1)    {
+            roles = role.get("RealtyServlet?null");
+        }           else  roles=Arrays.asList(Roles.ANONYMOUS) ;
+
         return roles != null ? roles : new ArrayList<Roles>();
 	}
 
