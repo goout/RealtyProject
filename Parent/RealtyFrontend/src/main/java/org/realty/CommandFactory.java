@@ -21,7 +21,7 @@ public class CommandFactory {
 		}
 	};
 
-    private static Map<String, List<Roles>> role = new HashMap<String, List<Roles>>() {
+    private static Map<String, List<Roles>> roleByCommand = new HashMap<String, List<Roles>>() {
         {
             put("addUser", Arrays.asList(Roles.ANONYMOUS, Roles.ADMIN));
             put("allUser",  Arrays.asList(Roles.ADMIN,Roles.LOGGED));
@@ -33,12 +33,24 @@ public class CommandFactory {
             put("allComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
             put("delComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
             put("signIn", Arrays.asList(Roles.ANONYMOUS));
-            put("indexGuest", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
+            put("indexGuest", Arrays.asList(Roles.ADMIN, Roles.ANONYMOUS));
             put("LogOut", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("Authentication.jsp", Arrays.asList(Roles.ANONYMOUS));
-            put("RealtyServlet?null", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
         }
     };
+
+
+
+    private static Map<String, List<Roles>> roleByJSP = new HashMap<String, List<Roles>>() {
+        {
+            put("User.jsp", Arrays.asList(Roles.ADMIN));
+            put("index.jsp",   Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
+            put("Advert.jsp",  Arrays.asList(Roles.LOGGED));
+            put("Comment.jsp",  Arrays.asList(Roles.LOGGED));
+            put("Authentication.jsp",  Arrays.asList(Roles.ANONYMOUS));
+            put("RealtyServlet" , Arrays.asList(Roles.ADMIN, Roles.ANONYMOUS));
+             }
+    };
+
 
 	public static Command getCommand(String commandName) {
 
@@ -46,54 +58,15 @@ public class CommandFactory {
 		return command != null ? command : new IndexGuestCommand();
 	}
 
-	public static List<Roles> getRoles(String commandName) {
-        List<Roles> roles;
-        if(commandName.indexOf("addUser")!=-1)    {
-            roles = role.get("addUser");
-        }
-        if(commandName.indexOf("allUser")!=-1)    {
-            roles = role.get("allUser");
-        }
-        if(commandName.indexOf("delUser")!=-1)    {
-            roles = role.get("delUser");
-        }
-        if(commandName.indexOf("addAdvert")!=-1)    {
-            roles = role.get("addAdvert");
-        }
-        if(commandName.indexOf("allAdvert")!=-1)    {
-            roles = role.get("allAdvert");
-        }
-        if(commandName.indexOf("delAdvert")!=-1)    {
-            roles = role.get("delAdvert");
-        }
-        if(commandName.indexOf("addComment")!=-1)    {
-            roles = role.get("addComment");
-        }
-        if(commandName.indexOf("allComment")!=-1)    {
-            roles = role.get("allComment");
-        }
-        if(commandName.indexOf("delComment")!=-1)    {
-            roles = role.get("delComment");
-        }
-        if(commandName.indexOf("signIn")!=-1)    {
-         roles = role.get("signIn");
-        }
-        if(commandName.indexOf("indexGuest")!=-1)    {
-           roles = role.get("indexGuest");
-        }
-        if(commandName.indexOf("LogOut")!=-1)    {
-            roles = role.get("LogOut");
-        }
-        if(commandName.indexOf("LogOut")!=-1)    {
-            roles = role.get("LogOut");
-        }
-        if(commandName.indexOf("RealtyServlet?null")!=-1)    {
-            roles = role.get("RealtyServlet?null");
-        }           else  roles=Arrays.asList(Roles.ANONYMOUS) ;
-
+	public static List<Roles> getRolesByCommand(String commandName) {
+        List<Roles> roles = roleByCommand.get(commandName);
         return roles != null ? roles : new ArrayList<Roles>();
 	}
 
+    public static List<Roles> getRolesByJSP(String jspName) {
+        List<Roles> roles = roleByJSP.get(jspName);
+        return roles != null ? roles : new ArrayList<Roles>();
+    }
 
 
 

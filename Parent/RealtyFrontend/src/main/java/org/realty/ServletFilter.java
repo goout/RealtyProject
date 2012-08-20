@@ -39,6 +39,8 @@ public class ServletFilter implements Filter {
 		 if (user == null)
 		 user = new UsrInfo();
 		Roles currentUser = null;
+        List<Roles> roles =null;
+        String command = null;
 
         if(user.IsLogin()){
             currentUser = Roles.LOGGED;
@@ -48,11 +50,17 @@ public class ServletFilter implements Filter {
            currentUser = Roles.ANONYMOUS;
 
 
+            if(httpRequest.getQueryString()!=null){
+                command = request.getParameter("command");
+                roles = CommandFactory.getRolesByCommand(command);
+            }  else{
+                command = httpRequest.getRequestURI().replace(httpRequest.getContextPath() + "/", "");
+                roles = CommandFactory.getRolesByJSP(command);
+            }
 
-        List<Roles> roles = CommandFactory.getRoles(httpRequest.getRequestURI()+"?"+httpRequest.getQueryString());
-        System.out.printf("pppppppp  %s"+"?"+"%s  ",httpRequest.getRequestURI(),httpRequest.getQueryString());
 
 
+      //  List<Roles> roles = CommandFactory.getRoles(httpRequest.getRequestURI()+"?"+httpRequest.getQueryString());
 
         if ((roles.contains(currentUser))) {
             chain.doFilter(request, response);
