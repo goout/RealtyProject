@@ -5,9 +5,9 @@ import java.sql.SQLException;
 
 public class UserJdbcDAO extends AbstractDAO<User> {
 
-	private static final String SQL_ADD_USER = "INSERT INTO User VALUES(?,?,?,?)";
+	private static final String SQL_ADD_USER = "INSERT INTO User VALUES(?,?,?,?,?)";
 	private static final String SQL_UPDATE_USER = "UPDATE User SET name=?,passwordt=?,"
-			+ "phone_number=? WHERE user_id=?";
+			+ "phone_number=?, admin=? WHERE user_id=?";
 	private static final String SQL_DELETE_USER = "DELETE FROM User WHERE user_id=?";
 	private static final String SQL_ALL = "SELECT * FROM User";
 	private static final String SQL_NAME_PASS = "SELECT name,passwordt FROM User";
@@ -17,6 +17,8 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 
 	}
 
+
+
 	@Override
 	protected void addStep(User user) throws SQLException {
 
@@ -24,6 +26,7 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 		ptmt.setString(2, user.getName());
 		ptmt.setString(3, user.getPassword());
 		ptmt.setString(4, user.getPhoneNumber());
+        ptmt.setBoolean(5, user.getAdmin());
 
 	}
 
@@ -33,7 +36,8 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 		ptmt.setString(1, user.getName());
 		ptmt.setString(2, user.getPassword());
 		ptmt.setString(3, user.getPhoneNumber());
-		ptmt.setLong(4, id);
+        ptmt.setBoolean(4, user.getAdmin());
+		ptmt.setLong(5, id);
 
 	}
 
@@ -45,6 +49,7 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 		user.setName(rs.getString(2));
 		user.setPassword(rs.getString(3));
 		user.setPhoneNumber(rs.getString(4));
+        user.setAdmin(rs.getBoolean(5));
 		return user;
 	}
 	

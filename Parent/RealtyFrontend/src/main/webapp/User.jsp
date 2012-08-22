@@ -51,6 +51,8 @@
 
 						<td width="100">Phone</td>
 
+                        <td width="50">Admin</td>
+
 						<td width="100"></td>
 					</tr>
 				</thead>
@@ -61,6 +63,7 @@
 						<TD><c:out value="${usr.name}" /></TD>
 						<TD><c:out value="${usr.password}" /></TD>
 						<TD><c:out value="${usr.phoneNumber}" /></TD>
+                        <TD><c:out value="${usr.admin}" /></TD>
 						<td width="100"><a
 							href="<c:url value='RealtyServlet?delUserId=${usr.userId}&command=delUser' />">Delete</a></td>
 					</tr>
@@ -90,6 +93,14 @@
 							<td>
 							<td><input type="text" size="30" name="phoneNumber" id="3"></td>
 						</tr>
+                        <tr>
+                            <td>Admin:</td>
+                            <td><select name="isAdmin" id="isAdmin">
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select></td>
+                        </tr>
+
 
 					</table>
 					<br /> <input type="submit" value="Add" /> <input type="hidden"

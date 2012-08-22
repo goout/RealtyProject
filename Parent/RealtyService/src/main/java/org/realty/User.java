@@ -6,6 +6,8 @@ public class User {
 	private String name;
 	private String password;
 	private String phoneNumber;
+    private Boolean admin;
+
 
 	public User() {
 
@@ -39,9 +41,20 @@ public class User {
 		password = newVal;
 	}
 
+
 	public void setPhoneNumber(String newVal) {
 		phoneNumber = newVal;
 	}
+
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
+
 
 	@Override
 	public boolean equals(Object other) {
@@ -61,5 +74,8 @@ public class User {
 				"User[userId=%d,name=%s,password=%s,phoneNumber=%s]", userId,
 				name, password, phoneNumber);
 	}
+
+
+
 
 }

@@ -37,6 +37,8 @@
 
 							<td width="100">Category</td>
 
+                            <td width="100">City</td>
+
 							<td width="100">District</td>
 
 							<td width="100">Adress</td>
@@ -52,6 +54,7 @@
 						<tr>
 							<TD><c:out value="${adv.addedDate}" /></TD>
 							<TD><c:out value="${adv.category}" /></TD>
+                            <TD><c:out value="${adv.city}" /></TD>
 							<TD><c:out value="${adv.district}" /></TD>
 							<TD><c:out value="${adv.adress}" /></TD>
 							<TD><c:out value="${adv.coast}" /></TD>

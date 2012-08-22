@@ -1,12 +1,13 @@
 package org.realty;
 
+import java.sql.Date;
 import java.sql.SQLException;
 
 public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 
-	private static final String SQL_ADD_ADVERT = "INSERT INTO Advert VALUES(?,?,?,?,?,?,?,?)";
+	private static final String SQL_ADD_ADVERT = "INSERT INTO Advert VALUES(?,?,?,?,?,?,?,?,?)";
 	private static final String SQL_UPDATE_ADVERT = "UPDATE Advert SET added_date=?,category=?,district=?,"
-			+ "adress=?, coast=?, description=? WHERE advert_id=?";
+			+ "adress=?, coast=?, description=?, city=? WHERE advert_id=?";
 	private static final String SQL_DELETE_ADVERT = "DELETE FROM Advert WHERE advert_id=?";
 	private static final String SQL_ALL = "SELECT * FROM Advert";
 
@@ -17,25 +18,28 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 	@Override
 	protected void addStep(Advert advert) throws SQLException {
 		ptmt.setString(1, null);
-		ptmt.setDate(2, advert.getAddedDate());
+		ptmt.setDate(2, new Date(System.currentTimeMillis()));
 		ptmt.setString(3, advert.getCategory());
 		ptmt.setString(4, advert.getDistrict());
 		ptmt.setString(5, advert.getAdress());
 		ptmt.setInt(6, advert.getCoast());
 		ptmt.setString(7, advert.getDescription());
 		ptmt.setLong(8, advert.getUserId());
+        ptmt.setString(9, advert.getCity());
 	}
 
 	@Override
 	protected void updateStep(Advert advert, Long id) throws SQLException {
 
-		ptmt.setDate(1, advert.getAddedDate());
+		ptmt.setDate(1, new Date(System.currentTimeMillis()));
 		ptmt.setString(2, advert.getCategory());
 		ptmt.setString(3, advert.getDistrict());
 		ptmt.setString(4, advert.getAdress());
 		ptmt.setInt(5, advert.getCoast());
 		ptmt.setString(6, advert.getDescription());
-		ptmt.setLong(7, id);
+        ptmt.setString(7, advert.getCity());
+		ptmt.setLong(8, id);
+
 
 	}
 
@@ -50,6 +54,7 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 		advert.setCoast(rs.getInt(6));
 		advert.setDescription(rs.getString(7));
 		advert.setUserId(rs.getLong(8));
+        advert.setCity(rs.getString(9));
 		return advert;
 	}
 

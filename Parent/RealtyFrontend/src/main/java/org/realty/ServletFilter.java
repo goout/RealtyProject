@@ -55,7 +55,7 @@ public class ServletFilter implements Filter {
                 roles = CommandFactory.getRolesByCommand(command);
             }  else{
                 command = httpRequest.getRequestURI().replace(httpRequest.getContextPath() + "/", "");
-                roles = CommandFactory.getRolesByJSP(command);
+                roles = CommandFactory.getRolesByResourcePath(command);
             }
 
 

@@ -23,9 +23,9 @@ public class CommandFactory {
 
     private static Map<String, List<Roles>> roleByCommand = new HashMap<String, List<Roles>>() {
         {
-            put("addUser", Arrays.asList(Roles.ANONYMOUS, Roles.ADMIN));
+            put("addUser", Arrays.asList(Roles.ANONYMOUS, Roles.ADMIN, Roles.LOGGED));
             put("allUser",  Arrays.asList(Roles.ADMIN,Roles.LOGGED));
-            put("delUser",  Arrays.asList(Roles.ADMIN));
+            put("delUser",  Arrays.asList(Roles.ADMIN,Roles.LOGGED));
             put("addAdvert",  Arrays.asList(Roles.LOGGED, Roles.ADMIN));
             put("allAdvert",  Arrays.asList(Roles.LOGGED, Roles.ADMIN));
             put("delAdvert", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
@@ -40,7 +40,7 @@ public class CommandFactory {
 
 
 
-    private static Map<String, List<Roles>> roleByJSP = new HashMap<String, List<Roles>>() {
+    private static Map<String, List<Roles>> roleByResourcePath = new HashMap<String, List<Roles>>() {
         {
             put("User.jsp", Arrays.asList(Roles.ADMIN));
             put("index.jsp",   Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
@@ -63,8 +63,8 @@ public class CommandFactory {
         return roles != null ? roles : new ArrayList<Roles>();
 	}
 
-    public static List<Roles> getRolesByJSP(String jspName) {
-        List<Roles> roles = roleByJSP.get(jspName);
+    public static List<Roles> getRolesByResourcePath(String jspName) {
+        List<Roles> roles = roleByResourcePath.get(jspName);
         return roles != null ? roles : new ArrayList<Roles>();
     }
 

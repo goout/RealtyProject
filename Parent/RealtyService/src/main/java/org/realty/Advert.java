@@ -12,6 +12,7 @@ public class Advert {
 	private String description;
 	private Long advertId;
 	private Long userId;
+    private String city;
 
 	public Advert() {
 
@@ -80,6 +81,15 @@ public class Advert {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
 
 	@Override
 	public boolean equals(Object other) {

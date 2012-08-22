@@ -17,15 +17,16 @@ public class AddAdvertCommand implements Command {
 
 		AdvertJdbcDAO ad = new AdvertJdbcDAO();
 		String category = request.getParameter("category");
+        String city = request.getParameter("city");
 		String district = request.getParameter("district");
 		String adress = request.getParameter("adress");
 		String coast = request.getParameter("coast");
 		String description = request.getParameter("description");
-		String userId = request.getParameter("userId"); //?
+		String userId = request.getParameter("userId");
 
 		Advert advert = new Advert();
-		advert.setAddedDate(new Date(System.currentTimeMillis()));
 		advert.setCategory(category);
+        advert.setCity(city);
         advert.setDistrict(district);
         advert.setAdress(adress);
         advert.setCoast(Integer.parseInt(coast));

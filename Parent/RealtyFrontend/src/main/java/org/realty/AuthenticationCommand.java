@@ -43,6 +43,9 @@ public class AuthenticationCommand implements Command {
 					fl = true;
 					UsrInfo ui = new UsrInfo();
 					ui.Login(request.getParameter("name"));
+
+                    if(user.getAdmin()) ui.Admin();
+
 					session.setAttribute("userInfo", ui);
 
 					break;

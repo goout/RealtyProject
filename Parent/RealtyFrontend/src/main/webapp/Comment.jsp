@@ -11,7 +11,7 @@
 
 	<div id="head">
 		<form id="form1" action="RealtyServlet">
-		<input type="button" value="Log out" onclick="location.href='RealtyServlet?command=logOut'" />
+		<input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'" />
 
 
 		<h1>Realty</h1>

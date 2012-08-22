@@ -14,6 +14,12 @@ public class UsrInfo {
 		setUserName(TheUser);
 	}
 
+
+    public void Admin() {
+        isAdmin = true;
+    }
+
+
 	public void Logout() {
 		LoginFlag = false;
 		setUserName("");

@@ -12,7 +12,7 @@
 	<div id="head">
 
 		<form id="form1" action="RealtyServlet">
-		<input type="button" value="Log out" onclick="location.href='RealtyServlet?command=logOut'" />
+		<input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'" />
 
 
 		<h1>Realty</h1>
@@ -47,6 +47,8 @@
 
 						<td width="100">Category</td>
 
+                        <td width="100">City</td>
+
 						<td width="100">District</td>
 
 						<td width="100">Adress</td>
@@ -62,17 +64,18 @@
 						<td width="50"></td>
 					</tr>
 				</thead>
-				<c:forEach items="${alladverts}" var="adv">
+				<c:forEach items="${alladvertsusers}" var="adv">
 
 					<tr>
 						<TD><c:out value="${adv.addedDate}" /></TD>
 						<TD><c:out value="${adv.category}" /></TD>
+                        <TD><c:out value="${adv.city}" /></TD>
 						<TD><c:out value="${adv.district}" /></TD>
 						<TD><c:out value="${adv.adress}" /></TD>
 						<TD><c:out value="${adv.coast}" /></TD>
 						<TD><c:out value="${adv.description}" /></TD>
 						<TD><c:out value="${adv.advertId}" /></TD>
-						<TD><c:out value="${adv.userId}" /></TD>
+						<TD><c:out value="${adv.advertUserId}" /></TD>
 						<td width="100"><a
 							href="<c:url value='RealtyServlet?delAdvertId=${adv.advertId}&command=delAdvert' />">Del</a></td>
 
@@ -94,33 +97,38 @@
 							<td>
 							<td><input type="text" size="30" name="category" id="1"></td>
 						</tr>
-						<tr>
+                        <tr>
+                            <td>City:
+                            <td>
+                            <td><input type="text" size="30" name="city" id="2"></td>
+                        </tr>
+                        <tr>
 							<td>District:
 							<td>
-							<td><input type="text" size="30" name="district" id="2"></td>
+							<td><input type="text" size="30" name="district" id="3"></td>
 						</tr>
 						<tr>
 							<td>Adress:
 							<td>
-							<td><input type="text" size="30" name="adress" id="3"></td>
+							<td><input type="text" size="30" name="adress" id="4"></td>
 						</tr>
 						<tr>
 							<td>Coast:
 							<td>
-							<td><input type="text" size="30" name="coast" id="4"></td>
+							<td><input type="text" size="30" name="coast" id="5"></td>
 						</tr>
 
 						<tr>
 							<td>Description:
 							<td>
-							<td><input type="text" size="90" name="description" id="5"></td>
+							<td><input type="text" size="90" name="description" id="6"></td>
 						</tr>
 
 						<tr>
 							<td>UserId:</td>
 							<td><select name="userId" id="userId">
 									<option value="select">Change UserId...</option>
-									<c:forEach var="usr" items="${allusers}">
+									<c:forEach var="usr" items="${alladvertsusers}">
 										<option value="<c:out value="${usr.userId}"/>"><c:out value="${usr.name}"/></option>
 									</c:forEach>
 							</select></td>
@@ -143,19 +151,7 @@
 	</div>
 
 	<br>
-	<Input name="command" type="hidden" value="allUser">
-	<table border="1" align="center">
-		<tr>
-			<td>UserId</td>
-			<td>Name</td>
-		</tr>
-		<c:forEach var="usr" items="${allusers}">
-			<TR>
-				<TD><c:out value="${usr.userId}" /></TD>
-				<TD><c:out value="${usr.name}" /></TD>
-			</TR>
-		</c:forEach>
-	</table>
+
 
 
 
