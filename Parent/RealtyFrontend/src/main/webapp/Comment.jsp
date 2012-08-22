@@ -53,16 +53,17 @@
 						<td width="50"></td>
 					</tr>
 				</thead>
-				<c:forEach items="${allcomments}" var="cmnt">
-
+				<c:forEach items="${allCommentsUserAdverts}" var="cmnt">
+                    <c:if test="${cmnt.userId==null&&cmnt.advertId==null }">
 					<tr>
 						<TD><c:out value="${cmnt.commentId}" /></TD>
 						<TD><c:out value="${cmnt.text}" /></TD>
-						<TD><c:out value="${cmnt.userId}" /></TD>
-						<TD><c:out value="${cmnt.advertId}" /></TD>
+						<TD><c:out value="${cmnt.commentUserId}" /></TD>
+						<TD><c:out value="${cmnt.commentAdvertId}" /></TD>
 						<td width="100"><a
 							href="<c:url value='RealtyServlet?delCommentId=${cmnt.commentId}&command=delComment' />">Del</a></td>
 					</tr>
+                    </c:if>
 				</c:forEach>
 			</table>
 
@@ -84,10 +85,11 @@
 						<tr>
 						<td>UserId:</td>
 							<td><select name="userId" id="userId">
-									<option value="select">Change UserId...</option>
-									<c:forEach var="usr" items="${allusers}">
+								    <c:forEach var="usr" items="${allCommentsUserAdverts}">
+                                        <c:if test="${usr.userId!=null }">
 										<option value="<c:out value="${usr.userId}"/>"><c:out value="${usr.name}"/></option>
-									</c:forEach>
+                                        </c:if>
+                                    </c:forEach>
 							</select></td>
 						</tr>
 
@@ -95,9 +97,11 @@
 							<td>AdvertId:</td>
 							<td><select name="advertId" id="advertId">
 									<option value="select">Change AdvertId...</option>
-									<c:forEach var="adv" items="${alladverts}">
+									<c:forEach var="adv" items="${allCommentsUserAdverts}">
+                                        <c:if test="${adv.advertId!=null }">
 										<option value="<c:out value="${adv.advertId}"/>"><c:out value="${adv.description}"/></option>
-									</c:forEach>
+                                        </c:if>
+                                    </c:forEach>
 							</select></td>
 							
 							

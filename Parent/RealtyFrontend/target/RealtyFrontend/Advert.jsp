@@ -64,8 +64,9 @@
 						<td width="50"></td>
 					</tr>
 				</thead>
-				<c:forEach items="${alladvertsusers}" var="adv">
 
+				<c:forEach items="${alladvertsusers}" var="adv">
+                    <c:if test="${adv.userId==null }">
 					<tr>
 						<TD><c:out value="${adv.addedDate}" /></TD>
 						<TD><c:out value="${adv.category}" /></TD>
@@ -81,7 +82,9 @@
 
 					
 					</tr>
+                    </c:if>
 				</c:forEach>
+
 			</table>
 </form>
 
@@ -125,12 +128,16 @@
 						</tr>
 
 						<tr>
-							<td>UserId:</td>
+							<td>UserName:</td>
 							<td><select name="userId" id="userId">
-									<option value="select">Change UserId...</option>
+
+
 									<c:forEach var="usr" items="${alladvertsusers}">
+                                        <c:if test="${usr.userId!=null }">
 										<option value="<c:out value="${usr.userId}"/>"><c:out value="${usr.name}"/></option>
-									</c:forEach>
+                                        </c:if>
+                                    </c:forEach>
+
 							</select></td>
 
 

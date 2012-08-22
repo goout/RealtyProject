@@ -18,9 +18,7 @@ public class AdvertUserDTO implements Serializable {
 
     private Long userId;
     private String name;
-    private String password;
-    private String phoneNumber;
-    private Boolean admin;
+
 
 
     public Date getAddedDate() {
@@ -84,7 +82,7 @@ public class AdvertUserDTO implements Serializable {
     }
 
     public void setAdvertUserId(Long advertUserId) {
-        advertUserId = advertUserId;
+        this.advertUserId = advertUserId;
     }
 
     public String getCity() {
@@ -111,27 +109,5 @@ public class AdvertUserDTO implements Serializable {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Boolean getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        this.admin = admin;
-    }
 }

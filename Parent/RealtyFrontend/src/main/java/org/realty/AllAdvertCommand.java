@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.realty.Advert;
 import org.realty.User;
 
+import javax.servlet.http.HttpSession;
+
+
 public class AllAdvertCommand implements Command {
 
 	@Override
@@ -21,19 +24,15 @@ public class AllAdvertCommand implements Command {
 			HttpServletResponse response) throws ServletException, IOException {
 
 
-
-
+        HttpSession session = request.getSession();
+        UsrInfo iuser = (UsrInfo) session.getAttribute("userInfo");
 
 
 		AdvertJdbcDAO ad = new AdvertJdbcDAO();
 		List<Advert> alladverts = ad.findAll();
 
-        UserJdbcDAO ad2 = new UserJdbcDAO();
-        List<User> allusers = ad2.findAll();
+        List<AdvertUserDTO> alladvertsusers = createDTO(alladverts,iuser);
 
-         List<AdvertUserDTO> alladvertsusers = createDTO(alladverts,allusers);
-
-				
 		request.setAttribute("alladvertsusers", alladvertsusers);
 		
 
@@ -43,12 +42,12 @@ public class AllAdvertCommand implements Command {
 
 	}
 
-    public List<AdvertUserDTO> createDTO (List<Advert> adverts, List<User> users)  {
-        AdvertUserDTO aud = new AdvertUserDTO();
+    public List<AdvertUserDTO> createDTO (List<Advert> adverts, UsrInfo user)  {
+
         List<AdvertUserDTO> laud = new ArrayList<AdvertUserDTO>();
-
+        int i =0;
         for (Advert o : adverts) {
-
+            AdvertUserDTO aud = new AdvertUserDTO();
             aud.setAddedDate(o.getAddedDate());
             aud.setCategory(o.getCategory());
             aud.setDistrict(o.getDistrict());
@@ -59,19 +58,18 @@ public class AllAdvertCommand implements Command {
             aud.setAdvertUserId(o.getUserId());
             aud.setCity(o.getCity());
 
-            laud.add(aud);
+            laud.add(i,aud);
+            i++;
         }
 
-        for (User u : users){
 
-            aud.setUserId(u.getUserId());
-            aud.setName(u.getName());
-            aud.setPassword(u.getPassword());
-            aud.setPhoneNumber(u.getPhoneNumber());
-            aud.setAdmin(u.getAdmin());
+            AdvertUserDTO aud = new AdvertUserDTO();
+            aud.setUserId(user.getUserId());
+            aud.setName(user.getUserName());
 
-            laud.add(aud);
-        }
+            laud.add(i,aud);
+
+
 
         return laud;
 

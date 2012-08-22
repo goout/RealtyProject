@@ -3,6 +3,7 @@ package org.realty;
 public class UsrInfo {
 
 	private String UserName = "";
+    private  Long userId;
 	private boolean LoginFlag = false;
 	private boolean isAdmin = false;
 
@@ -46,4 +47,13 @@ public class UsrInfo {
 	public void setUserName(String userName) {
 		UserName = userName;
 	}
+
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }
