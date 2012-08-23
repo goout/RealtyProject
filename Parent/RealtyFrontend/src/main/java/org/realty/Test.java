@@ -12,9 +12,9 @@ import static java.lang.System.out;
 public class Test {
     public static void main(String[] args)  {
 
-      //  Locale loc = new Locale("ru","");
-        Locale loc = Locale.ENGLISH;
-        ResourceBundle rbund = ResourceBundle.getBundle("Translations", loc);
+        Locale loc = new Locale("ru","");
+       // Locale loc = Locale.ENGLISH;
+        ResourceBundle rbund = ResourceBundle.getBundle("org.realty.Translations", loc);
         String str = rbund.getString("index.title");
         System.out.printf("title: %s",str);
 
