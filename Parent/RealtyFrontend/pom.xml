@@ -29,7 +29,7 @@
  <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>jstl</artifactId>
-        <version>1.1.1</version>
+        <version>1.2</version>
         <scope>runtime</scope>
     </dependency>
     
@@ -37,13 +37,13 @@
         <groupId>taglibs</groupId>
         <artifactId>standard</artifactId>
         <scope>runtime</scope>
-        <version>1.1.1</version>
+        <version>1.1.2</version>
     </dependency>
     
     <dependency>
         <groupId>taglibs</groupId>
         <artifactId>c</artifactId>
-        <version>1.1.1</version>
+        <version>1.1.2</version>
         <scope>runtime</scope>
         <type>tld</type>
     </dependency>
@@ -51,7 +51,7 @@
     <dependency>
         <groupId>taglibs</groupId>
         <artifactId>fmt</artifactId>
-        <version>1.1.1</version>
+        <version>1.1.2</version>
         <scope>runtime</scope>
         <type>tld</type>
     </dependency>

@@ -24,8 +24,8 @@ public class AuthenticationCommand implements Command {
 		UserJdbcDAO ad = new UserJdbcDAO();
 		List<User> registeredUsers = ad.findAll();
 
-		out.printf("baza  %s,%s", registeredUsers.get(1).getName(),
-				registeredUsers.get(1).getPassword());
+		out.printf("baza  %s,%s", registeredUsers.get(0).getName(),
+				registeredUsers.get(0).getPassword());
 		out.printf("zapros%s,%s", request.getParameter("name"),
 				request.getParameter("passwordt"));
 
