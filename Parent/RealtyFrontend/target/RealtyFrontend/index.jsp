@@ -6,8 +6,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+    <%@ page import='java.util.Locale' %>
+    <%@ page import="java.util.Enumeration" %>
 </head>
 <body>
+
+<font size='4'>Locales:</font>
+
+<p>
+    <% Enumeration en = request.getLocales();
+    while(en.hasMoreElements())  {
+        Locale locale = (Locale)en.nextElement();
+        locale.getDisplayName();
+    }
+    %>
+
+    <%
+        Locale loc = request.getLocale();
+        loc.getDisplayName();
+
+    %>
+
+ </p>
 
 	<div id="head">
 
