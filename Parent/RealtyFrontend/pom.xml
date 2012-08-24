@@ -15,6 +15,7 @@
             <scope>test</scope>
         </dependency>
 
+<<<<<<< HEAD
         <dependency>
             <groupId>org.realty</groupId>
             <artifactId>RealtyService</artifactId>
@@ -25,6 +26,37 @@
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
         </dependency>
+=======
+ <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+        <scope>runtime</scope>
+    </dependency>
+    
+       <dependency>
+        <groupId>taglibs</groupId>
+        <artifactId>standard</artifactId>
+        <scope>runtime</scope>
+        <version>1.1.2</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>taglibs</groupId>
+        <artifactId>c</artifactId>
+        <version>1.1.2</version>
+        <scope>runtime</scope>
+        <type>tld</type>
+    </dependency>
+    
+    <dependency>
+        <groupId>taglibs</groupId>
+        <artifactId>fmt</artifactId>
+        <version>1.1.2</version>
+        <scope>runtime</scope>
+        <type>tld</type>
+    </dependency>
+>>>>>>> 6caadab96e538490a840ec940614d373146ed311
 
         <dependency>
             <groupId>javax.servlet</groupId>
