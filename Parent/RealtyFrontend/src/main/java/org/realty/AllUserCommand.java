@@ -1,5 +1,6 @@
 package org.realty;
 
+import static java.lang.System.load;
 import static java.lang.System.out;
 
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class AllUserCommand implements Command {
 		UserJdbcDAO ad = new UserJdbcDAO();
 		List<User> allusers = ad.findAll();
 		
-	
+	  request.getSession().setAttribute("id", new Long(1L));
 		request.setAttribute("allusers", allusers);
 		
 		return "User.jsp";

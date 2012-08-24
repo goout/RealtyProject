@@ -34,11 +34,16 @@ public class AllAdvertCommand implements Command {
         List<AdvertUserDTO> alladvertsusers = createDTO(alladverts,iuser);
 
 		request.setAttribute("alladvertsusers", alladvertsusers);
-		
+    Long parameter = (Long)session.getAttribute("id");
+    for (Advert advert : alladverts) {
+      if (advert.getAdvertId().equals(parameter)) {
+        session.setAttribute("rootAdvert", advert);
+        break;
+      }
+    }
 
 
-		
-		return "Advert.jsp";
+    return "Advert.jsp";
 
 	}
 

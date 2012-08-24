@@ -12,6 +12,7 @@
     <title><fmt:message key="advert.title" /></title>
 </head>
 
+<c:set var="commandForPage" value="allAdvert" scope="request"/>
 <jsp:include page="Language.jsp" flush="true" />
 
 <body>
@@ -71,7 +72,10 @@
 						<td width="50"></td>
 					</tr>
 				</thead>
-
+                Advert from request: <c:out value="${rootAdvert.description}" />
+                </br>
+                </br>
+                </br>
 				<c:forEach items="${alladvertsusers}" var="adv">
                     <c:if test="${adv.userId==null }">
 					<tr>
@@ -84,6 +88,7 @@
 						<TD><c:out value="${adv.description}" /></TD>
 						<TD><c:out value="${adv.advertId}" /></TD>
 						<TD><c:out value="${adv.advertUserId}" /></TD>
+
 						<td width="100"><a
 							href="<c:url value='RealtyServlet?delAdvertId=${adv.advertId}&command=delAdvert' />">Del</a></td>
 

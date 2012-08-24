@@ -16,12 +16,14 @@ public class CommandFactory {
 			put("allComment", new AllCommentCommand());
 			put("delComment", new DelCommentCommand());
 			put("signIn", new AuthenticationCommand());
+			put("changeLang", new ChangeLangCommand());
 			put("indexGuest", new IndexGuestCommand());
 			put("LogOut", new LogOutCommand());
 		}
 	};
 
-    private static Map<String, List<Roles>> roleByCommand = new HashMap<String, List<Roles>>() {
+  private static final List<Roles> ALL_ROLES = Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS);
+  private static Map<String, List<Roles>> roleByCommand = new HashMap<String, List<Roles>>() {
         {
             put("addUser", Arrays.asList(Roles.ANONYMOUS, Roles.ADMIN, Roles.LOGGED));
             put("allUser",  Arrays.asList(Roles.ADMIN,Roles.LOGGED));
@@ -30,9 +32,10 @@ public class CommandFactory {
             put("allAdvert",  Arrays.asList(Roles.LOGGED, Roles.ADMIN));
             put("delAdvert", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
             put("addComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
-            put("allComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS));
+            put("allComment", ALL_ROLES);
             put("delComment", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
             put("signIn", Arrays.asList(Roles.ANONYMOUS));
+            put("changeLang", ALL_ROLES);
             put("indexGuest", Arrays.asList(Roles.ADMIN, Roles.ANONYMOUS));
             put("LogOut", Arrays.asList(Roles.LOGGED, Roles.ADMIN));
         }

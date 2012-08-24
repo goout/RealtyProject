@@ -12,6 +12,7 @@
 </head>
 <body>
 
+<c:set var="commandForPage" value="indexGuest" scope="request"/>
 <jsp:include page="Language.jsp" flush="true" />
 
 

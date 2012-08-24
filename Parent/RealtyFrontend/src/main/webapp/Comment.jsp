@@ -10,6 +10,7 @@
     <title><fmt:message key="comm.title" /></title>
 </head>
 
+<c:set var="commandForPage" value="allComment" scope="request"/>
 <jsp:include page="Language.jsp" flush="true" />
 
 <body>
