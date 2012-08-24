@@ -1,7 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <head>
@@ -56,8 +53,7 @@
 						<td width="100"></td>
 					</tr>
 				</thead>
-				<c:forEach items="${allusers}" var="usr">
-
+                <c:forEach var="usr" items="${allusers}">
 					<tr>
 						<TD><c:out value="${usr.userId}" /></TD>
 						<TD><c:out value="${usr.name}" /></TD>
