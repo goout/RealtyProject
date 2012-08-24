@@ -7,17 +7,12 @@
 <html lang="${language}">
 <head>
 
-    <title>Insert title here</title>
+    <title><fmt:message key="index.title" /></title>
 
 </head>
 <body>
 
-<form>
-    <select id="language" name="language" onchange="submit()">
-        <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-        <option value="ru" ${language == 'ru' ? 'selected' : ''}>Russian</option>
-    </select>
-</form>
+<jsp:include page="Language.jsp" flush="true" />
 
 
 

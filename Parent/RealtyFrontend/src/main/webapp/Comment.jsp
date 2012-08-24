@@ -1,9 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="org.realty.Translations" />
+
+<html lang="${language}">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+    <title><fmt:message key="comm.title" /></title>
 </head>
+
+<jsp:include page="Language.jsp" flush="true" />
+
 <body>
 
 	<div id="head">
@@ -11,8 +19,8 @@
 		<input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'" />
 
 
-		<h1>Realty</h1>
-		<h2>Comment Page</h2>
+		<h1><fmt:message key="comm.head" /></h1>
+		<h2><fmt:message key="comm.subhead" /></h2>
 		<br />
 	</div>
 
@@ -22,11 +30,11 @@
 			<br />
 			<ul id="menu">
 
-				<li><a href="RealtyServlet?command=allUser"><span>User</span></a></li>
+				<li><a href="RealtyServlet?command=allUser"><span><fmt:message key="menu.user" /></span></a></li>
 
-				<li><a href="RealtyServlet?command=allAdvert"><span>Advert</span></a></li>
+				<li><a href="RealtyServlet?command=allAdvert"><span><fmt:message key="menu.advert" /></span></a></li>
 
-				<li><a href="#"><span>Comment</span></a></li>
+				<li><a href="#"><span><fmt:message key="menu.comment" /></span></a></li>
 
 			</ul>
 
@@ -68,19 +76,19 @@
 			<br /> <br /> <br />
 			<fieldset>
 				<legend>
-					<b>Add Comment</b>
+					<b><fmt:message key="comm.label.add" /></b>
 				</legend>
 				<form id="form1" action="RealtyServlet">
 					<table>
 						<tr>
-							<td>Text:
+							<td><fmt:message key="comm.label.txt" />:
 							<td>
 							<td><input type="text" size="30" name="text" id="1"></td>
 						</tr>
 
 
 						<tr>
-						<td>UserId:</td>
+						<td><fmt:message key="comm.label.usrId" />:</td>
 							<td><select name="userId" id="userId">
 								    <c:forEach var="usr" items="${allCommentsUserAdverts}">
                                         <c:if test="${usr.userId!=null }">
@@ -91,7 +99,7 @@
 						</tr>
 
 						<tr>
-							<td>AdvertId:</td>
+							<td><fmt:message key="comm.label.advId" />:</td>
 							<td><select name="advertId" id="advertId">
 									<option value="select">Change AdvertId...</option>
 									<c:forEach var="adv" items="${allCommentsUserAdverts}">
@@ -106,7 +114,7 @@
 
 
 					</table>
-					<br /> <input type="submit" value="Add" /> <input type="hidden"
+					<br /> <input type="submit" value=<fmt:message key="button.add" /> /> <input type="hidden"
 						name="command" value="addComment" />
 				</form>
 			</fieldset>

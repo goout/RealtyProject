@@ -1,9 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="org.realty.Translations" />
+
+<html lang="${language}">
+
+
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+    <title><fmt:message key="advert.title" /></title>
 </head>
+
+<jsp:include page="Language.jsp" flush="true" />
+
 <body>
 
 	<div id="head">
@@ -12,8 +22,8 @@
 		<input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'" />
 
 
-		<h1>Realty</h1>
-		<h2>Advert Page</h2>
+		<h1><fmt:message key="advert.head" /></h1>
+		<h2><fmt:message key="advert.subhead" /></h2>
 		<br />
 	</div>
 
@@ -23,11 +33,11 @@
 			<br />
 			<ul id="menu">
 
-				<li><a href="RealtyServlet?command=allUser"><span>User</span></a></li>
+				<li><a href="RealtyServlet?command=allUser"><span><fmt:message key="menu.user" /></span></a></li>
 
-				<li><a href="#"><span>Advert</span></a></li>
+				<li><a href="#"><span><fmt:message key="menu.advert" /></span></a></li>
 
-				<li><a href="RealtyServlet?command=allComment"><span>Comment</span></a></li>
+				<li><a href="RealtyServlet?command=allComment"><span><fmt:message key="menu.comment" /></span></a></li>
 
 			</ul>
 
@@ -88,44 +98,44 @@
 			<br /> <br /> <br />
 			<fieldset>
 				<legend>
-					<b>Add Advert</b>
+					<b><fmt:message key="advert.label.add" /></b>
 				</legend>
 				<form id="form1" action="RealtyServlet">
 					<table>
 						<tr>
-							<td>Category:
+							<td><fmt:message key="advert.label.category" />:
 							<td>
 							<td><input type="text" size="30" name="category" id="1"></td>
 						</tr>
                         <tr>
-                            <td>City:
+                            <td><fmt:message key="advert.label.city" />:
                             <td>
                             <td><input type="text" size="30" name="city" id="2"></td>
                         </tr>
                         <tr>
-							<td>District:
+							<td><fmt:message key="advert.label.district" />:
 							<td>
 							<td><input type="text" size="30" name="district" id="3"></td>
 						</tr>
 						<tr>
-							<td>Adress:
+							<td><fmt:message key="advert.label.adress" />:
 							<td>
 							<td><input type="text" size="30" name="adress" id="4"></td>
 						</tr>
 						<tr>
-							<td>Coast:
+							<td><fmt:message key="advert.label.coast" />:
 							<td>
 							<td><input type="text" size="30" name="coast" id="5"></td>
 						</tr>
 
 						<tr>
-							<td>Description:
+							<td><fmt:message key="advert.label.description" />:
 							<td>
 							<td><input type="text" size="90" name="description" id="6"></td>
 						</tr>
 
 						<tr>
-							<td>UserName:</td>
+							<td><fmt:message key="advert.label.user" />:</td>
 							<td><select name="userId" id="userId">
 
 
@@ -141,7 +151,7 @@
 						</tr>
 
 					</table>
-					<br /> <input type="submit" value="Add" /> <input type="hidden"
+					<br /> <input type="submit" value=<fmt:message key="button.add" /> /> <input type="hidden"
 						name="command" value="addAdvert" />
 
 				</form>

@@ -1,26 +1,18 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="org.realty.Translations" />
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="${language}">
 <head>
 
-    <title>Insert title here</title>
+    <title><fmt:message key="index.title" /></title>
 
 </head>
 <body>
 
-<form>
-    <select id="language" name="language" onchange="submit()">
-        <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-        <option value="nl" ${language == 'ru' ? 'selected' : ''}>Russian</option>
-    </select>
-</form>
+<jsp:include page="Language.jsp" flush="true" />
 
 
 
@@ -33,8 +25,8 @@
 
 
 
-    <h1>Realty</h1>
-    <h2>Guest Page</h2>
+    <h1><fmt:message key="index.head"/></h1>
+    <h2><fmt:message key="index.subhead"/></h2>
     <br />
 </div>
 
