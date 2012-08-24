@@ -11,6 +11,7 @@
 <title><fmt:message key="user.title" /></title>
 </head>
 
+<c:set var="commandForPage" value="allUser" scope="request"/>
 <jsp:include page="Language.jsp" flush="true" />
 
 
