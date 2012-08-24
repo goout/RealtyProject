@@ -19,12 +19,11 @@
 <form>
     <select id="language" name="language" onchange="submit()">
         <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-        <option value="nl" ${language == 'ru' ? 'selected' : ''}>Russian</option>
+        <option value="ru" ${language == 'ru' ? 'selected' : ''}>Russian</option>
     </select>
 </form>
 
 
-<font size='4'>Locales:</font>
 
 
 	<div id="head">
@@ -35,13 +34,13 @@
 		</form>
 
 
+    <h1><fmt:message key="index.head"/></h1>
+    <h2><fmt:message key="index.subhead"/></h2>
+    <br />
+</div>
 
-		<h1>Realty</h1>
-		<h2>Guest Page</h2>
-		<br />
-	</div>
+<div id="content">
 
-	<div id="content">
 
 
 
