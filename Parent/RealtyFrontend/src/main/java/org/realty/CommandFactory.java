@@ -65,7 +65,7 @@ public class CommandFactory {
 
     public static List<Roles> getRolesByResourcePath(String jspName) {
         List<Roles> roles = roleByResourcePath.get(jspName);
-        return roles != null ? roles : new ArrayList<Roles>();
+        return roles != null ? roles : Arrays.asList(Roles.ANONYMOUS);
     }
 
 
