@@ -16,56 +16,55 @@ import javax.servlet.http.HttpSession;
 
 public class ServletFilter implements Filter {
 
-	private FilterConfig config = null;
+    private FilterConfig config = null;
 
-	public void destroy() {
-		config = null;
+    public void destroy() {
+        config = null;
 
-	}
+    }
 
-	public void init(FilterConfig config) throws ServletException {
-		this.config = config;
+    public void init(FilterConfig config) throws ServletException {
+        this.config = config;
 
-	}
+    }
 
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response,
+                         FilterChain chain) throws IOException, ServletException {
 
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		HttpSession session = httpRequest.getSession();
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+        HttpSession session = httpRequest.getSession();
 
-		UsrInfo user = (UsrInfo) session.getAttribute("userInfo");
-		 if (user == null)
-		 user = new UsrInfo();
-		Roles currentUser = null;
-        List<Roles> roles =null;
+        UsrInfo user = (UsrInfo) session.getAttribute("userInfo");
+        if (user == null)
+            user = new UsrInfo();
+        Roles currentUser = null;
+        List<Roles> roles = null;
         String command = null;
 
-        if(user.IsLogin()){
+        if (user.IsLogin()) {
             currentUser = Roles.LOGGED;
-           if(user.IsAdmin())
+            if (user.IsAdmin())
                 currentUser = Roles.ADMIN;
-        }    else
-           currentUser = Roles.ANONYMOUS;
+        } else
+            currentUser = Roles.ANONYMOUS;
 
 
-            if(httpRequest.getQueryString()!=null){
-                command = request.getParameter("command");
-                roles = CommandFactory.getRolesByCommand(command);
-            }  else{
-                command = httpRequest.getRequestURI().replace(httpRequest.getContextPath() + "/", "");
-                roles = CommandFactory.getRolesByResourcePath(command);
-            }
+        if (httpRequest.getQueryString() != null) {
+            command = request.getParameter("command");
+            roles = CommandFactory.getRolesByCommand(command);
+        } else {
+            command = httpRequest.getRequestURI().replace(httpRequest.getContextPath() + "/", "");
+            roles = CommandFactory.getRolesByResourcePath(command);
+        }
 
 
-
-      //  List<Roles> roles = CommandFactory.getRoles(httpRequest.getRequestURI()+"?"+httpRequest.getQueryString());
+        //  List<Roles> roles = CommandFactory.getRoles(httpRequest.getRequestURI()+"?"+httpRequest.getQueryString());
 
         if ((roles.contains(currentUser))) {
             chain.doFilter(request, response);
-		} else {
+        } else {
             httpResponse.sendRedirect("Authentication.jsp");
-		}
-	}
+        }
+    }
 }
