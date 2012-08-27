@@ -1,4 +1,4 @@
-package org.realty;
+package org.realty.org.realty.dto;
 
 
 import java.io.Serializable;
@@ -8,13 +8,13 @@ public class AdvertUserDTO implements Serializable {
 
     private Date addedDate;
     private String category;
-    private String district;
-    private String adress;
+    private Long adressId;
     private int coast;
     private String description;
     private Long advertId;
     private Long advertUserId;
-    private String city;
+    private int rooms;
+
 
     private Long userId;
     private String name;
@@ -35,22 +35,6 @@ public class AdvertUserDTO implements Serializable {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public String getAdress() {
-        return adress;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
     }
 
     public int getCoast() {
@@ -85,13 +69,6 @@ public class AdvertUserDTO implements Serializable {
         this.advertUserId = advertUserId;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
 
     public Long getUserId() {
         return userId;
@@ -110,4 +87,19 @@ public class AdvertUserDTO implements Serializable {
     }
 
 
+    public Long getAdressId() {
+        return adressId;
+    }
+
+    public void setAdressId(Long adressId) {
+        this.adressId = adressId;
+    }
+
+    public int getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(int rooms) {
+        this.rooms = rooms;
+    }
 }

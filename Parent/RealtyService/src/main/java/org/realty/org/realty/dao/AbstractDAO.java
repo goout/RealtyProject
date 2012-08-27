@@ -1,4 +1,4 @@
-package org.realty;
+package org.realty.org.realty.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

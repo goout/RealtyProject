@@ -1,4 +1,4 @@
-package org.realty;
+package org.realty.org.realty.dto;
 
 
 import java.io.Serializable;

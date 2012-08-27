@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.realty.UserJdbcDAO;
+import org.realty.org.realty.dao.UserJdbcDAO;
 
 public class DelUserCommand implements Command {
 

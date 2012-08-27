@@ -1,13 +1,16 @@
-package org.realty;
+package org.realty.org.realty.dao;
+
+import org.realty.org.realty.dao.AbstractDAO;
+import org.realty.org.realty.entity.Advert;
 
 import java.sql.Date;
 import java.sql.SQLException;
 
 public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 
-	private static final String SQL_ADD_ADVERT = "INSERT INTO Advert VALUES(?,?,?,?,?,?,?,?,?)";
-	private static final String SQL_UPDATE_ADVERT = "UPDATE Advert SET added_date=?,category=?,district=?,"
-			+ "adress=?, coast=?, description=?, city=? WHERE advert_id=?";
+	private static final String SQL_ADD_ADVERT = "INSERT INTO Advert VALUES(?,?,?,?,?,?,?,?)";
+	private static final String SQL_UPDATE_ADVERT = "UPDATE Advert SET added_date=?,category=?,"
+			+ "coast=?, description=? WHERE advert_id=?";
 	private static final String SQL_DELETE_ADVERT = "DELETE FROM Advert WHERE advert_id=?";
 	private static final String SQL_ALL = "SELECT * FROM Advert";
 
@@ -20,12 +23,11 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 		ptmt.setString(1, null);
 		ptmt.setDate(2, new Date(System.currentTimeMillis()));
 		ptmt.setString(3, advert.getCategory());
-		ptmt.setString(4, advert.getDistrict());
-		ptmt.setString(5, advert.getAdress());
+		ptmt.setInt(4, advert.getRooms());
+		ptmt.setLong(5, advert.getAdressId());
 		ptmt.setInt(6, advert.getCoast());
 		ptmt.setString(7, advert.getDescription());
 		ptmt.setLong(8, advert.getUserId());
-        ptmt.setString(9, advert.getCity());
 	}
 
 	@Override
@@ -33,13 +35,9 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 
 		ptmt.setDate(1, new Date(System.currentTimeMillis()));
 		ptmt.setString(2, advert.getCategory());
-		ptmt.setString(3, advert.getDistrict());
-		ptmt.setString(4, advert.getAdress());
-		ptmt.setInt(5, advert.getCoast());
-		ptmt.setString(6, advert.getDescription());
-        ptmt.setString(7, advert.getCity());
-		ptmt.setLong(8, id);
-
+		ptmt.setInt(3, advert.getCoast());
+		ptmt.setString(4, advert.getDescription());
+		ptmt.setLong(5, id);
 
 	}
 
@@ -49,12 +47,11 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 		advert.setAdvertId(rs.getLong(1));
 		advert.setAddedDate(rs.getDate(2));
 		advert.setCategory(rs.getString(3));
-		advert.setDistrict(rs.getString(4));
-		advert.setAdress(rs.getString(5));
+        advert.setAdvertId(rs.getLong(4));
+        advert.setRooms(rs.getInt(5));
 		advert.setCoast(rs.getInt(6));
 		advert.setDescription(rs.getString(7));
 		advert.setUserId(rs.getLong(8));
-        advert.setCity(rs.getString(9));
 		return advert;
 	}
 

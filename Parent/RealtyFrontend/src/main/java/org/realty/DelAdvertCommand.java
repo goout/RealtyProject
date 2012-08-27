@@ -6,8 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.realty.AdvertJdbcDAO;
-import org.realty.UserJdbcDAO;
+import org.realty.org.realty.dao.AdvertJdbcDAO;
 
 public class DelAdvertCommand implements Command {
 

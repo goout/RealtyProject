@@ -1,7 +1,5 @@
 package org.realty;
 
-import static java.lang.System.out;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.realty.Advert;
-import org.realty.Comment;
-import org.realty.User;
+import org.realty.org.realty.dao.AdvertJdbcDAO;
+import org.realty.org.realty.dao.CommentJdbcDAO;
+import org.realty.org.realty.dto.CommentUserAdvertDTO;
+import org.realty.org.realty.entity.Advert;
+import org.realty.org.realty.entity.Comment;
 
 public class AllCommentCommand implements Command {
 

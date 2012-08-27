@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.realty.CommentJdbcDAO;
+import org.realty.org.realty.dao.CommentJdbcDAO;
 
 public class DelCommentCommand implements Command {
 

@@ -1,18 +1,16 @@
 package org.realty;
 
-import static java.lang.System.out;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.realty.Advert;
-import org.realty.User;
+import org.realty.org.realty.dao.AdvertJdbcDAO;
+import org.realty.org.realty.dto.AdvertUserDTO;
+import org.realty.org.realty.entity.Advert;
 
 import javax.servlet.http.HttpSession;
 
@@ -55,13 +53,13 @@ public class AllAdvertCommand implements Command {
             AdvertUserDTO aud = new AdvertUserDTO();
             aud.setAddedDate(o.getAddedDate());
             aud.setCategory(o.getCategory());
-            aud.setDistrict(o.getDistrict());
-            aud.setAdress(o.getAdress());
+            aud.setAdressId(o.getAdressId());
             aud.setCoast(o.getCoast());
             aud.setDescription(o.getDescription());
             aud.setAdvertId(o.getAdvertId());
             aud.setAdvertUserId(o.getUserId());
-            aud.setCity(o.getCity());
+            aud.setRooms(o.getRooms());
+
 
             laud.add(i,aud);
             i++;
