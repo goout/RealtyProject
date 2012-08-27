@@ -6,13 +6,13 @@ public class Advert {
 
 	private Date addedDate;
 	private String category;
-	private String district;
-	private String adress;
+    private int rooms;
+    private Long adressId;
 	private int coast;
 	private String description;
 	private Long advertId;
 	private Long userId;
-    private String city;
+
 
 	public Advert() {
 
@@ -22,9 +22,7 @@ public class Advert {
 		return addedDate;
 	}
 
-	public String getAdress() {
-		return adress;
-	}
+
 
 	public String getCategory() {
 		return category;
@@ -38,10 +36,6 @@ public class Advert {
 		return description;
 	}
 
-	public String getDistrict() {
-		return district;
-	}
-
 	public Long getAdvertId() {
 		return advertId;
 	}
@@ -50,9 +44,7 @@ public class Advert {
 		addedDate = newVal;
 	}
 
-	public void setAdress(String newVal) {
-		adress = newVal;
-	}
+
 
 	public void setCategory(String newVal) {
 		category = newVal;
@@ -66,9 +58,6 @@ public class Advert {
 		description = newVal;
 	}
 
-	public void setDistrict(String newVal) {
-		district = newVal;
-	}
 
 	public void setAdvertId(Long newVal) {
 		advertId = newVal;
@@ -82,13 +71,23 @@ public class Advert {
 		this.userId = userId;
 	}
 
-    public String getCity() {
-        return city;
+
+    public int getRooms() {
+        return rooms;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setRooms(int rooms) {
+        this.rooms = rooms;
     }
+
+    public Long getAdressId() {
+        return adressId;
+    }
+
+    public void setAdressId(Long adressId) {
+        this.adressId = adressId;
+    }
+
 
 
 	@Override
@@ -106,9 +105,9 @@ public class Advert {
 	
 	 @Override
 	    public String toString() {
-	        return String.format("Advert[addedDate=%s,category=%s,district=%s,adress=%s," +
+	        return String.format("Advert[addedDate=%s,category=%s,rooms=%s,adressId=%d," +
 	        		" coast=%d, description=%s, advertId=%d, userId=%d]", 
-	            addedDate, category, district, adress, coast, description, advertId, userId);
+	            addedDate, category, getRooms(), getAdressId(), coast, description, advertId, userId);
 	    }
 
 
