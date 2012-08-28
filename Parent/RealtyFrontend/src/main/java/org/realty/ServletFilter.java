@@ -1,7 +1,8 @@
 package org.realty;
 
+import org.realty.commands.CommandFactory;
+
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.Filter;

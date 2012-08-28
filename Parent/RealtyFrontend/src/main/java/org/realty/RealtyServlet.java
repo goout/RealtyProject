@@ -1,12 +1,14 @@
 package org.realty;
 
+import org.realty.commands.Command;
+import org.realty.commands.CommandFactory;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 public class RealtyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
