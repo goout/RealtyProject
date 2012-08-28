@@ -3,16 +3,15 @@ package org.realty;
 import static java.lang.System.out;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.realty.User;
-import org.realty.UserJdbcDAO;
+
+import org.realty.org.realty.dao.UserJdbcDAO;
+import org.realty.org.realty.entity.User;
 
 public class AuthenticationCommand implements Command {
 

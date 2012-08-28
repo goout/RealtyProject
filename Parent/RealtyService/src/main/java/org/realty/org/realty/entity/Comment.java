@@ -1,4 +1,4 @@
-package org.realty;
+package org.realty.org.realty.entity;
 
 public class Comment {
 

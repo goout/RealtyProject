@@ -1,4 +1,7 @@
-package org.realty;
+package org.realty.org.realty.dao;
+
+import org.realty.org.realty.dao.AbstractDAO;
+import org.realty.org.realty.entity.Comment;
 
 import java.sql.SQLException;
 

@@ -1,5 +1,8 @@
 package org.realty;
 
+import org.realty.org.realty.dao.UserJdbcDAO;
+import org.realty.org.realty.entity.User;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;

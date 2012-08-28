@@ -1,6 +1,9 @@
 package org.realty;
 
 
+import org.realty.org.realty.dao.UserJdbcDAO;
+import org.realty.org.realty.entity.User;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
