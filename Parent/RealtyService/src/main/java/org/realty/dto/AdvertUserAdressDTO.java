@@ -18,20 +18,17 @@ public class AdvertUserAdressDTO implements Serializable {
     private Long userId;
     private String name;
 
-    private Long adressId;
+
     private int apartmentNum;
     private Long adressCityId;
     private Long adressDistrictId;
     private int houseNum;
     private Long adressStreetId;
 
-    private long cityId;
     private String cityName;
 
-    private long districtId;
     private String districtName;
 
-    private long streetId;
     private String streetName;
 
 
@@ -117,5 +114,69 @@ public class AdvertUserAdressDTO implements Serializable {
 
     public void setRooms(int rooms) {
         this.rooms = rooms;
+    }
+
+    public int getApartmentNum() {
+        return apartmentNum;
+    }
+
+    public void setApartmentNum(int apartmentNum) {
+        this.apartmentNum = apartmentNum;
+    }
+
+    public Long getAdressCityId() {
+        return adressCityId;
+    }
+
+    public void setAdressCityId(Long adressCityId) {
+        this.adressCityId = adressCityId;
+    }
+
+    public Long getAdressDistrictId() {
+        return adressDistrictId;
+    }
+
+    public void setAdressDistrictId(Long adressDistrictId) {
+        this.adressDistrictId = adressDistrictId;
+    }
+
+    public int getHouseNum() {
+        return houseNum;
+    }
+
+    public void setHouseNum(int houseNum) {
+        this.houseNum = houseNum;
+    }
+
+    public Long getAdressStreetId() {
+        return adressStreetId;
+    }
+
+    public void setAdressStreetId(Long adressStreetId) {
+        this.adressStreetId = adressStreetId;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getDistrictName() {
+        return districtName;
+    }
+
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
     }
 }

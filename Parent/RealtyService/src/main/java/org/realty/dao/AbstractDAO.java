@@ -106,33 +106,41 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 
 	}
 
-	public  List<DOMAIN> request() {
-		List<DOMAIN> domains = new ArrayList<DOMAIN>();
-		try {
-			connectionStep();
-			ptmt = con.prepareStatement(getRequestSQL());
-			rs = ptmt.executeQuery();
-          
-	
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ptmt != null)
-					ptmt.close();
-				if (con != null)
-					con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 
-		}
-		return domains;
-	}
+
+
+    final public DOMAIN getDomainById(Long id) {
+     DOMAIN dom = null;
+        try {
+            connectionStep();
+            ptmt = con.prepareStatement(getDomainByIdSQL());
+            getDomainByIdStep(id);
+            rs = ptmt.executeQuery();
+            while (rs.next()) {
+
+                dom=findAllStep();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null)
+                    rs.close();
+                if (ptmt != null)
+                    ptmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+           return dom;
+    }
+
 
 	
 	public List<DOMAIN> findAll() {
@@ -174,8 +182,8 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 		con = createConnection();
 	}
 
-	abstract protected String getRequestSQL() throws SQLException;
-	
+    abstract protected String getDomainByIdSQL() throws SQLException;
+
 	abstract protected String getFindAllSQL() throws SQLException;
 
 	abstract protected String getDeleteSQL() throws SQLException;
@@ -191,6 +199,8 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 	abstract protected void deleteStep(Long id) throws SQLException;
 
 	abstract protected DOMAIN findAllStep() throws SQLException;
+
+    abstract protected void getDomainByIdStep(Long id) throws SQLException;
 
 	public static Connection createConnection() {
 		Connection conn = null;

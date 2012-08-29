@@ -61,7 +61,7 @@ public class AuthenticationCommand implements Command {
 			System.out.println("Exception is ;" + e);
 		}
 
-		return fl ? "RealtyServlet?command=allUser"
+		return fl ? "RealtyServlet?command=userPage"
 				: "RealtyServlet?command=indexGuest";
 	}
 }

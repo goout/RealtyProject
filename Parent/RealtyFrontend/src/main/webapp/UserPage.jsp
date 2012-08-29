@@ -25,14 +25,11 @@
         <li></li>
         <li></li>
         <li></li>
-        <li>  <form id="form1" action="RealtyServlet">
-            <fmt:message key="button.signIn" var="SignIn" />
-            <input type="button" value="${SignIn}" onclick="location.href='Authentication.jsp'" />
-        </form></li>
+        <li>  <input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'" /></li>
         <li>Registration</li>
         <li>  <div id="head">
 
-            <h2><fmt:message key="index.subhead"/></h2>
+            <h2><fmt:message key="user.subhead"/></h2>
         </div></li>
     </div>
 
@@ -45,7 +42,7 @@
     <table width="1000" height="0" border="0" cellpadding="5"  style="background-color:#98FB98"><tr><td>
         <div id="head2">
 
-            <h2><fmt:message key="index.subhead"/></h2>
+            <h2><fmt:message key="user.subhead"/></h2>
         </div>
 
 
@@ -58,25 +55,29 @@
                 <br />
                 <form id="form3" action="RealtyServlet">
 
-                    <c:forEach items="${allAdvertsDto}" var="adv">
+                    <c:forEach items="${allAdvertsUsrDto}" var="adv">
 
 
 
                         <table border=1 cellpadding=2 cellspacing=1 width=700 align="center" >
-                            <col width="175">
-                            <col width="135">
-                            <col width="275">
-                            <col width="125">
+                            <col width="140">
+                            <col width="140">
+                            <col width="140">
+                            <col width="210">
+                            <col width="70">
                             <tr>
 
 
                                 <td><c:out value="${adv.addedDate}" /></td>
+                                <td><c:out value="${adv.userName}" /></td>
                                 <td><c:out value="${adv.category}" /></td>
                                 <td></td>
                                 <td><c:out value="${adv.coast}" />$</td>
                             </tr>
                             <tr>
                                 <td colspan="4" ><c:out value="${adv.description}" /></td>
+                                <td ><a
+                                        href="<c:url value='RealtyServlet?advertId=${adv.advertId}&command=advertPage' />">Details</a></td></td>
                             </tr>
                         </table>
                         <br />

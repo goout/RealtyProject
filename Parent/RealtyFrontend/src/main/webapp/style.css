@@ -1,0 +1,183 @@
+/* --------------------------
+Автор: Wintro
+Сайт: http://wintro.ru/
+----------------------------*/
+
+body {
+    background: #FFFFFF; /* цвет фона страницы */
+    font-family: Tahoma; 
+    font-size: 13px; /* размер шрифта текста */
+    color: #303030;
+    font-weight: none;
+    border: none;
+}
+   
+h1 {
+    color: #CCCC99; /* цвет заголовка */
+    font-family: Arial;
+    font-size: 130%; /* размер шрифта заголовка */
+    font-weight: bold;
+    text-align: center; 
+    border: none;
+}
+
+a {
+    font-size:13px; /* размер шрифта ссылок в тексте */
+    color:#01b101; /* цвет ссылок в тексте */
+    text-decoration:none;
+}
+
+a:hover {
+    font-size:13px; /* размер шрифта ссылок в тексте при наведении курсора */
+    color:#006400; /* цвет ссылок в тексте при наведении курсора */
+    text-decoration:none;
+}
+
+
+#menu{
+	list-style:none;
+        text-indent:22px; 
+}
+
+
+#menu li{
+	list-style:none;
+	display:block;
+	
+        font-family: Arial;
+	width:100%;
+}
+
+#menu li a{
+	list-style:none;
+	display:block;
+	color:#01b101;	/* цвет ссылок в меню */
+	font-size:14px; /* размер шрифта ссылок в меню */
+	text-decoration:none;
+	height:41px;
+	line-height:41px;
+}
+
+#menu li a:hover{
+		height:41px;
+	line-height:41px;
+	color:#00CC33;  /* цвет ссылок в меню при наведении курсора */
+	text-decoration:none;
+        width:100%;
+}
+					
+.current {
+	list-style:none;
+	display:block;
+	background:url(images/menu_t.png) no-repeat;
+	color:#01b101; /* цвет надписи "Меню" */
+	text-transform:uppercase;
+	font-size:16px;
+	text-decoration:none;
+        text-indent:90px;
+        font-weight: bold;
+	height:41px;
+	line-height:41px;			
+}
+
+.cur {
+	list-style:none;
+	display:block;
+	background:url(images/menu_n.png) no-repeat;
+	color:#000000;
+	text-transform:uppercase;
+	font-size:16px;
+	text-decoration:none;
+        text-indent:90px;
+        font-weight: bold;
+	height:41px;
+	line-height:41px;			
+}
+
+
+
+
+#niz { 
+	padding:0px; 
+	width:1000px; 
+	height:70px; 
+	background-image:url(images/niz.png);
+
+}
+
+#up { 
+	padding:0px; 
+	width:1000px; 
+	height:100px; 
+	background-image:url(images/2.jpg);
+}
+
+.image {
+	list-style:none;
+        text-indent:50px;
+        margin-top:70px;
+        float:left;
+        overflow:hidden;
+}
+
+.hot {
+	list-style:none;
+        margin-top:1px;
+        float:right;
+        overflow:hidden;
+}
+
+.hot {
+	list-style:none;
+        margin-top:1px;
+        float:right;
+        overflow:hidden;
+}
+
+#kn{
+	width:100%;
+	height:100px;
+
+}
+
+#kn ul{
+	width:80%;
+	margin:0 auto;
+	list-style:none;
+}
+
+#kn li{
+	list-style:none;
+	display:block;
+	float:left;
+	font-size:11px;
+	font-weight:bold;
+	height:30px;
+	line-height:30px;
+	margin:0 5px;
+}
+
+#kn li a{
+	display:block;
+	float:left;
+	height:30px;				
+	color:#000000; /* цвет ссылки горизонтального меню */
+	text-decoration:none;
+	text-transform:uppercase;
+	padding:0 20px;		
+}
+
+#kn li a:hover{	
+	background:url(images/fm_hover_bg.jpg) repeat-x;
+	color:#CCCCCC; /* цвет ссылки горизонтального меню при наведения курсора */
+}
+					
+#kn li .current{
+	display:block;
+	float:left;
+	height:30px;								                ;
+	color:#fff;
+	text-decoration:none;
+	text-transform:uppercase;
+	padding:0 20px;		
+}

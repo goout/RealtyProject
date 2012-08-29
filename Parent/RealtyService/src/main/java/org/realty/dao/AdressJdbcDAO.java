@@ -13,6 +13,7 @@ public class AdressJdbcDAO extends AbstractDAO<Adress> {
             + "WHERE adressId=?";
     private static final String SQL_DELETE_ADRESS = "DELETE FROM Adress WHERE adressId=?";
     private static final String SQL_ALL = "SELECT * FROM Adress";
+    private static final String SQL_DOMAIN_BY_ID = "SELECT * FROM Adress WHERE adressId=?";
 
 
 
@@ -55,6 +56,11 @@ public class AdressJdbcDAO extends AbstractDAO<Adress> {
     }
 
     @Override
+    protected void getDomainByIdStep(Long id) throws SQLException {
+        ptmt.setLong(1, id);
+    }
+
+    @Override
     protected void deleteStep(Long adressId) throws SQLException {
 
         ptmt.setLong(1, adressId);
@@ -76,15 +82,16 @@ public class AdressJdbcDAO extends AbstractDAO<Adress> {
     }
 
     @Override
+    protected String getDomainByIdSQL() throws SQLException {
+        return SQL_DOMAIN_BY_ID;
+    }
+
+    @Override
     protected String getFindAllSQL() throws SQLException {
         return SQL_ALL;
     }
 
-    @Override
-    protected String getRequestSQL() throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
-    }
+
 
 
 

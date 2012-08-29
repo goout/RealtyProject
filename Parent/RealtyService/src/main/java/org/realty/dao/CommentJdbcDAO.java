@@ -11,6 +11,7 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 	private static final String SQL_UPDATE_COMMENT = "UPDATE Comment SET text=? WHERE comment_id=?";
 	private static final String SQL_DELETE_COMMENT = "DELETE FROM Comment WHERE comment_id=?";
 	private static final String SQL_ALL = "SELECT * FROM Comment";
+    private static final String SQL_DOMAIN_BY_ID = "SELECT * FROM Comment WHERE comment_id=?";
 
 	public CommentJdbcDAO() {
 
@@ -53,7 +54,12 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 		return SQL_DELETE_COMMENT;
 	}
 
-	@Override
+    @Override
+    protected String getDomainByIdSQL() throws SQLException {
+        return SQL_DOMAIN_BY_ID;
+    }
+
+    @Override
 	protected String getFindAllSQL() throws SQLException {
 		return SQL_ALL;
 	}
@@ -68,10 +74,10 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 		return comment;
 	}
 
-	@Override
-	protected String getRequestSQL() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    protected void getDomainByIdStep(Long id) throws SQLException {
+        ptmt.setLong(1, id);
+    }
+
 
 }

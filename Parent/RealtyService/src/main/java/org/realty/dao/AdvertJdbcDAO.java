@@ -12,6 +12,7 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 			+ "coast=?, description=? WHERE advert_id=?";
 	private static final String SQL_DELETE_ADVERT = "DELETE FROM Advert WHERE advert_id=?";
 	private static final String SQL_ALL = "SELECT * FROM Advert";
+    private static final String SQL_DOMAIN_BY_ID = "SELECT * FROM Advert WHERE advert_id=?";
 
 	public AdvertJdbcDAO() {
 
@@ -43,10 +44,11 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 	@Override
 	protected Advert findAllStep() throws SQLException {
 		Advert advert = new Advert();
+
 		advert.setAdvertId(rs.getLong(1));
 		advert.setAddedDate(rs.getDate(2));
 		advert.setCategory(rs.getString(3));
-        advert.setAdvertId(rs.getLong(4));
+        advert.setAdressId(rs.getLong(4));
         advert.setRooms(rs.getInt(5));
 		advert.setCoast(rs.getInt(6));
 		advert.setDescription(rs.getString(7));
@@ -54,7 +56,12 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 		return advert;
 	}
 
-	@Override
+    @Override
+    protected void getDomainByIdStep(Long id) throws SQLException {
+        ptmt.setLong(1, id);
+    }
+
+    @Override
 	protected void deleteStep(Long advertId) throws SQLException {
 		ptmt.setLong(1, advertId);
 	}
@@ -74,15 +81,16 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 		return SQL_DELETE_ADVERT;
 	}
 
-	@Override
+    @Override
+    protected String getDomainByIdSQL() throws SQLException {
+        return SQL_DOMAIN_BY_ID;
+    }
+
+    @Override
 	protected String getFindAllSQL() throws SQLException {
 		return SQL_ALL;
 	}
 
-	@Override
-	protected String getRequestSQL() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

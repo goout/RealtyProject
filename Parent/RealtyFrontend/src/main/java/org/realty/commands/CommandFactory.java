@@ -10,10 +10,7 @@ import org.realty.commands.all.AllUserCommand;
 import org.realty.commands.del.DelAdvertCommand;
 import org.realty.commands.del.DelCommentCommand;
 import org.realty.commands.del.DelUserCommand;
-import org.realty.commands.other.AuthenticationCommand;
-import org.realty.commands.other.ChangeLangCommand;
-import org.realty.commands.other.IndexGuestCommand;
-import org.realty.commands.other.LogOutCommand;
+import org.realty.commands.other.*;
 
 import java.util.*;
 
@@ -34,6 +31,8 @@ public class CommandFactory {
 			put("changeLang", new ChangeLangCommand());
 			put("indexGuest", new IndexGuestCommand());
 			put("LogOut", new LogOutCommand());
+            put("userPage", new UserPageCommand());
+            put("advertPage", new AdvertPageCommand());
 		}
 	};
 
@@ -54,6 +53,8 @@ public class CommandFactory {
             put("changeLang", ALL_ROLES);
             put("indexGuest", Arrays.asList(Roles.ADMIN, Roles.ANONYMOUS));
             put("LogOut", LOG_ADM);
+            put("userPage", LOG_ADM);
+            put("advertPage", LOG_ADM);
         }
     };
 
@@ -67,6 +68,8 @@ public class CommandFactory {
             put("Comment.jsp",  Arrays.asList(Roles.LOGGED));
             put("Authentication.jsp",  Arrays.asList(Roles.ANONYMOUS));
             put("RealtyServlet" , Arrays.asList(Roles.ADMIN, Roles.ANONYMOUS));
+            put("UserPage.jsp", LOG_ADM);
+            put("AdvertPage.jsp", LOG_ADM);
              }
     };
 

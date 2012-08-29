@@ -5,82 +5,109 @@
 <fmt:setBundle basename="org.realty.Translations" />
 
 <html lang="${language}">
+
+<link href="style.css" rel="stylesheet" type="text/css">
+
 <head>
 
     <title><fmt:message key="index.title" /></title>
 
 </head>
+
 <body>
 
-<c:set var="commandForPage" value="indexGuest" scope="request"/>
-<jsp:include page="Language.jsp" flush="true" />
+<br>
+<table width="1000" height="0" border="1" align="center" cellpadding="5" cellspacing="0" style="color:#dcdcdc;  background-color:#FFFFFf"><tr><td>
 
+    <div id="kn">
+        <li><img src="images/logo2.jpg"></li>
+        <li><jsp:include page="Language.jsp" flush="true" /></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li>  <form id="form1" action="RealtyServlet">
+            <fmt:message key="button.signIn" var="SignIn" />
+            <input type="button" value="${SignIn}" onclick="location.href='Authentication.jsp'" />
+        </form></li>
+        <li>Registration</li>
+        <li>  <div id="head">
 
-
-<div id="head">
-
-    <form id="form1" action="RealtyServlet">
-        <fmt:message key="button.signIn" var="SignIn" />
-        <input type="button" value="${SignIn}" onclick="location.href='Authentication.jsp'" />
-    </form>
-
-
-
-    <h1><fmt:message key="index.head"/></h1>
-    <h2><fmt:message key="index.subhead"/></h2>
-    <br />
-</div>
-
-<div id="content">
-
-
-
-
-    <div id="table">
-        <br />
-        <form id="form3" action="RealtyServlet">
-            <table border="2" frame="below" width="100%" bordercolor=red>
-                <thead>
-                <tr>
-                    <td width="100">AddedDate</td>
-
-                    <td width="100">Category</td>
-
-                    <td width="100">City</td>
-
-                    <td width="100">District</td>
-
-                    <td width="100">Adress</td>
-
-                    <td width="30">Coast</td>
-
-                    <td width="200">Description</td>
-
-                </tr>
-                </thead>
-                <c:forEach items="${alladverts}" var="adv">
-
-                    <tr>
-                        <TD><c:out value="${adv.addedDate}" /></TD>
-                        <TD><c:out value="${adv.category}" /></TD>
-                        <TD><c:out value="${adv.city}" /></TD>
-                        <TD><c:out value="${adv.district}" /></TD>
-                        <TD><c:out value="${adv.adress}" /></TD>
-                        <TD><c:out value="${adv.coast}" /></TD>
-                        <TD><c:out value="${adv.description}" /></TD>
-                    </tr>
-                </c:forEach>
-            </table>
-        </form>
-
-        <br /> <br /> <br />
-
-
-
-
+            <h2><fmt:message key="index.subhead"/></h2>
+        </div></li>
     </div>
 
-</div>
+</td></table>
+
+<table width="1000" height="0" border="0" cellpadding="5" cellspacing="0" align="center"  style="background-color:#ffffff"><tr><td>
+
+
+
+    <table width="1000" height="0" border="0" cellpadding="5"  style="background-color:#98FB98"><tr><td>
+        <div id="head2">
+
+            <h2><fmt:message key="index.subhead"/></h2>
+        </div>
+
+
+        <div id="content">
+
+
+
+
+            <div id="table" style="width:1000px; height:640px; overflow:auto;">
+                <br />
+                <form id="form3" action="RealtyServlet">
+
+                    <c:forEach items="${allAdvertsDto}" var="adv">
+
+
+
+                        <table border=1 cellpadding=2 cellspacing=1 width=700 align="center" >
+                            <col width="175">
+                            <col width="135">
+                            <col width="275">
+                            <col width="125">
+                            <tr>
+
+
+                                <td><c:out value="${adv.addedDate}" /></td>
+                                <td><c:out value="${adv.category}" /></td>
+                                <td></td>
+                                <td><c:out value="${adv.coast}" />$</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" ><c:out value="${adv.description}" /></td>
+                            </tr>
+                        </table>
+                        <br />
+                    </c:forEach>
+
+                </form>
+
+                <br /> <br /> <br />
+
+
+
+
+            </div>
+
+        </div>
+
+
+    </td></table>
+</td></table>
+
+
+
+
+<c:set var="commandForPage" value="indexGuest" scope="request"/>
+
+
+<center><div id="niz">
+    <span class="cop"></span>
+</div></center>
+
+
 
 
 

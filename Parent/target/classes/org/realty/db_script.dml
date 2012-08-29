@@ -1,0 +1,31 @@
+CREATE TABLE User (user_id int AUTO_INCREMENT NOT NULL,
+                   name varchar(25),
+				   password varchar(8),
+				   phone_number varchar(10),
+				   PRIMARY KEY (user_id)
+				   )
+				   
+CREATE TABLE Advert (advert_id int AUTO_INCREMENT NOT NULL,
+                   added_date date,
+				   category category_enum("sale", "rent", "purchase"),
+				   district district_enum("Zavodskoj", "Leninskij", "Moskovskij",
+				   "Oktjabr'skij", "Partizanskij", "Pervomajskij", "Sovetskij",
+				   "Frunzenskij", "Central'nyj", "Degtjarevka"),
+				   adress varchar(30),
+				   coast int,
+				   description text,
+				   user_id int NOT NULL,
+				   PRIMARY KEY (advert_id),
+				   FOREIGN KEY (user_id) REFERENCES User(user_id)
+				   )
+				   
+CREATE TABLE Comment (comment_id int AUTO_INCREMENT NOT NULL,
+                   text text,
+				   user_id int NOT NULL,
+				   advert_id int NOT NULL,
+				   PRIMARY KEY (comment_id),
+				   FOREIGN KEY (user_id) REFERENCES User(user_id),
+				   FOREIGN KEY (advert_id) REFERENCES Advert(advert_id)
+				   )				   
+
+				   

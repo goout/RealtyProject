@@ -13,7 +13,7 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 			+ "phone_number=?, admin=? WHERE user_id=?";
 	private static final String SQL_DELETE_USER = "DELETE FROM User WHERE user_id=?";
 	private static final String SQL_ALL = "SELECT * FROM User";
-	private static final String SQL_NAME_PASS = "SELECT name,passwordt FROM User";
+    private static final String SQL_DOMAIN_BY_ID = "SELECT * FROM User WHERE user_id=?";
 	
 
 	public UserJdbcDAO() {
@@ -62,6 +62,13 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 		ptmt.setLong(1, userId);
 	}
 
+
+    @Override
+    protected void getDomainByIdStep(Long id) throws SQLException {
+        ptmt.setLong(1, id);
+    }
+
+
 	@Override
 	protected String getAddSQL() throws SQLException {
 		return SQL_ADD_USER;
@@ -82,11 +89,11 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 		return SQL_ALL;
 	}
 
-	@Override
-	protected String getRequestSQL() throws SQLException {
-		// TODO Auto-generated method stub
-		return SQL_NAME_PASS;
-	}
-	
+    @Override
+    protected String getDomainByIdSQL() throws SQLException {
+        return SQL_DOMAIN_BY_ID;
+    }
+
+
 
 }

@@ -11,6 +11,7 @@ public class StreetJdbcDAO extends AbstractDAO<Street> {
     private static final String SQL_UPDATE_STREET = "UPDATE Street SET streetName=? WHERE streetId=?";
     private static final String SQL_DELETE_STREET = "DELETE FROM Street WHERE streetId=?";
     private static final String SQL_ALL = "SELECT * FROM Street";
+    private static final String SQL_DOMAIN_BY_ID = "SELECT * FROM Street WHERE streetId=?";
 
 
     public StreetJdbcDAO(){
@@ -42,6 +43,11 @@ public class StreetJdbcDAO extends AbstractDAO<Street> {
     }
 
     @Override
+    protected void getDomainByIdStep(Long id) throws SQLException {
+        ptmt.setLong(1, id);
+    }
+
+    @Override
     protected void deleteStep(Long streetId) throws SQLException {
 
         ptmt.setLong(1, streetId);
@@ -63,13 +69,14 @@ public class StreetJdbcDAO extends AbstractDAO<Street> {
     }
 
     @Override
+    protected String getDomainByIdSQL() throws SQLException {
+        return SQL_DOMAIN_BY_ID;
+    }
+
+    @Override
     protected String getFindAllSQL() throws SQLException {
         return SQL_ALL;
     }
 
-    @Override
-    protected String getRequestSQL() throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
-    }
+
 }
