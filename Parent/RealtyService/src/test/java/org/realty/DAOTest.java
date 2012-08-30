@@ -20,7 +20,7 @@ public class DAOTest extends TestCase {
 
     protected void setUp() throws Exception {
 
-        usr.setName("testUser");
+        usr.setName("testUser2");
         usr.setPassword("12345");
         usr.setPhoneNumber("7181632");
         usr.setAdmin(false);
@@ -35,7 +35,7 @@ public class DAOTest extends TestCase {
         assertEquals(usr.getName(), tes.getName());
         assertEquals(usr.getPassword(), tes.getPassword());
         assertEquals(usr.getPhoneNumber(), tes.getPhoneNumber());
-        assertEquals(usr.getAdmin(), tes.getPhoneNumber());
+        assertEquals(usr.getAdmin(), tes.getAdmin());
 
 
     }
