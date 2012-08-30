@@ -142,6 +142,38 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
     }
 
 
+    final public DOMAIN getDomainByName(String name) {
+        DOMAIN dom = null;
+        try {
+            connectionStep();
+            ptmt = con.prepareStatement(getDomainByNameSQL());
+            getDomainByNameStep(name);
+            rs = ptmt.executeQuery();
+            while (rs.next()) {
+
+                dom=findAllStep();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null)
+                    rs.close();
+                if (ptmt != null)
+                    ptmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        return dom;
+    }
+
 	
 	public List<DOMAIN> findAll() {
 		List<DOMAIN> domains = new ArrayList<DOMAIN>();
@@ -182,6 +214,8 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 		con = createConnection();
 	}
 
+    abstract protected String getDomainByNameSQL() throws SQLException;
+
     abstract protected String getDomainByIdSQL() throws SQLException;
 
 	abstract protected String getFindAllSQL() throws SQLException;
@@ -201,6 +235,8 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 	abstract protected DOMAIN findAllStep() throws SQLException;
 
     abstract protected void getDomainByIdStep(Long id) throws SQLException;
+
+    abstract protected void getDomainByNameStep(String name) throws SQLException;
 
 	public static Connection createConnection() {
 		Connection conn = null;

@@ -49,6 +49,11 @@ public class DistrictJdbcDAO extends AbstractDAO<District> {
     }
 
     @Override
+    protected void getDomainByNameStep(String name) throws SQLException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
     protected void deleteStep(Long districtId) throws SQLException {
 
         ptmt.setLong(1, districtId);
@@ -67,6 +72,11 @@ public class DistrictJdbcDAO extends AbstractDAO<District> {
     @Override
     protected String getDeleteSQL() throws SQLException {
         return SQL_DELETE_DISTRICT;
+    }
+
+    @Override
+    protected String getDomainByNameSQL() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override

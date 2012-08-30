@@ -1,0 +1,44 @@
+package org.realty;
+
+
+import junit.framework.TestCase;
+import org.realty.dao.UserJdbcDAO;
+import org.realty.entity.User;
+
+/**
+ * Unit test for simple App.
+ */
+public class DAOTest extends TestCase {
+    private final UserJdbcDAO usrDAO = new UserJdbcDAO();
+    private final User usr = new User();
+    private User tes = new User();
+
+    public DAOTest(String testName) {
+        super(testName);
+    }
+
+
+    protected void setUp() throws Exception {
+
+        usr.setName("testUser");
+        usr.setPassword("12345");
+        usr.setPhoneNumber("7181632");
+        usr.setAdmin(false);
+        usrDAO.add(usr);
+
+    }
+
+
+    public void testUserDAO() {
+
+        tes = usrDAO.getDomainByName(usr.getName());
+        assertEquals(usr.getName(), tes.getName());
+        assertEquals(usr.getPassword(), tes.getPassword());
+        assertEquals(usr.getPhoneNumber(), tes.getPhoneNumber());
+        assertEquals(usr.getAdmin(), tes.getPhoneNumber());
+
+
+    }
+
+
+}

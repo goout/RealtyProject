@@ -14,7 +14,7 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 	private static final String SQL_DELETE_USER = "DELETE FROM User WHERE user_id=?";
 	private static final String SQL_ALL = "SELECT * FROM User";
     private static final String SQL_DOMAIN_BY_ID = "SELECT * FROM User WHERE user_id=?";
-	
+    private static final String SQL_DOMAIN_BY_NAME = "SELECT * FROM User WHERE name=?";
 
 	public UserJdbcDAO() {
 
@@ -68,8 +68,13 @@ public class UserJdbcDAO extends AbstractDAO<User> {
         ptmt.setLong(1, id);
     }
 
+    @Override
+    protected void getDomainByNameStep(String name) throws SQLException {
+        ptmt.setString(1, name);
+    }
 
-	@Override
+
+    @Override
 	protected String getAddSQL() throws SQLException {
 		return SQL_ADD_USER;
 	}
@@ -88,6 +93,11 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 	protected String getFindAllSQL() throws SQLException {
 		return SQL_ALL;
 	}
+
+    @Override
+    protected String getDomainByNameSQL() throws SQLException {
+        return SQL_DOMAIN_BY_NAME;
+    }
 
     @Override
     protected String getDomainByIdSQL() throws SQLException {

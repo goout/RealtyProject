@@ -55,6 +55,11 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 	}
 
     @Override
+    protected String getDomainByNameSQL() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
     protected String getDomainByIdSQL() throws SQLException {
         return SQL_DOMAIN_BY_ID;
     }
@@ -77,6 +82,11 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
     @Override
     protected void getDomainByIdStep(Long id) throws SQLException {
         ptmt.setLong(1, id);
+    }
+
+    @Override
+    protected void getDomainByNameStep(String name) throws SQLException {
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 
 
