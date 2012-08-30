@@ -9,6 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AdvertPageCommand implements Command {
@@ -53,6 +55,7 @@ public class AdvertPageCommand implements Command {
             User user = ad.getDomainById(advert.getUserId());
 
             aUADto.setName(user.getName());
+            aUADto.setPhoneNumber(user.getPhoneNumber());
 
             AdressJdbcDAO adD =new AdressJdbcDAO();
             Adress adr = adD.getDomainById(advert.getAdressId());
@@ -75,12 +78,18 @@ public class AdvertPageCommand implements Command {
 
         aUADto.setStreetName(str.getStreetName());
 
+        CommentJdbcDAO cmD = new CommentJdbcDAO();
+        List<Comment> commL = cmD.findAll();
+        List<Comment> resComL = new ArrayList<Comment>();
 
+        for (Comment c : commL) {
+       if (c.getAdvertId()==advert.getAdvertId()){
+        resComL.add(c);
 
+        }
+             }
 
-
-
-
+        aUADto.setComments(resComL);
 
         return aUADto;
 
