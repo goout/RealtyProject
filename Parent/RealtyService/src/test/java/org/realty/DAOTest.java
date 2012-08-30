@@ -20,7 +20,7 @@ public class DAOTest extends TestCase {
 
     protected void setUp() throws Exception {
 
-        usr.setName("testUser2");
+        usr.setName("testUser3");
         usr.setPassword("12345");
         usr.setPhoneNumber("7181632");
         usr.setAdmin(false);
@@ -28,6 +28,9 @@ public class DAOTest extends TestCase {
 
     }
 
+    protected void tearDown() throws Exception {
+        usrDAO.delete(tes.getUserId());
+    }
 
     public void testUserDAO() {
 
