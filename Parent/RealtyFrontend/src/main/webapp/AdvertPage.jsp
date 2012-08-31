@@ -13,11 +13,14 @@
 
 <head>
 
-    <title><fmt:message key="advert.title"/></title>
+    <title>teeest</title>
+
 
 </head>
 
 <body>
+
+
 
 <br>
 <table width="1000" height="0" border="1" align="center" cellpadding="5" cellspacing="0"
@@ -114,13 +117,13 @@
 
                                 </form>
 
-                                <br/> <br/> <br/>
+                                <br/>
 
 
                                 <c:forEach items="${allAdvertsUsrAdrDto.comments}" var="cmnt">
 
 
-                                    <table border=1 cellpadding=2 cellspacing=1 width=700 align="center">
+                                    <table border=1 cellpadding=2 cellspacing=1 width=600 align="center">
                                         <col width="140">
                                         <col width="140">
                                         <col width="140">
@@ -129,14 +132,14 @@
                                         <tr>
 
 
-                                            <td></td>
+                                            <td><c:out value="${usr.name}"/></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="4"><c:out value="${cmnt.text}"/></td>
+                                            <td colspan="5"><c:out value="${cmnt.text}"/></td>
                                         </tr>
                                     </table>
 
