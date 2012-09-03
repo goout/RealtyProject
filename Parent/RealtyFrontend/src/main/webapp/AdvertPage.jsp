@@ -39,7 +39,10 @@
                 <li></li>
                 <li></li>
                 <li><input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
-                <li>Registration</li>
+                <li><form id="form5" action="RealtyServlet">
+                    <fmt:message key="button.add" var="Add" />
+                    <input type="button" value="${Add}" onclick="location.href='RealtyServlet?advertId=${adv.advertId}&command=commentPage'" />
+                </form></li>
                 <li>
                     <div id="head">
 
@@ -119,13 +122,13 @@
 
                                 </form>
 
-                                <br/>
 
 
+                                <h2>Comments:</h2>
                                 <c:forEach items="${allAdvertsUsrAdrDto.comments}" var="cmnt">
 
 
-                                    <table border=1 cellpadding=2 cellspacing=1 width=600 align="center">
+                                    <table border=1 cellpadding=2 cellspacing=1 width=600 align="center" style="table-layout: fixed">
                                         <col width="140">
                                         <col width="140">
                                         <col width="140">
@@ -138,12 +141,13 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="4"><c:out value="${cmnt.text}"/></td>
+                                            <td colspan="5" style="word-wrap: break-word" ><c:out value="${cmnt.text}"/></td>
                                         </tr>
                                     </table>
-
+                                               <br/>
 
                                 </c:forEach>
 

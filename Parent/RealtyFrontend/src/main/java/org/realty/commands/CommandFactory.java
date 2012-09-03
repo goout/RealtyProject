@@ -33,6 +33,7 @@ public class CommandFactory {
 			put("LogOut", new LogOutCommand());
             put("userPage", new UserPageCommand());
             put("advertPage", new AdvertPageCommand());
+            put("commentPage", new AddCommentPageCommand());
 		}
 	};
 
@@ -55,6 +56,7 @@ public class CommandFactory {
             put("LogOut", LOG_ADM);
             put("userPage", LOG_ADM);
             put("advertPage", LOG_ADM);
+            put("commentPage", LOG_ADM);
         }
     };
 
@@ -71,6 +73,9 @@ public class CommandFactory {
             put("UserPage.jsp", LOG_ADM);
             put("AdvertPage.jsp", LOG_ADM);
             put("RegistrationPage.jsp", Arrays.asList(Roles.ANONYMOUS));
+            put("AddAdvertPage.jsp", LOG_ADM);
+            put("AddAdressPage.jsp", LOG_ADM);
+            put("AddCommentPage.jsp", LOG_ADM);
              }
     };
 

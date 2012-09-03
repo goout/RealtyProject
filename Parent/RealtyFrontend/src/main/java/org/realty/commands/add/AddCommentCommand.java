@@ -5,7 +5,9 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.realty.UsrInfo;
 import org.realty.commands.Command;
 import org.realty.commands.CommandFactory;
 import org.realty.dao.CommentJdbcDAO;
@@ -29,8 +31,12 @@ public class AddCommentCommand implements Command {
 
 		ad.add(comment);
 
-		return CommandFactory.getCommand("allComment").execute(request, response);
+        HttpSession session = request.getSession();
+        UsrInfo iuser = (UsrInfo) session.getAttribute("userInfo");
 
+	//	return CommandFactory.getCommand("allComment").execute(request, response);
+        return iuser.IsAdmin() ? "RealtyServlet?command=allComment"
+                : "RealtyServlet?command=advertPage";
 	}
 
 }

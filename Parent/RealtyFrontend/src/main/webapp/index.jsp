@@ -14,7 +14,7 @@
 
 <head>
 
-    <title><fmt:message key="index.title" /></title>
+    <title><fmt:message key="index.title"/></title>
 
 </head>
 
@@ -34,8 +34,8 @@
             <input type="button" value="${SignIn}" onclick="location.href='Authentication.jsp'" />
         </form></li>
         <li><form id="form5" action="RealtyServlet">
-            <fmt:message key="button.signIn" var="SignIn" />
-            <input type="button" value="${SignIn}" onclick="location.href='RegistrationPage.jsp'" />
+            <fmt:message key="button.registration" var="Registration" />
+            <input type="button" value="${Registration}" onclick="location.href='RegistrationPage.jsp'" />
         </form></li>
         <li>  <div id="head">
 

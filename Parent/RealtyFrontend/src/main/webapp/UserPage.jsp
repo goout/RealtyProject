@@ -28,7 +28,10 @@
         <li></li>
         <li></li>
         <li>  <input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'" /></li>
-        <li>Registration</li>
+        <li><form id="form5" action="RealtyServlet">
+            <fmt:message key="button.add" var="Add" />
+            <input type="button" value="${Add}" onclick="location.href='AddAdressPage.jsp'" />
+        </form></li>
         <li>  <div id="head">
 
             <h2><fmt:message key="user.subhead"/></h2>
