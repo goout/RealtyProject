@@ -38,6 +38,7 @@ public class AdvertUserAdressDTO implements Serializable {
 
     private List<Comment> comments;
     private List<User> users;
+    private List<CommentUserDTO>  comusr;
 
 
 

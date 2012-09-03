@@ -70,6 +70,7 @@ public class CommandFactory {
             put("RealtyServlet" , Arrays.asList(Roles.ADMIN, Roles.ANONYMOUS));
             put("UserPage.jsp", LOG_ADM);
             put("AdvertPage.jsp", LOG_ADM);
+            put("RegistrationPage.jsp", Arrays.asList(Roles.ANONYMOUS));
              }
     };
 

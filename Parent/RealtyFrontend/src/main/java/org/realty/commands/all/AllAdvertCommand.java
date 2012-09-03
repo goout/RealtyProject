@@ -44,7 +44,7 @@ public class AllAdvertCommand implements Command {
         break;
       }
     }
-
+     ///
 
     return "Advert.jsp";
 

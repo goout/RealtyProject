@@ -1,5 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="org.realty.Translations" />
@@ -29,7 +33,10 @@
             <fmt:message key="button.signIn" var="SignIn" />
             <input type="button" value="${SignIn}" onclick="location.href='Authentication.jsp'" />
         </form></li>
-        <li>Registration</li>
+        <li><form id="form5" action="RealtyServlet">
+            <fmt:message key="button.signIn" var="SignIn" />
+            <input type="button" value="${SignIn}" onclick="location.href='RegistrationPage.jsp'" />
+        </form></li>
         <li>  <div id="head">
 
             <h2><fmt:message key="index.subhead"/></h2>

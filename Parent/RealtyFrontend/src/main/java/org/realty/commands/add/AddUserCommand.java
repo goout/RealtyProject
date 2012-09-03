@@ -21,18 +21,18 @@ public class AddUserCommand implements Command {
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String phoneNumber = request.getParameter("phoneNumber");
-        Boolean isadmin = false;
-        String admin = request.getParameter("isAdmin");
+       // Boolean isadmin = false;
+        //String admin = request.getParameter("isAdmin");
 
-        if (admin.equalsIgnoreCase("1")){
-            isadmin = true;
-        }else isadmin = false;
+        //if (admin.equalsIgnoreCase("1")){
+          //  isadmin = true;
+        //}else isadmin = false;
 
 		User user = new User();
 		user.setName(userName);
 		user.setPassword(password);
 		user.setPhoneNumber(phoneNumber);
-        user.setAdmin(isadmin);
+        //user.setAdmin(isadmin);
 		ad.add(user);
 
 		return CommandFactory.getCommand("allUser").execute(request, response);

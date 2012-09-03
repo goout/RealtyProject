@@ -18,6 +18,8 @@
 
 </head>
 
+<c:set var="commandForPage" value="advertPage" scope="request"/>
+
 <body>
 
 
@@ -136,10 +138,9 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5"><c:out value="${cmnt.text}"/></td>
+                                            <td colspan="4"><c:out value="${cmnt.text}"/></td>
                                         </tr>
                                     </table>
 

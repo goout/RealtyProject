@@ -8,6 +8,7 @@ import org.realty.entity.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +22,18 @@ public class AdvertPageCommand implements Command {
     public String execute(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession session = request.getSession();
 
         AdvertJdbcDAO ad = new AdvertJdbcDAO();
-        String advertId = request.getParameter("advertId");
-        Advert advert = ad.getDomainById((Long) Long.parseLong(advertId));
 
+        if (session.getAttribute("advertId") == null) {
+            Long advertId = Long.parseLong(request.getParameter("advertId"));
+            session.setAttribute("advertId", advertId);
+        }
+
+        Long aid = (Long)session.getAttribute("advertId");
+
+        Advert advert = ad.getDomainById(aid);
         AdvertUserAdressDTO allAdvertsUsrAdrDto = createDTO(advert);
 
         request.setAttribute("allAdvertsUsrAdrDto", allAdvertsUsrAdrDto);
@@ -93,8 +101,8 @@ public class AdvertPageCommand implements Command {
         aUADto.setComments(resComL);
 
         for (Comment c : resComL) {
-        User u = new User();
-        usrL.add(ad.getDomainById(c.getUserId()));
+            User u = new User();
+            usrL.add(ad.getDomainById(c.getUserId()));
         }
 
         aUADto.setUsers(usrL);

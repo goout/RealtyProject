@@ -14,6 +14,8 @@
 
 </head>
 
+<c:set var="commandForPage" value="userPage" scope="request"/>
+
 <body>
 
 <br>
