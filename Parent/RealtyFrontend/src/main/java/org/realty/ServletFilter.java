@@ -62,6 +62,8 @@ public class ServletFilter implements Filter {
 
         //  List<Roles> roles = CommandFactory.getRoles(httpRequest.getRequestURI()+"?"+httpRequest.getQueryString());
 
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         if ((roles.contains(currentUser))) {
             chain.doFilter(request, response);
         } else {
