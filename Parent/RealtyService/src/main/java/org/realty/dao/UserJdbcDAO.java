@@ -29,7 +29,8 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 		ptmt.setString(2, user.getName());
 		ptmt.setString(3, user.getPassword());
 		ptmt.setString(4, user.getPhoneNumber());
-        ptmt.setBoolean(5, user.getAdmin());
+      //  ptmt.setBoolean(5, user.getAdmin());
+        ptmt.setBoolean(5, false);
 
 	}
 

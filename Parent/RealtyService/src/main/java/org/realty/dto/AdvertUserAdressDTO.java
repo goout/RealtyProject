@@ -2,6 +2,7 @@ package org.realty.dto;
 
 
 import org.realty.entity.Comment;
+import org.realty.entity.User;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -36,6 +37,8 @@ public class AdvertUserAdressDTO implements Serializable {
     private String streetName;
 
     private List<Comment> comments;
+    private List<User> users;
+    private List<CommentUserDTO>  comusr;
 
 
 
@@ -200,5 +203,13 @@ public class AdvertUserAdressDTO implements Serializable {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

@@ -36,8 +36,9 @@ public class RealtyServlet extends HttpServlet {
 
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String command = request.getParameter("command");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        String command = request.getParameter("command");
 		Command c = CommandFactory.getCommand(command);
 		String path = c.execute(request, response);
 		request.getRequestDispatcher(path).forward(request, response);

@@ -1,3 +1,4 @@
+CREATE DATABASE REALTY;
 CREATE TABLE User (user_id int AUTO_INCREMENT NOT NULL,name varchar(25),passwordt varchar(8),phone_number varchar(10),PRIMARY KEY (user_id));
 				   
 				   
@@ -24,9 +25,7 @@ CREATE TABLE advert(
   user_id INT NOT NULL,
   PRIMARY KEY (advert_id),
   FOREIGN KEY (user_id) REFERENCES User(user_id),
-  FOREIGN KEY (adressId) REFERENCES Adress(adressId)
-
-);
+  FOREIGN KEY (adressId) REFERENCES Adress(adressId));
 
 
 
@@ -40,19 +39,14 @@ CREATE TABLE adress(
   PRIMARY KEY (adressId),
   FOREIGN KEY (cityId) REFERENCES city(cityId),
   FOREIGN KEY (districtId) REFERENCES district(districtId),
-  FOREIGN KEY (streetId) REFERENCES street(streetId)
-
-
-  );
+  FOREIGN KEY (streetId) REFERENCES street(streetId));
 
 
 
 CREATE TABLE city(
   cityId INT NOT NULL AUTO_INCREMENT,
   cityName varchar(25),
-  PRIMARY KEY (cityId)
-
-);
+  PRIMARY KEY (cityId));
 
 
 
@@ -60,9 +54,7 @@ CREATE TABLE city(
 CREATE TABLE district(
   districtId INT NOT NULL AUTO_INCREMENT,
   districtName varchar(25),
-  PRIMARY KEY (districtId)
-
-);
+  PRIMARY KEY (districtId));
 
 
 
@@ -70,9 +62,7 @@ CREATE TABLE district(
 CREATE TABLE street(
   streetId INT NOT NULL AUTO_INCREMENT,
   streetName varchar(25),
-  PRIMARY KEY (streetId)
-
-);
+  PRIMARY KEY (streetId));
 
 
 
@@ -83,20 +73,15 @@ CREATE TABLE city_district(
   districtId INT NOT NULL,
   PRIMARY KEY (cityDistrId),
   FOREIGN KEY (cityId) REFERENCES city(cityId),
-  FOREIGN KEY (districtId) REFERENCES district(districtId)
-
-);
+  FOREIGN KEY (districtId) REFERENCES district(districtId));
 
 
 
 CREATE TABLE city_distr_str(
-
   cityDistrId INT NOT NULL,
   streetId INT NOT NULL,
   FOREIGN KEY (cityDistrId) REFERENCES city_district(cityDistrId),
-  FOREIGN KEY (streetId) REFERENCES street(streetId)
-
-);
+  FOREIGN KEY (streetId) REFERENCES street(streetId));
 
 
 

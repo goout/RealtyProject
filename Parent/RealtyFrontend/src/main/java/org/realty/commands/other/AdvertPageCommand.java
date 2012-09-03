@@ -8,9 +8,12 @@ import org.realty.entity.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.System.out;
 
 
 public class AdvertPageCommand implements Command {
@@ -19,13 +22,18 @@ public class AdvertPageCommand implements Command {
     public String execute(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
 
-
-
+        HttpSession session = request.getSession();
 
         AdvertJdbcDAO ad = new AdvertJdbcDAO();
-        String advertId = request.getParameter("advertId");
-        Advert advert = ad.getDomainById((Long)Long.parseLong(advertId));
 
+        if (session.getAttribute("advertId") == null) {
+            Long advertId = Long.parseLong(request.getParameter("advertId"));
+            session.setAttribute("advertId", advertId);
+        }
+
+        Long aid = (Long)session.getAttribute("advertId");
+
+        Advert advert = ad.getDomainById(aid);
         AdvertUserAdressDTO allAdvertsUsrAdrDto = createDTO(advert);
 
         request.setAttribute("allAdvertsUsrAdrDto", allAdvertsUsrAdrDto);
@@ -35,33 +43,31 @@ public class AdvertPageCommand implements Command {
 
     }
 
-    public AdvertUserAdressDTO createDTO (Advert advert)  {
-
-
+    public AdvertUserAdressDTO createDTO(Advert advert) {
 
 
         AdvertUserAdressDTO aUADto = new AdvertUserAdressDTO();
 
-            aUADto.setAdvertId(advert.getAdvertId());
-            aUADto.setAddedDate(advert.getAddedDate());
-            aUADto.setCategory(advert.getCategory());
-            aUADto.setAdvertUserId(advert.getUserId());
-            aUADto.setCoast(advert.getCoast());
-            aUADto.setDescription(advert.getDescription());
-            aUADto.setAdvertAdressId(advert.getAdressId());
-            aUADto.setRooms(advert.getRooms());
+        aUADto.setAdvertId(advert.getAdvertId());
+        aUADto.setAddedDate(advert.getAddedDate());
+        aUADto.setCategory(advert.getCategory());
+        aUADto.setAdvertUserId(advert.getUserId());
+        aUADto.setCoast(advert.getCoast());
+        aUADto.setDescription(advert.getDescription());
+        aUADto.setAdvertAdressId(advert.getAdressId());
+        aUADto.setRooms(advert.getRooms());
 
-            UserJdbcDAO ad = new UserJdbcDAO();
-            User user = ad.getDomainById(advert.getUserId());
+        UserJdbcDAO ad = new UserJdbcDAO();
+        User user = ad.getDomainById(advert.getUserId());
 
-            aUADto.setName(user.getName());
-            aUADto.setPhoneNumber(user.getPhoneNumber());
+        aUADto.setName(user.getName());
+        aUADto.setPhoneNumber(user.getPhoneNumber());
 
-            AdressJdbcDAO adD =new AdressJdbcDAO();
-            Adress adr = adD.getDomainById(advert.getAdressId());
+        AdressJdbcDAO adD = new AdressJdbcDAO();
+        Adress adr = adD.getDomainById(advert.getAdressId());
 
-            aUADto.setHouseNum(adr.getHouseNum());
-            aUADto.setApartmentNum(adr.getApartmentNum());
+        aUADto.setHouseNum(adr.getHouseNum());
+        aUADto.setApartmentNum(adr.getApartmentNum());
 
         CityJdbcDAO citD = new CityJdbcDAO();
         City cit = citD.getDomainById(adr.getCityId());
@@ -82,20 +88,30 @@ public class AdvertPageCommand implements Command {
         List<Comment> commL = cmD.findAll();
         List<Comment> resComL = new ArrayList<Comment>();
 
-        for (Comment c : commL) {
-       if (c.getAdvertId()==advert.getAdvertId()){
-        resComL.add(c);
+        List<User> usrL = new ArrayList<User>();
 
+
+        for (Comment c : commL) {
+            if (c.getAdvertId() == advert.getAdvertId()) {
+                resComL.add(c);
+
+            }
         }
-             }
 
         aUADto.setComments(resComL);
+
+        for (Comment c : resComL) {
+            User u = new User();
+            usrL.add(ad.getDomainById(c.getUserId()));
+        }
+
+        aUADto.setUsers(usrL);
+        out.printf("test");
+        out.printf("test");
 
         return aUADto;
 
     }
-
-
 
 
 }
