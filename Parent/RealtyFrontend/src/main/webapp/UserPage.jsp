@@ -61,7 +61,7 @@
 
 
 
-                        <table border=1 cellpadding=2 cellspacing=1 width=700 align="center" >
+                        <table cellpadding=2 border="1" cellspacing=1 width=700 align="center" style="border: dashed black;" >
                             <col width="140">
                             <col width="140">
                             <col width="140">
