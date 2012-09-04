@@ -2,8 +2,10 @@ package org.realty.dao;
 
 
 import org.realty.entity.District;
+import org.realty.entity.Street;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DistrictJdbcDAO extends AbstractDAO<District> {
 
@@ -13,6 +15,8 @@ public class DistrictJdbcDAO extends AbstractDAO<District> {
     private static final String SQL_DELETE_DISTRICT = "DELETE FROM District WHERE districtId=?";
     private static final String SQL_ALL = "SELECT * FROM District";
     private static final String SQL_DOMAIN_BY_ID = "SELECT * FROM District WHERE districtId=?";
+    private static final String SQL_DISTR_FOR_CITY ="SELECT districtId FROM city_district WHERE cityId=?";
+    private static final String SQL_CD_ID ="SELECT cityDistrId FROM city_district WHERE districtId=?";
 
 
     public DistrictJdbcDAO(){
@@ -40,6 +44,16 @@ public class DistrictJdbcDAO extends AbstractDAO<District> {
         District district = new District();
         district.setDistrictId(rs.getLong(1));
         district.setDistrictName(rs.getString(2));
+
+        DistrictJdbcDAO dd = new DistrictJdbcDAO();
+        Long cDId = dd.getCDId(rs.getLong(1));
+
+        if(cDId != null){
+        StreetJdbcDAO sd =new StreetJdbcDAO();
+        district.setStreets(sd.findAllForCity(cDId));
+        } else district.setStreets(new ArrayList<Street>());
+
+
         return district;
     }
 
@@ -51,6 +65,26 @@ public class DistrictJdbcDAO extends AbstractDAO<District> {
     @Override
     protected void getDomainByNameStep(String name) throws SQLException {
         //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected void getDistrictsForCityStep(Long id) throws SQLException {
+        ptmt.setLong(1, id);
+    }
+
+    @Override
+    protected Long findAllFCStep() throws SQLException {
+        Long id = rs.getLong(1);
+
+        return id;
+    }
+
+    @Override
+    protected District getDomainStep(Long id) throws SQLException {
+        DistrictJdbcDAO dd = new DistrictJdbcDAO();
+        District district = dd.getDomainById(id);
+
+        return district;
     }
 
     @Override
@@ -75,6 +109,11 @@ public class DistrictJdbcDAO extends AbstractDAO<District> {
     }
 
     @Override
+    protected String getDistrIdForCitySQL() throws SQLException {
+        return SQL_DISTR_FOR_CITY;
+    }
+
+    @Override
     protected String getDomainByNameSQL() throws SQLException {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -89,6 +128,10 @@ public class DistrictJdbcDAO extends AbstractDAO<District> {
         return SQL_ALL;
     }
 
+    @Override
+    protected String getCDId() throws SQLException {
+        return SQL_CD_ID;
+    }
 
 
 

@@ -67,6 +67,21 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
     }
 
     @Override
+    protected void getDistrictsForCityStep(Long id) throws SQLException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected Long findAllFCStep() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected Advert getDomainStep(Long id) throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
 	protected void deleteStep(Long advertId) throws SQLException {
 		ptmt.setLong(1, advertId);
 	}
@@ -85,6 +100,16 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
 	protected String getDeleteSQL() throws SQLException {
 		return SQL_DELETE_ADVERT;
 	}
+
+    @Override
+    protected String getCDId() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected String getDistrIdForCitySQL() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 
     @Override
     protected String getDomainByNameSQL() throws SQLException {

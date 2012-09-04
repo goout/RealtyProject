@@ -66,6 +66,21 @@ public class AdressJdbcDAO extends AbstractDAO<Adress> {
     }
 
     @Override
+    protected void getDistrictsForCityStep(Long id) throws SQLException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected Long findAllFCStep() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected Adress getDomainStep(Long id) throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
     protected void deleteStep(Long adressId) throws SQLException {
 
         ptmt.setLong(1, adressId);
@@ -84,6 +99,16 @@ public class AdressJdbcDAO extends AbstractDAO<Adress> {
     @Override
     protected String getDeleteSQL() throws SQLException {
         return SQL_DELETE_ADRESS;
+    }
+
+    @Override
+    protected String getCDId() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected String getDistrIdForCitySQL() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override

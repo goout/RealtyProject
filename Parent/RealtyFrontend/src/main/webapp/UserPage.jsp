@@ -30,7 +30,7 @@
         <li>  <input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'" /></li>
         <li><form id="form5" action="RealtyServlet">
             <fmt:message key="button.add" var="Add" />
-            <input type="button" value="${Add}" onclick="location.href='RealtyServlet?command=addAdress'" />
+            <input type="button" value="${Add}" onclick="location.href='RealtyServlet?command=adress'" />
         </form></li>
         <li>  <div id="head">
 

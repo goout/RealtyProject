@@ -1,13 +1,9 @@
 package org.realty;
 
 
-import org.realty.dao.AdvertJdbcDAO;
-import org.realty.dao.CommentJdbcDAO;
-import org.realty.dao.UserJdbcDAO;
+import org.realty.dao.*;
 import org.realty.dto.AdvertUserDTO;
-import org.realty.entity.Advert;
-import org.realty.entity.Comment;
-import org.realty.entity.User;
+import org.realty.entity.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,7 +19,44 @@ public class App {
 	public static void main(String[] args) throws SQLException {
 
 
-        AdvertJdbcDAO ad = new AdvertJdbcDAO();
+        CityJdbcDAO cd = new CityJdbcDAO();
+        List<City> cL = cd.findAll();
+
+        	for (City o : cL) {
+
+                out.printf("%d %s \n", o.getCityId(), o.getCityName());
+
+               List<District> ds = o.getDistricts();
+               for (District d :ds){
+                   out.printf("%s \n",d.getDistrictName());
+               }
+
+
+
+        }
+
+
+
+        DistrictJdbcDAO dd = new DistrictJdbcDAO();
+        List<District> dL = dd.findAll();
+
+        for (District o : dL) {
+
+            out.printf("%d %s \n", o.getDistrictId(), o.getDistrictName());
+
+            List<Street> sl = o.getStreets();
+            for (Street d :sl){
+                out.printf("%s \n",d.getStreetName());
+            }
+
+
+
+        }
+
+
+
+
+/*        AdvertJdbcDAO ad = new AdvertJdbcDAO();
           Advert advert = ad.getDomainById(1l);
 
         CommentJdbcDAO cmD = new CommentJdbcDAO();
@@ -43,7 +76,7 @@ public class App {
                 out.printf("%s",com.getText());
 
             }
-        }
+        }*/
 
 
 	//	UserJdbcDAO addtest1 = new UserJdbcDAO();

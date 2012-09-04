@@ -207,12 +207,88 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 		}
 		return domains;
 	}
-	
+
+
+
+    public List<DOMAIN> findAllForCity(Long id) {
+        List<DOMAIN> domains = new ArrayList<DOMAIN>();
+
+        try {
+            connectionStep();
+            ptmt = con.prepareStatement(getDistrIdForCitySQL());
+            getDistrictsForCityStep(id);
+            rs = ptmt.executeQuery();
+
+            while (rs.next()) {
+
+                domains.add(getDomainStep(findAllFCStep()));
+                           }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null)
+                    rs.close();
+                if (ptmt != null)
+                    ptmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        return domains;
+    }
+
+
+
+    final public Long getCDId(Long id) {
+          Long rl = null;
+        try {
+            connectionStep();
+            ptmt = con.prepareStatement(getCDId());
+            getDistrictsForCityStep(id);
+            rs = ptmt.executeQuery();
+            while (rs.next()) {
+
+                rl=findAllFCStep();
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null)
+                    rs.close();
+                if (ptmt != null)
+                    ptmt.close();
+                if (con != null)
+                    con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        return rl;
+    }
+
 	
 	
 	protected void connectionStep() {
 		con = createConnection();
 	}
+
+
+    abstract protected String getCDId() throws SQLException;
+
+    abstract protected String getDistrIdForCitySQL() throws SQLException;
 
     abstract protected String getDomainByNameSQL() throws SQLException;
 
@@ -238,6 +314,12 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 
     abstract protected void getDomainByNameStep(String name) throws SQLException;
 
+    abstract protected void getDistrictsForCityStep(Long id) throws SQLException;
+
+    abstract protected Long findAllFCStep() throws SQLException;
+
+    abstract protected DOMAIN getDomainStep(Long id) throws SQLException;
+
 	public static Connection createConnection() {
 		Connection conn = null;
 		try {
@@ -250,5 +332,6 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 		}
 		return conn;
 	}
+
 
 }

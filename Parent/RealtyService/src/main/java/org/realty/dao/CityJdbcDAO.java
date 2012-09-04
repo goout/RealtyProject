@@ -16,6 +16,7 @@ public class CityJdbcDAO extends AbstractDAO<City> {
     private static final String SQL_DOMAIN_BY_ID = "SELECT * FROM City WHERE cityId=?";
 
 
+
 public CityJdbcDAO(){
 
 }
@@ -42,6 +43,10 @@ public CityJdbcDAO(){
         City city = new City();
         city.setCityId(rs.getLong(1));
         city.setCityName(rs.getString(2));
+
+        DistrictJdbcDAO dd =new DistrictJdbcDAO();
+                                            Long test = rs.getLong(1);
+        city.setDistricts(dd.findAllForCity(test));
         return city;
     }
 
@@ -53,6 +58,21 @@ public CityJdbcDAO(){
     @Override
     protected void getDomainByNameStep(String name) throws SQLException {
         //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected void getDistrictsForCityStep(Long id) throws SQLException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected Long findAllFCStep() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected City getDomainStep(Long id) throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -74,6 +94,16 @@ public CityJdbcDAO(){
     @Override
     protected String getDeleteSQL() throws SQLException {
         return SQL_DELETE_USER;
+    }
+
+    @Override
+    protected String getCDId() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected String getDistrIdForCitySQL() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override

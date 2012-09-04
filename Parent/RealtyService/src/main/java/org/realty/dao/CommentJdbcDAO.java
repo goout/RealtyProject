@@ -55,6 +55,16 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 	}
 
     @Override
+    protected String getCDId() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected String getDistrIdForCitySQL() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
     protected String getDomainByNameSQL() throws SQLException {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -87,6 +97,21 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
     @Override
     protected void getDomainByNameStep(String name) throws SQLException {
         //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected void getDistrictsForCityStep(Long id) throws SQLException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected Long findAllFCStep() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected Comment getDomainStep(Long id) throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
 

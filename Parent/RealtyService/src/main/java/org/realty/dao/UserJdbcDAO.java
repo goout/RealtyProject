@@ -74,6 +74,21 @@ public class UserJdbcDAO extends AbstractDAO<User> {
         ptmt.setString(1, name);
     }
 
+    @Override
+    protected void getDistrictsForCityStep(Long id) throws SQLException {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected Long findAllFCStep() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected User getDomainStep(Long id) throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
 
     @Override
 	protected String getAddSQL() throws SQLException {
@@ -94,6 +109,16 @@ public class UserJdbcDAO extends AbstractDAO<User> {
 	protected String getFindAllSQL() throws SQLException {
 		return SQL_ALL;
 	}
+
+    @Override
+    protected String getCDId() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    protected String getDistrIdForCitySQL() throws SQLException {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 
     @Override
     protected String getDomainByNameSQL() throws SQLException {

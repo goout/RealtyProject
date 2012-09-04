@@ -6,6 +6,8 @@
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="org.realty.Translations"/>
 
+<c:set var="adr" value="${adressDto}"/>
+
 
 <html lang="${language}">
 
@@ -65,7 +67,7 @@
                         <div id="content">
 
 
-                            <table width="400" border="0" align="center">
+                            <table width="350" border="0" align="center">
                                 <tr>
                                     <td>
 
@@ -76,33 +78,52 @@
                                             <form id="form1" action="RealtyServlet">
                                                 <table>
                                                     <tr>
-                                                        <td><fmt:message key="adress.label.city"/>:</td>
-
-
-                                                        <td><select name="name" id="1" style="width:110px">
+                                                        <td><fmt:message key="adress.label.city"/>:
+                                                        <td><select name="city" id="1" style="width:110px">
                                                             <option value="select">Change City...</option>
-                                                            <c:forEach var="city" items="${allCity}">
+                                                            <option value="1"><c:out value="${adr.cityName}"/></option>
+                                                        </select></td>
+                                                    </tr>
 
-                                                                <option value="<c:out value="${city.cityId}"/>"><c:out
-                                                                        value="${city.cityName}"/></option>
 
-                                                            </c:forEach>
+                                                    <tr>
+                                                        <td><fmt:message key="adress.label.district"/>:
+                                                        <td><select name="district" id="2"  style="width:130px">  <!--onchange="ChanGeValue()"-->
+                                                            <option value="select">Change District...</option>
+                                                            <option value="5"><c:out value="${adr.districtName}"/></option>
+                                                        </select></td>
+                                                    </tr>
+
+                                                    <tr>
+
+                                                        <td><fmt:message key="adress.label.street"/>:
+                                                        <td><select name="street" id="3" style="width:130px">
+                                                            <option value="select">Change Street...</option>
+                                                        <c:forEach items="${adressDto.streets}" var="str">
+                                                            <option value="<c:out value="${str.streetId}"/>"><c:out value="${str.streetName}"/></option>
+                                                        </c:forEach>
                                                         </select></td>
 
-
                                                     </tr>
 
 
                                                     <tr>
-                                                        <td></td>
+                                                        <td><fmt:message key="adress.label.home" />:
+
+                                                        <td><input type="text" size="10" name="homeNum" id="4"></td>
+
                                                     </tr>
+
+
 
                                                     <tr>
+                                                        <td><fmt:message key="adress.label.apartment" />:
 
-                                                        <td></td>
+                                                        <td><input type="text" size="10" name="apartmentNum" id="5"></td>
 
 
                                                     </tr>
+
 
 
                                                 </table>
@@ -110,6 +131,19 @@
                                             <fmt:message key="button.add"/>> <input type="hidden"
                                                                                     name="command" value="addAdress"/>
                                             </form>
+
+
+                                            <!--     <script>
+
+                                                var temp=document.doublecombo.street
+                                                function ChanGeValue(){
+                                                    var sel = document.doublecombo.district;
+                                                    var opt = sel.options[sel.selectedIndex].value;
+
+                                                    temp.options[sel.selectedIndex].selected=true
+                                                }
+                                            </script>   -->
+
                                         </fieldset>
 
 
