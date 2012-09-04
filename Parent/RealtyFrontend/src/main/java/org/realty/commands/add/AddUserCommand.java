@@ -1,5 +1,6 @@
 package org.realty.commands.add;
 
+import org.realty.UsrInfo;
 import org.realty.commands.Command;
 import org.realty.commands.CommandFactory;
 import org.realty.dao.UserJdbcDAO;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class AddUserCommand implements Command {
 
@@ -21,6 +23,9 @@ public class AddUserCommand implements Command {
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String phoneNumber = request.getParameter("phoneNumber");
+
+        HttpSession session = request.getSession();
+
        // Boolean isadmin = false;
         //String admin = request.getParameter("isAdmin");
 
@@ -35,7 +40,18 @@ public class AddUserCommand implements Command {
         //user.setAdmin(isadmin);
 		ad.add(user);
 
-		return CommandFactory.getCommand("allUser").execute(request, response);
+        User sesUsr = ad.getDomainByName(userName);
+
+        UsrInfo ui = new UsrInfo();
+        ui.Login(sesUsr.getName());
+        ui.setUserId(sesUsr.getUserId());
+        session.setAttribute("userInfo", ui);
+		//return CommandFactory.getCommand("allUser").execute(request, response);
+
+
+
+        return ui.IsAdmin() ? "RealtyServlet?command=allUser"
+                : "RealtyServlet?command=userPage";
 
 	}
 

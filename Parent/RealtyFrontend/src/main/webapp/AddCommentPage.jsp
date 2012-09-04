@@ -19,7 +19,6 @@
 </head>
 
 <c:set var="commandForPage" value="commentPage" scope="request"/>
-<jsp:include page="Language.jsp" flush="true"/>
 
 
 <body>

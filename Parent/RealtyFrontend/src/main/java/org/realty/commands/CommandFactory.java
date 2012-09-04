@@ -34,6 +34,7 @@ public class CommandFactory {
             put("userPage", new UserPageCommand());
             put("advertPage", new AdvertPageCommand());
             put("commentPage", new AddCommentPageCommand());
+            put("addAdress", new AddAdressCommand());
 		}
 	};
 
@@ -57,6 +58,7 @@ public class CommandFactory {
             put("userPage", LOG_ADM);
             put("advertPage", LOG_ADM);
             put("commentPage", LOG_ADM);
+            put("addAdress", LOG_ADM);
         }
     };
 
