@@ -19,7 +19,7 @@
 
 	<div id="head">
 
-		<form id="form1" action="RealtyServlet">
+		<form id="form2" action="RealtyServlet">
 		<input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'" />
 
 
@@ -30,7 +30,7 @@
 
 	<div id="content">
 
-		<div id="menu">
+		<div id="menu2">
 			<br />
 			<ul id="menu">
 
@@ -55,11 +55,7 @@
 
 						<td width="100">Category</td>
 
-                        <td width="100">City</td>
 
-						<td width="100">District</td>
-
-						<td width="100">Adress</td>
 
 						<td width="30">Coast</td>
 
@@ -81,9 +77,7 @@
 					<tr>
 						<TD><c:out value="${adv.addedDate}" /></TD>
 						<TD><c:out value="${adv.category}" /></TD>
-                        <TD><c:out value="${adv.city}" /></TD>
-						<TD><c:out value="${adv.district}" /></TD>
-						<TD><c:out value="${adv.adress}" /></TD>
+
 						<TD><c:out value="${adv.coast}" /></TD>
 						<TD><c:out value="${adv.description}" /></TD>
 						<TD><c:out value="${adv.advertId}" /></TD>
@@ -112,21 +106,8 @@
 							<td>
 							<td><input type="text" size="30" name="category" id="1"></td>
 						</tr>
-                        <tr>
-                            <td><fmt:message key="advert.label.city" />:
-                            <td>
-                            <td><input type="text" size="30" name="city" id="2"></td>
-                        </tr>
-                        <tr>
-							<td><fmt:message key="advert.label.district" />:
-							<td>
-							<td><input type="text" size="30" name="district" id="3"></td>
-						</tr>
-						<tr>
-							<td><fmt:message key="advert.label.adress" />:
-							<td>
-							<td><input type="text" size="30" name="adress" id="4"></td>
-						</tr>
+
+
 						<tr>
 							<td><fmt:message key="advert.label.coast" />:
 							<td>
