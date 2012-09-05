@@ -199,28 +199,29 @@
 
                                                 <script>
 
-
+                                                    var list2 = document.combo2.list2
                                                     function chanGe2() {
-                                                        var list2 = document.combo2.list2
-                                                        var list1 = document.combo2.list1
+
+                                                        var list1 = document.combo2.list1;
                                                         var options = list1.options[sel.selectedIndex].value;
 
                                                         if (options == "A") {
                                                         <c:set value="0" var="i"/>
                                                         <c:forEach items="${list2}" var="testArray">
-                                                            list2.options[i] =
-                                                        <c:out value="${list2[i]}"/>
+                                                            list2.options[i] = new Option(<c:out value="${list2[i]}"/>,<c:out value="${list2[i]}"/>)
+
                                                         <c:set value="${i+1}" var="i"/>
                                                         </c:forEach>
                                                         } else {        <c:set value="0" var="i"/>
                                                         <c:forEach items="${list3}" var="testArray">
-                                                            list2.options[i] =
-                                                        <c:out value="${list3[i]}"/>
+                                                            list2.options[i] = new Option(<c:out value="${list3[i]}"/>,<c:out value="${list3[i]}"/>)
+
                                                         <c:set value="${i+1}" var="i"/>
                                                         </c:forEach>
 
-
                                                         }
+
+                                                        list2.options
 
                                                     }
 
