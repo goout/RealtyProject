@@ -6,8 +6,8 @@
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="org.realty.Translations"/>
 
-<c:set var="adr" value="${adressDto}"/>
-
+<c:set var="list2" value="${list2}"/>
+<c:set var="list3" value="${list3}"/>
 
 <html lang="${language}">
 
@@ -162,16 +162,12 @@
                                             <legend>
                                                 <b>TEST</b>
                                             </legend>
-                                            <form id="form2" name="combo2" action="RealtyServlet">
+                                            <form id="combo2" name="combo2" action="RealtyServlet">
                                                 <table>
                                                     <tr>
                                                         <td>LIST1:
-                                                            <%--     <td><select name="list1" onchange="chanGe2()"  style="width:110px" >
-                                                            <c:forEach items="${list1}">
-                                                             <option value="<c:out value="${list1}"/>"><c:out value="${list1}"/></option>
-                                                            </c:forEach>--%>
 
-                                                        <td><select name="list1" onchange="chanGe2()"
+                                                        <td><select name="list1" onchange="chanGe2(combo2.list1.selectedIndex)"
                                                                     style="width:110px">
                                                             <c:set value="0" var="i"/>
                                                             <c:forEach items="${list1}" var="testArray">
@@ -199,29 +195,37 @@
 
                                                 <script>
 
-                                                    var list2 = document.combo2.list2
-                                                    function chanGe2() {
+                                                    var i;
+                                                    function chanGe2(i) {
 
-                                                        var list1 = document.combo2.list1;
-                                                        var options = list1.options[sel.selectedIndex].value;
+                                                        var list2 = '<c:out value="${list2}"/>';
+                                                        var list3 = '<c:out value="${list3}"/>';
+                                                        var combo2 = document.getElementById("combo2");
+                                                        combo2.list2.options.length=0;
+                                                        switch(i)
+                                                        {
+                                                            case 0:
 
-                                                        if (options == "A") {
-                                                        <c:set value="0" var="i"/>
-                                                        <c:forEach items="${list2}" var="testArray">
-                                                            list2.options[i] = new Option(<c:out value="${list2[i]}"/>,<c:out value="${list2[i]}"/>)
+                                                                for (var i=0; i < list2.length ;++i){
 
-                                                        <c:set value="${i+1}" var="i"/>
-                                                        </c:forEach>
-                                                        } else {        <c:set value="0" var="i"/>
-                                                        <c:forEach items="${list3}" var="testArray">
-                                                            list2.options[i] = new Option(<c:out value="${list3[i]}"/>,<c:out value="${list3[i]}"/>)
 
-                                                        <c:set value="${i+1}" var="i"/>
-                                                        </c:forEach>
+                                                                    combo2.list2.options[i] = new Option(list2[i],list2[i]);
+                                                                }
+
+
+
+                                                                break;
+                                                            case 1:
+                                                                for (var i=0; i < list3.length ;++i){
+
+
+                                                                    combo2.list2.options[i] = new Option(list3[i],list3[i]);
+                                                                }
+
 
                                                         }
 
-                                                        list2.options
+
 
                                                     }
 
