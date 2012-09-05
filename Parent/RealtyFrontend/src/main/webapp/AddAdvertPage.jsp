@@ -5,7 +5,7 @@
        scope="session"/>
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="org.realty.Translations"/>
-
+<c:set var="adv" value="${advDTO}"/>
 
 <html lang="${language}">
 
@@ -71,59 +71,70 @@
 
                                         <fieldset>
                                             <legend>
-                                                <b><fmt:message key="advert.label.add" /></b>
+                                                <b><fmt:message key="advert.label.add"/></b>
                                             </legend>
                                             <form id="form1" action="RealtyServlet">
                                                 <table>
                                                     <tr>
-                                                        <td><fmt:message key="advert.label.category" />:
+                                                        <td><fmt:message key="advert.label.category"/>:
                                                         <td>
                                                         <td><input type="text" size="30" name="category" id="1"></td>
                                                     </tr>
 
+                                                    <tr>
+                                                        <td>Rooms:
+                                                        <td>
+                                                        <td><input type="text" size="30" name="rooms" id="7"></td>
+                                                    </tr>
 
                                                     <tr>
-                                                        <td><fmt:message key="advert.label.adress" />:
-                                                        <td>
-                                                        <td><input type="text" size="30" name="adress" id="4"></td>
+                                                        <td><select name="adressId" id="adressId"
+                                                                    style="visibility:hidden;">
+
+
+                                                            <option value="<c:out value="${adv.adressId}"/>"><c:out
+                                                                    value="${adv.adressId}"/></option>
+
+
+                                                        </select></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><fmt:message key="advert.label.coast" />:
+                                                        <td><fmt:message key="advert.label.coast"/>:
                                                         <td>
                                                         <td><input type="text" size="30" name="coast" id="5"></td>
                                                     </tr>
 
                                                     <tr>
-                                                        <td><fmt:message key="advert.label.description" />:
+                                                        <td><fmt:message key="advert.label.description"/>:
                                                         <td>
                                                         <td><input type="text" size="90" name="description" id="6"></td>
                                                     </tr>
 
                                                     <tr>
-                                                        <td><fmt:message key="advert.label.user" />:</td>
-                                                        <td><select name="userId" id="userId">
+
+                                                        <td><select name="userId" id="userId"
+                                                                    style="visibility:hidden;">
 
 
-                                                            <c:forEach var="usr" items="${alladvertsusers}">
-                                                                <c:if test="${usr.userId!=null }">
-                                                                    <option value="<c:out value="${usr.userId}"/>"><c:out value="${usr.name}"/></option>
-                                                                </c:if>
-                                                            </c:forEach>
+                                                            <option value="<c:out value="${adv.userId}"/>"><c:out
+                                                                    value="${adv.userId}"/></option>
+
 
                                                         </select></td>
 
 
                                                     </tr>
 
+
+
                                                 </table>
-                                                <br /> <input type="submit" value=<fmt:message key="button.add" /> /> <input type="hidden"
-                                                                                                                             name="command" value="addAdvert" />
+                                                <br/> <input type="submit" value=
+                                            <fmt:message key="button.add"/>/> <input type="hidden"
+                                                                                     name="command" value="addAdvert"/>
 
                                             </form>
 
                                         </fieldset>
-
-
 
 
                                     </td>

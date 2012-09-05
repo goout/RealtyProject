@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddCommentPageCommand implements Command {
+public class CommentCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request,

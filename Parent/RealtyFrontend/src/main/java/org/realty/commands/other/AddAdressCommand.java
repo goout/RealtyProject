@@ -11,9 +11,11 @@ import org.realty.entity.Adress;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
-public class AddAdrCom implements Command {
+public class AddAdressCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request,
@@ -21,7 +23,7 @@ public class AddAdrCom implements Command {
     AdressJdbcDAO adrDao = new AdressJdbcDAO();
 
 
-
+    HttpSession session = request.getSession();
 
     String city = request.getParameter("city");
 
@@ -39,12 +41,20 @@ public class AddAdrCom implements Command {
         adress.setHouseNum(Integer.parseInt(homeNum));
         adress.setApartmentNum(Integer.parseInt(apartmentNum));
 
-
     adrDao.add(adress);
 
 
-    return CommandFactory.getCommand("allAdvert")
-            .execute(request, response);
+         List<Adress> adressList = adrDao.findAll();
+         Adress lastAdr = adressList.get(adressList.size()-1);
+         Long adressId = lastAdr.getAdressId();
+        System.out.printf("%d",adressId);
 
+
+        session.setAttribute("adressId", adressId);
+
+
+
+    return CommandFactory.getCommand("advert").execute(request, response);
+     // return "AddAdvertPage.jsp";
     }
 }

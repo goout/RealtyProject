@@ -33,9 +33,10 @@ public class CommandFactory {
 			put("LogOut", new LogOutCommand());
             put("userPage", new UserPageCommand());
             put("advertPage", new AdvertPageCommand());
-            put("commentPage", new AddCommentPageCommand());
+            put("commentPage", new CommentCommand());
             put("adress", new AdressCommand());
-            put("addAdress", new AddAdrCom());
+            put("addAdress", new AddAdressCommand());
+            put("advert", new AdvertCommand());
 		}
 	};
 
@@ -61,6 +62,7 @@ public class CommandFactory {
             put("commentPage", LOG_ADM);
             put("adress", LOG_ADM);
             put("addAdress", LOG_ADM);
+            put("advert", LOG_ADM);
         }
     };
 

@@ -34,7 +34,7 @@ public class AddAdvertCommand implements Command {
         advert.setRooms(Integer.parseInt(rooms));
 		ad.add(advert);
 
-		return CommandFactory.getCommand("allAdvert")
+		return CommandFactory.getCommand("userPage")
 				.execute(request, response);
 
 	}
