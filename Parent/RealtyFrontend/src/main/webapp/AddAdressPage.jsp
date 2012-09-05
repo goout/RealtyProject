@@ -6,7 +6,6 @@
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="org.realty.Translations"/>
 
-<c:set var="adr" value="${adressDto}"/>
 
 
 <html lang="${language}">
@@ -75,13 +74,18 @@
                                             <legend>
                                                 <b><fmt:message key="adress.subhead"/></b>
                                             </legend>
-                                            <form id="form1" action="RealtyServlet">
+                                            <form id="form1" name="doublecombo" action="RealtyServlet">
                                                 <table>
-                                                    <tr>
+                                                        <tr>
                                                         <td><fmt:message key="adress.label.city"/>:
-                                                        <td><select name="city" id="1" style="width:110px">
-                                                            <option value="select">Change City...</option>
-                                                            <option value="1"><c:out value="${adr.cityName}"/></option>
+                                                        <td><select name="city" id="1" style="width:110px" onchange="ChanGeValue()">
+                                                        <%--<option value="select">Change City...</option>--%>
+                                                    <%--     <c:forEach items="${cityList}" var="city">
+                                                        <option value="<c:out value="${city.cityId}"/>"><c:out value="${city.cityName}"/></option>
+                                                        </c:forEach>--%>
+                                                            <option value="12">25</option>
+                                                            <option value="14">24</option>
+                                                            <option value="2">45</option>
                                                         </select></td>
                                                     </tr>
 
@@ -89,20 +93,22 @@
                                                     <tr>
                                                         <td><fmt:message key="adress.label.district"/>:
                                                         <td><select name="district" id="2"  style="width:130px">  <!--onchange="ChanGeValue()"-->
-                                                            <option value="select">Change District...</option>
-                                                            <option value="5"><c:out value="${adr.districtName}"/></option>
+                                                           <%-- <option value="select">Change District...</option>--%>
+                                                        <%--<c:forEach items="${cityList.districts}" var="cDistr">--%>
+                                                            <option value="1">2</option>
+                                                        <%--</c:forEach>--%>
                                                         </select></td>
                                                     </tr>
 
                                                     <tr>
 
-                                                        <td><fmt:message key="adress.label.street"/>:
+                                                   <%--     <td><fmt:message key="adress.label.street"/>:
                                                         <td><select name="street" id="3" style="width:130px">
                                                             <option value="select">Change Street...</option>
-                                                        <c:forEach items="${adressDto.streets}" var="str">
-                                                            <option value="<c:out value="${str.streetId}"/>"><c:out value="${str.streetName}"/></option>
+                                                        <c:forEach items="${cityList.districts.streets}" var="cDS">
+                                                            <option value="<c:out value="${cDS.streetId}"/>"><c:out value="${cDS.streetName}"/></option>
                                                         </c:forEach>
-                                                        </select></td>
+                                                        </select></td>--%>
 
                                                     </tr>
 
@@ -130,19 +136,20 @@
                                                 <br/> <input type="submit" value=
                                             <fmt:message key="button.add"/>> <input type="hidden"
                                                                                     name="command" value="addAdress"/>
+                                                <script>
+
+                                                    var temp=document.doublecombo.district
+                                                    function ChanGeValue(){
+                                                        var sel = document.doublecombo.city;
+                                                        var opt = sel.options[sel.selectedIndex].value;
+                                                        /*var txt = sel.options[sel.selectedIndex].text;*/
+                                                        temp.options[sel.selectedIndex].selected=true
+                                                    }
+                                                </script>
                                             </form>
 
 
-                                            <!--     <script>
 
-                                                var temp=document.doublecombo.street
-                                                function ChanGeValue(){
-                                                    var sel = document.doublecombo.district;
-                                                    var opt = sel.options[sel.selectedIndex].value;
-
-                                                    temp.options[sel.selectedIndex].selected=true
-                                                }
-                                            </script>   -->
 
                                         </fieldset>
 
