@@ -75,74 +75,79 @@
                                             <legend>
                                                 <b><fmt:message key="adress.subhead"/></b>
                                             </legend>
-                                            <form id="form1" action="RealtyServlet">
+                                            <form id="form1" name="combo" action="RealtyServlet">
                                                 <table>
                                                     <tr>
                                                         <td><fmt:message key="adress.label.city"/>:
-                                                        <td><select name="city" id="1" style="width:110px">
+                                                        <td><select name="city" id="1" onchange="chanGe()"  style="width:110px" >
                                                             <option value="select">Change City...</option>
-                                                            <option value="1"><c:out value="${adr.cityName}"/></option>
+                                                            <c:forEach items="${cityList}" var="city">
+                                                            <option value="<c:out value="${city.cityId}"/>"><c:out value="${city.cityName}"/></option>
+                                                            </c:forEach>
                                                         </select></td>
                                                     </tr>
 
 
                                                     <tr>
                                                         <td><fmt:message key="adress.label.district"/>:
-                                                        <td><select name="district" id="2"  style="width:130px">  <!--onchange="ChanGeValue()"-->
+                                                        <td><select name="district" id="2"  style="width:130px">
                                                             <option value="select">Change District...</option>
-                                                            <option value="5"><c:out value="${adr.districtName}"/></option>
+
                                                         </select></td>
                                                     </tr>
 
                                                     <tr>
 
-                                                        <td><fmt:message key="adress.label.street"/>:
+                                                        <td>Street:
                                                         <td><select name="street" id="3" style="width:130px">
                                                             <option value="select">Change Street...</option>
-                                                        <c:forEach items="${adressDto.streets}" var="str">
-                                                            <option value="<c:out value="${str.streetId}"/>"><c:out value="${str.streetName}"/></option>
-                                                        </c:forEach>
+
+                                                            <option value=1>2</option>
+
                                                         </select></td>
 
-                                                    </tr>
-
-
-                                                    <tr>
-                                                        <td><fmt:message key="adress.label.home" />:
-
-                                                        <td><input type="text" size="10" name="homeNum" id="4"></td>
 
                                                     </tr>
-
-
-
-                                                    <tr>
-                                                        <td><fmt:message key="adress.label.apartment" />:
-
-                                                        <td><input type="text" size="10" name="apartmentNum" id="5"></td>
-
-
-                                                    </tr>
-
 
 
                                                 </table>
                                                 <br/> <input type="submit" value=
                                             <fmt:message key="button.add"/>> <input type="hidden"
                                                                                     name="command" value="addAdress"/>
+
+                                                <script>
+
+                                                    var group=new Array()
+                                                    group[0]=new Option("Second List","0")
+
+
+                                                    var temp=document.combo.district
+
+                                                    function chanGe(){
+
+                                                        var sel = document.combo.city;
+                                                        var opt = sel.options[sel.selectedIndex].value;
+                                                        var txt = sel.options[sel.selectedIndex].text;
+
+                                                        group[group.length]= new Option(txt,opt);
+
+                                                        for (m=temp.options.length-1;m>0;m--)
+                                                            temp.options[m]=null
+                                                        for (i=0;i<group.length;i++){
+                                                            temp.options[i]=new Option(group[i].text,group[i].value)
+                                                        }
+                                                        temp.options[0].selected=true
+                                                    }
+
+                                                </script>
+
+
+
+
                                             </form>
 
 
-                                            <!--     <script>
 
-                                                var temp=document.doublecombo.street
-                                                function ChanGeValue(){
-                                                    var sel = document.doublecombo.district;
-                                                    var opt = sel.options[sel.selectedIndex].value;
-
-                                                    temp.options[sel.selectedIndex].selected=true
-                                                }
-                                            </script>   -->
 
                                         </fieldset>
 
