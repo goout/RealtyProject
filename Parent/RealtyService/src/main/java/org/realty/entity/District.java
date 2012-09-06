@@ -1,8 +1,13 @@
 package org.realty.entity;
 
 
+import javax.persistence.*;
 import java.util.List;
 
+
+@Entity
+@Table(name = "district")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class District {
 
     private long districtId;
@@ -13,6 +18,9 @@ public class District {
 
     }
 
+    @Id
+    @Column(name="districtId")
+    @GeneratedValue
     public long getDistrictId() {
         return districtId;
     }
@@ -29,6 +37,10 @@ public class District {
         this.districtName = districtName;
     }
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "district_street", joinColumns = {
+            @JoinColumn(name = "districtId") }, inverseJoinColumns = {
+            @JoinColumn(name = "streetId") })
     public List<Street> getStreets() {
         return streets;
     }

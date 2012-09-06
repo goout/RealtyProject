@@ -4,8 +4,9 @@ package org.realty;
 import org.realty.dao.*;
 import org.realty.dto.AdvertUserDTO;
 import org.realty.entity.*;
-import org.realty.hibernate.UserHibDAO;
+import org.realty.hibernate.*;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,76 @@ public class App {
         testHib.setAdmin(false);
 
         test.create(testHib);
+
+
+        AdvertHibDAO advert = new AdvertHibDAO();
+
+        Advert advtest = new Advert();
+        advtest.setAddedDate(new Date(System.currentTimeMillis()));
+        advtest.setAdressId(1L);
+        advtest.setCategory("Sale");
+        advtest.setCoast(120);
+        advtest.setDescription("good hibernate test ))");
+        advtest.setRooms(2);
+        advtest.setUserId(1L);
+
+        advert.create(advtest);
+
+        CommentHibDAO comment = new CommentHibDAO();
+
+        Comment comtest = new Comment();
+        comtest.setText("text test text test text test text test text test text test  ");
+        comtest.setUserId(1L);
+        comtest.setAdvertId(1l);
+
+        comment.create(comtest);
+
+        AdressHibDAO adress = new AdressHibDAO();
+
+        Adress adrtest = new Adress();
+        adrtest.setCityId(1L);
+        adrtest.setDistrictId(1L);
+        adrtest.setStreetId(1L);
+        adrtest.setHouseNum(14);
+        adrtest.setApartmentNum(55);
+
+        adress.create(adrtest);
+
+
+        Street street = new Street();
+        street.setStreetName("Chkalova");
+
+        List<Street> strList = new ArrayList<Street>();
+        strList.add(street);
+
+
+        District district = new District();
+        district.setDistrictName("district1");
+        district.setStreets(strList);
+
+        List<District> disList = new ArrayList<District>();
+        disList.add(district);
+
+
+        City city = new City();
+        city.setCityName("Vitebsk");
+        city.setDistricts(disList);
+
+        CityHibDAO cityDAO = new CityHibDAO();
+        cityDAO.create(city);
+
+        DistrictHibDAO districtDAO = new DistrictHibDAO();
+        districtDAO.create(district);
+
+        StreetHibDAO streetDAO =new StreetHibDAO();
+        streetDAO.create(street);
+
+
+
+
+
+
+
 
 
 

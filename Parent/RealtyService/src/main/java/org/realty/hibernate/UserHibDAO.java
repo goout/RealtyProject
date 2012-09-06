@@ -9,7 +9,7 @@ import java.util.List;
 public class UserHibDAO extends HibernateDAO<User> {
 
     @SuppressWarnings("unchecked")
-    public List<User> getAllUserss() {
+    public List<User> getAllUsers() {
         begin();
         Query query = getSession().createQuery("FROM User");
         List<User> LST = query.list();

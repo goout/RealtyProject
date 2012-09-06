@@ -1,7 +1,10 @@
 package org.realty.entity;
 
+import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
+@Table(name="advert")
 public class Advert {
 
 	private Date addedDate;
@@ -18,24 +21,31 @@ public class Advert {
 
 	}
 
+    @Column(name="added_date")
 	public Date getAddedDate() {
 		return addedDate;
 	}
 
 
-
+    @Column(name="category")
 	public String getCategory() {
 		return category;
 	}
 
+    @Column(name="coast")
 	public int getCoast() {
 		return coast;
 	}
 
+    @Column(name="description")
 	public String getDescription() {
 		return description;
 	}
 
+
+    @Id
+    @Column(name="advert_id")
+    @GeneratedValue
 	public Long getAdvertId() {
 		return advertId;
 	}
@@ -63,6 +73,7 @@ public class Advert {
 		advertId = newVal;
 	}
 
+    @Column(name="user_id")
 	public Long getUserId() {
 		return userId;
 	}
@@ -71,7 +82,7 @@ public class Advert {
 		this.userId = userId;
 	}
 
-
+    @Column(name="rooms")
     public int getRooms() {
         return rooms;
     }
@@ -79,7 +90,7 @@ public class Advert {
     public void setRooms(int rooms) {
         this.rooms = rooms;
     }
-
+    @Column(name="adressId")
     public Long getAdressId() {
         return adressId;
     }

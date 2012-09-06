@@ -1,6 +1,11 @@
 package org.realty.entity;
 
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "street")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Street {
 
     private long streetId;
@@ -9,7 +14,9 @@ public class Street {
     public Street(){
 
     }
-
+    @Id
+    @Column(name="streetId")
+    @GeneratedValue
     public long getStreetId() {
         return streetId;
     }

@@ -1,6 +1,9 @@
 package org.realty.entity;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name="adress")
 public class Adress {
 
     private Long adressId;
@@ -14,7 +17,9 @@ public class Adress {
     public Adress() {
     }
 
-
+    @Id
+    @Column(name="adressId")
+    @GeneratedValue
     public Long getAdressId() {
         return adressId;
     }
@@ -22,7 +27,7 @@ public class Adress {
     public void setAdressId(Long adressId) {
         this.adressId = adressId;
     }
-
+    @Column(name="apartmentNum")
     public int getApartmentNum() {
         return apartmentNum;
     }
@@ -30,7 +35,7 @@ public class Adress {
     public void setApartmentNum(int apartmentNum) {
         this.apartmentNum = apartmentNum;
     }
-
+    @Column(name="cityId")
     public Long getCityId() {
         return cityId;
     }
@@ -38,7 +43,7 @@ public class Adress {
     public void setCityId(Long cityId) {
         this.cityId = cityId;
     }
-
+    @Column(name="districtId")
     public Long getDistrictId() {
         return districtId;
     }
@@ -46,7 +51,7 @@ public class Adress {
     public void setDistrictId(Long districtId) {
         this.districtId = districtId;
     }
-
+    @Column(name="houseNum")
     public int getHouseNum() {
         return houseNum;
     }
@@ -54,7 +59,7 @@ public class Adress {
     public void setHouseNum(int houseNum) {
         this.houseNum = houseNum;
     }
-
+    @Column(name="streetId")
     public Long getStreetId() {
         return streetId;
     }

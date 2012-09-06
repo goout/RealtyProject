@@ -31,6 +31,12 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
         <mapping class="org.realty.entity.User"/>
+        <mapping class="org.realty.entity.Advert"/>
+        <mapping class="org.realty.entity.Comment"/>
+        <mapping class="org.realty.entity.Adress"/>
+        <mapping class="org.realty.entity.City"/>
+        <mapping class="org.realty.entity.District"/>
+        <mapping class="org.realty.entity.Street"/>
 
 
 
