@@ -36,8 +36,6 @@ public class App {
 
         }
 
-
-
         DistrictJdbcDAO dd = new DistrictJdbcDAO();
         List<District> dL = dd.findAll();
 
@@ -49,9 +47,6 @@ public class App {
             for (Street d :sl){
                 out.printf("%s \n",d.getStreetName());
             }
-
-
-
         }
 
         UserHibDAO test = new UserHibDAO();
