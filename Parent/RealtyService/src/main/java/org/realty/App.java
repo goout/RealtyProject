@@ -4,6 +4,7 @@ package org.realty;
 import org.realty.dao.*;
 import org.realty.dto.AdvertUserDTO;
 import org.realty.entity.*;
+import org.realty.hibernate.UserHibDAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -53,6 +54,15 @@ public class App {
 
         }
 
+        UserHibDAO test = new UserHibDAO();
+
+        User testHib = new User();
+        testHib.setName("testHib");
+        testHib.setPassword("12345");
+        testHib.setPhoneNumber("258456");
+        testHib.setAdmin(false);
+
+        test.create(testHib);
 
 
 

@@ -1,5 +1,11 @@
 package org.realty.entity;
 
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="user")
 public class User {
 
 	private Long userId;
@@ -12,19 +18,22 @@ public class User {
 	public User() {
 
 	}
-
+    @Id
+    @Column(name="user_id")
+    @GeneratedValue
 	public Long getUserId() {
 		return userId;
 	}
-
+    @Column(name="name")
 	public String getName() {
 		return name;
 	}
 
+    @Column(name="passwordt")
 	public String getPassword() {
 		return password;
 	}
-
+    @Column(name="phone_number")
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -46,7 +55,7 @@ public class User {
 		phoneNumber = newVal;
 	}
 
-
+    @Column(name="admin")
     public Boolean getAdmin() {
         return admin;
     }

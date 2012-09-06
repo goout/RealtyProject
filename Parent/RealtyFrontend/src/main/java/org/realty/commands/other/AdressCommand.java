@@ -30,7 +30,7 @@ public class AdressCommand implements Command {
         City city = cityDao.getDomainById(1L);
 
         DistrictJdbcDAO districtDao = new DistrictJdbcDAO();
-        District district = districtDao.getDomainById(2L);
+        District district = districtDao.getDomainById(5L);
 
         AdressDTO adressDto = new AdressDTO();
         adressDto.setCityName(city.getCityName());

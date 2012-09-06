@@ -25,18 +25,26 @@ public class AdvertPageCommand implements Command {
         HttpSession session = request.getSession();
 
         AdvertJdbcDAO ad = new AdvertJdbcDAO();
+        Long aid = null;
 
-        if (session.getAttribute("advertId") == null) {
+
+  /*      if (session.getAttribute("advertId") == null) {
             Long advertId = Long.parseLong(request.getParameter("advertId"));
             session.setAttribute("advertId", advertId);
-        }
+        }*/
 
-        Long aid = (Long)session.getAttribute("advertId");
+
+        if(request.getParameter("advertId")==null){
+        aid = (Long)session.getAttribute("advertId");
+        }  else   aid = Long.parseLong(request.getParameter("advertId"));
+        session.setAttribute("advertId", aid);
+
 
         Advert advert = ad.getDomainById(aid);
         AdvertUserAdressDTO allAdvertsUsrAdrDto = createDTO(advert);
 
         request.setAttribute("allAdvertsUsrAdrDto", allAdvertsUsrAdrDto);
+
 
 
         return "AdvertPage.jsp";

@@ -17,6 +17,7 @@
 
 </head>
 
+<c:set var="commandForPage" value="advert" scope="request"/>
 
 <body>
 
