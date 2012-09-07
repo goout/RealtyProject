@@ -6,151 +6,176 @@
 
 <html lang="${language}">
 
-
+<link href="style.css" rel="stylesheet" type="text/css">
 
 <head>
-    <title><fmt:message key="advert.title" /></title>
-</head>
 
+    <title><fmt:message key="advert.title" /></title>
+
+</head>
 <c:set var="commandForPage" value="allAdvert" scope="request"/>
-<jsp:include page="Language.jsp" flush="true" />
+
 
 <body>
 
-	<div id="head">
+<br>
+<table width="1000" height="0" border="1" align="center" cellpadding="5" cellspacing="0" style="color:#dcdcdc;  background-color:#FFFFFf"><tr><td>
 
-		<form id="form2" action="RealtyServlet">
-		<input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'" />
+    <div id="kn">
+        <li><img src="images/logo2.jpg"></li>
+        <li><jsp:include page="Language.jsp" flush="true" /></li>
+        <li><a href="RealtyServlet?command=allUser"><span><fmt:message key="menu.user" /></span></a></li>
+        <li><a href="#"><span><fmt:message key="menu.advert" /></span></a></li>
+        <li><a href="RealtyServlet?command=allComment"><span><fmt:message key="menu.comment" /></span></a></li>
+        <li>  <input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'" /></li>
+        <li></li>
+        <li>  <div id="head">
 
+            <h2><fmt:message key="advert.subhead"/></h2>
+        </div></li>
+    </div>
 
-		<h1><fmt:message key="advert.head" /></h1>
-		<h2><fmt:message key="advert.subhead" /></h2>
-		<br />
-	</div>
+</td></table>
 
-	<div id="content">
-
-		<div id="menu2">
-			<br />
-			<ul id="menu">
-
-				<li><a href="RealtyServlet?command=allUser"><span><fmt:message key="menu.user" /></span></a></li>
-
-				<li><a href="#"><span><fmt:message key="menu.advert" /></span></a></li>
-
-				<li><a href="RealtyServlet?command=allComment"><span><fmt:message key="menu.comment" /></span></a></li>
-
-			</ul>
-
-		</div>
-
-
-		<div id="table">
-			<br />
-		<form id="form3" action="RealtyServlet">
-			<table border="2" frame="below" width="100%" bordercolor=red>
-				<thead>
-					<tr>
-						<td width="100">AddedDate</td>
-
-						<td width="100">Category</td>
+<table width="1000" height="0" border="0" cellpadding="5" cellspacing="0" align="center"  style="background-color:#ffffff"><tr><td>
 
 
 
-						<td width="30">Coast</td>
+    <table width="1000" height="0" border="0" cellpadding="5"  style="background-color:#98FB98"><tr><td>
+        <div id="head2">
 
-						<td width="200">Description</td>
-
-						<td width="50">AdvertId</td>
-
-						<td width="50">UserId</td>
-
-						<td width="50"></td>
-					</tr>
-				</thead>
-                Advert from request: <c:out value="${rootAdvert.description}" />
-                </br>
-                </br>
-                </br>
-				<c:forEach items="${alladvertsusers}" var="adv">
-                    <c:if test="${adv.userId==null }">
-					<tr>
-						<TD><c:out value="${adv.addedDate}" /></TD>
-						<TD><c:out value="${adv.category}" /></TD>
-
-						<TD><c:out value="${adv.coast}" /></TD>
-						<TD><c:out value="${adv.description}" /></TD>
-						<TD><c:out value="${adv.advertId}" /></TD>
-						<TD><c:out value="${adv.advertUserId}" /></TD>
-
-						<td width="100"><a
-							href="<c:url value='RealtyServlet?delAdvertId=${adv.advertId}&command=delAdvert' />">Del</a></td>
-
-					
-					</tr>
-                    </c:if>
-				</c:forEach>
-
-			</table>
-</form>
-
-			<br /> <br /> <br />
-			<fieldset>
-				<legend>
-					<b><fmt:message key="advert.label.add" /></b>
-				</legend>
-				<form id="form1" action="RealtyServlet">
-					<table>
-						<tr>
-							<td><fmt:message key="advert.label.category" />:
-							<td>
-							<td><input type="text" size="30" name="category" id="1"></td>
-						</tr>
+            <h2><fmt:message key="advert.subhead"/></h2>
+        </div>
 
 
-						<tr>
-							<td><fmt:message key="advert.label.coast" />:
-							<td>
-							<td><input type="text" size="30" name="coast" id="5"></td>
-						</tr>
-
-						<tr>
-							<td><fmt:message key="advert.label.description" />:
-							<td>
-							<td><input type="text" size="90" name="description" id="6"></td>
-						</tr>
-
-						<tr>
-							<td><fmt:message key="advert.label.user" />:</td>
-							<td><select name="userId" id="userId">
+        <div id="content">
 
 
-									<c:forEach var="usr" items="${alladvertsusers}">
+
+
+            <div id="table" style="width:1000px; height:640px; overflow:auto;">
+
+                <form id="form3" action="RealtyServlet">
+                    <table border="2" frame="below" width="100%" bordercolor=red>
+                        <thead>
+                        <tr>
+                            <td width="100">AddedDate</td>
+
+                            <td width="100">Category</td>
+
+
+
+                            <td width="30">Coast</td>
+
+                            <td width="200">Description</td>
+
+                            <td width="50">AdvertId</td>
+
+                            <td width="50">UserId</td>
+
+                            <td width="50"></td>
+                        </tr>
+                        </thead>
+                        Advert from request: <c:out value="${rootAdvert.description}" />
+                        </br>
+                        </br>
+                        </br>
+                        <c:forEach items="${alladvertsusers}" var="adv">
+                            <c:if test="${adv.userId==null }">
+                                <tr>
+                                    <TD><c:out value="${adv.addedDate}" /></TD>
+                                    <TD><c:out value="${adv.category}" /></TD>
+
+                                    <TD><c:out value="${adv.coast}" /></TD>
+                                    <TD><c:out value="${adv.description}" /></TD>
+                                    <TD><c:out value="${adv.advertId}" /></TD>
+                                    <TD><c:out value="${adv.advertUserId}" /></TD>
+
+                                    <td width="100"><a
+                                            href="<c:url value='RealtyServlet?delAdvertId=${adv.advertId}&command=delAdvert' />">Del</a></td>
+
+
+                                </tr>
+                            </c:if>
+                        </c:forEach>
+
+                    </table>
+                </form>
+
+                <br /> <br /> <br />
+                <fieldset>
+                    <legend>
+                        <b><fmt:message key="advert.label.add" /></b>
+                    </legend>
+                    <form id="form1" action="RealtyServlet">
+                        <table>
+                            <tr>
+                                <td><fmt:message key="advert.label.category" />:
+                                <td>
+                                <td><input type="text" size="30" name="category" id="1"></td>
+                            </tr>
+
+
+                            <tr>
+                                <td><fmt:message key="advert.label.coast" />:
+                                <td>
+                                <td><input type="text" size="30" name="coast" id="5"></td>
+                            </tr>
+
+                            <tr>
+                                <td><fmt:message key="advert.label.description" />:
+                                <td>
+                                <td><input type="text" size="90" name="description" id="6"></td>
+                            </tr>
+
+                            <tr>
+                                <td><fmt:message key="advert.label.user" />:</td>
+                                <td><select name="userId" id="userId">
+
+
+                                    <c:forEach var="usr" items="${alladvertsusers}">
                                         <c:if test="${usr.userId!=null }">
-										<option value="<c:out value="${usr.userId}"/>"><c:out value="${usr.name}"/></option>
+                                            <option value="<c:out value="${usr.userId}"/>"><c:out value="${usr.name}"/></option>
                                         </c:if>
                                     </c:forEach>
 
-							</select></td>
+                                </select></td>
 
 
-						</tr>
+                            </tr>
 
-					</table>
-					<br /> <input type="submit" value=<fmt:message key="button.add" /> /> <input type="hidden"
-						name="command" value="addAdvert" />
+                        </table>
+                        <br /> <input type="submit" value=<fmt:message key="button.add" /> /> <input type="hidden"
+                                                                                                     name="command" value="addAdvert" />
 
-				</form>
+                    </form>
 
-			</fieldset>
-			
+                </fieldset>
 
 
-		</div>
 
-	</div>
 
-	<br>
+
+            </div>
+
+            </div>
+
+
+    </td></table>
+</td></table>
+
+
+
+
+<c:set var="commandForPage" value="indexGuest" scope="request"/>
+
+
+<center><div id="niz">
+    <span class="cop"></span>
+</div></center>
+
+
+
 
 
 
