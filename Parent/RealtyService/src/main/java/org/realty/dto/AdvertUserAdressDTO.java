@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AdvertUserAdressDTO implements Serializable {
 
-    private Date addedDate;
+    private String addedDate;
     private String category;
     private Long advertAdressId;
     private int coast;
@@ -43,11 +43,11 @@ public class AdvertUserAdressDTO implements Serializable {
 
 
 
-    public Date getAddedDate() {
+    public String getAddedDate() {
         return addedDate;
     }
 
-    public void setAddedDate(Date addedDate) {
+    public void setAddedDate(String addedDate) {
         this.addedDate = addedDate;
     }
 

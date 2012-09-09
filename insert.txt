@@ -1,0 +1,239 @@
+INSERT INTO USER
+(name, password, phone_number, admin)
+VALUES
+("Curt Cobein", "nirvana", "5267890", true);
+INSERT INTO USER
+(name, password, phone_number, admin)
+VALUES
+("Ivan Petrov", "df144b", "2134567", false);
+INSERT INTO USER
+(name, password, phone_number, admin)
+VALUES
+("Hleb", "%1234", "5123449", true);
+INSERT INTO USER
+(name, password, phone_number, admin)
+VALUES
+("Yura Antipov", "fog1678", "9414344", false);
+INSERT INTO USER
+(name, password, phone_number, admin)
+VALUES
+("Oleg Ivanov", "12354gh", "2268091", false);
+INSERT INTO USER
+(name, password, phone_number, admin)
+VALUES
+("Anna Berger", "anuta78", "2584568", false);
+INSERT INTO USER
+(name, password, phone_number, admin)
+VALUES
+("Danila", "brat222", "7181678", false);
+INSERT INTO USER
+(name, password, phone_number, admin)
+VALUES
+("Barack Obama", "niger98", "3459012", false);
+INSERT INTO USER
+(name, password, phone_number, admin)
+VALUES
+("Pavel Titov", "1fannin", "8901345", false);
+INSERT INTO USER
+(name, password, phone_number, admin)
+VALUES
+("Masha Pavlova", "sunset%6", "6442222", false);
+
+
+
+
+
+
+INSERT INTO CITY
+(cityName)
+VALUES
+("Minsk");
+INSERT INTO CITY
+(cityName)
+VALUES
+("Vitebsk");
+INSERT INTO CITY
+(cityName)
+VALUES
+("Mogilev");
+INSERT INTO CITY
+(cityName)
+VALUES
+("Gomel");
+INSERT INTO CITY
+(cityName)
+VALUES
+("Brest");
+INSERT INTO CITY
+(cityName)
+VALUES
+("Grodno");
+
+
+
+INSERT INTO DISTRICT
+(districtName, cityId)
+VALUES
+("Central'nyj", 1);
+INSERT INTO DISTRICT
+(districtName, cityId)
+VALUES
+("Frunzenskij", 1);
+INSERT INTO DISTRICT
+(districtName, cityId)
+VALUES
+("Sovetskij", 1);
+INSERT INTO DISTRICT
+(districtName, cityId)
+VALUES
+("Pervomajskij", 1);
+INSERT INTO DISTRICT
+(districtName, cityId)
+VALUES
+("Moskovskij", 1);
+
+INSERT INTO DISTRICT
+(districtName, cityId)
+VALUES
+("Oktjabr'skij", 2);
+INSERT INTO DISTRICT
+(districtName, cityId)
+VALUES
+("Pervomajskij", 2);
+
+INSERT INTO DISTRICT
+(districtName, cityId)
+VALUES
+("Leninskij", 3);
+
+INSERT INTO DISTRICT
+(districtName, cityId)
+VALUES
+("Sovetskij", 4);
+
+INSERT INTO DISTRICT
+(districtName, cityId)
+VALUES
+("Krepostnoj", 5);
+
+INSERT INTO DISTRICT
+(districtName, cityId)
+VALUES
+("Zarechnyj", 6);
+
+
+
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Gagarina", 1);
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Doroshevicha", 1);
+
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Korolja", 2);
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Tanka", 2);
+
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Chernyshevskogo", 3);
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Kolosa", 3);
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Hmel'nickogo", 3);
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Kalinina", 3);
+
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Gorodeckaja", 4);
+
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Nemiga", 5);
+
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Chkalova", 6);
+
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Titova", 7);
+
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Pavlova", 8);
+
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Moskovskaja", 9);
+
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Chajlytko", 10);
+
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Lenina", 11);
+
+INSERT INTO STREET
+(streetName, districtId)
+VALUES
+("Titova", 11);
+
+
+
+INSERT INTO ADRESS
+(cityId, districtId, streetId, houseNum, apartmentNum)
+VALUES
+(1, 1, 1, 14, 55);
+
+INSERT INTO ADRESS
+(cityId, districtId, streetId, houseNum, apartmentNum)
+VALUES
+(1, 2, 3, 12, 5);
+
+
+INSERT INTO ADVERT
+(added_date, category, adressId, rooms, coast, description, user_id)
+VALUES
+('2012-09-08 15:17:01', "Rent", 1, 2, 250, "Good apartment test test test test test test test test test test test test test test test test test",1);
+
+INSERT INTO ADVERT
+(added_date, category, adressId, rooms, coast, description, user_id)
+VALUES
+('2012-09-08 15:20:21', "Rent", 2, 3, 330, "Good apartment test test test test test test test test 2222 test test test test test test test test",2);
+
+
+INSERT INTO COMMENT
+(addedDate, text, user_id, advert_id)
+VALUES
+('2012-09-08 15:20:21', "comment1 )))", 3, 1);
+
+INSERT INTO COMMENT
+(addedDate, text, user_id, advert_id)
+VALUES
+('2012-09-10 15:20:21', "comment1 )))", 5, 2);
+

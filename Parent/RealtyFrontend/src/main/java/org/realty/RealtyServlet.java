@@ -4,6 +4,7 @@ import org.realty.commands.Command;
 import org.realty.commands.CommandFactory;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,8 +39,13 @@ public class RealtyServlet extends HttpServlet {
 			throws ServletException, IOException {
         String command = request.getParameter("command");
 		Command c = CommandFactory.getCommand(command);
-		String path = c.execute(request, response);
-		request.getRequestDispatcher(path).forward(request, response);
+        String path = null;
+        try {
+            path = c.execute(request, response);
+        } catch (ParseException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        request.getRequestDispatcher(path).forward(request, response);
 
 	}
 

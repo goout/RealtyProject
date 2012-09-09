@@ -12,14 +12,15 @@ public class District {
 
     private long districtId;
     private String districtName;
+    private long cityId;
     private List<Street> streets;
 
-    public District(){
+    public District() {
 
     }
 
     @Id
-    @Column(name="districtId")
+    @Column(name = "districtId")
     @GeneratedValue
     public long getDistrictId() {
         return districtId;
@@ -37,15 +38,28 @@ public class District {
         this.districtName = districtName;
     }
 
+    /*    @OneToMany(cascade = CascadeType.ALL)
+@JoinTable(name = "district_street", joinColumns = {
+ @JoinColumn(name = "districtId") }, inverseJoinColumns = {
+ @JoinColumn(name = "streetId") })*/
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "district_street", joinColumns = {
-            @JoinColumn(name = "districtId") }, inverseJoinColumns = {
-            @JoinColumn(name = "streetId") })
+    @JoinColumns({
+            @JoinColumn(name = "districtId", referencedColumnName = "districtId")
+    })
     public List<Street> getStreets() {
         return streets;
     }
 
     public void setStreets(List<Street> streets) {
         this.streets = streets;
+    }
+
+
+    public long getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(long cityId) {
+        this.cityId = cityId;
     }
 }

@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class AdvertUserDTO {
 
-    private Date addedDate;
+    private String addedDate;
     private String category;
     private int coast;
     private String description;
@@ -15,11 +15,11 @@ public class AdvertUserDTO {
     private String userName;
 
 
-    public Date getAddedDate() {
+    public String getAddedDate() {
         return addedDate;
     }
 
-    public void setAddedDate(Date addedDate) {
+    public void setAddedDate(String addedDate) {
         this.addedDate = addedDate;
     }
 

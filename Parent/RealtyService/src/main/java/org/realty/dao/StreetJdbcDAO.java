@@ -13,7 +13,7 @@ public class StreetJdbcDAO extends AbstractDAO<Street> {
     private static final String SQL_DELETE_STREET = "DELETE FROM Street WHERE streetId=?";
     private static final String SQL_ALL = "SELECT * FROM Street";
     private static final String SQL_DOMAIN_BY_ID = "SELECT * FROM Street WHERE streetId=?";
-    private static final String SQL_STREET_FOR_DIST ="SELECT streetId from city_distr_str WHERE cityDistrId=?";
+    private static final String SQL_STREET_FOR_DIST ="SELECT streetId from street WHERE districtId=?";
 
 
     public StreetJdbcDAO(){

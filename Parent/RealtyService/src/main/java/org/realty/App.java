@@ -8,7 +8,10 @@ import org.realty.hibernate.*;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import static java.lang.System.out;
@@ -53,19 +56,72 @@ public class App {
         UserHibDAO test = new UserHibDAO();
 
         User testHib = new User();
-        testHib.setName("testHib");
+        testHib.setName("testHibT2");
         testHib.setPassword("12345");
         testHib.setPhoneNumber("258456");
         testHib.setAdmin(false);
-
         test.create(testHib);
+
+
+
+        City city = new City();
+        city.setCityName("Vitebsk");
+        List<District> disList = new ArrayList<District>();
+        // disList.add(district);
+        city.setDistricts(disList);
+
+        CityHibDAO cityDAO = new CityHibDAO();
+        cityDAO.create(city);
+
+        District district = new District();
+        district.setDistrictName("district1");
+        List<Street> strList = new ArrayList<Street>();
+        //  strList.add(street);
+        district.setStreets(strList);
+        district.setCityId(5L);
+
+        DistrictHibDAO districtDAO = new DistrictHibDAO();
+        districtDAO.create(district);
+
+
+        Street street = new Street();
+        street.setStreetName("Chkalova");
+        street.setDistrictId(6L);
+
+
+        StreetHibDAO streetDAO =new StreetHibDAO();
+        streetDAO.create(street);
+
+
+        AdressHibDAO adress = new AdressHibDAO();
+
+        Adress adrtest = new Adress();
+        adrtest.setCity(city);
+        //adrtest.setCityId(5L);
+        adrtest.setDistrict(district);
+        //adrtest.setDistrictId(6L);
+        //adrtest.setStreetId(2L);
+        adrtest.setStreet(street);
+        adrtest.setHouseNum(14);
+        adrtest.setApartmentNum(55);
+
+        adress.create(adrtest);
+
+
+
 
 
         AdvertHibDAO advert = new AdvertHibDAO();
 
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+
+
         Advert advtest = new Advert();
-        advtest.setAddedDate(new Date(System.currentTimeMillis()));
-        advtest.setAdressId(1L);
+        advtest.setAddedDate(dateFormat.format(cal.getTime()));
+       // advtest.setAdressId(1L);
+        advtest.setAdress(adrtest);
         advtest.setCategory("Sale");
         advtest.setCoast(120);
         advtest.setDescription("good hibernate test ))");
@@ -77,51 +133,26 @@ public class App {
         CommentHibDAO comment = new CommentHibDAO();
 
         Comment comtest = new Comment();
+        comtest.setAddedDate(dateFormat.format(cal.getTime()));
         comtest.setText("text test text test text test text test text test text test  ");
         comtest.setUserId(1L);
         comtest.setAdvertId(1l);
 
         comment.create(comtest);
 
-        AdressHibDAO adress = new AdressHibDAO();
-
-        Adress adrtest = new Adress();
-        adrtest.setCityId(1L);
-        adrtest.setDistrictId(1L);
-        adrtest.setStreetId(1L);
-        adrtest.setHouseNum(14);
-        adrtest.setApartmentNum(55);
-
-        adress.create(adrtest);
 
 
-        Street street = new Street();
-        street.setStreetName("Chkalova");
-
-        List<Street> strList = new ArrayList<Street>();
-        strList.add(street);
 
 
-        District district = new District();
-        district.setDistrictName("district1");
-        district.setStreets(strList);
-
-        List<District> disList = new ArrayList<District>();
-        disList.add(district);
 
 
-        City city = new City();
-        city.setCityName("Vitebsk");
-        city.setDistricts(disList);
 
-        CityHibDAO cityDAO = new CityHibDAO();
-        cityDAO.create(city);
 
-        DistrictHibDAO districtDAO = new DistrictHibDAO();
-        districtDAO.create(district);
 
-        StreetHibDAO streetDAO =new StreetHibDAO();
-        streetDAO.create(street);
+
+
+
+
 
 
 

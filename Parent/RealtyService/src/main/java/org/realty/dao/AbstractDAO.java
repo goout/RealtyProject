@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +14,14 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 	public static final String driverClassName = "com.mysql.jdbc.Driver";
 	public static final String connectionUrl = "jdbc:mysql://localhost:3306/REALTY";
 	public static final String dbUser = "root";
-	public static final String dbPwd = "goout";
+	public static final String dbPwd = "1234";
 
 	Connection con = null;
 	PreparedStatement ptmt = null;
 	ResultSet rs = null;
 	
 
-	final public void add(DOMAIN arg) {
+	final public void add(DOMAIN arg) throws ParseException {
 
 		try {
 			connectionStep();
@@ -304,7 +305,7 @@ public abstract class AbstractDAO<DOMAIN extends Object> {
 
 	abstract protected void updateStep(DOMAIN arg, Long id) throws SQLException;
 
-	abstract protected void addStep(DOMAIN arg) throws SQLException;
+	abstract protected void addStep(DOMAIN arg) throws SQLException, ParseException;
 
 	abstract protected void deleteStep(Long id) throws SQLException;
 

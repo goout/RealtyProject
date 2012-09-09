@@ -15,8 +15,8 @@ public class DistrictJdbcDAO extends AbstractDAO<District> {
     private static final String SQL_DELETE_DISTRICT = "DELETE FROM District WHERE districtId=?";
     private static final String SQL_ALL = "SELECT * FROM District";
     private static final String SQL_DOMAIN_BY_ID = "SELECT * FROM District WHERE districtId=?";
-    private static final String SQL_DISTR_FOR_CITY ="SELECT districtId FROM city_district WHERE cityId=?";
-    private static final String SQL_CD_ID ="SELECT cityDistrId FROM city_district WHERE districtId=?";
+    private static final String SQL_DISTR_FOR_CITY ="SELECT districtId FROM district WHERE cityId=?";
+    private static final String SQL_CD_ID ="SELECT cityDistrId FROM city_district WHERE districtId=?"; //??
 
 
     public DistrictJdbcDAO(){
@@ -46,7 +46,7 @@ public class DistrictJdbcDAO extends AbstractDAO<District> {
         district.setDistrictName(rs.getString(2));
 
         DistrictJdbcDAO dd = new DistrictJdbcDAO();
-        Long cDId = dd.getCDId(rs.getLong(1));
+        Long cDId = rs.getLong(1);
 
         if(cDId != null){
         StreetJdbcDAO sd =new StreetJdbcDAO();

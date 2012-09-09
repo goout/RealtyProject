@@ -1,6 +1,7 @@
 package org.realty.commands.add;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ public class AddCommentCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response) throws ServletException, IOException, ParseException {
 
 		CommentJdbcDAO ad = new CommentJdbcDAO();
 		String text = request.getParameter("text");

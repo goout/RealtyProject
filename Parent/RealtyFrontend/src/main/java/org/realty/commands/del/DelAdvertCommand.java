@@ -1,6 +1,7 @@
 package org.realty.commands.del;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,7 @@ import org.realty.dao.AdvertJdbcDAO;
 public class DelAdvertCommand implements Command {
 
 	public String execute(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response) throws ServletException, IOException, ParseException {
 
 		AdvertJdbcDAO ad = new AdvertJdbcDAO();
 		String delAdvertId = request.getParameter("delAdvertId");

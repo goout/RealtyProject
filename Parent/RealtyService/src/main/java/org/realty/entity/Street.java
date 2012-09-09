@@ -10,6 +10,7 @@ public class Street {
 
     private long streetId;
     private String streetName;
+    private long districtId;
 
     public Street(){
 
@@ -31,5 +32,13 @@ public class Street {
 
     public void setStreetName(String streetName) {
         this.streetName = streetName;
+    }
+
+    public long getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(long districtId) {
+        this.districtId = districtId;
     }
 }

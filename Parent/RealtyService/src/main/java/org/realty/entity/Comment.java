@@ -2,6 +2,9 @@ package org.realty.entity;
 
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name = "comment")
@@ -9,9 +12,14 @@ public class Comment {
 
     //private String commentatorName;
     private int commentId;
+    private String addedDate;
     private String text;
     private Long userId;
     private Long advertId;
+
+  //     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+  //Date date = new Date();
+  //  dateFormat.format(date);
 
 
     public Comment() {
@@ -24,10 +32,12 @@ public class Comment {
     @Column(name = "comment_id")
     @GeneratedValue
     public int getCommentId() {
+
         return commentId;
     }
     @Column(name="text")
     public String getText() {
+
         return text;
     }
 
@@ -59,4 +69,12 @@ public class Comment {
         this.advertId = advertId;
     }
 
+    public String getAddedDate() {
+        return addedDate;
+    }
+
+    public void setAddedDate(String addedDate) {
+
+          this.addedDate = addedDate;
+    }
 }

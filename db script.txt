@@ -1,32 +1,30 @@
 CREATE DATABASE REALTY;
-CREATE TABLE User (user_id int AUTO_INCREMENT NOT NULL,name varchar(25),passwordt varchar(8),phone_number varchar(10),PRIMARY KEY (user_id));
-				   
-				   
-CREATE TABLE Comment (comment_id int AUTO_INCREMENT NOT NULL,text text,user_id int NOT NULL,advert_id int NOT NULL,PRIMARY KEY (comment_id),FOREIGN KEY (user_id) REFERENCES User(user_id),FOREIGN KEY (advert_id) REFERENCES Advert(advert_id));				   
 
-				   
-ALTER TABLE User ADD admin BOOL;
+CREATE TABLE User (user_id int AUTO_INCREMENT NOT NULL,
+name varchar(25) UNIQUE,
+password varchar(8),
+phone_number varchar(10),
+admin bool,
+PRIMARY KEY (user_id));		
 
-ALTER TABLE ADVERT ADD city VARCHAR(15);
+CREATE TABLE city(
+  cityId INT NOT NULL AUTO_INCREMENT,
+  cityName varchar(25),
+  PRIMARY KEY (cityId));
 
-ALTER TABLE User ADD Unique(name); 
+CREATE TABLE district(
+  districtId INT NOT NULL AUTO_INCREMENT,
+  districtName varchar(25),
+  cityId INT NOT NULL,
+  PRIMARY KEY (districtId),
+  FOREIGN KEY (cityId) REFERENCES city(cityId));
 
-
-
-
-CREATE TABLE advert(
-  advert_id INT NOT NULL AUTO_INCREMENT,
-  added_date DATE,
-  category VARCHAR(15),
-  adressId INT NOT NULL,
-  rooms INT,
-  coast INT,
-  description TEXT,
-  user_id INT NOT NULL,
-  PRIMARY KEY (advert_id),
-  FOREIGN KEY (user_id) REFERENCES User(user_id),
-  FOREIGN KEY (adressId) REFERENCES Adress(adressId));
-
+CREATE TABLE street(
+  streetId INT NOT NULL AUTO_INCREMENT,
+  streetName varchar(25),
+  districtId INT NOT NULL,
+  PRIMARY KEY (streetId),
+  FOREIGN KEY (districtId) REFERENCES district(districtId));
 
 
 CREATE TABLE adress(
@@ -42,28 +40,28 @@ CREATE TABLE adress(
   FOREIGN KEY (streetId) REFERENCES street(streetId));
 
 
-
-CREATE TABLE city(
-  cityId INT NOT NULL AUTO_INCREMENT,
-  cityName varchar(25),
-  PRIMARY KEY (cityId));
-
-
-
-
-CREATE TABLE district(
-  districtId INT NOT NULL AUTO_INCREMENT,
-  districtName varchar(25),
-  PRIMARY KEY (districtId));
-
-
-
-
-CREATE TABLE street(
-  streetId INT NOT NULL AUTO_INCREMENT,
-  streetName varchar(25),
-  PRIMARY KEY (streetId));
-
+CREATE TABLE advert(
+  advert_id INT NOT NULL AUTO_INCREMENT,
+  added_date DATETIME,
+  category VARCHAR(15),
+  adressId INT NOT NULL,
+  rooms INT,
+  coast INT,
+  description TEXT,
+  user_id INT NOT NULL,
+  PRIMARY KEY (advert_id),
+  FOREIGN KEY (user_id) REFERENCES User(user_id),
+  FOREIGN KEY (adressId) REFERENCES Adress(adressId));
+	   
+				   
+CREATE TABLE Comment (comment_id int AUTO_INCREMENT NOT NULL,
+addedDate DATETIME,
+text text,
+user_id int NOT NULL,
+advert_id int NOT NULL,
+PRIMARY KEY (comment_id),
+FOREIGN KEY (user_id) REFERENCES User(user_id),
+FOREIGN KEY (advert_id) REFERENCES Advert(advert_id));				   
 
 
 
@@ -74,8 +72,6 @@ CREATE TABLE city_district(
   PRIMARY KEY (cityDistrId),
   FOREIGN KEY (cityId) REFERENCES city(cityId),
   FOREIGN KEY (districtId) REFERENCES district(districtId));
-
-
 
 CREATE TABLE city_distr_str(
   cityDistrId INT NOT NULL,

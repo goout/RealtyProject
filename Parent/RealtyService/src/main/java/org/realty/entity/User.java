@@ -2,6 +2,7 @@ package org.realty.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -13,6 +14,7 @@ public class User {
 	private String password;
 	private String phoneNumber;
     private Boolean admin;
+    private List<Advert> adverts;
 
 
 	public User() {
@@ -21,6 +23,7 @@ public class User {
     @Id
     @Column(name="user_id")
     @GeneratedValue
+
 	public Long getUserId() {
 		return userId;
 	}
@@ -84,7 +87,15 @@ public class User {
 				name, password, phoneNumber);
 	}
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumns ({
+            @JoinColumn(name="user_id", referencedColumnName = "user_id")
+    })
+    public List<Advert> getAdverts() {
+        return adverts;
+    }
 
-
-
+    public void setAdverts(List<Advert> adverts) {
+        this.adverts = adverts;
+    }
 }

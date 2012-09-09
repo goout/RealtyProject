@@ -33,10 +33,14 @@ public class City {
     }
 
 
-    @OneToMany(cascade = CascadeType.ALL)
+   /* @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "city_district", joinColumns = {
             @JoinColumn(name = "cityId") }, inverseJoinColumns = {
-            @JoinColumn(name = "districtId") })
+            @JoinColumn(name = "districtId") })*/
+   @OneToMany(cascade = CascadeType.ALL)
+   @JoinColumns ({
+           @JoinColumn(name="cityId", referencedColumnName = "cityId")
+   })
     public List<District> getDistricts() {
         return districts;
     }

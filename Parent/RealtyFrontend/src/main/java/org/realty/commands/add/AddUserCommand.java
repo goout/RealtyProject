@@ -7,6 +7,7 @@ import org.realty.dao.UserJdbcDAO;
 import org.realty.entity.User;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ public class AddUserCommand implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response) throws ServletException, IOException, ParseException {
 
 		UserJdbcDAO ad = new UserJdbcDAO();
 		String userName = request.getParameter("userName");
