@@ -16,6 +16,8 @@ import org.realty.dao.CommentJdbcDAO;
 import org.realty.dto.CommentUserAdvertDTO;
 import org.realty.entity.Advert;
 import org.realty.entity.Comment;
+import org.realty.hibernate.AdvertHibDAO;
+import org.realty.hibernate.CommentHibDAO;
 
 public class AllCommentCommand implements Command {
 
@@ -27,11 +29,13 @@ public class AllCommentCommand implements Command {
         HttpSession session = request.getSession();
         UsrInfo iuser = (UsrInfo) session.getAttribute("userInfo");
 
-		CommentJdbcDAO ad = new CommentJdbcDAO();
-		List<Comment> allcomments = ad.findAll();
+	//	CommentJdbcDAO ad = new CommentJdbcDAO();
+        CommentHibDAO cmntH = new CommentHibDAO();
+		List<Comment> allcomments = cmntH.getAllComments();
 
-        AdvertJdbcDAO ad3 = new AdvertJdbcDAO();
-        List<Advert> alladverts = ad3.findAll();
+      //  AdvertJdbcDAO ad3 = new AdvertJdbcDAO();
+        AdvertHibDAO advH =new AdvertHibDAO();
+        List<Advert> alladverts = advH.getAllAdverts();
 
 
         List<CommentUserAdvertDTO> allCommentsUserAdverts = createDTO(alladverts,iuser,allcomments);

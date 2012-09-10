@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.realty.commands.Command;
 import org.realty.dao.UserJdbcDAO;
 import org.realty.entity.User;
+import org.realty.hibernate.UserHibDAO;
 
 public class AllUserCommand implements Command {
 
@@ -18,8 +19,9 @@ public class AllUserCommand implements Command {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		
-		UserJdbcDAO ad = new UserJdbcDAO();
-		List<User> allusers = ad.findAll();
+		//UserJdbcDAO ad = new UserJdbcDAO();
+        UserHibDAO usrH = new UserHibDAO();
+		List<User> allusers = usrH.getAllUsers();
 		
 	  request.getSession().setAttribute("id", new Long(1L));
 		request.setAttribute("allusers", allusers);

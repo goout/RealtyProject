@@ -5,6 +5,7 @@ import org.realty.commands.Command;
 import org.realty.commands.CommandFactory;
 import org.realty.dao.UserJdbcDAO;
 import org.realty.entity.User;
+import org.realty.hibernate.UserHibDAO;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -20,7 +21,8 @@ public class AddUserCommand implements Command {
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException, ParseException {
 
-		UserJdbcDAO ad = new UserJdbcDAO();
+		//UserJdbcDAO ad = new UserJdbcDAO();
+        UserHibDAO usrH =new UserHibDAO();
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String phoneNumber = request.getParameter("phoneNumber");
@@ -39,16 +41,18 @@ public class AddUserCommand implements Command {
 		user.setPassword(password);
 		user.setPhoneNumber(phoneNumber);
         //user.setAdmin(isadmin);
-		ad.add(user);
+		usrH.create(user);
 
-        User sesUsr = ad.getDomainByName(userName);
+        //////??????
+     /*   User sesUsr = ad.getDomainByName(userName);
 
         UsrInfo ui = new UsrInfo();
         ui.Login(sesUsr.getName());
         ui.setUserId(sesUsr.getUserId());
-        session.setAttribute("userInfo", ui);
+        session.setAttribute("userInfo", ui);*/
+        ////???????
 		//return CommandFactory.getCommand("allUser").execute(request, response);
-
+        UsrInfo ui = (UsrInfo)session.getAttribute("userInfo");
 
 
         return ui.IsAdmin() ? "RealtyServlet?command=allUser"

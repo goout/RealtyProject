@@ -13,6 +13,7 @@ import org.realty.commands.Command;
 import org.realty.dao.AdvertJdbcDAO;
 import org.realty.dto.AdvertUserAdressDTO;
 import org.realty.entity.Advert;
+import org.realty.hibernate.AdvertHibDAO;
 
 import javax.servlet.http.HttpSession;
 
@@ -28,8 +29,9 @@ public class AllAdvertCommand implements Command {
         UsrInfo iuser = (UsrInfo) session.getAttribute("userInfo");
 
 
-		AdvertJdbcDAO ad = new AdvertJdbcDAO();
-		List<Advert> alladverts = ad.findAll();
+		//AdvertJdbcDAO ad = new AdvertJdbcDAO();
+        AdvertHibDAO advH = new AdvertHibDAO();
+        List<Advert> alladverts = advH.getAllAdverts();
 
         List<AdvertUserAdressDTO> alladvertsusers = createDTO(alladverts,iuser);
 
