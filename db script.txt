@@ -42,7 +42,7 @@ CREATE TABLE adress(
 
 CREATE TABLE advert(
   advert_id INT NOT NULL AUTO_INCREMENT,
-  added_date DATETIME,
+  added_date varchar(25),
   category VARCHAR(15),
   adressId INT NOT NULL,
   rooms INT,
@@ -55,7 +55,7 @@ CREATE TABLE advert(
 	   
 				   
 CREATE TABLE Comment (comment_id int AUTO_INCREMENT NOT NULL,
-addedDate DATETIME,
+addedDate varchar(25),
 text text,
 user_id int NOT NULL,
 advert_id int NOT NULL,
