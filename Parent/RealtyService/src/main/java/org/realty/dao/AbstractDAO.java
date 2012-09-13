@@ -12,9 +12,9 @@ import java.util.List;
 public abstract class AbstractDAO<DOMAIN extends Object> {
 
 	public static final String driverClassName = "com.mysql.jdbc.Driver";
-	public static final String connectionUrl = "jdbc:mysql://localhost:3306/TEST2";
+	public static final String connectionUrl = "jdbc:mysql://localhost:3306/REALTY";
 	public static final String dbUser = "root";
-	public static final String dbPwd = "1234";
+	public static final String dbPwd = "goout";
 
 	Connection con = null;
 	PreparedStatement ptmt = null;

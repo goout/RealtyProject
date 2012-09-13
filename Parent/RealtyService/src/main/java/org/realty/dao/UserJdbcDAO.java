@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class UserJdbcDAO extends AbstractDAO<User> {
 
 	private static final String SQL_ADD_USER = "INSERT INTO User VALUES(?,?,?,?,?)";
-	private static final String SQL_UPDATE_USER = "UPDATE User SET name=?,passwordt=?,"
+	private static final String SQL_UPDATE_USER = "UPDATE User SET name=?,password=?,"
 			+ "phone_number=?, admin=? WHERE user_id=?";
 	private static final String SQL_DELETE_USER = "DELETE FROM User WHERE user_id=?";
 	private static final String SQL_ALL = "SELECT * FROM User";

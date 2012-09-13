@@ -12,7 +12,7 @@
                     <property name="connection.url">jdbc:hsqldb:hsql://localhost/TestDB</property> -->
 
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/test2</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/REALTY</property>
         <property name="connection.username">root</property>
         <property name="connection.password">1234</property>
 

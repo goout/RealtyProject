@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language"
@@ -7,8 +6,8 @@
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="org.realty.Translations"/>
 
-<c:set var="adr" value="${adressDto}"/>
-
+<c:set var="list2" value="${list2}"/>
+<c:set var="list3" value="${list3}"/>
 
 <html lang="${language}">
 
@@ -20,7 +19,6 @@
 
 </head>
 
-<c:set var="commandForPage" value="adress" scope="request"/>
 
 <body>
 
@@ -53,116 +51,201 @@
 
 <table width="1000" height="0" border="0" cellpadding="5" cellspacing="0" align="center"
        style="background-color:#ffffff">
-    <tr>
-        <td>
+<tr>
+<td>
 
 
-            <table width="1000" height="0" border="0" cellpadding="5" style="background-color:#98FB98">
-                <tr>
-                    <td>
-                        <div id="head2">
+    <table width="1000" height="0" border="0" cellpadding="5" style="background-color:#98FB98">
+        <tr>
+            <td>
+                <div id="head2">
 
-                            <h2><fmt:message key="adress.subhead"/></h2>
-                        </div>
-
-
-                        <div id="content">
+                    <h2><fmt:message key="adress.subhead"/></h2>
+                </div>
 
 
-                            <table width="350" border="0" align="center">
-                                <tr>
-                                    <td>
-
-                                        <fieldset>
-                                            <legend>
-                                                <b><fmt:message key="adress.subhead"/></b>
-                                            </legend>
-                                            <form id="form1" action="RealtyServlet">
-                                                <table>
-                                                    <tr>
-                                                        <td><fmt:message key="adress.label.city"/>:
-                                                        <td><select name="city" id="1" style="width:110px">
-                                                            <option value="select">Change City...</option>
-                                                            <option value="1"><c:out value="${adr.cityName}"/></option>
-                                                        </select></td>
-                                                    </tr>
+                <div id="content">
 
 
-                                                    <tr>
-                                                        <td><fmt:message key="adress.label.district"/>:
-                                                        <td><select name="district" id="2"  style="width:130px">  <!--onchange="ChanGeValue()"-->
-                                                            <option value="select">Change District...</option>
-                                                            <option value="5"><c:out value="${adr.districtName}"/></option>
-                                                        </select></td>
-                                                    </tr>
+                    <table width="350" border="0" align="center">
+                        <tr>
+                            <td>
 
-                                                    <tr>
-
-                                                        <td><fmt:message key="adress.label.street"/>:
-                                                        <td><select name="street" id="3" style="width:130px">
-                                                            <option value="select">Change Street...</option>
-                                                            <c:forEach items="${adressDto.streets}" var="str">
-                                                                <option value="<c:out value="${str.streetId}"/>"><c:out value="${str.streetName}"/></option>
-                                                            </c:forEach>
-                                                        </select></td>
-
-                                                    </tr>
-
-
-                                                    <tr>
-                                                        <td><fmt:message key="adress.label.home" />:
-
-                                                        <td><input type="text" size="10" name="homeNum" id="4"></td>
-
-                                                    </tr>
+                                <fieldset>
+                                    <legend>
+                                        <b><fmt:message key="adress.subhead"/></b>
+                                    </legend>
+                                    <form id="form1" name="combo" action="RealtyServlet">
+                                        <table>
+                                            <tr>
+                                                <td><fmt:message key="adress.label.city"/>:
+                                                <td><select name="city" id="1" onchange="chanGe(combo.city.selectedIndex)"
+                                                            style="width:110px">
+                                                    <option value="select">Change City...</option>
+                                                    <c:forEach items="${cityList}" var="city">
+                                                        <option value="<c:out value="${city.cityId}"/>"><c:out
+                                                                value="${city.cityName}"/></option>
+                                                    </c:forEach>
+                                                </select></td>
+                                            </tr>
 
 
+                                            <tr>
+                                                <td><fmt:message key="adress.label.district"/>:
+                                                <td><select name="district" id="2" style="width:130px">
+                                                    <option value="select">Change District...</option>
 
-                                                    <tr>
-                                                        <td><fmt:message key="adress.label.apartment" />:
+                                                </select></td>
+                                            </tr>
 
-                                                        <td><input type="text" size="10" name="apartmentNum" id="5"></td>
+                                            <tr>
 
+                                                <td>Street:
+                                                <td><select name="street" id="3" style="width:130px">
+                                                    <option value="select">Change Street...</option>
 
-                                                    </tr>
+                                                    <option value=1>2</option>
 
-
-
-                                                </table>
-                                                <br/> <input type="submit" value=
-                                            <fmt:message key="button.add"/>> <input type="hidden"
-                                                                                    name="command" value="addAdress"/>
-                                            </form>
+                                                </select></td>
 
 
-                                            <!--     <script>
+                                            </tr>
 
-                                                var temp=document.doublecombo.street
-                                                function ChanGeValue(){
-                                                    var sel = document.doublecombo.district;
-                                                    var opt = sel.options[sel.selectedIndex].value;
 
-                                                    temp.options[sel.selectedIndex].selected=true
+                                        </table>
+                                        <br/> <input type="submit" value=
+                                    <fmt:message key="button.add"/>> <input type="hidden"
+                                                                            name="command" value="addAdress"/>
+
+                                        <script>
+
+                                            var i;
+
+                                            function chanGe(i) {
+                                                var combo = document.getElementById("combo");
+                                                combo.district.options.length=0;
+                                                var districtList = '<c:out value="${cityList[i].districts}"/>';
+
+                                                for (var i=0; i < districtList.length ;++i){
+
+                                                    combo.district.options[i] = new Option(districtList[i],districtList[i]);
                                                 }
-                                            </script>   -->
-
-                                        </fieldset>
 
 
-                                    </td>
-                            </table>
+                                            }
 
-                            <br>
-
-
-                        </div>
-
-                        </div>
+                                        </script>
 
 
-                    </td>
-            </table>
-        </td>
+                                    </form>
+
+
+                                </fieldset>
+
+
+                            </td>
+                    </table>
+
+
+                    <table width="350" border="0" align="center">
+                        <tr>
+                            <td>
+
+                                <fieldset>
+                                    <legend>
+                                        <b>TEST</b>
+                                    </legend>
+                                    <form id="combo2" name="combo2" action="RealtyServlet">
+                                        <table>
+                                            <tr>
+                                                <td>LIST1:
+
+                                                <td><select name="list1" onchange="chanGe2(combo2.list1.selectedIndex)"
+                                                            style="width:110px">
+                                                    <c:set value="0" var="i"/>
+                                                    <c:forEach items="${list1}" var="testArray">
+                                                        <option value="<c:out value="${list1[i]}"/>"><c:out
+                                                                value="${list1[i]}"/></option>
+                                                        <c:set value="${i+1}" var="i"/>
+                                                    </c:forEach>
+
+
+                                                </select></td>
+                                            </tr>
+
+
+                                            <tr>
+                                                <td>LIST2 OR LIST3:
+                                                <td><select name="list2" style="width:130px">
+
+
+                                                </select></td>
+                                            </tr>
+
+
+                                        </table>
+                                        <br/>
+
+                                        <script>
+
+                                            var i;
+                                            function chanGe2(i) {
+
+                                                var list2 = '<c:out value="${list2}"/>';
+                                                var list3 = '<c:out value="${list3}"/>';
+                                                var combo2 = document.getElementById("combo2");
+                                                combo2.list2.options.length=0;
+                                                switch(i)
+                                                {
+                                                    case 0:
+
+                                                        for (var i=0; i < list2.length ;++i){
+
+
+                                                            combo2.list2.options[i] = new Option(list2[i],list2[i]);
+                                                        }
+
+
+
+                                                        break;
+                                                    case 1:
+                                                        for (var i=0; i < list3.length ;++i){
+
+
+                                                            combo2.list2.options[i] = new Option(list3[i],list3[i]);
+                                                        }
+
+
+                                                }
+
+
+
+                                            }
+
+                                        </script>
+
+
+                                    </form>
+
+
+                                </fieldset>
+
+
+                            </td>
+                    </table>
+
+
+                    <br>
+
+
+                </div>
+
+                </div>
+
+
+            </td>
+    </table>
+</td>
 </table>
 
 

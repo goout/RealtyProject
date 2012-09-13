@@ -38,7 +38,10 @@ INSERT INTO USER
 (name, password, phone_number, admin)
 VALUES
 ("Masha Pavlova", "sunset%6", "6442222", false);
-
+INSERT INTO USER
+(name, password, phone_number, admin)
+VALUES
+("test", "test", "6442222", true);
 
 
 
