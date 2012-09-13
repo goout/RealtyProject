@@ -1,3 +1,6 @@
+<%@ page import="java.util.List" %>
+<%@ page import="org.realty.entity.City" %>
+<%@ page import="org.realty.entity.District" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language"
@@ -116,6 +119,32 @@
                                         <br/> <input type="submit" value=
                                     <fmt:message key="button.add"/>> <input type="hidden"
                                                                             name="command" value="addAdress"/>
+
+
+                                        <script>
+
+                                            var index;
+                                            var districtArray;
+                                            function onChangeCity(index) {
+                                                var combo = document.getElementById("combo");
+                                            <%
+                                              List<City> cityList = (List) request.getAttribute("cityList");
+                                               for (int i=0; i<cityList.size(); i++) {%>
+                                                if (index == '<%=i%>') {
+                                                <%
+                                                 List<District> districts = cityList.get(i).getDistricts();
+                                                 for (int j=0; j<districts.size(); j++) { %>
+                                                    /*districtListArray[<%= j %>] = "<%= districts.get(i).getDistrictName() %>";*/
+                                                    combo.district.options[<%= j %>]
+                                                            = new Option("<%= districts.get(j).getDistrictName() %>","<%= districts.get(j).getDistrictName() %>");
+                                                <% } break; %>
+                                                }
+                                           <% } %>
+                                            }
+
+                                        </script>
+
+
 
                                         <script>
 
