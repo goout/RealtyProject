@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.realty.entity.City" %>
 <%@ page import="org.realty.entity.District" %>
+<%@ page import="org.realty.entity.Street" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language"
@@ -24,6 +25,35 @@
 
 
 <body>
+
+<%--<script>
+
+    var cityArrayFromRequest = new Array();
+    <%
+List<City> cityList = (List) request.getAttribute("cityList");
+for (int i = 0; i < cityList.size(); i++) { %>
+    var i = <%=i%>;
+    cityWithDistricts[i][0] =  <%=cityList.get(i).getCityName()%>;
+    var districtWithStreets = new Array();
+    <%
+List<District> districts = cityList.get(i).getDistricts();
+for (int j = 0; j < districts.size(); j++) { %>
+    var j = <%=j%>;
+    districtWithStreets[j][0] =  <%=districts.get(j).getDistrictName()%>;
+    var streets = new Array();
+    <%
+List<Street> streets = districts.get(j).getStreets();
+for (int m = 0; m < streets.size(); m++) {%>
+    streets[<%=m%>] = <%=streets.get(m).getStreetName()%>;
+
+    <% }  %>
+    districtWithStreets[j][1] = streets;
+    cityWithDistricts[i][1] = districtWithStreets;
+    <%}%>
+    cityArrayFromRequest[i] = cityWithDistricts;
+    <%}%>
+</script>--%>
+
 
 <br>
 <table width="1000" height="0" border="1" align="center" cellpadding="5" cellspacing="0"
@@ -82,21 +112,25 @@
                                         <table>
                                             <tr>
                                                 <td><fmt:message key="adress.label.city"/>:
-                                                <td><select name="city" id="1" onchange="chanGe(combo.city.selectedIndex)"
+                                    <%--            <td><select name="city" id="1" onchange="chanGe(combo.city.selectedIndex)"
                                                             style="width:110px">
                                                     <option value="select">Change City...</option>
                                                     <c:forEach items="${cityList}" var="city">
                                                         <option value="<c:out value="${city.cityId}"/>"><c:out
                                                                 value="${city.cityName}"/></option>
                                                     </c:forEach>
-                                                </select></td>
+                                                </select></td>--%>
+                                                <td><select id="city" name="city" onchange="onChangeCity(city.selectedIndex)">
+
+                                                    </select> </td>
+
                                             </tr>
 
 
                                             <tr>
                                                 <td><fmt:message key="adress.label.district"/>:
-                                                <td><select name="district" id="2" style="width:130px">
-                                                    <option value="select">Change District...</option>
+                                                <td><select name="district" id="district" onchange="onChangeDistrict()" style="width:130px">
+
 
                                                 </select></td>
                                             </tr>
@@ -104,10 +138,8 @@
                                             <tr>
 
                                                 <td>Street:
-                                                <td><select name="street" id="3" style="width:130px">
-                                                    <option value="select">Change Street...</option>
+                                                <td><select name="street" id="street" style="width:130px">
 
-                                                    <option value=1>2</option>
 
                                                 </select></td>
 
@@ -122,6 +154,92 @@
 
 
                                         <script>
+
+
+                                /*            var cityArrayFromRequest = new Array();
+                                            var cityWithDistricts = new Array();
+                                            <%
+                                  List<City> cityList = (List) request.getAttribute("cityList");
+                                  for (int i = 0; i < cityList.size(); i++) { %>
+                                            var i = <%=i%>;
+                                            cityWithDistricts[i][0] =  <%=cityList.get(i).getCityName()%>;
+                                            var districtWithStreets = new Array();
+                                            <%
+                                  List<District> districts = cityList.get(i).getDistricts();
+                                  for (int j = 0; j < districts.size(); j++) { %>
+                                            var j = <%=j%>;
+                                            districtWithStreets[j][0] =  <%=districts.get(j).getDistrictName()%>;
+                                            var streets = new Array();
+                                            <%
+                                   List<Street> streets = districts.get(j).getStreets();
+                                   for (int m = 0; m < streets.size(); m++) {%>
+                                            streets[<%=m%>] = <%=streets.get(m).getStreetName()%>;
+
+                                            <% }  %>
+                                            districtWithStreets[j][1] = streets;
+                                            cityWithDistricts[i][1] = districtWithStreets;
+                                            <%}%>
+                                            cityArrayFromRequest[i] = cityWithDistricts;
+                                            <%}%>*/
+
+
+
+                                            var indexCity;
+                                            var indexDistrict;
+                                            var cityArrayFromRequest = ['Minsk', 'Gomel','Grodno'];
+                                            var complexArray = new Array();
+                                            for (var i = 0; i < cityArrayFromRequest.length; i++) {
+                                                 alert(cityArrayFromRequest[i]);
+                                                var districtsFromCityArray = [
+
+                                                    [cityArrayFromRequest[i] + 'distr1', [cityArrayFromRequest[i] + 'distr1' + 'Str1', cityArrayFromRequest[i] + 'distr1'+'Str2']],
+                                                        [cityArrayFromRequest[i] + 'distr2', [cityArrayFromRequest[i] + 'distr2' + 'str']],
+                                                        [cityArrayFromRequest[i] + 'distr3', [cityArrayFromRequest[i] + 'distr3' + 'str']]
+                                            ];
+                                                complexArray[i] = [cityArrayFromRequest[i], districtsFromCityArray];
+
+
+                                                document.getElementById("city").options[i] = new Option(complexArray[i][0], complexArray[i][0]);
+                                                var districts = complexArray[0][1];
+                                                for (var idDistr = 0; idDistr < districts.length; idDistr++) {
+                                                    document.getElementById("district").options[idDistr] = new Option(districts[idDistr][0], districts[idDistr][0]);
+                                                }
+                                                var streets = complexArray[0][1][0][1];
+                                                for (var m = 0; m < streets.length; m++) {
+                                                    document.getElementById("street").options[m] = new Option(streets[m], streets[m]);
+                                                }
+                                            }
+
+                                            function onChangeCity(indexCity) {
+                                                var comboStreets = document.getElementById("street");
+                                                var comboDistricts = document.getElementById("district");
+                                                comboDistricts.options.length=0;
+                                                comboStreets.options.length=0;
+                                                var districts = complexArray[indexCity][1];
+                                                for (var k = 0; k < districts.length; k++) {
+                                                    comboDistricts.options[k] = new Option(districts[k][0], districts[k][0]);
+                                                }
+                                                var streets = districts[0][1];
+                                                for (var m = 0; m < streets.length; m++) {
+                                                    comboStreets.options[m] = new Option(streets[m], streets[m]);
+                                                }
+                                            }
+
+                                            function onChangeDistrict(indexCity) {
+                                                var comboCity = document.getElementById("city");
+                                                indexCity = comboCity.selectedIndex;
+                                                var comboDistricts = document.getElementById("district");
+                                                indexDistrict = comboDistricts.selectedIndex;
+                                                var combo = document.getElementById("street");
+                                                combo.options.length=0;
+                                                var streets = complexArray[indexCity][1][indexDistrict][1];
+                                                for (var m = 0; m < streets.length; m++) {
+                                                    combo.options[m] = new Option(streets[m], streets[m]);
+                                                }
+                                            }
+                                        </script>
+
+                        <%--                <script>
 
                                             var index;
                                             var districtArray;
@@ -142,11 +260,14 @@
                                            <% } %>
                                             }
 
-                                        </script>
+                                        </script>--%>
 
 
 
-                                        <script>
+
+
+
+                          <%--              <script>
 
                                             var i;
 
@@ -163,7 +284,7 @@
 
                                             }
 
-                                        </script>
+                                        </script>--%>
 
 
                                     </form>
@@ -176,92 +297,7 @@
                     </table>
 
 
-                    <table width="350" border="0" align="center">
-                        <tr>
-                            <td>
 
-                                <fieldset>
-                                    <legend>
-                                        <b>TEST</b>
-                                    </legend>
-                                    <form id="combo2" name="combo2" action="RealtyServlet">
-                                        <table>
-                                            <tr>
-                                                <td>LIST1:
-
-                                                <td><select name="list1" onchange="chanGe2(combo2.list1.selectedIndex)"
-                                                            style="width:110px">
-                                                    <c:set value="0" var="i"/>
-                                                    <c:forEach items="${list1}" var="testArray">
-                                                        <option value="<c:out value="${list1[i]}"/>"><c:out
-                                                                value="${list1[i]}"/></option>
-                                                        <c:set value="${i+1}" var="i"/>
-                                                    </c:forEach>
-
-
-                                                </select></td>
-                                            </tr>
-
-
-                                            <tr>
-                                                <td>LIST2 OR LIST3:
-                                                <td><select name="list2" style="width:130px">
-
-
-                                                </select></td>
-                                            </tr>
-
-
-                                        </table>
-                                        <br/>
-
-                                        <script>
-
-                                            var i;
-                                            function chanGe2(i) {
-
-                                                var list2 = '<c:out value="${list2}"/>';
-                                                var list3 = '<c:out value="${list3}"/>';
-                                                var combo2 = document.getElementById("combo2");
-                                                combo2.list2.options.length=0;
-                                                switch(i)
-                                                {
-                                                    case 0:
-
-                                                        for (var i=0; i < list2.length ;++i){
-
-
-                                                            combo2.list2.options[i] = new Option(list2[i],list2[i]);
-                                                        }
-
-
-
-                                                        break;
-                                                    case 1:
-                                                        for (var i=0; i < list3.length ;++i){
-
-
-                                                            combo2.list2.options[i] = new Option(list3[i],list3[i]);
-                                                        }
-
-
-                                                }
-
-
-
-                                            }
-
-                                        </script>
-
-
-                                    </form>
-
-
-                                </fieldset>
-
-
-                            </td>
-                    </table>
 
 
                     <br>
