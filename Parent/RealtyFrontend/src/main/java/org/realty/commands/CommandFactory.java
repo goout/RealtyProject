@@ -16,7 +16,7 @@ import java.util.*;
 
 public class CommandFactory {
 	@SuppressWarnings("serial")
-	private static Map<String, Command> commands = new HashMap<String, Command>() {
+	private static Map<String, Command> commands; /*= new HashMap<String, Command>() {
 		{
 			put("addUser", new AddUserCommand());
 			put("allUser", new AllUserCommand());
@@ -38,7 +38,7 @@ public class CommandFactory {
             put("addAdress", new AddAdressCommand());
             put("advert", new AdvertCommand());
 		}
-	};
+	};*/
 
   private static final List<Roles> ALL_ROLES = Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS);
   private static final List<Roles> LOG_ADM = Arrays.asList(Roles.LOGGED, Roles.ADMIN);

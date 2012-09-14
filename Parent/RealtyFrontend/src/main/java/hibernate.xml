@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="adressHDAO" class="org.realty.hibernate.AdressHibDAO" />
+    <bean id="advertHDAO" class="org.realty.hibernate.AdvertHibDAO" />
+
+    <bean id="addAdvert" class="org.realty.commands.add.AddAdvertCommand">
+    <property name="adrH" ref="adressHDAO" />
+    <property name="advH" ref="adressHDAO" />
+    </bean>
+
+
+    <bean id="commandF" class="org.realty.commands.CommandFactory">
+        <property name="commands">
+            <map>
+                <entry key="addUser" value-ref="addAdvert"/>
+                <entry key="allUser" value-ref=" "/>
+                <entry key="delUser" value-ref=" "/>
+                <entry key="addAdvert" value-ref=" "/>
+                <entry key="allAdvert" value-ref=" "/>
+                <entry key="delAdvert" value-ref=" "/>
+                <entry key="addComment" value-ref=" "/>
+                <entry key="allComment" value-ref=" "/>
+                <entry key="delComment" value-ref=" "/>
+                <entry key="signIn" value-ref=" "/>
+                <entry key="changeLang" value-ref=" "/>
+                <entry key="indexGuest" value-ref=" "/>
+                <entry key="LogOut" value-ref=" "/>
+                <entry key="userPage" value-ref=" "/>
+                <entry key="advertPage" value-ref=" "/>
+                <entry key="commentPage" value-ref=" "/>
+                <entry key="adress" value-ref=" "/>
+                <entry key="addAdress" value-ref=" "/>
+                <entry key="advert" value-ref=" "/>
+
+            </map>
+        </property>
+    </bean>
+
+
+</beans>
+
+
