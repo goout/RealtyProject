@@ -1,0 +1,28 @@
+
+                                      <script>
+
+                                        var cityArrayFromRequest = new Array();
+                                        <%
+                                          List<City> cityList = (List) request.getAttribute("cityList");
+                                          for (int i = 0; i < cityList.size(); i++) { %>
+                                            var i = <%=i%>;
+                                            cityWithDistricts[i][0] =  <%=cityList.get(i).getCityName()%>;
+                                            var districtWithStreets = new Array();
+                                            <%
+                                              List<District> districts = cityList.get(i).getDistricts();
+                                              for (int j = 0; j < districts.size(); j++) { %>
+                                                var j = <%=j%>;
+                                                districtWithStreets[j][0] =  <%=districts.get(j).getDistrictName()%>;
+                                                var streets = new Array();
+                                                <%
+                                                  List<Street> streets = districts.get(j).getStreets();
+                                                  for (int m = 0; m < streets.size(); m++) {%>
+                                                    streets[<%=m%>] = <%=streets.get(m).getStreetName()%>;
+
+                                                <% }  %>
+                                                districtWithStreets[j][1] = streets;
+                                                cityWithDistricts[i][1] = districtWithStreets;
+                                              <%}%>
+                                        cityArrayFromRequest[i] = cityWithDistricts;
+                                        <%}%>
+                                      </script>

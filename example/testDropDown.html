@@ -1,0 +1,60 @@
+<select id="city" name="city" onchange="onChangeCity(city.selectedIndex)">
+</select>
+<select id="districts" name="districts" onchange="onChangeDistrict()">
+</select>
+<select id="streets" name="streets">
+</select>
+
+<script>
+  var indexCity;
+  var indexDistrict;
+  var cityArrayFromRequest = ['Minsk', 'Gomel','Grodno'];
+  var complexArray = new Array();
+  for (var i = 0; i < cityArrayFromRequest.length; i++) {
+    // alert(cityArrayFromRequest[i]);
+    var districtsFromCityArray = [
+							[cityArrayFromRequest[i] + 'distr1', [cityArrayFromRequest[i] + 'distr1' + 'Str1', cityArrayFromRequest[i] + 'distr1'+'Str2']],
+							[cityArrayFromRequest[i] + 'distr2', [cityArrayFromRequest[i] + 'distr2' + 'str']], 
+							[cityArrayFromRequest[i] + 'distr3', [cityArrayFromRequest[i] + 'distr3' + 'str']]
+						  ];
+    complexArray[i] = [cityArrayFromRequest[i], districtsFromCityArray];
+
+    document.getElementById("city").options[i] = new Option(complexArray[i][0], complexArray[i][0]);
+    var districts = complexArray[0][1];
+    for (var idDistr = 0; idDistr < districts.length; idDistr++) {
+      document.getElementById("districts").options[idDistr] = new Option(districts[idDistr][0], districts[idDistr][0]);
+    }
+    var streets = complexArray[0][1][0][1];
+    for (var m = 0; m < streets.length; m++) {
+      document.getElementById("streets").options[m] = new Option(streets[m], streets[m]);
+    }
+  }
+
+  function onChangeCity(indexCity) {
+    var comboStreets = document.getElementById("streets");
+    var comboDistricts = document.getElementById("districts");
+    comboDistricts.options.length=0;
+    comboStreets.options.length=0;
+    var districts = complexArray[indexCity][1];
+    for (var k = 0; k < districts.length; k++) {
+      comboDistricts.options[k] = new Option(districts[k][0], districts[k][0]);
+    }
+    var streets = districts[0][1];
+    for (var m = 0; m < streets.length; m++) {
+      comboStreets.options[m] = new Option(streets[m], streets[m]);
+    }
+  }
+
+  function onChangeDistrict(indexCity) {
+    var comboCity = document.getElementById("city");
+	indexCity = comboCity.selectedIndex;
+    var comboDistricts = document.getElementById("districts");
+	indexDistrict = comboDistricts.selectedIndex;
+    var combo = document.getElementById("streets");
+    combo.options.length=0;
+    var streets = complexArray[indexCity][1][indexDistrict][1];
+    for (var m = 0; m < streets.length; m++) {
+      combo.options[m] = new Option(streets[m], streets[m]);
+    }
+  }
+</script>
