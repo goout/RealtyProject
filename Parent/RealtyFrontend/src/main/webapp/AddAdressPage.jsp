@@ -26,34 +26,6 @@
 
 <body>
 
-<%--<script>
-
-    var cityArrayFromRequest = new Array();
-    <%
-List<City> cityList = (List) request.getAttribute("cityList");
-for (int i = 0; i < cityList.size(); i++) { %>
-    var i = <%=i%>;
-    cityWithDistricts[i][0] =  <%=cityList.get(i).getCityName()%>;
-    var districtWithStreets = new Array();
-    <%
-List<District> districts = cityList.get(i).getDistricts();
-for (int j = 0; j < districts.size(); j++) { %>
-    var j = <%=j%>;
-    districtWithStreets[j][0] =  <%=districts.get(j).getDistrictName()%>;
-    var streets = new Array();
-    <%
-List<Street> streets = districts.get(j).getStreets();
-for (int m = 0; m < streets.size(); m++) {%>
-    streets[<%=m%>] = <%=streets.get(m).getStreetName()%>;
-
-    <% }  %>
-    districtWithStreets[j][1] = streets;
-    cityWithDistricts[i][1] = districtWithStreets;
-    <%}%>
-    cityArrayFromRequest[i] = cityWithDistricts;
-    <%}%>
-</script>--%>
-
 
 <br>
 <table width="1000" height="0" border="1" align="center" cellpadding="5" cellspacing="0"
@@ -88,228 +60,214 @@ for (int m = 0; m < streets.size(); m++) {%>
 <td>
 
 
-    <table width="1000" height="0" border="0" cellpadding="5" style="background-color:#98FB98">
+<table width="1000" height="0" border="0" cellpadding="5" style="background-color:#98FB98">
+<tr>
+<td>
+<div id="head2">
+
+    <h2><fmt:message key="adress.subhead"/></h2>
+</div>
+
+
+<div id="content">
+
+
+<table width="350" border="0" align="center">
+<tr>
+<td>
+
+<fieldset>
+<legend>
+    <b><fmt:message key="adress.subhead"/></b>
+</legend>
+<form id="form1" name="combo" action="RealtyServlet">
+    <table>
         <tr>
-            <td>
-                <div id="head2">
+            <td><fmt:message key="adress.label.city"/>:
+            <td><select id="city" name="city" onchange="onChangeCity(city.selectedIndex)">
+            </select></td>
+        </tr>
+
+
+        <tr>
+            <td><fmt:message key="adress.label.district"/>:
+            <td><select name="district" id="district" onchange="onChangeDistrict()"
+                        style="width:130px">
+            </select></td>
+        </tr>
+
+        <tr>
+            <td>Street:
+            <td><select name="street" id="street" style="width:130px">
+            </select></td>
+        </tr>
+
+        <tr>
+            <td><fmt:message key="adress.label.home" />:
+            <td><input type="text" size="10" name="homeNum" id="4"></td>
+        </tr>
+
+        <tr>
+            <td><fmt:message key="adress.label.apartment" />:
+            <td><input type="text" size="10" name="apartmentNum" id="5"></td>
+        </tr>
 
-                    <h2><fmt:message key="adress.subhead"/></h2>
-                </div>
 
-
-                <div id="content">
-
-
-                    <table width="350" border="0" align="center">
-                        <tr>
-                            <td>
-
-                                <fieldset>
-                                    <legend>
-                                        <b><fmt:message key="adress.subhead"/></b>
-                                    </legend>
-                                    <form id="form1" name="combo" action="RealtyServlet">
-                                        <table>
-                                            <tr>
-                                                <td><fmt:message key="adress.label.city"/>:
-                                    <%--            <td><select name="city" id="1" onchange="chanGe(combo.city.selectedIndex)"
-                                                            style="width:110px">
-                                                    <option value="select">Change City...</option>
-                                                    <c:forEach items="${cityList}" var="city">
-                                                        <option value="<c:out value="${city.cityId}"/>"><c:out
-                                                                value="${city.cityName}"/></option>
-                                                    </c:forEach>
-                                                </select></td>--%>
-                                                <td><select id="city" name="city" onchange="onChangeCity(city.selectedIndex)">
-
-                                                    </select> </td>
-
-                                            </tr>
-
-
-                                            <tr>
-                                                <td><fmt:message key="adress.label.district"/>:
-                                                <td><select name="district" id="district" onchange="onChangeDistrict()" style="width:130px">
-
-
-                                                </select></td>
-                                            </tr>
-
-                                            <tr>
-
-                                                <td>Street:
-                                                <td><select name="street" id="street" style="width:130px">
-
-
-                                                </select></td>
-
-
-                                            </tr>
-
-
-                                        </table>
-                                        <br/> <input type="submit" value=
-                                    <fmt:message key="button.add"/>> <input type="hidden"
-                                                                            name="command" value="addAdress"/>
-
-
-                                        <script>
-
-
-                                /*            var cityArrayFromRequest = new Array();
-                                            var cityWithDistricts = new Array();
-                                            <%
-                                  List<City> cityList = (List) request.getAttribute("cityList");
-                                  for (int i = 0; i < cityList.size(); i++) { %>
-                                            var i = <%=i%>;
-                                            cityWithDistricts[i][0] =  <%=cityList.get(i).getCityName()%>;
-                                            var districtWithStreets = new Array();
-                                            <%
-                                  List<District> districts = cityList.get(i).getDistricts();
-                                  for (int j = 0; j < districts.size(); j++) { %>
-                                            var j = <%=j%>;
-                                            districtWithStreets[j][0] =  <%=districts.get(j).getDistrictName()%>;
-                                            var streets = new Array();
-                                            <%
-                                   List<Street> streets = districts.get(j).getStreets();
-                                   for (int m = 0; m < streets.size(); m++) {%>
-                                            streets[<%=m%>] = <%=streets.get(m).getStreetName()%>;
-
-                                            <% }  %>
-                                            districtWithStreets[j][1] = streets;
-                                            cityWithDistricts[i][1] = districtWithStreets;
-                                            <%}%>
-                                            cityArrayFromRequest[i] = cityWithDistricts;
-                                            <%}%>*/
-
-
-
-                                            var indexCity;
-                                            var indexDistrict;
-                                            var cityArrayFromRequest = ['Minsk', 'Gomel','Grodno'];
-                                            var complexArray = new Array();
-                                            for (var i = 0; i < cityArrayFromRequest.length; i++) {
-                                                 alert(cityArrayFromRequest[i]);
-                                                var districtsFromCityArray = [
-
-                                                    [cityArrayFromRequest[i] + 'distr1', [cityArrayFromRequest[i] + 'distr1' + 'Str1', cityArrayFromRequest[i] + 'distr1'+'Str2']],
-                                                        [cityArrayFromRequest[i] + 'distr2', [cityArrayFromRequest[i] + 'distr2' + 'str']],
-                                                        [cityArrayFromRequest[i] + 'distr3', [cityArrayFromRequest[i] + 'distr3' + 'str']]
-                                            ];
-                                                complexArray[i] = [cityArrayFromRequest[i], districtsFromCityArray];
-
-
-                                                document.getElementById("city").options[i] = new Option(complexArray[i][0], complexArray[i][0]);
-                                                var districts = complexArray[0][1];
-                                                for (var idDistr = 0; idDistr < districts.length; idDistr++) {
-                                                    document.getElementById("district").options[idDistr] = new Option(districts[idDistr][0], districts[idDistr][0]);
-                                                }
-                                                var streets = complexArray[0][1][0][1];
-                                                for (var m = 0; m < streets.length; m++) {
-                                                    document.getElementById("street").options[m] = new Option(streets[m], streets[m]);
-                                                }
-                                            }
-
-                                            function onChangeCity(indexCity) {
-                                                var comboStreets = document.getElementById("street");
-                                                var comboDistricts = document.getElementById("district");
-                                                comboDistricts.options.length=0;
-                                                comboStreets.options.length=0;
-                                                var districts = complexArray[indexCity][1];
-                                                for (var k = 0; k < districts.length; k++) {
-                                                    comboDistricts.options[k] = new Option(districts[k][0], districts[k][0]);
-                                                }
-                                                var streets = districts[0][1];
-                                                for (var m = 0; m < streets.length; m++) {
-                                                    comboStreets.options[m] = new Option(streets[m], streets[m]);
-                                                }
-                                            }
-
-                                            function onChangeDistrict(indexCity) {
-                                                var comboCity = document.getElementById("city");
-                                                indexCity = comboCity.selectedIndex;
-                                                var comboDistricts = document.getElementById("district");
-                                                indexDistrict = comboDistricts.selectedIndex;
-                                                var combo = document.getElementById("street");
-                                                combo.options.length=0;
-                                                var streets = complexArray[indexCity][1][indexDistrict][1];
-                                                for (var m = 0; m < streets.length; m++) {
-                                                    combo.options[m] = new Option(streets[m], streets[m]);
-                                                }
-                                            }
-                                        </script>
-
-                        <%--                <script>
-
-                                            var index;
-                                            var districtArray;
-                                            function onChangeCity(index) {
-                                                var combo = document.getElementById("combo");
-                                            <%
-                                              List<City> cityList = (List) request.getAttribute("cityList");
-                                               for (int i=0; i<cityList.size(); i++) {%>
-                                                if (index == '<%=i%>') {
-                                                <%
-                                                 List<District> districts = cityList.get(i).getDistricts();
-                                                 for (int j=0; j<districts.size(); j++) { %>
-                                                    /*districtListArray[<%= j %>] = "<%= districts.get(i).getDistrictName() %>";*/
-                                                    combo.district.options[<%= j %>]
-                                                            = new Option("<%= districts.get(j).getDistrictName() %>","<%= districts.get(j).getDistrictName() %>");
-                                                <% } break; %>
-                                                }
-                                           <% } %>
-                                            }
-
-                                        </script>--%>
-
-
-
-
-
-
-                          <%--              <script>
-
-                                            var i;
-
-                                            function chanGe(i) {
-                                                var combo = document.getElementById("combo");
-                                                combo.district.options.length=0;
-                                                var districtList = '<c:out value="${cityList[i].districts}"/>';
-
-                                                for (var i=0; i < districtList.length ;++i){
-
-                                                    combo.district.options[i] = new Option(districtList[i],districtList[i]);
-                                                }
-
-
-                                            }
-
-                                        </script>--%>
-
-
-                                    </form>
-
-
-                                </fieldset>
-
-
-                            </td>
-                    </table>
-
-
-
-
-
-                    <br>
-
-
-                </div>
-
-                </div>
-
-
-            </td>
     </table>
+    <br/> <input type="submit" value=
+<fmt:message key="button.add"/>> <input type="hidden"
+                                        name="command" value="addAdress"/>
+
+
+    <script>
+
+        var cityArrayFromRequest = new Array();
+        var cityWithDistricts = new Array();
+        <%
+List<City> cityList = (List) request.getAttribute("cityList");
+for (int i = 0; i < cityList.size(); i++) { %>
+        cityWithDistricts[<%= i %>] = new Array();
+        cityWithDistricts[<%= i %>][0] = "<%=cityList.get(i).getCityName()%>";
+        var districtWithStreets = new Array();
+        <%
+List<District> districts = cityList.get(i).getDistricts();
+for (int j = 0; j < districts.size(); j++) { %>
+        districtWithStreets[<%= j %>] = new Array();
+        districtWithStreets[<%= j %>][0] = "<%=districts.get(j).getDistrictName()%>";
+        var streets = new Array();
+        <%
+List<Street> streets = districts.get(j).getStreets();
+for (int m = 0; m < streets.size(); m++) {%>
+        streets[<%=m%>] = "<%=streets.get(m).getStreetName()%>";
+
+        <% }  %>
+        districtWithStreets[<%= j %>][1] = streets;
+        cityWithDistricts[<%= i %>][1] = districtWithStreets;
+        <%}%>
+        cityArrayFromRequest[<%= i %>] = cityWithDistricts;
+        <%}%>
+
+    </script>
+
+
+
+    <script>
+
+        var cityArrayFromRequestid = new Array();
+        var cityWithDistrictsid = new Array();
+        <%
+List<City> cityListid = (List) request.getAttribute("cityList");
+for (int i = 0; i < cityListid.size(); i++) { %>
+        cityWithDistrictsid[<%= i %>] = new Array();
+        cityWithDistrictsid[<%= i %>][0] = "<%=cityListid.get(i).getCityId()%>";
+        var districtWithStreetsid = new Array();
+        <%
+List<District> districtsid = cityListid.get(i).getDistricts();
+for (int j = 0; j < districtsid.size(); j++) { %>
+        districtWithStreetsid[<%= j %>] = new Array();
+        districtWithStreetsid[<%= j %>][0] = "<%=districtsid.get(j).getDistrictId()%>";
+        var streetsid = new Array();
+        <%
+List<Street> streetsid = districtsid.get(j).getStreets();
+for (int m = 0; m < streetsid.size(); m++) {%>
+        streetsid[<%=m%>] = "<%=streetsid.get(m).getStreetId()%>";
+
+        <% }  %>
+        districtWithStreetsid[<%= j %>][1] = streetsid;
+        cityWithDistrictsid[<%= i %>][1] = districtWithStreetsid;
+        <%}%>
+        cityArrayFromRequestid[<%= i %>] = cityWithDistrictsid;
+        <%}%>
+
+    </script>
+
+
+
+    <script>
+
+
+        var indexCity;
+        var indexDistrict;
+
+        for (var i = 0; i < cityArrayFromRequest.length; i++) {
+
+            document.getElementById("city").options[i] = new Option(cityArrayFromRequest[0][i][0], cityArrayFromRequestid[0][i][0]);
+
+        }
+
+            var districts = cityArrayFromRequest[0][0][1];
+            var districtsid = cityArrayFromRequestid[0][0][1];
+
+            for (var idDistr = 0; idDistr < districts.length; idDistr++) {
+                document.getElementById("district").options[idDistr] = new Option(districts[idDistr][0], districtsid[idDistr][0]);
+            }
+
+
+            var streets = cityArrayFromRequest[0][0][1][0][1];
+            var streetsid = cityArrayFromRequestid[0][0][1][0][1];
+            for (var m = 0; m < streets.length; m++) {
+                document.getElementById("street").options[m] = new Option(streets[m], streetsid[m]);
+            }
+
+
+
+        function onChangeCity(indexCity) {
+            var comboStreets = document.getElementById("street");
+            var comboDistricts = document.getElementById("district");
+            comboDistricts.options.length = 0;
+            comboStreets.options.length = 0;
+
+            var districts = cityArrayFromRequest[0][indexCity][1];
+            var districtsid = cityArrayFromRequestid[0][indexCity][1];
+            for (var k = 0; k < districts.length; k++) {
+                comboDistricts.options[k] = new Option(districts[k][0], districtsid[k][0]);
+            }
+
+            var streets = districts[0][1];
+            var streetsid = districtsid[0][1];
+            for (var m = 0; m < streets.length; m++) {
+                comboStreets.options[m] = new Option(streets[m], streetsid[m]);
+            }
+        }
+
+        function onChangeDistrict() {
+            var comboCity = document.getElementById("city");
+            indexCity = comboCity.selectedIndex;
+            var comboDistricts = document.getElementById("district");
+            indexDistrict = comboDistricts.selectedIndex;
+            var combo = document.getElementById("street");
+            combo.options.length = 0;
+            var streets = cityArrayFromRequest[0][indexCity][1][indexDistrict][1];
+            var streetsid = cityArrayFromRequestid[0][indexCity][1][indexDistrict][1];
+            for (var m = 0; m < streets.length; m++) {
+                combo.options[m] = new Option(streets[m], streetsid[m]);
+            }
+        }
+    </script>
+
+
+
+
+</form>
+
+
+</fieldset>
+
+
+</td>
+</table>
+
+
+<br>
+
+
+</div>
+
+</div>
+
+
+</td>
+</table>
 </td>
 </table>
 

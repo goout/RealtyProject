@@ -10,7 +10,7 @@
 
 <head>
 
-    <title><fmt:message key="index.title" /></title>
+    <title><fmt:message key="index.title" />TEEEEST</title>
 
 </head>
 

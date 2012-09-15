@@ -33,7 +33,7 @@ public class AdvertCommand implements Command {
 
         request.setAttribute("advDTO", advDTO);
 
-        session.setAttribute("advertId", null);
+        session.setAttribute("advertId", null);          ////mot i ne nado; prover'
 
 
         return "AddAdvertPage.jsp";

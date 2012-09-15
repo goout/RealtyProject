@@ -20,8 +20,8 @@ import org.realty.hibernate.AdvertHibDAO;
 import org.springframework.beans.factory.BeanFactory;
 
 public class AddAdvertCommand implements Command {
-        private AdvertHibDAO advH;
-        private AdressHibDAO adrH;
+      //  private AdvertHibDAO advH;
+      //  private AdressHibDAO adrH;
 
 	@Override
 	public String execute(HttpServletRequest request,
@@ -30,7 +30,7 @@ public class AddAdvertCommand implements Command {
 
 
 	//	AdvertJdbcDAO ad = new AdvertJdbcDAO();
-    //    AdvertHibDAO advH = new AdvertHibDAO();
+        AdvertHibDAO advH = new AdvertHibDAO();
 		String category = request.getParameter("category");
         String adressId = request.getParameter("adressId");
 		String coast = request.getParameter("coast");
@@ -47,7 +47,7 @@ public class AddAdvertCommand implements Command {
 		advert.setCategory(category);
         advert.setAddedDate(dateFormat.format(date));
 
-      //  AdressHibDAO adrH = new AdressHibDAO();
+        AdressHibDAO adrH = new AdressHibDAO();
         Adress adr = adrH.read(Adress.class,Long.parseLong(adressId));
 
       //  advert.setAdressId(Long.parseLong(adressId));
