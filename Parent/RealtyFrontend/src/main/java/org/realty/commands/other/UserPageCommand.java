@@ -71,4 +71,11 @@ public class UserPageCommand implements Command {
 
     }
 
+    public void setAdvH(AdvertHibDAO advH) {
+        this.advH = advH;
+    }
+
+    public void setUsrH(UserHibDAO usrH) {
+        this.usrH = usrH;
+    }
 }

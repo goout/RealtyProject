@@ -32,4 +32,7 @@ public class DelUserCommand implements Command {
 
 	}
 
+    public void setUsrH(UserHibDAO usrH) {
+        this.usrH = usrH;
+    }
 }

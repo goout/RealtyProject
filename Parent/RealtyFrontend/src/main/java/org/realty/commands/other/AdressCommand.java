@@ -42,5 +42,7 @@ public class AdressCommand implements Command {
     }
 
 
-
+    public void setCityH(CityHibDAO cityH) {
+        this.cityH = cityH;
+    }
 }

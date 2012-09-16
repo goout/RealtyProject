@@ -108,7 +108,7 @@ public class CommandFactory {
     }
 
 
-
-	
-
+    public void setCommands(Map<String, Command> commands) {
+        this.commands = commands;
+    }
 }

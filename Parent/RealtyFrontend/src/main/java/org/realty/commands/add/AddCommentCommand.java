@@ -52,4 +52,7 @@ public class AddCommentCommand implements Command {
                 : "RealtyServlet?command=advertPage";
 	}
 
+    public void setCmntH(CommentHibDAO cmntH) {
+        this.cmntH = cmntH;
+    }
 }

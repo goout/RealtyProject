@@ -70,4 +70,11 @@ public class AddAdvertCommand implements Command {
 
 	}
 
+    public void setAdvH(AdvertHibDAO advH) {
+        this.advH = advH;
+    }
+
+    public void setAdrH(AdressHibDAO adrH) {
+        this.adrH = adrH;
+    }
 }

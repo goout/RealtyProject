@@ -34,4 +34,7 @@ public class DelAdvertCommand implements Command {
 
 	}
 
+    public void setAdvH(AdvertHibDAO advH) {
+        this.advH = advH;
+    }
 }

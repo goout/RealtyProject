@@ -31,4 +31,7 @@ public class AllUserCommand implements Command {
 
 	}
 
+    public void setUsrH(UserHibDAO usrH) {
+        this.usrH = usrH;
+    }
 }

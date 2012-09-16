@@ -86,4 +86,7 @@ public class AllAdvertCommand implements Command {
 
     }
 
+    public void setAdvH(AdvertHibDAO advH) {
+        this.advH = advH;
+    }
 }

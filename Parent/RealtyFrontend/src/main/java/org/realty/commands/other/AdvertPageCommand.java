@@ -141,4 +141,31 @@ public class AdvertPageCommand implements Command {
     }
 
 
+    public void setAdvH(AdvertHibDAO advH) {
+        this.advH = advH;
+    }
+
+    public void setUsrH(UserHibDAO usrH) {
+        this.usrH = usrH;
+    }
+
+    public void setAdrH(AdressHibDAO adrH) {
+        this.adrH = adrH;
+    }
+
+    public void setCityH(CityHibDAO cityH) {
+        this.cityH = cityH;
+    }
+
+    public void setDistrH(DistrictHibDAO distrH) {
+        this.distrH = distrH;
+    }
+
+    public void setStrH(StreetHibDAO strH) {
+        this.strH = strH;
+    }
+
+    public void setCmntH(CommentHibDAO cmntH) {
+        this.cmntH = cmntH;
+    }
 }

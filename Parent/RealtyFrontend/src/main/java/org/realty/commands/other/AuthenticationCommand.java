@@ -67,4 +67,8 @@ public class AuthenticationCommand implements Command {
 		return fl ? "RealtyServlet?command=userPage"
 				: "RealtyServlet?command=indexGuest";
 	}
+
+    public void setUsrH(UserHibDAO usrH) {
+        this.usrH = usrH;
+    }
 }

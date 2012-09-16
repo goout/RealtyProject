@@ -91,4 +91,11 @@ public class AllCommentCommand implements Command {
     }
 
 
+    public void setCmntH(CommentHibDAO cmntH) {
+        this.cmntH = cmntH;
+    }
+
+    public void setAdvH(AdvertHibDAO advH) {
+        this.advH = advH;
+    }
 }

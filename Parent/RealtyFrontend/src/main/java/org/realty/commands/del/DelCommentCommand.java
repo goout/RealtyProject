@@ -32,4 +32,7 @@ public class DelCommentCommand implements Command {
         return "RealtyServlet?command=allComment";
 	}
 
+    public void setCmntH(CommentHibDAO cmntH) {
+        this.cmntH = cmntH;
+    }
 }

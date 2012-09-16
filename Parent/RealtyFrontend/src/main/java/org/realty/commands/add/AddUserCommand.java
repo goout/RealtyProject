@@ -61,4 +61,7 @@ public class AddUserCommand implements Command {
 
 	}
 
+    public void setUsrH(UserHibDAO usrH) {
+        this.usrH = usrH;
+    }
 }
