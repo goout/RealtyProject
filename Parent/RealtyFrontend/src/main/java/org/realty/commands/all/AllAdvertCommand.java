@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 
 public class AllAdvertCommand implements Command {
+    private AdvertHibDAO advH;
 
 	@Override
 	public String execute(HttpServletRequest request,
@@ -30,7 +31,7 @@ public class AllAdvertCommand implements Command {
 
 
 		//AdvertJdbcDAO ad = new AdvertJdbcDAO();
-        AdvertHibDAO advH = new AdvertHibDAO();
+        //AdvertHibDAO advH = new AdvertHibDAO();
         List<Advert> alladverts = advH.getAllAdverts();
 
         List<AdvertUserAdressDTO> alladvertsusers = createDTO(alladverts,iuser);

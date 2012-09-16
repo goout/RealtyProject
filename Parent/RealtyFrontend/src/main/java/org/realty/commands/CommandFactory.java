@@ -1,6 +1,7 @@
 package org.realty.commands;
 
 import org.realty.*;
+import org.realty.commands.add.AddAdressCommand;
 import org.realty.commands.add.AddAdvertCommand;
 import org.realty.commands.add.AddCommentCommand;
 import org.realty.commands.add.AddUserCommand;

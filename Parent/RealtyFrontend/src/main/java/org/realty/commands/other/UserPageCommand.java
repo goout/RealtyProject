@@ -7,6 +7,8 @@ import org.realty.dao.UserJdbcDAO;
 import org.realty.dto.AdvertUserDTO;
 import org.realty.entity.Advert;
 import org.realty.entity.User;
+import org.realty.hibernate.AdvertHibDAO;
+import org.realty.hibernate.UserHibDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserPageCommand implements Command {
+    private AdvertHibDAO advH;
+    private UserHibDAO usrH;
 
     @Override
     public String execute(HttpServletRequest request,
@@ -24,8 +28,10 @@ public class UserPageCommand implements Command {
 
 
 
-        AdvertJdbcDAO ad = new AdvertJdbcDAO();
-        List<Advert> alladverts = ad.findAll();
+        //AdvertJdbcDAO ad = new AdvertJdbcDAO();
+        //List<Advert> alladverts = ad.findAll();
+
+        List<Advert> alladverts = advH.getAllAdverts();
 
         List<AdvertUserDTO> allAdvertsUsrDto = createDTO(alladverts);
 
@@ -50,8 +56,9 @@ public class UserPageCommand implements Command {
             aUDto.setCoast(o.getCoast());
             aUDto.setDescription(o.getDescription());
 
-            UserJdbcDAO ad = new UserJdbcDAO();
-            User user = ad.getDomainById(o.getUserId());
+           // UserJdbcDAO ad = new UserJdbcDAO();
+           // User user = ad.getDomainById(o.getUserId());
+            User user = usrH.read(User.class,o.getUserId());
             aUDto.setUserName(user.getName());
 
 

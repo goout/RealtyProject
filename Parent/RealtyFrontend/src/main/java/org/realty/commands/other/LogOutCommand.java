@@ -16,6 +16,7 @@ public class LogOutCommand implements Command {
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+
 		   HttpSession session = request.getSession();  
 		   UsrInfo User = (UsrInfo) session.getAttribute("userInfo");
 		   User.Logout();

@@ -10,9 +10,9 @@ import java.util.List;
 public class CityHibDAO extends HibernateDAO<City> {
 
     @SuppressWarnings("unchecked")
-    public List<City> getAllAdverts() {
+    public List<City> getAllCitys() {
         begin();
-        Query query = getSession().createQuery("FROM Advert");
+        Query query = getSession().createQuery("FROM City");
         List<City> LST = query.list();
         commit();
         return LST;

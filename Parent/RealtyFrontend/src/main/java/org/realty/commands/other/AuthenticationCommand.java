@@ -14,16 +14,19 @@ import org.realty.UsrInfo;
 import org.realty.commands.Command;
 import org.realty.dao.UserJdbcDAO;
 import org.realty.entity.User;
+import org.realty.hibernate.UserHibDAO;
 
 public class AuthenticationCommand implements Command {
+    private UserHibDAO usrH;
 
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		UserJdbcDAO ad = new UserJdbcDAO();
-		List<User> registeredUsers = ad.findAll();
+		//UserJdbcDAO ad = new UserJdbcDAO();
+		//List<User> registeredUsers = ad.findAll();
+        List<User> registeredUsers = usrH.getAllUsers();
 
 		out.printf("baza  %s,%s", registeredUsers.get(0).getName(),
 				registeredUsers.get(0).getPassword());

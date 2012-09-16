@@ -3,37 +3,123 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="adressHDAO" class="org.realty.hibernate.AdressHibDAO" />
-    <bean id="advertHDAO" class="org.realty.hibernate.AdvertHibDAO" />
+
+    <bean id="adressHDAO" class="org.realty.hibernate.AdressHibDAO"/>
+    <bean id="advertHDAO" class="org.realty.hibernate.AdvertHibDAO"/>
+    <bean id="commentHDAO" class="org.realty.hibernate.CommentHibDAO"/>
+    <bean id="userHDAO" class="org.realty.hibernate.UserHibDAO"/>
+    <bean id="cityHDAO" class="org.realty.hibernate.CityHibDAO"/>
+    <bean id="districtHDAO" class="org.realty.hibernate.DistrictHibDAO"/>
+    <bean id="streetHDAO" class="org.realty.hibernate.StreetHibDAO"/>
+
+
+    <bean id="indexGuest" class="org.realty.commands.other.IndexGuestCommand">
+        <property name="advH" ref="advertHDAO"/>
+    </bean>
+
+    <bean id="signIn" class="org.realty.commands.other.AuthenticationCommand">
+        <property name="usrH" ref="userHDAO"/>
+    </bean>
+
+    <bean id="changeLang" class="org.realty.commands.other.ChangeLangCommand">
+    </bean>
+
+    <bean id="LogOut" class="org.realty.commands.other.LogOutCommand">
+    </bean>
+
+    <bean id="addAdress" class="org.realty.commands.add.AddAdressCommand">
+        <property name="adrH" ref="adressHDAO"/>
+    </bean>
+
+    <bean id="adress" class="org.realty.commands.other.AdressCommand">
+        <property name="cityH" ref="cityHDAO"/>
+    </bean>
+
+    <bean id="advertPage" class="org.realty.commands.other.AdvertPageCommand">
+        <property name="adrH" ref="adressHDAO"/>
+        <property name="advH" ref="advertHDAO"/>
+        <property name="cityH" ref="cityHDAO"/>
+        <property name="cmntH" ref="commentHDAO"/>
+        <property name="usrH" ref="userHDAO"/>
+        <property name="distrH" ref="districtHDAO"/>
+        <property name="strH" ref="streetHDAO"/>
+
+    </bean>
 
     <bean id="addAdvert" class="org.realty.commands.add.AddAdvertCommand">
-    <property name="adrH" ref="adressHDAO" />
-    <property name="advH" ref="adressHDAO" />
+        <property name="adrH" ref="adressHDAO"/>
+        <property name="advH" ref="advertHDAO"/>
     </bean>
+
+    <bean id="advert" class="org.realty.commands.other.AdvertCommand">
+    </bean>
+
+    <bean id="commentPage" class="org.realty.commands.other.CommentCommand">
+    </bean>
+
+    <bean id="allAdvert" class="org.realty.commands.all.AllAdvertCommand">
+        <property name="advH" ref="advertHDAO"/>
+    </bean>
+
+    <bean id="delAdvert" class="org.realty.commands.del.DelAdvertCommand">
+        <property name="advH" ref="advertHDAO"/>
+    </bean>
+
+    <bean id="addComment" class="org.realty.commands.add.AddCommentCommand">
+        <property name="cmntH" ref="commentHDAO"/>
+    </bean>
+
+    <bean id="allComment" class="org.realty.commands.all.AllCommentCommand">
+        <property name="cmntH" ref="commentHDAO"/>
+        <property name="advH" ref="advertHDAO"/>
+    </bean>
+
+    <bean id="delComment" class="org.realty.commands.del.DelCommentCommand">
+        <property name="cmntH" ref="commentHDAO"/>
+    </bean>
+
+    <bean id="addUser" class="org.realty.commands.add.AddUserCommand">
+        <property name="usrH" ref="userHDAO"/>
+    </bean>
+
+    <bean id="allUser" class="org.realty.commands.all.AllUserCommand">
+        <property name="usrH" ref="userHDAO"/>
+    </bean>
+
+    <bean id="delUser" class="org.realty.commands.del.DelUserCommand">
+        <property name="usrH" ref="userHDAO"/>
+    </bean>
+
+    <bean id="userPage" class="org.realty.commands.other.UserPageCommand">
+        <property name="usrH" ref="userHDAO"/>
+        <property name="advH" ref="advertHDAO"/>
+    </bean>
+
+
 
 
     <bean id="commandF" class="org.realty.commands.CommandFactory">
         <property name="commands">
             <map>
-                <entry key="addUser" value-ref="addAdvert"/>
-                <entry key="allUser" value-ref=" "/>
-                <entry key="delUser" value-ref=" "/>
-                <entry key="addAdvert" value-ref=" "/>
-                <entry key="allAdvert" value-ref=" "/>
-                <entry key="delAdvert" value-ref=" "/>
-                <entry key="addComment" value-ref=" "/>
-                <entry key="allComment" value-ref=" "/>
-                <entry key="delComment" value-ref=" "/>
-                <entry key="signIn" value-ref=" "/>
-                <entry key="changeLang" value-ref=" "/>
-                <entry key="indexGuest" value-ref=" "/>
-                <entry key="LogOut" value-ref=" "/>
-                <entry key="userPage" value-ref=" "/>
-                <entry key="advertPage" value-ref=" "/>
-                <entry key="commentPage" value-ref=" "/>
-                <entry key="adress" value-ref=" "/>
-                <entry key="addAdress" value-ref=" "/>
-                <entry key="advert" value-ref=" "/>
+                <entry key="addUser" value-ref="addUser"/>
+                <entry key="allUser" value-ref="allUser"/>
+                <entry key="delUser" value-ref="delUser"/>
+                <entry key="addAdvert" value-ref="addAdvert"/>
+                <entry key="allAdvert" value-ref="allAdvert"/>
+                <entry key="delAdvert" value-ref="delAdvert"/>
+                <entry key="addComment" value-ref="addComment"/>
+                <entry key="allComment" value-ref="allComment"/>
+                <entry key="delComment" value-ref="delComment"/>
+                <entry key="signIn" value-ref="signIn"/>
+                <entry key="changeLang" value-ref="changeLang"/>
+                <entry key="indexGuest" value-ref="indexGuest"/>
+                <entry key="LogOut" value-ref="LogOut"/>
+                <entry key="userPage" value-ref="userPage"/>
+                <entry key="advertPage" value-ref="advertPage"/>
+                <entry key="commentPage" value-ref="commentPage"/>
+                <entry key="adress" value-ref="adress"/>
+                <entry key="addAdress" value-ref="addAdress"/>
+                <entry key="advert" value-ref="advert"/>
 
             </map>
         </property>

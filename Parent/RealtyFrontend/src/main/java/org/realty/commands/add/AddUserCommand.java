@@ -16,13 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class AddUserCommand implements Command {
+    private UserHibDAO usrH;
 
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException, ParseException {
 
 		//UserJdbcDAO ad = new UserJdbcDAO();
-        UserHibDAO usrH =new UserHibDAO();
+        //UserHibDAO usrH =new UserHibDAO();
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String phoneNumber = request.getParameter("phoneNumber");

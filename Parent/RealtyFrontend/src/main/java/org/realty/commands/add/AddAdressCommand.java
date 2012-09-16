@@ -1,4 +1,4 @@
-package org.realty.commands.other;
+package org.realty.commands.add;
 
 
 import org.realty.commands.Command;
@@ -6,6 +6,7 @@ import org.realty.commands.CommandFactory;
 import org.realty.dao.AdressJdbcDAO;
 
 import org.realty.entity.Adress;
+import org.realty.hibernate.AdressHibDAO;
 
 
 import javax.servlet.ServletException;
@@ -18,21 +19,18 @@ import java.util.List;
 
 
 public class AddAdressCommand implements Command {
-
+      private AdressHibDAO adrH;
     @Override
     public String execute(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException, ParseException {
-    AdressJdbcDAO adrDao = new AdressJdbcDAO();
 
+    //AdressJdbcDAO adrDao = new AdressJdbcDAO();
+   // AdressHibDAO adrH = new AdressHibDAO();
 
     HttpSession session = request.getSession();
-
     String city = request.getParameter("city");
-
     String district = request.getParameter("district");
-
     String street = request.getParameter("street");
-
     String homeNum = request.getParameter("homeNum");
     String apartmentNum = request.getParameter("apartmentNum");
 
@@ -43,12 +41,12 @@ public class AddAdressCommand implements Command {
         adress.setHouseNum(Integer.parseInt(homeNum));
         adress.setApartmentNum(Integer.parseInt(apartmentNum));
 
-    adrDao.add(adress);
+    //adrDao.add(adress);
+      adrH.create(adress);
 
-
-         List<Adress> adressList = adrDao.findAll();
-         Adress lastAdr = adressList.get(adressList.size()-1);
-         Long adressId = lastAdr.getAdressId();
+        List<Adress> adressList = adrH.getAllAdress();
+        Adress lastAdr = adressList.get(adressList.size()-1);
+        Long adressId = lastAdr.getAdressId();
         System.out.printf("%d",adressId);
 
 

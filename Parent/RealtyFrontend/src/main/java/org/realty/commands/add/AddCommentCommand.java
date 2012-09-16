@@ -19,13 +19,14 @@ import org.realty.entity.Comment;
 import org.realty.hibernate.CommentHibDAO;
 
 public class AddCommentCommand implements Command {
+    private CommentHibDAO cmntH;
 
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException, ParseException {
 
 		//CommentJdbcDAO ad = new CommentJdbcDAO();
-        CommentHibDAO cmntH = new CommentHibDAO();
+       // CommentHibDAO cmntH = new CommentHibDAO();
 		String text = request.getParameter("text");
 		String advertId = request.getParameter("advertId"); //?
 		String userId = request.getParameter("userId"); //?

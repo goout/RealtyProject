@@ -19,9 +19,8 @@ public class AdvertCommand implements Command {
 
 
         HttpSession session = request.getSession();
+
         UsrInfo iuser = (UsrInfo) session.getAttribute("userInfo");
-
-
         Long adressId = (Long) session.getAttribute("adressId");
 
         AdvertTestDTO advDTO = new AdvertTestDTO();

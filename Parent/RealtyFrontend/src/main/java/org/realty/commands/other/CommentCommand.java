@@ -34,7 +34,6 @@ public class CommentCommand implements Command {
         }
 
         Long aid = (Long)session.getAttribute("advertId");
-
         CommentTestDTO cmnT = new CommentTestDTO();
         cmnT.setUserId(iuser.getUserId());
         cmnT.setAdvertId(aid);

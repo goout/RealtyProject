@@ -10,15 +10,23 @@ import javax.servlet.http.HttpServletResponse;
 import org.realty.commands.Command;
 import org.realty.commands.CommandFactory;
 import org.realty.dao.CommentJdbcDAO;
+import org.realty.entity.Comment;
+import org.realty.hibernate.CommentHibDAO;
 
 public class DelCommentCommand implements Command {
+    private CommentHibDAO cmntH;
 
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException, ParseException {
 
-		CommentJdbcDAO ad = new CommentJdbcDAO();
+
+       // CommentHibDAO cmntH = new CommentHibDAO();
+
+		//CommentJdbcDAO ad = new CommentJdbcDAO();
 		String delCommentId = request.getParameter("delCommentId");
-		ad.delete(Long.parseLong(delCommentId));
+		Comment del = cmntH.read(Comment.class,Long.parseLong(delCommentId));
+        cmntH.delete(del);
+        //ad.delete(Long.parseLong(delCommentId));
 
 		return CommandFactory.getCommand("allComment").execute(request, response);
 

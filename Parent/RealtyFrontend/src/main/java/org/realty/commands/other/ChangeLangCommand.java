@@ -15,6 +15,6 @@ import java.io.IOException;
 public class ChangeLangCommand implements Command {
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    return request.getRequestURI();
+     return request.getRequestURI();
   }
 }

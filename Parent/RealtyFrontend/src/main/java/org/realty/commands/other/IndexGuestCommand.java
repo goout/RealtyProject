@@ -12,17 +12,20 @@ import org.realty.commands.Command;
 import org.realty.dao.AdvertJdbcDAO;
 import org.realty.dto.AdvertDTO;
 import org.realty.entity.Advert;
+import org.realty.hibernate.AdvertHibDAO;
 
 
 public class IndexGuestCommand implements Command {
+    private AdvertHibDAO advH;
 
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
 
-        AdvertJdbcDAO ad = new AdvertJdbcDAO();
-        List<Advert> alladverts = ad.findAll();
+       // AdvertJdbcDAO ad = new AdvertJdbcDAO();
+        //List<Advert> alladverts = ad.findAll();
+        List<Advert> alladverts = advH.getAllAdverts();
 
         List<AdvertDTO> allAdvertsDto = createDTO(alladverts);
 

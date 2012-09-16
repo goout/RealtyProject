@@ -20,6 +20,8 @@ import org.realty.hibernate.AdvertHibDAO;
 import org.realty.hibernate.CommentHibDAO;
 
 public class AllCommentCommand implements Command {
+    private CommentHibDAO cmntH;
+    private AdvertHibDAO advH;
 
 	@Override
 	public String execute(HttpServletRequest request,
@@ -30,11 +32,11 @@ public class AllCommentCommand implements Command {
         UsrInfo iuser = (UsrInfo) session.getAttribute("userInfo");
 
 	//	CommentJdbcDAO ad = new CommentJdbcDAO();
-        CommentHibDAO cmntH = new CommentHibDAO();
+       /// CommentHibDAO cmntH = new CommentHibDAO();
 		List<Comment> allcomments = cmntH.getAllComments();
 
       //  AdvertJdbcDAO ad3 = new AdvertJdbcDAO();
-        AdvertHibDAO advH =new AdvertHibDAO();
+      //  AdvertHibDAO advH =new AdvertHibDAO();
         List<Advert> alladverts = advH.getAllAdverts();
 
 

@@ -13,6 +13,7 @@ import org.realty.entity.User;
 import org.realty.hibernate.UserHibDAO;
 
 public class AllUserCommand implements Command {
+    private UserHibDAO usrH;
 
 	@Override
 	public String execute(HttpServletRequest request,
@@ -20,10 +21,10 @@ public class AllUserCommand implements Command {
 
 		
 		//UserJdbcDAO ad = new UserJdbcDAO();
-        UserHibDAO usrH = new UserHibDAO();
+        //UserHibDAO usrH = new UserHibDAO();
 		List<User> allusers = usrH.getAllUsers();
 		
-	  request.getSession().setAttribute("id", new Long(1L));
+	    request.getSession().setAttribute("id", new Long(1L));    ///???
 		request.setAttribute("allusers", allusers);
 		
 		return "User.jsp";
