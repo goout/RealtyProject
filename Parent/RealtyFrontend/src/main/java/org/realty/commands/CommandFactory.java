@@ -16,8 +16,9 @@ import org.realty.commands.other.*;
 import java.util.*;
 
 public class CommandFactory {
-	@SuppressWarnings("serial")
-	private static Map<String, Command> commands = new HashMap<String, Command>() {
+
+    private Map<String, Command> commands;
+/*	private static Map<String, Command> commands = new HashMap<String, Command>() {
 		{
 			put("addUser", new AddUserCommand());
 			put("allUser", new AllUserCommand());
@@ -39,7 +40,7 @@ public class CommandFactory {
             put("addAdress", new AddAdressCommand());
             put("advert", new AdvertCommand());
 		}
-	};
+	};*/
 
   private static final List<Roles> ALL_ROLES = Arrays.asList(Roles.LOGGED, Roles.ADMIN, Roles.ANONYMOUS);
   private static final List<Roles> LOG_ADM = Arrays.asList(Roles.LOGGED, Roles.ADMIN);
@@ -87,10 +88,13 @@ public class CommandFactory {
     };
 
 
-	public static Command getCommand(String commandName) {
+	public Command getCommand(String commandName) {
 
 		Command command = commands.get(commandName);
-		return command != null ? command : new IndexGuestCommand();
+      /*  if (command==null){
+            command = commands.get("indexGuest");
+        }*/
+		return command != null ? command : commands.get("indexGuest");
 	}
 
 	public static List<Roles> getRolesByCommand(String commandName) {

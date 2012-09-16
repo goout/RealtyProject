@@ -2,6 +2,9 @@ package org.realty;
 
 import org.realty.commands.Command;
 import org.realty.commands.CommandFactory;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -38,7 +41,12 @@ public class RealtyServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
         String command = request.getParameter("command");
-		Command c = CommandFactory.getCommand(command);
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("/hibernate.xml");
+        BeanFactory factory = context;
+        CommandFactory test = (CommandFactory)factory.getBean("commandF");
+
+		Command c = test.getCommand(command);
         String path = null;
         try {
             path = c.execute(request, response);

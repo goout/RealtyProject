@@ -28,8 +28,8 @@ public class DelCommentCommand implements Command {
         cmntH.delete(del);
         //ad.delete(Long.parseLong(delCommentId));
 
-		return CommandFactory.getCommand("allComment").execute(request, response);
-
+		//return CommandFactory.getCommand("allComment").execute(request, response);
+        return "RealtyServlet?command=allComment";
 	}
 
 }

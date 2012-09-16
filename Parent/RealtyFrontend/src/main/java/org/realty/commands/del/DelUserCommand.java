@@ -27,7 +27,8 @@ public class DelUserCommand implements Command {
         User del = usrH.read(User.class,(Long)Long.parseLong(delUserId));
         usrH.delete(del);
 
-		return CommandFactory.getCommand("allUser").execute(request, response);
+		//return CommandFactory.getCommand("allUser").execute(request, response);
+        return "RealtyServlet?command=allUser";
 
 	}
 

@@ -29,7 +29,8 @@ public class DelAdvertCommand implements Command {
 
 	//	ad.delete(Long.parseLong(delAdvertId));
 
-		return CommandFactory.getCommand("allAdvert").execute(request, response);
+		//return CommandFactory.getCommand("allAdvert").execute(request, response);
+        return "RealtyServlet?command=allAdvert";
 
 	}
 

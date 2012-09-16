@@ -64,8 +64,9 @@ public class AddAdvertCommand implements Command {
 	//	ad.add(advert);
         advH.create(advert);
 
-		return CommandFactory.getCommand("userPage")
-				.execute(request, response);
+		//return CommandFactory.getCommand("userPage")
+			//	.execute(request, response);
+        return "RealtyServlet?command=userPage";
 
 	}
 

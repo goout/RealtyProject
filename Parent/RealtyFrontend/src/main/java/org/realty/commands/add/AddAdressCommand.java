@@ -54,7 +54,8 @@ public class AddAdressCommand implements Command {
 
 
 
-    return CommandFactory.getCommand("advert").execute(request, response);
+  //  return CommandFactory.getCommand("advert").execute(request, response);
      // return "AddAdvertPage.jsp";
+        return "RealtyServlet?command=advert";
     }
 }
