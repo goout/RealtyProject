@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.realty.commands.Command;
-import org.realty.dao.AdvertJdbcDAO;
 import org.realty.dto.AdvertDTO;
 import org.realty.entity.Advert;
 import org.realty.hibernate.AdvertHibDAO;
@@ -56,5 +55,10 @@ public class IndexGuestCommand implements Command {
        return adto;
 
     }
+
+    public void setAdvH(AdvertHibDAO advH) {
+        this.advH = advH;
+    }
+
 
 }

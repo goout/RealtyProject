@@ -58,4 +58,8 @@ public class AddAdressCommand implements Command {
      // return "AddAdvertPage.jsp";
         return "RealtyServlet?command=advert";
     }
+
+    public void setAdrH(AdressHibDAO adrH) {
+        this.adrH = adrH;
+    }
 }
