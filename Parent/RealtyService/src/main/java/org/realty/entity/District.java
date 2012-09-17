@@ -54,7 +54,7 @@ public class District {
         this.streets = streets;
     }
 
-
+    @Column(name = "cityId")
     public long getCityId() {
         return cityId;
     }

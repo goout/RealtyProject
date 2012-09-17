@@ -55,19 +55,14 @@
         <td>
 
 
-            <table width="1000" height="0" border="0" cellpadding="5" style="background-color:#98FB98">
+            <table width="1000" height="600" border="0" cellpadding="5" style="background-color:#98FB98">
                 <tr>
                     <td>
-                        <div id="head2">
 
                             <h2><fmt:message key="auth.subhead"/></h2>
-                        </div>
 
 
-                        <div id="content">
-
-
-                            <table width="400" border="0" align="center">
+                            <table height="590" border="0" align="center">
                                 <tr>
                                     <td>
 
@@ -85,15 +80,21 @@
                                                     <tr>
                                                         <td><fmt:message key="auth.label.pass"/>:
                                                         <td>
-                                                        <td><input type="PASSWORD" size="30" name="passwordt" id="2">
+                                                        <td><input type="PASSWORD" size="30" name="password" id="2">
                                                         </td>
                                                     </tr>
 
 
                                                 </table>
-                                                <br/> <input type="submit" value="Sign in"/> <input type="hidden"
+                                           <%--     <br/> <input type="submit" value=<fmt:message key="button.signIn" var="SignIn"/>> <input type="hidden"
                                                                                                     name="command"
-                                                                                                    value="signIn"/>
+                                                                                                    value="signIn"/>--%>
+
+                                                <br/> <input type="submit" value=
+                                            <fmt:message key="button.signIn"/>> <input type="hidden"
+                                                                                             name="command" value="signIn"/>
+
+
                                             </form>
                                         </fieldset>
 
@@ -103,7 +104,7 @@
                             <br>
 
 
-                        </div>
+
 
                         </div>
 

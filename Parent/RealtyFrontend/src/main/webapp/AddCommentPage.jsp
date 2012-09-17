@@ -38,7 +38,8 @@
                 <li></li>
                 <li></li>
                 <li></li>
-                <li><input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
+                <li><fmt:message key="button.logout" var="Out"/>
+                    <input type="button" value="${Out}" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
                 <li>
                     <div id="head">
 
@@ -56,71 +57,68 @@
         <td>
 
 
-            <table width="1000" height="0" border="0" cellpadding="5" style="background-color:#98FB98">
+            <table width="1000" height="600" border="0" cellpadding="5" style="background-color:#98FB98">
                 <tr>
                     <td>
-                        <div id="head2">
 
-                            <h2><fmt:message key="auth.subhead"/></h2>
-                        </div>
+                        <h2><fmt:message key="comm.subhead"/></h2>
 
 
-                        <div id="content">
+                        <table height="590" border="0" align="center">
+                            <tr>
+                                <td>
+
+                                    <fieldset>
+                                        <legend>
+                                            <b><fmt:message key="comm.label.add"/></b>
+                                        </legend>
+                                        <form id="form1" action="RealtyServlet">
+                                            <table>
+                                                <tr>
+                                                    <td><fmt:message key="comm.label.txt"/>:
+                                                    <td><select name="userId" id="userId"
+                                                                style="visibility:hidden;">
+
+                                                        <option value="<c:out value="${cmnt.userId}"/>"><c:out
+                                                                value="${cmnt.userId}"/></option>
+
+                                                    </select></td>
+                                                    <td><select name="advertId" id="advertId"
+                                                                style="visibility:hidden;">
 
 
-                            <table width="600" border="0" align="center">
-                                <tr>
-                                    <td>
+                                                        <option value="<c:out value="${cmnt.advertId}"/>"><c:out
+                                                                value="${cmnt.advertId}"/></option>
 
-                                        <fieldset>
-                                            <legend>
-                                                <b><fmt:message key="comm.label.add"/></b>
-                                            </legend>
-                                            <form id="form1" action="RealtyServlet">
-                                                <table>
-                                                    <tr>
-                                                        <td><fmt:message key="comm.label.txt"/>:
-                                                        <td>
-                                                        <td><textarea rows="5" cols="20"  name="text" id="1"></textarea></td>
-                                                    </tr>
+                                                    </select></td>
+                                                </tr>
+                                                <tr>
 
 
-                                                    <tr>
-                                                        <td><select name="userId" id="userId" style="visibility:hidden;">
-
-                                                            <option value="<c:out value="${cmnt.userId}"/>"><c:out value="${cmnt.userId}"/></option>
-
-                                                        </select></td>
-                                                    </tr>
-
-                                                    <tr>
-
-                                                        <td><select name="advertId" id="advertId" style="visibility:hidden;">
+                                                    <td COLSPAN=3><textarea rows="10" cols="35" name="text"
+                                                                            id="1"></textarea>
+                                                    </td>
+                                                </tr>
 
 
-                                                            <option value="<c:out value="${cmnt.advertId}"/>"><c:out value="${cmnt.advertId}"/></option>
+                                                <tr>
 
-                                                        </select></td>
-
-
-                                                    </tr>
+                                                </tr>
 
 
-                                                </table>
-                                                <br/> <input type="submit" value=
-                                            <fmt:message key="button.add"/>> <input type="hidden"
-                                                                                    name="command" value="addComment"/>
-                                            </form>
-                                        </fieldset>
+                                            </table>
+                                            <br/> <input type="submit" value=
+                                        <fmt:message key="button.add"/>> <input type="hidden"
+                                                                                name="command" value="addComment"/>
+                                        </form>
+                                    </fieldset>
 
 
-                                    </td>
-                            </table>
+                                </td>
+                        </table>
 
-                            <br>
+                        <br>
 
-
-                        </div>
 
                         </div>
 
@@ -131,7 +129,7 @@
 </table>
 
 
-<c:set var="commandForPage" value="indexGuest" scope="request"/>
+
 
 
 <center>

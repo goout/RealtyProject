@@ -85,26 +85,31 @@ public class AdvertPageCommand implements Command {
         aUADto.setPhoneNumber(user.getPhoneNumber());
 
         //AdressHibDAO adrH = new AdressHibDAO();
-        Adress adr = adrH.read(Adress.class,advert.getAdressId());
+        Adress a =advert.getAdress();
+        Adress adr = adrH.read(Adress.class,a.getAdressId());
         //AdressJdbcDAO adD = new AdressJdbcDAO();
         //Adress adr = adD.getDomainById(advert.getAdressId());
 
         aUADto.setHouseNum(adr.getHouseNum());
         aUADto.setApartmentNum(adr.getApartmentNum());
 
-        City cit = cityH.read(City.class,adr.getCityId());
+        City cit2 =adr.getCity();
+
+        City cit = cityH.read(City.class,cit2.getCityId());
         //CityJdbcDAO citD = new CityJdbcDAO();
         //City cit = citD.getDomainById(adr.getCityId());
 
         aUADto.setCityName(cit.getCityName());
 
-        District dis = distrH.read(District.class,adr.getDistrictId());
+        District dis2 = adr.getDistrict();
+        District dis = distrH.read(District.class,dis2.getDistrictId());
        // DistrictJdbcDAO diD = new DistrictJdbcDAO();
         //District dis = diD.getDomainById(adr.getDistrictId());
 
         aUADto.setDistrictName(dis.getDistrictName());
 
-        Street str = strH.read(Street.class,adr.getStreetId());
+        Street str2 = adr.getStreet();
+        Street str = strH.read(Street.class,str2.getStreetId());
         //StreetJdbcDAO strD = new StreetJdbcDAO();
        // Street str = strD.getDomainById(adr.getStreetId());
 

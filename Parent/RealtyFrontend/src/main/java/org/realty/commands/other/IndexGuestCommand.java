@@ -21,8 +21,6 @@ public class IndexGuestCommand implements Command {
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.printf("?????????");
-
        // AdvertJdbcDAO ad = new AdvertJdbcDAO();
         //List<Advert> alladverts = ad.findAll();
         List<Advert> alladverts = advH.getAllAdverts();

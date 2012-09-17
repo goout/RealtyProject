@@ -29,6 +29,9 @@
 
     <bean id="addAdress" class="org.realty.commands.add.AddAdressCommand">
         <property name="adrH" ref="adressHDAO"/>
+        <property name="cityH" ref="cityHDAO"/>
+        <property name="distrH" ref="districtHDAO"/>
+        <property name="strH" ref="streetHDAO"/>
     </bean>
 
     <bean id="adress" class="org.realty.commands.other.AdressCommand">

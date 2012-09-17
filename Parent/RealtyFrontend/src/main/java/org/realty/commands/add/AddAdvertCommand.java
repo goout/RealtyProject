@@ -48,7 +48,8 @@ public class AddAdvertCommand implements Command {
         advert.setAddedDate(dateFormat.format(date));
 
       //  AdressHibDAO adrH = new AdressHibDAO();
-        Adress adr = adrH.read(Adress.class,Long.parseLong(adressId));
+
+        Adress adr = adrH.read(Adress.class,adrH.read(Adress.class,Long.parseLong(adressId)).getAdressId());
 
       //  advert.setAdressId(Long.parseLong(adressId));
         advert.setAdress(adr);

@@ -6,7 +6,13 @@ import org.realty.commands.CommandFactory;
 import org.realty.dao.AdressJdbcDAO;
 
 import org.realty.entity.Adress;
+import org.realty.entity.City;
+import org.realty.entity.District;
+import org.realty.entity.Street;
 import org.realty.hibernate.AdressHibDAO;
+import org.realty.hibernate.CityHibDAO;
+import org.realty.hibernate.DistrictHibDAO;
+import org.realty.hibernate.StreetHibDAO;
 
 
 import javax.servlet.ServletException;
@@ -20,6 +26,9 @@ import java.util.List;
 
 public class AddAdressCommand implements Command {
       private AdressHibDAO adrH;
+      private CityHibDAO cityH;
+      private DistrictHibDAO distrH;
+      private StreetHibDAO strH;
     @Override
     public String execute(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException, ParseException {
@@ -35,20 +44,34 @@ public class AddAdressCommand implements Command {
     String apartmentNum = request.getParameter("apartmentNum");
 
         Adress adress = new Adress();
-        adress.setCityId(Long.parseLong(city));
-        adress.setDistrictId(Long.parseLong(district));
-        adress.setStreetId(Long.parseLong(street));
+
+       // CityHibDAO c = new CityHibDAO();
+        City cit2 = cityH.read(City.class,Long.parseLong(city));
+
+        //DistrictHibDAO d = new DistrictHibDAO();
+        District dis2 = distrH.read(District.class,Long.parseLong(district));
+
+       // StreetHibDAO s = new StreetHibDAO();
+        Street str2 = strH.read(Street.class,Long.parseLong(street));
+
+       // adress.setCityId(cit2.getCityId());
+        adress.setCity(cit2);
+        //adress.setDistrictId(Long.parseLong(district));
+        adress.setDistrict(dis2);
+
+        //adress.setStreetId(Long.parseLong(street));
+        adress.setStreet(str2);
+
         adress.setHouseNum(Integer.parseInt(homeNum));
         adress.setApartmentNum(Integer.parseInt(apartmentNum));
 
     //adrDao.add(adress);
+
       adrH.create(adress);
 
         List<Adress> adressList = adrH.getAllAdress();
         Adress lastAdr = adressList.get(adressList.size()-1);
         Long adressId = lastAdr.getAdressId();
-        System.out.printf("%d",adressId);
-
 
         session.setAttribute("adressId", adressId);
 
@@ -61,5 +84,17 @@ public class AddAdressCommand implements Command {
 
     public void setAdrH(AdressHibDAO adrH) {
         this.adrH = adrH;
+    }
+
+    public void setCityH(CityHibDAO cityH) {
+        this.cityH = cityH;
+    }
+
+    public void setDistrH(DistrictHibDAO distrH) {
+        this.distrH = distrH;
+    }
+
+    public void setStrH(StreetHibDAO strH) {
+        this.strH = strH;
     }
 }

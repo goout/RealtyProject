@@ -27,12 +27,6 @@ public class AuthenticationCommand implements Command {
 		//UserJdbcDAO ad = new UserJdbcDAO();
 		//List<User> registeredUsers = ad.findAll();
         List<User> registeredUsers = usrH.getAllUsers();
-
-		out.printf("baza  %s,%s", registeredUsers.get(0).getName(),
-				registeredUsers.get(0).getPassword());
-		out.printf("zapros%s,%s", request.getParameter("name"),
-				request.getParameter("passwordt"));
-
 		Boolean fl = false;
 
 		try {
@@ -42,7 +36,7 @@ public class AuthenticationCommand implements Command {
 				if (user.getName().equalsIgnoreCase(
 						request.getParameter("name"))
 						&& user.getPassword().equalsIgnoreCase(
-								request.getParameter("passwordt"))) {
+								request.getParameter("password"))) {
 					out.println("User Authenticated");
 					fl = true;
 					UsrInfo ui = new UsrInfo();

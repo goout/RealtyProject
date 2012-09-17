@@ -36,7 +36,8 @@
                 <li></li>
                 <li></li>
                 <li></li>
-                <li><input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
+                <li><fmt:message key="button.logout" var="Out"/>
+                    <input type="button" value="${Out}" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
                 <li>
                     <div id="head">
 
@@ -54,97 +55,88 @@
         <td>
 
 
-            <table width="1000" height="0" border="0" cellpadding="5" style="background-color:#98FB98">
+            <table width="1000" height="600" border="0" cellpadding="5" style="background-color:#98FB98">
                 <tr>
                     <td>
-                        <div id="head2">
-
-                            <h2><fmt:message key="advert.subhead"/></h2>
-                        </div>
 
 
-                        <div id="content">
+                        <h2><fmt:message key="advert.subhead"/></h2>
 
 
-                            <table width="350" border="0" align="center">
-                                <tr>
-                                    <td>
+                        <table height="590" border="0" align="center">
+                            <tr>
+                                <td>
 
-                                        <fieldset>
-                                            <legend>
-                                                <b><fmt:message key="advert.label.add"/></b>
-                                            </legend>
-                                            <form id="form1" action="RealtyServlet">
-                                                <table>
-                                                    <tr>
-                                                        <td><fmt:message key="advert.label.category"/>:
-                                                        <td>
-                                                        <td><input type="text" size="30" name="category" id="1"></td>
-                                                    </tr>
+                                    <fieldset>
+                                        <legend>
+                                            <b><fmt:message key="advert.label.add"/></b>
+                                        </legend>
+                                        <form id="form1" action="RealtyServlet">
+                                            <table border="0">
+                                                <tr>
+                                                    <td><fmt:message key="advert.label.category"/>:
+                                                    <td><input type="text" size="30" name="category" id="1"></td>
+                                                </tr>
 
-                                                    <tr>
-                                                        <td>Rooms:
-                                                        <td>
-                                                        <td><input type="text" size="30" name="rooms" id="7"></td>
-                                                    </tr>
+                                                <tr>
+                                                    <td><fmt:message key="rooms"/>
+                                                    <td><input type="text" size="30" name="rooms" id="7"></td>
+                                                </tr>
 
-                                                    <tr>
-                                                        <td><select name="adressId" id="adressId"
-                                                                    style="visibility:hidden;">
+                                                <tr>
 
+                                                </tr>
+                                                <tr>
+                                                    <td><fmt:message key="advert.label.coast"/>:
+                                                    <td><input type="text" size="30" name="coast" id="5"></td>
+                                                </tr>
 
-                                                            <option value="<c:out value="${adv.adressId}"/>"><c:out
-                                                                    value="${adv.adressId}"/></option>
-
-
-                                                        </select></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><fmt:message key="advert.label.coast"/>:
-                                                        <td>
-                                                        <td><input type="text" size="30" name="coast" id="5"></td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td><fmt:message key="advert.label.description"/>:
-                                                        <td>
-                                                        <td><input type="text" size="90" name="description" id="6"></td>
-                                                    </tr>
-
-                                                    <tr>
-
-                                                        <td><select name="userId" id="userId"
-                                                                    style="visibility:hidden;">
+                                                <td><fmt:message key="advert.label.description"/>:
+                                                <td>
+                                                <select name="userId" id="userId"
+                                                        style="visibility:hidden;">
 
 
-                                                            <option value="<c:out value="${adv.userId}"/>"><c:out
-                                                                    value="${adv.userId}"/></option>
+                                                    <option value="<c:out value="${adv.userId}"/>"><c:out
+                                                            value="${adv.userId}"/></option>
 
 
-                                                        </select></td>
+                                                </select>
+
+                                                <select name="adressId" id="adressId"
+                                                        style="visibility:hidden;">
+                                                    <option value="<c:out value="${adv.adressId}"/>"><c:out
+                                                            value="${adv.adressId}"/></option>
+                                                </select>
 
 
-                                                    </tr>
+                                               </td>
+                                                <tr>
+
+                                                    <td COLSPAN=2><textarea rows="10" cols="35" name="description"
+                                                    id="6"></textarea>
+                                                    </td>
+
+                                                </tr>
 
 
 
-                                                </table>
-                                                <br/> <input type="submit" value=
-                                            <fmt:message key="button.add"/>/> <input type="hidden"
-                                                                                     name="command" value="addAdvert"/>
 
-                                            </form>
+                                            </table>
+                                            <br/> <input type="submit" value=
+                                                <fmt:message key="button.add"/>> <input type="hidden"
+                                                                                         name="command"
+                                                                                         value="addAdvert"/>
 
-                                        </fieldset>
+                                        </form>
 
-
-                                    </td>
-                            </table>
-
-                            <br>
+                                    </fieldset>
 
 
-                        </div>
+                                </td>
+                        </table>
+
+                        <br>
 
                         </div>
 
@@ -155,7 +147,7 @@
 </table>
 
 
-<c:set var="commandForPage" value="indexGuest" scope="request"/>
+
 
 
 <center>

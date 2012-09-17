@@ -57,19 +57,15 @@
         <td>
 
 
-            <table width="1000" height="0" border="0" cellpadding="5" style="background-color:#98FB98">
+            <table width="1000" height="600" border="0" cellpadding="5" style="background-color:#98FB98">
                 <tr>
                     <td>
-                        <div id="head2">
-
                             <h2><fmt:message key="registration.subhead"/></h2>
-                        </div>
 
 
-                        <div id="content">
 
 
-                            <table width="400" border="0" align="center">
+                            <table  height="590"  border="0" align="center">
                                 <tr>
                                     <td>
 
@@ -97,9 +93,9 @@
 
 
                                                 </table>
-                                                <br/> <input type="submit" value=
-                                            <fmt:message key="registration.button"/>> <input type="hidden"
-                                                                                     name="command" value="addUser"/>
+                               <br/> <input type="submit" value=
+                               <fmt:message key="registration.button"/>> <input type="hidden"
+                               name="command" value="addUser"/>
                                             </form>
                                         </fieldset>
 
@@ -108,8 +104,6 @@
 
                             <br>
 
-
-                        </div>
 
                         </div>
 

@@ -10,7 +10,7 @@
 
 <head>
 
-    <title><fmt:message key="index.title" />TEEEEST</title>
+    <title><fmt:message key="str" /></title>
 
 </head>
 
@@ -27,7 +27,8 @@
         <li></li>
         <li></li>
         <li></li>
-        <li>  <input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'" /></li>
+        <li><fmt:message key="button.logout" var="Out"/>
+            <input type="button" value="${Out}" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
         <li><form id="form5" action="RealtyServlet">
             <fmt:message key="button.add" var="Add" />
             <input type="button" value="${Add}" onclick="location.href='RealtyServlet?command=adress'" />
@@ -56,7 +57,7 @@
 
 
 
-            <div id="table" style="width:1000px; height:640px; overflow:auto;">
+            <div id="table" style="width:1000px; height:600px; overflow:auto;">
                 <br />
                 <form id="form3" action="RealtyServlet">
 

@@ -4,11 +4,13 @@ import org.realty.UsrInfo;
 import org.realty.commands.Command;
 import org.realty.commands.CommandFactory;
 import org.realty.dao.UserJdbcDAO;
+import org.realty.entity.Adress;
 import org.realty.entity.User;
 import org.realty.hibernate.UserHibDAO;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -37,27 +39,30 @@ public class AddUserCommand implements Command {
           //  isadmin = true;
         //}else isadmin = false;
 
+        if(userName!=""&&password!=""&&phoneNumber!=""){
 		User user = new User();
 		user.setName(userName);
 		user.setPassword(password);
 		user.setPhoneNumber(phoneNumber);
-        //user.setAdmin(isadmin);
 		usrH.create(user);
+        }
 
-        //////??????
-     /*   User sesUsr = ad.getDomainByName(userName);
+        List<User> userList = usrH.getAllUsers();
+        User lastUsr = userList.get(userList.size()-1);
+
+
 
         UsrInfo ui = new UsrInfo();
-        ui.Login(sesUsr.getName());
-        ui.setUserId(sesUsr.getUserId());
-        session.setAttribute("userInfo", ui);*/
-        ////???????
-		//return CommandFactory.getCommand("allUser").execute(request, response);
-        UsrInfo ui = (UsrInfo)session.getAttribute("userInfo");
+
+        if(userName!=""&&password!=""&&phoneNumber!=""){
+        ui.Login(lastUsr.getName());
+        ui.setUserId(lastUsr.getUserId());
+        session.setAttribute("userInfo", ui);           }
+
+       // UsrInfo ui = (UsrInfo)session.getAttribute("userInfo");
 
 
-        return ui.IsAdmin() ? "RealtyServlet?command=allUser"
-                : "RealtyServlet?command=userPage";
+        return ui.IsLogin() ? "RealtyServlet?command=userPage":"RealtyServlet?command=indexGuest";
 
 	}
 

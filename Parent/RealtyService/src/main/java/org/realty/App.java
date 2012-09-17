@@ -24,7 +24,7 @@ public class App {
 	public static void main(String[] args) throws SQLException {
 
 
-        CityJdbcDAO cd = new CityJdbcDAO();
+       /* CityJdbcDAO cd = new CityJdbcDAO();
         List<City> cL = cd.findAll();
 
         	for (City o : cL) {
@@ -51,7 +51,7 @@ public class App {
             for (Street d :sl){
                 out.printf("%s \n",d.getStreetName());
             }
-        }
+        }*/
 
         UserHibDAO test = new UserHibDAO();
 
@@ -78,7 +78,7 @@ public class App {
         List<Street> strList = new ArrayList<Street>();
         //  strList.add(street);
         district.setStreets(strList);
-        district.setCityId(5L);
+        district.setCityId(1L);
 
         DistrictHibDAO districtDAO = new DistrictHibDAO();
         districtDAO.create(district);
@@ -86,7 +86,7 @@ public class App {
 
         Street street = new Street();
         street.setStreetName("Chkalova");
-        street.setDistrictId(6L);
+        street.setDistrictId(1L);
 
 
         StreetHibDAO streetDAO =new StreetHibDAO();

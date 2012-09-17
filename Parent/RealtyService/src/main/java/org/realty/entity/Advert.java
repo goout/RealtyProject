@@ -94,7 +94,7 @@ public class Advert {
         this.rooms = rooms;
     }
 
-    //  @Column(name="adressId")
+     // @Column(name="adressId")
     @Transient
     public Long getAdressId() {
         return adressId;

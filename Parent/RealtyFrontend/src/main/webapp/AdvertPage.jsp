@@ -23,7 +23,6 @@
 <body>
 
 
-
 <br>
 <table width="1000" height="0" border="1" align="center" cellpadding="5" cellspacing="0"
        style="color:#dcdcdc;  background-color:#FFFFFf">
@@ -38,11 +37,15 @@
                 <li></li>
                 <li></li>
                 <li></li>
-                <li><input type="button" value="Log out" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
-                <li><form id="form5" action="RealtyServlet">
-                    <fmt:message key="button.add" var="Add" />
-                    <input type="button" value="${Add}" onclick="location.href='RealtyServlet?advertId=${adv.advertId}&command=commentPage'" />
-                </form></li>
+                <li><fmt:message key="button.logout" var="Out"/>
+                    <input type="button" value="${Out}" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
+                <li>
+                    <form id="form5" action="RealtyServlet">
+                        <fmt:message key="button.add" var="Add"/>
+                        <input type="button" value="${Add}"
+                               onclick="location.href='RealtyServlet?advertId=${adv.advertId}&command=commentPage'"/>
+                    </form>
+                </li>
                 <li>
                     <div id="head">
 
@@ -72,8 +75,8 @@
                         <div id="content">
 
 
-                            <div id="table" style="width:1000px; height:640px; overflow:auto;">
-                                <br/>
+                            <div id="table"  style="width:1000px; height:340px; overflow:auto; /*border-style: double;*/ ">
+
 
                                 <form id="form3" action="RealtyServlet">
 
@@ -117,18 +120,19 @@
 
 
                                     </table>
-                                    <br/>
 
 
                                 </form>
+                            </div>
 
-
-
-                                <h2>Comments:</h2>
+                                <h2><fmt:message key="comments"/></h2>
+                            <div id="table2" style="width:1000px; height:200px; overflow:auto;">
                                 <c:forEach items="${allAdvertsUsrAdrDto.comments}" var="cmnt">
 
 
-                                    <table border=1 cellpadding=2 cellspacing=1 width=600 align="center" style="table-layout: fixed">
+
+                                    <table border=1 cellpadding=2 cellspacing=1 width=600 align="center"
+                                           style="table-layout: fixed">
                                         <col width="140">
                                         <col width="140">
                                         <col width="140">
@@ -144,15 +148,16 @@
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5" style="word-wrap: break-word" ><c:out value="${cmnt.text}"/></td>
+                                            <td colspan="5" style="word-wrap: break-word"><c:out
+                                                    value="${cmnt.text}"/></td>
                                         </tr>
                                     </table>
-                                               <br/>
+                                    <br/>
 
                                 </c:forEach>
 
 
-                            </div>
+
 
                         </div>
 

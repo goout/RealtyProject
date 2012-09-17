@@ -15,6 +15,7 @@ public class User {
 	private String phoneNumber;
     private Boolean admin;
     private List<Advert> adverts;
+    private List<Comment> comments;
 
 
 	public User() {
@@ -32,7 +33,7 @@ public class User {
 		return name;
 	}
 
-    @Column(name="passwordt")
+    @Column(name="password")
 	public String getPassword() {
 		return password;
 	}
@@ -97,5 +98,16 @@ public class User {
 
     public void setAdverts(List<Advert> adverts) {
         this.adverts = adverts;
+    }
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumns ({
+            @JoinColumn(name="user_id", referencedColumnName = "user_id")
+    })
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
