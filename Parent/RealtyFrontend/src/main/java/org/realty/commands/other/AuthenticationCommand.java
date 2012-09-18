@@ -43,9 +43,13 @@ public class AuthenticationCommand implements Command {
 					ui.Login(request.getParameter("name"));
                     ui.setUserId(user.getUserId());
 
-                    if(user.getAdmin()) ui.Admin();
-
+                    if(user.getAdmin()){
+                        ui.Admin();
+                        Boolean admin = true;
+                        session.setAttribute("admin", admin);
+                    }
 					session.setAttribute("userInfo", ui);
+
 
 					break;
 				} else {

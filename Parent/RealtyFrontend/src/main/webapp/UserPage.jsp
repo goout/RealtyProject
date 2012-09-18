@@ -4,6 +4,8 @@
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="org.realty.Translations" />
 
+
+
 <html lang="${language}">
 
 <link href="style.css" rel="stylesheet" type="text/css">
@@ -26,7 +28,7 @@
         <li><jsp:include page="Language.jsp" flush="true" /></li>
         <li></li>
         <li></li>
-        <li></li>
+
         <li><fmt:message key="button.logout" var="Out"/>
             <input type="button" value="${Out}" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
         <li><form id="form5" action="RealtyServlet">
@@ -37,6 +39,21 @@
 
             <h2><fmt:message key="user.subhead"/></h2>
         </div></li>
+        <li>
+            <c:set var="adm" value="${admin}"/>
+                <c:choose>
+                <c:when test="${adm == true}">
+                    <fmt:message key="admin" var="admin" />
+                    <input type="button" value="${admin}" onclick="location.href='RealtyServlet?command=allUser'" />
+                </c:when>
+                <c:otherwise>
+                    <fmt:message key="admin" var="admin" />
+                    <input type="button" value="${admin}" style="display:none;" onclick="location.href='RealtyServlet?command=allUser'" />
+                </c:otherwise>
+            </c:choose>
+
+
+        </li>
     </div>
 
 </td></table>
@@ -108,7 +125,6 @@
 
 
 
-<c:set var="commandForPage" value="indexGuest" scope="request"/>
 
 
 <center><div id="niz">
