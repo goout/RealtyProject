@@ -13,7 +13,7 @@
 
 <head>
 
-    <title>teeest</title>
+    <title><fmt:message key="advert"/></title>
 
 
 </head>
@@ -49,7 +49,7 @@
                 <li>
                     <div id="head">
 
-                        <h2><fmt:message key="advert.subhead"/></h2>
+                        <h2><fmt:message key="advert"/></h2>
                     </div>
                 </li>
             </div>
@@ -68,7 +68,7 @@
                     <td>
                         <div id="head2">
 
-                            <h2><fmt:message key="advert.subhead"/></h2>
+                            <h2><fmt:message key="advert"/></h2>
                         </div>
 
 
@@ -127,25 +127,25 @@
 
                                 <h2><fmt:message key="comments"/></h2>
                             <div id="table2" style="width:1000px; height:200px; overflow:auto;">
-                                <c:forEach items="${allAdvertsUsrAdrDto.comments}" var="cmnt">
+                                <c:forEach items="${allAdvertsUsrAdrDto.comnInfo}" var="cmnt">
 
 
 
                                     <table border=1 cellpadding=2 cellspacing=1 width=600 align="center"
                                            style="table-layout: fixed">
-                                        <col width="140">
-                                        <col width="140">
-                                        <col width="140">
-                                        <col width="210">
-                                        <col width="70">
+                                        <col width="180">
+                                        <col width="100">
+                                        <col width="100">
+                                        <col width="100">
+                                        <col width="180">
                                         <tr>
 
 
-                                            <td><c:out value="${usr.name}"/></td>
+                                            <td><c:out value="${cmnt.addedDate}"/></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
+                                            <td><c:out value="${cmnt.name}"/></td>
                                         </tr>
                                         <tr>
                                             <td colspan="5" style="word-wrap: break-word"><c:out

@@ -38,7 +38,9 @@ public class AdvertUserAdressDTO implements Serializable {
 
     private List<Comment> comments;
     private List<User> users;
-    private List<CommentUserDTO>  comusr;
+
+
+    private List<CommentsInfo> comnInfo;
 
 
 
@@ -211,5 +213,13 @@ public class AdvertUserAdressDTO implements Serializable {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public List<CommentsInfo> getComnInfo() {
+        return comnInfo;
+    }
+
+    public void setComnInfo(List<CommentsInfo> comnInfo) {
+        this.comnInfo = comnInfo;
     }
 }

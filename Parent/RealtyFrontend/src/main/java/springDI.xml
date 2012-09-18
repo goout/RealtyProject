@@ -13,7 +13,15 @@
     <bean id="streetHDAO" class="org.realty.hibernate.StreetHibDAO"/>
 
 
-    <bean id="indexGuest" class="org.realty.commands.other.IndexGuestCommand">
+    <bean id="addAdmin" class="org.realty.commands.admin.AddAdmin">
+        <property name="usrH" ref="userHDAO"/>
+    </bean>
+
+    <bean id="removeAdmin" class="org.realty.commands.admin.RemoveAdmin">
+        <property name="usrH" ref="userHDAO"/>
+    </bean>
+
+    <bean id="indexGuest" class="org.realty.commands.data.IndexGuestCommand">
         <property name="advH" ref="advertHDAO"/>
     </bean>
 
@@ -34,11 +42,11 @@
         <property name="strH" ref="streetHDAO"/>
     </bean>
 
-    <bean id="adress" class="org.realty.commands.other.AdressCommand">
+    <bean id="adress" class="org.realty.commands.data.AdressCommand">
         <property name="cityH" ref="cityHDAO"/>
     </bean>
 
-    <bean id="advertPage" class="org.realty.commands.other.AdvertPageCommand">
+    <bean id="advertPage" class="org.realty.commands.data.AdvertPageCommand">
         <property name="adrH" ref="adressHDAO"/>
         <property name="advH" ref="advertHDAO"/>
         <property name="cityH" ref="cityHDAO"/>
@@ -54,10 +62,10 @@
         <property name="advH" ref="advertHDAO"/>
     </bean>
 
-    <bean id="advert" class="org.realty.commands.other.AdvertCommand">
+    <bean id="advert" class="org.realty.commands.data.AdvertCommand">
     </bean>
 
-    <bean id="commentPage" class="org.realty.commands.other.CommentCommand">
+    <bean id="commentPage" class="org.realty.commands.data.CommentCommand">
     </bean>
 
     <bean id="allAdvert" class="org.realty.commands.all.AllAdvertCommand">
@@ -93,7 +101,7 @@
         <property name="usrH" ref="userHDAO"/>
     </bean>
 
-    <bean id="userPage" class="org.realty.commands.other.UserPageCommand">
+    <bean id="userPage" class="org.realty.commands.data.UserPageCommand">
         <property name="usrH" ref="userHDAO"/>
         <property name="advH" ref="advertHDAO"/>
     </bean>
@@ -123,6 +131,8 @@
                 <entry key="adress" value-ref="adress"/>
                 <entry key="addAdress" value-ref="addAdress"/>
                 <entry key="advert" value-ref="advert"/>
+                <entry key="addAdmin" value-ref="addAdmin"/>
+                <entry key="removeAdmin" value-ref="removeAdmin"/>
 
             </map>
         </property>

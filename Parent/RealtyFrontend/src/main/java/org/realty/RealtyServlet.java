@@ -42,7 +42,7 @@ public class RealtyServlet extends HttpServlet {
 			throws ServletException, IOException {
         String command = request.getParameter("command");
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("/hibernate.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("/springDI.xml");
         BeanFactory factory = context;
         CommandFactory test = (CommandFactory)factory.getBean("commandF");
 

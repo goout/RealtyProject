@@ -19,7 +19,7 @@
 
 <head>
 
-    <title><fmt:message key="adress.title"/></title>
+    <title><fmt:message key="adress.subhead"/></title>
 
 </head>
 <c:set var="commandForPage" value="adress" scope="request"/>
@@ -248,7 +248,7 @@
 
                                     {   var max=3;
                                         var min=1;
-                                        var numericExpression = /^[0-9]+$/;
+                                        var numericExpression = /^[1-9]+$/;
                                         var x=document.forms["combo"]["homeNum"].value;
                                         var y=document.forms["combo"]["apartmentNum"].value;
                                         if (x.match(numericExpression)&&min<=x.length&&x.length<=max)
@@ -257,11 +257,11 @@
                                             {
                                                 return true;
                                             }   else {
-                                                alert("apartmentNum must benot null and numeric");
+                                                alert("Apartment number must be not null and numeric (1..999)");
                                                 return false;
                                             }
                                         }   else {
-                                            alert("homeNum must be not null and numeric");
+                                            alert("House number must be not null and numeric (1..999)");
                                             return false;
                                         }
 

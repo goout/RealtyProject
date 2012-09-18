@@ -65,6 +65,8 @@ public class CommandFactory {
             put("adress", LOG_ADM);
             put("addAdress", LOG_ADM);
             put("advert", LOG_ADM);
+            put("addAdmin", Arrays.asList(Roles.ADMIN));
+            put("removeAdmin", Arrays.asList(Roles.ADMIN));
         }
     };
 
@@ -74,10 +76,10 @@ public class CommandFactory {
         {
             put("User.jsp", Arrays.asList(Roles.ADMIN));
             put("index.jsp",   ALL_ROLES);
-            put("Advert.jsp",  Arrays.asList(Roles.LOGGED));
-            put("Comment.jsp",  Arrays.asList(Roles.LOGGED));
+            put("Advert.jsp",  Arrays.asList(Roles.ADMIN));
+            put("Comment.jsp",  Arrays.asList(Roles.ADMIN));
             put("Authentication.jsp",  Arrays.asList(Roles.ANONYMOUS));
-            put("RealtyServlet" , Arrays.asList(Roles.ADMIN, Roles.ANONYMOUS));
+            put("RealtyServlet" , Arrays.asList(Roles.ADMIN, Roles.ANONYMOUS, Roles.LOGGED));
             put("UserPage.jsp", LOG_ADM);
             put("AdvertPage.jsp", LOG_ADM);
             put("RegistrationPage.jsp", Arrays.asList(Roles.ANONYMOUS));

@@ -88,7 +88,7 @@
                                             <td width="50"></td>
                                         </tr>
                                         </thead>
-                                        Advert from request: <c:out value="${rootAdvert.description}"/>
+
                                         </br>
                                         </br>
                                         </br>
@@ -116,57 +116,6 @@
                                 </form>
 
                                 <br/> <br/> <br/>
-                                <fieldset>
-                                    <legend>
-                                        <b><fmt:message key="advert.label.add"/></b>
-                                    </legend>
-                                    <form id="form1" action="RealtyServlet">
-                                        <table>
-                                            <tr>
-                                                <td><fmt:message key="advert.label.category"/>:
-                                                <td>
-                                                <td><input type="text" size="30" name="category" id="1"></td>
-                                            </tr>
-
-
-                                            <tr>
-                                                <td><fmt:message key="advert.label.coast"/>:
-                                                <td>
-                                                <td><input type="text" size="30" name="coast" id="5"></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><fmt:message key="advert.label.description"/>:
-                                                <td>
-                                                <td><input type="text" size="90" name="description" id="6"></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><fmt:message key="advert.label.user"/>:</td>
-                                                <td><select name="userId" id="userId">
-
-
-                                                    <c:forEach var="usr" items="${alladvertsusers}">
-                                                        <c:if test="${usr.userId!=null }">
-                                                            <option value="<c:out value="${usr.userId}"/>"><c:out
-                                                                    value="${usr.name}"/></option>
-                                                        </c:if>
-                                                    </c:forEach>
-
-                                                </select></td>
-
-
-                                            </tr>
-
-                                        </table>
-                                        <br/> <input type="submit" value=
-                                    <fmt:message key="button.add"/>/> <input type="hidden"
-                                                                             name="command" value="addAdvert"/>
-
-                                    </form>
-
-                                </fieldset>
-
 
                             </div>
 

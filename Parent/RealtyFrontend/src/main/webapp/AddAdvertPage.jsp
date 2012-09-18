@@ -13,7 +13,7 @@
 
 <head>
 
-    <title><fmt:message key="advert.title"/></title>
+    <title><fmt:message key="addadvert"/></title>
 
 </head>
 
@@ -41,7 +41,7 @@
                 <li>
                     <div id="head">
 
-                        <h2><fmt:message key="advert.subhead"/></h2>
+                        <h2><fmt:message key="addadvert"/></h2>
                     </div>
                 </li>
             </div>
@@ -60,7 +60,7 @@
                     <td>
 
 
-                        <h2><fmt:message key="advert.subhead"/></h2>
+                        <h2><fmt:message key="addadvert"/></h2>
 
 
                         <table height="590" border="0" align="center">
@@ -75,7 +75,12 @@
                                             <table border="0">
                                                 <tr>
                                                     <td><fmt:message key="advert.label.category"/>:
-                                                    <td><input type="text" size="30" name="category" id="1"></td>
+                                                    <td><select name="category" id="category" style="width:130px">
+                                                    <option disabled value="Purchase">Purchase</option>
+                                                    <option value="Sale">Sale</option>
+                                                    <option value="Rent">Rent</option>
+                                                </select>
+                                                </td>
                                                 </tr>
 
                                                 <tr>
@@ -139,7 +144,7 @@
                                                 {   var max=2;
                                                     var max2=8;
                                                     var min=1;
-                                                    var numericExpression = /^[0-9]+$/;
+                                                    var numericExpression = /^[1-9]+$/;
                                                     var x=document.forms["form1"]["rooms"].value;
                                                     var y=document.forms["form1"]["coast"].value;
                                                     if (x.match(numericExpression)&&min<=x.length&&x.length<=max)
@@ -148,11 +153,11 @@
                                                         {
                                                             return true;
                                                         }   else {
-                                                            alert("apartmentNum must benot null and numeric");
+                                                            alert("Coast must be not null and numeric (1..99999999)");
                                                             return false;
                                                         }
                                                     }   else {
-                                                        alert("homeNum must be not null and numeric");
+                                                        alert("Rooms must be not null and numeric (1..99)");
                                                         return false;
                                                     }
 

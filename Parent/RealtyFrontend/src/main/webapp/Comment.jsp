@@ -99,53 +99,7 @@ value='RealtyServlet?delCommentId=${cmnt.commentId}&command=delComment' />">Del<
 
 
                                 <br/> <br/> <br/>
-                                <fieldset>
-                                    <legend>
-                                        <b><fmt:message key="comm.label.add"/></b>
-                                    </legend>
-                                    <form id="form1" action="RealtyServlet">
-                                        <table>
-                                            <tr>
-                                                <td><fmt:message key="comm.label.txt"/>:
-                                                <td>
-                                                <td><input type="text" size="30" name="text" id="1"></td>
-                                            </tr>
 
-
-                                            <tr>
-                                                <td><fmt:message key="comm.label.usrId"/>:</td>
-                                                <td><select name="userId" id="userId">
-                                                    <c:forEach var="usr" items="${allCommentsUserAdverts}">
-                                                        <c:if test="${usr.userId!=null }">
-                                                            <option value="<c:out value="${usr.userId}"/>"><c:out
-                                                                    value="${usr.name}"/></option>
-                                                        </c:if>
-                                                    </c:forEach>
-                                                </select></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><fmt:message key="comm.label.advId"/>:</td>
-                                                <td><select name="advertId" id="advertId">
-                                                    <option value="select">Change AdvertId...</option>
-                                                    <c:forEach var="adv" items="${allCommentsUserAdverts}">
-                                                        <c:if test="${adv.advertId!=null }">
-                                                            <option value="<c:out value="${adv.advertId}"/>"><c:out
-                                                                    value="${adv.description}"/></option>
-                                                        </c:if>
-                                                    </c:forEach>
-                                                </select></td>
-
-
-                                            </tr>
-
-
-                                        </table>
-                                        <br/> <input type="submit" value=
-                                    <fmt:message key="button.add"/>/> <input type="hidden"
-                                                                             name="command" value="addComment"/>
-                                    </form>
-                                </fieldset>
 
 
                             </div>

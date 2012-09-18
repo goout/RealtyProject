@@ -75,17 +75,19 @@
                                     <table border="2" frame="below" width="100%" bordercolor=red>
                                         <thead>
                                         <tr>
-                                            <td width="100">UserId</td>
+                                            <td width="50">UserId</td>
 
-                                            <td width="300">Name</td>
+                                            <td width="400">Name</td>
 
-                                            <td width="250">Password</td>
+                                            <td width="300">Password</td>
 
-                                            <td width="100">Phone</td>
+                                            <td width="200">Phone</td>
 
                                             <td width="50">Admin</td>
 
-                                            <td width="100"></td>
+                                            <td width="50">Delete</td>
+
+                                            <td width="50" colspan="2">Admin</td>
                                         </tr>
                                         </thead>
                                         <c:forEach var="usr" items="${allusers}">
@@ -98,48 +100,18 @@
                                                 <td width="100"><a
                                                         href="<c:url value='RealtyServlet?delUserId=${usr.userId}&command=delUser' />">Delete</a>
                                                 </td>
+                                                <TD width="100"><a
+                                                        href="<c:url value='RealtyServlet?UserId=${usr.userId}&command=addAdmin' />">On</a>
+                                                </TD>
+                                                <TD width="100"><a
+                                                        href="<c:url value='RealtyServlet?UserId=${usr.userId}&command=removeAdmin' />">Off</a>
+                                                </TD>
                                             </tr>
                                         </c:forEach>
                                     </table>
 
 
                                     <br/> <br/> <br/>
-                                    <fieldset>
-                                        <legend>
-                                            <b><fmt:message key="user.label.add"/></b>
-                                        </legend>
-                                        <form id="form1" action="RealtyServlet">
-                                            <table>
-                                                <tr>
-                                                    <td><fmt:message key="user.label.name"/>:
-                                                    <td>
-                                                    <td><input type="text" size="30" name="userName" id="1"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><fmt:message key="user.label.pass"/>:
-                                                    <td>
-                                                    <td><input type="text" size="30" name="password" id="2"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><fmt:message key="user.label.phone"/>:
-                                                    <td>
-                                                    <td><input type="text" size="30" name="phoneNumber" id="3"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><fmt:message key="user.label.admin"/>:</td>
-                                                    <td><select name="isAdmin" id="isAdmin">
-                                                        <option value="1">Yes</option>
-                                                        <option value="0">No</option>
-                                                    </select></td>
-                                                </tr>
-
-
-                                            </table>
-                                            <br/> <input type="submit" value=
-                                        <fmt:message key="button.add"/>/> <input type="hidden"
-                                                                                 name="command" value="addUser"/>
-                                        </form>
-                                    </fieldset>
 
 
                                 </div>

@@ -1,9 +1,10 @@
-package org.realty.commands.other;
+package org.realty.commands.data;
 
 
 import org.realty.commands.Command;
 import org.realty.dao.*;
 import org.realty.dto.AdvertUserAdressDTO;
+import org.realty.dto.CommentsInfo;
 import org.realty.entity.*;
 import org.realty.hibernate.*;
 
@@ -138,8 +139,21 @@ public class AdvertPageCommand implements Command {
         }
 
         aUADto.setUsers(usrL);
-        out.printf("test");
-        out.printf("test");
+
+
+        List<CommentsInfo> cmntI = new ArrayList<CommentsInfo>();
+
+        int i;
+        for(i=0; i<usrL.size(); i++){
+            CommentsInfo ci = new CommentsInfo();
+            ci.setName(usrL.get(i).getName());
+            ci.setAddedDate(resComL.get(i).getAddedDate());
+            ci.setText(resComL.get(i).getText());
+            cmntI.add(ci);
+
+        }
+
+        aUADto.setComnInfo(cmntI);
 
         return aUADto;
 

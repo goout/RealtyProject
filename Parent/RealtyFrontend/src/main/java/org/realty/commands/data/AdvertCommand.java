@@ -1,4 +1,4 @@
-package org.realty.commands.other;
+package org.realty.commands.data;
 
 
 import org.realty.UsrInfo;

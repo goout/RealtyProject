@@ -14,7 +14,7 @@
 
 <head>
 
-    <title><fmt:message key="comm.title"/></title>
+    <title><fmt:message key="addcomment"/></title>
 
 </head>
 
@@ -43,7 +43,7 @@
                 <li>
                     <div id="head">
 
-                        <h2><fmt:message key="comm.subhead"/></h2>
+                        <h2><fmt:message key="addcomment"/></h2>
                     </div>
                 </li>
             </div>
@@ -61,7 +61,7 @@
                 <tr>
                     <td>
 
-                        <h2><fmt:message key="comm.subhead"/></h2>
+                        <h2><fmt:message key="addcomment"/></h2>
 
 
                         <table height="590" border="0" align="center">
