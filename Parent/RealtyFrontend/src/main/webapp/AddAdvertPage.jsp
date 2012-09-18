@@ -71,7 +71,7 @@
                                         <legend>
                                             <b><fmt:message key="advert.label.add"/></b>
                                         </legend>
-                                        <form id="form1" action="RealtyServlet">
+                                        <form id="form1" action="RealtyServlet" onsubmit="return validateForm()">
                                             <table border="0">
                                                 <tr>
                                                     <td><fmt:message key="advert.label.category"/>:
@@ -127,6 +127,41 @@
                                                 <fmt:message key="button.add"/>> <input type="hidden"
                                                                                          name="command"
                                                                                          value="addAdvert"/>
+
+
+
+
+                                            <script>
+
+
+                                                function validateForm()
+
+                                                {   var max=2;
+                                                    var max2=8;
+                                                    var min=1;
+                                                    var numericExpression = /^[0-9]+$/;
+                                                    var x=document.forms["form1"]["rooms"].value;
+                                                    var y=document.forms["form1"]["coast"].value;
+                                                    if (x.match(numericExpression)&&min<=x.length&&x.length<=max)
+                                                    {
+                                                        if (y.match(numericExpression)&&min<=y.length&&y.length<=max2)
+                                                        {
+                                                            return true;
+                                                        }   else {
+                                                            alert("apartmentNum must benot null and numeric");
+                                                            return false;
+                                                        }
+                                                    }   else {
+                                                        alert("homeNum must be not null and numeric");
+                                                        return false;
+                                                    }
+
+                                                }
+
+
+                                            </script>
+
+
 
                                         </form>
 

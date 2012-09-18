@@ -77,7 +77,8 @@
                             <legend>
                                 <b><fmt:message key="adress.subhead"/></b>
                             </legend>
-                            <form id="form1" name="combo" action="RealtyServlet">
+
+                            <form id="form1" name="combo" action="RealtyServlet" onsubmit="return validateForm()">
                                 <table>
                                     <tr>
                                         <td><fmt:message key="adress.label.city"/>:
@@ -101,7 +102,7 @@
 
                                     <tr>
                                         <td><fmt:message key="adress.label.home"/>:
-                                        <td><input type="text" size="10" name="homeNum" id="4" ></td>
+                                        <td><input type="text" size="10" name="homeNum" id="4" <%--onkeypress="return validateForm()"--%> ></td>
                                     </tr>
 
                                     <tr>
@@ -238,6 +239,38 @@
                                         }
                                     }
                                 </script>
+
+
+                                <script>
+
+
+                                    function validateForm()
+
+                                    {   var max=3;
+                                        var min=1;
+                                        var numericExpression = /^[0-9]+$/;
+                                        var x=document.forms["combo"]["homeNum"].value;
+                                        var y=document.forms["combo"]["apartmentNum"].value;
+                                        if (x.match(numericExpression)&&min<=x.length&&x.length<=max)
+                                        {
+                                            if (y.match(numericExpression)&&min<=y.length&&y.length<=max)
+                                            {
+                                                return true;
+                                            }   else {
+                                                alert("apartmentNum must benot null and numeric");
+                                                return false;
+                                            }
+                                        }   else {
+                                            alert("homeNum must be not null and numeric");
+                                            return false;
+                                        }
+
+                                    }
+
+
+                                </script>
+
+
 
 
                             </form>
