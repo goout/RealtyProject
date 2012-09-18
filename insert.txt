@@ -222,21 +222,21 @@ VALUES
 INSERT INTO ADVERT
 (added_date, category, adressId, rooms, coast, description, user_id)
 VALUES
-('2012-09-08 15:17:01', "Rent", 1, 2, 250, "Good apartment test test test test test test test test test test test test test test test test test",1);
+("2012-09-08 15:17:01", "Rent", 1, 2, 250, "Good apartment test test test test test test test test test test test test test test test test test",1);
 
 INSERT INTO ADVERT
 (added_date, category, adressId, rooms, coast, description, user_id)
 VALUES
-('2012-09-08 15:20:21', "Rent", 2, 3, 330, "Good apartment test test test test test test test test 2222 test test test test test test test test",2);
+("2012-09-08 15:20:21", "Rent", 2, 3, 330, "Good apartment test test test test test test test test 2222 test test test test test test test test",2);
 
 
 INSERT INTO COMMENT
 (addedDate, text, user_id, advert_id)
 VALUES
-('2012-09-08 15:20:21', "comment1 )))", 3, 1);
+("2012-09-08 15:20:21", "comment1 )))", 3, 1);
 
 INSERT INTO COMMENT
 (addedDate, text, user_id, advert_id)
 VALUES
-('2012-09-10 15:20:21', "comment1 )))", 5, 2);
+("2012-09-10 15:20:21", "comment1 )))", 5, 2);
 

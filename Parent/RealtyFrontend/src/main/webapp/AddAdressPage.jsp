@@ -101,7 +101,7 @@
 
                                     <tr>
                                         <td><fmt:message key="adress.label.home"/>:
-                                        <td><input type="text" size="10" name="homeNum" id="4"></td>
+                                        <td><input type="text" size="10" name="homeNum" id="4" ></td>
                                     </tr>
 
                                     <tr>
