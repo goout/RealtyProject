@@ -81,7 +81,7 @@
                                 <form id="form3" action="RealtyServlet">
 
 
-                                    <table border=1 cellpadding=2 cellspacing=1 width=700 align="center">
+                                    <table border=1 cellpadding=2 cellspacing=0 width=700 align="center">
 
 
                                         <TR>
@@ -131,7 +131,7 @@
 
 
 
-                                    <table border=1 cellpadding=2 cellspacing=1 width=600 align="center"
+                                    <table border=1 cellpadding=2 cellspacing=0 width=600 align="center"
                                            style="table-layout: fixed">
                                         <col width="180">
                                         <col width="100">

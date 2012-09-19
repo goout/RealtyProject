@@ -14,6 +14,7 @@
 
 <link href="style.css" rel="stylesheet" type="text/css">
 
+
 <head>
 
     <title><fmt:message key="str"/></title>
@@ -77,7 +78,7 @@
                         <div id="content">
 
 
-                            <div id="table" style="width:1000px; height:600px; overflow:auto;">
+                            <div id="table" class="" style="width:1000px; height:600px; overflow:auto;">
                                 <br/>
 
                                 <form id="form3" action="RealtyServlet">
@@ -85,7 +86,7 @@
                                     <c:forEach items="${allAdvertsDto}" var="adv">
 
 
-                                        <table border=1 cellpadding=2 cellspacing=1 width=700 align="center">
+                                        <table  border=1 cellpadding=2 cellspacing=0 width=700 align="center">
                                             <col width="175">
                                             <col width="135">
                                             <col width="275">

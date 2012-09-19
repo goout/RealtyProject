@@ -1,35 +1,36 @@
 /* --------------------------
-Автор: Wintro
-Сайт: http://wintro.ru/
+пїЅпїЅпїЅпїЅпїЅ: Wintro
+пїЅпїЅпїЅпїЅ: http://wintro.ru/
 ----------------------------*/
 
 body {
-    background: #FFFFFF; /* цвет фона страницы */
+/*    background: #FFFFFF; *//* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ *//*
     font-family: Tahoma; 
-    font-size: 13px; /* размер шрифта текста */
+    font-size: 13px; *//* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ *//*
     color: #303030;
     font-weight: none;
-    border: none;
+    border: none;*/
+    line-height: 1.6em;
 }
    
 h1 {
-    color: #CCCC99; /* цвет заголовка */
+    color: #CCCC99; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     font-family: Arial;
-    font-size: 130%; /* размер шрифта заголовка */
+    font-size: 130%; /* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     font-weight: bold;
     text-align: center; 
     border: none;
 }
 
 a {
-    font-size:13px; /* размер шрифта ссылок в тексте */
-    color:#01b101; /* цвет ссылок в тексте */
+    font-size:13px; /* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
+    color:#01b101; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
     text-decoration:none;
 }
 
 a:hover {
-    font-size:13px; /* размер шрифта ссылок в тексте при наведении курсора */
-    color:#006400; /* цвет ссылок в тексте при наведении курсора */
+    font-size:13px; /* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
+    color:#006400; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
     text-decoration:none;
 }
 
@@ -51,8 +52,8 @@ a:hover {
 #menu li a{
 	list-style:none;
 	display:block;
-	color:#01b101;	/* цвет ссылок в меню */
-	font-size:14px; /* размер шрифта ссылок в меню */
+	color:#01b101;	/* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ */
+	font-size:14px; /* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ */
 	text-decoration:none;
 	height:41px;
 	line-height:41px;
@@ -61,7 +62,7 @@ a:hover {
 #menu li a:hover{
 		height:41px;
 	line-height:41px;
-	color:#00CC33;  /* цвет ссылок в меню при наведении курсора */
+	color:#00CC33;  /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 	text-decoration:none;
         width:100%;
 }
@@ -70,7 +71,7 @@ a:hover {
 	list-style:none;
 	display:block;
 	background:url(images/menu_t.png) no-repeat;
-	color:#01b101; /* цвет надписи "Меню" */
+	color:#01b101; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅ" */
 	text-transform:uppercase;
 	font-size:16px;
 	text-decoration:none;
@@ -161,7 +162,7 @@ a:hover {
 	display:block;
 	float:left;
 	height:30px;				
-	color:#000000; /* цвет ссылки горизонтального меню */
+	color:#000000; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ */
 	text-decoration:none;
 	text-transform:uppercase;
 	padding:0 20px;		
@@ -169,7 +170,7 @@ a:hover {
 
 #kn li a:hover{	
 	background:url(images/fm_hover_bg.jpg) repeat-x;
-	color:#CCCCCC; /* цвет ссылки горизонтального меню при наведения курсора */
+	color:#CCCCCC; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 }
 					
 #kn li .current{
@@ -180,4 +181,66 @@ a:hover {
 	text-decoration:none;
 	text-transform:uppercase;
 	padding:0 20px;		
+}
+
+
+#hor-minimalist-a
+{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    background: #fff;
+    margin: 45px;
+    width: 480px;
+    border-collapse: collapse;
+    text-align: left;
+}
+#hor-minimalist-a th
+{
+    font-size: 14px;
+    font-weight: normal;
+    color: #039;
+    padding: 10px 8px;
+    border-bottom: 2px solid #6678b1;
+}
+#hor-minimalist-a td
+{
+    color: #669;
+    padding: 9px 8px 0px 8px;
+}
+#hor-minimalist-a tbody tr:hover td
+{
+    color: #009;
+}
+
+#box-table-a
+{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    margin: 45px;
+    width: 480px;
+    text-align: left;
+    border-collapse: collapse;
+}
+#box-table-a th
+{
+    font-size: 13px;
+    font-weight: normal;
+    padding: 8px;
+    background: #b9c9fe;
+    border-top: 4px solid #aabcfe;
+    border-bottom: 1px solid #fff;
+    color: #039;
+}
+#box-table-a td
+{
+    padding: 8px;
+    background: #e8edff;
+    border-bottom: 1px solid #fff;
+    color: #669;
+    border-top: 1px solid transparent;
+}
+#box-table-a tr:hover td
+{
+    background: #d0dafd;
+    color: #339;
 }

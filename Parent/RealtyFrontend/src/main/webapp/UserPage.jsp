@@ -82,7 +82,7 @@
 
 
 
-                        <table cellpadding=2 border="1" cellspacing=1 width=700 align="center" style="border: dashed black;" >
+                        <table cellpadding=2 border="1" cellspacing=0 width=700 align="center" >
                             <col width="140">
                             <col width="140">
                             <col width="140">

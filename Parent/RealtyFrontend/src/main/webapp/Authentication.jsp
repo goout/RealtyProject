@@ -10,6 +10,7 @@
 
 <link href="style.css" rel="stylesheet" type="text/css">
 
+
 <head>
 
     <title><fmt:message key="auth.title"/></title>
@@ -75,20 +76,17 @@
                                                     <tr>
                                                         <td><fmt:message key="auth.label.name"/>:
                                                         <td>
-                                                        <td><input type="text" size="30" name="name" id="1"></td>
+                                                        <td><input type="text" size="30" name="name" id="1" ></td>
                                                     </tr>
                                                     <tr>
                                                         <td><fmt:message key="auth.label.pass"/>:
                                                         <td>
-                                                        <td><input type="PASSWORD" size="30" name="password" id="2">
+                                                        <td><input type="PASSWORD" size="30" name="password" id="2" >
                                                         </td>
                                                     </tr>
 
 
                                                 </table>
-                                           <%--     <br/> <input type="submit" value=<fmt:message key="button.signIn" var="SignIn"/>> <input type="hidden"
-                                                                                                    name="command"
-                                                                                                    value="signIn"/>--%>
 
                                                 <br/> <input type="submit" value=
                                             <fmt:message key="button.signIn"/>> <input type="hidden"
@@ -103,9 +101,6 @@
 
                             <br>
 
-
-
-
                         </div>
 
 
@@ -115,7 +110,7 @@
 </table>
 
 
-<c:set var="commandForPage" value="indexGuest" scope="request"/>
+
 
 
 <center>

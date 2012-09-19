@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="RealtyFrontend:war">
+    <output-path>$PROJECT_DIR$/RealtyFrontend/target</output-path>
+    <root id="archive" name="RealtyFrontend.war">
+      <element id="artifact" artifact-name="RealtyFrontend:war exploded" />
+    </root>
+  </artifact>
+</component>
