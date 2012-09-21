@@ -90,7 +90,7 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 	@Override
 	protected Comment findAllStep() throws SQLException {
 		Comment comment = new Comment();
-		comment.setCommentId(rs.getInt(1));
+		comment.setCommentId(rs.getLong(1));
         comment.setAddedDate(rs.getString(2));
 		comment.setText(rs.getString(3));
 		comment.setUserId(rs.getLong(4));

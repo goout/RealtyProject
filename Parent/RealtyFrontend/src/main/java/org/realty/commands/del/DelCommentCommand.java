@@ -24,7 +24,7 @@ public class DelCommentCommand implements Command {
 
 		//CommentJdbcDAO ad = new CommentJdbcDAO();
 		String delCommentId = request.getParameter("delCommentId");
-		Comment del = cmntH.read(Comment.class,Long.parseLong(delCommentId));
+		Comment del = cmntH.read(Comment.class,(Long)Long.parseLong(delCommentId));
         cmntH.delete(del);
         //ad.delete(Long.parseLong(delCommentId));
 

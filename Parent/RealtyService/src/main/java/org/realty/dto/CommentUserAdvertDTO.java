@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class CommentUserAdvertDTO implements Serializable {
 
-    private int commentId;
+    private     Long commentId;
     private String text;
     private Long commentUserId;
     private Long commentAdvertId;
@@ -17,11 +17,11 @@ public class CommentUserAdvertDTO implements Serializable {
     private Long advertId;
 
 
-    public int getCommentId() {
+    public Long getCommentId() {
         return commentId;
     }
 
-    public void setCommentId(int commentId) {
+    public void setCommentId(Long commentId) {
         this.commentId = commentId;
     }
 

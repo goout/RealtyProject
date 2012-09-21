@@ -20,7 +20,7 @@
 
 <body>
 
-<br>
+<%--<br>--%>
 <table width="1000" height="0" border="1" align="center" cellpadding="5" cellspacing="0" style="color:#dcdcdc;  background-color:#FFFFFf"><tr><td>
 
     <div id="kn">
@@ -63,11 +63,56 @@
 
 
     <table width="1000" height="0" border="0" cellpadding="5"  style="background-color:#98FB98"><tr><td>
+
+
+
         <div id="head2">
 
             <h2><fmt:message key="user.subhead"/></h2>
         </div>
 
+        <fmt:message key="category"/>:
+
+
+           <script type="text/javascript">
+
+            function selectDropdown(){
+
+                var value=document.getElementById("categoryf").value;
+                /*alert(value);*/
+                switch (value) {
+                    case "All":
+                    location.href='RealtyServlet?command=allUser'
+
+                                break
+                    case "Purchase":
+                        location.href='RealtyServlet?categoryf=Purchase&command=allUser'
+
+                                break
+                    case "Sale":
+                        location.href='RealtyServlet?categoryf=Sale&command=allUser'
+
+                                break
+                    case "Rent":
+                        location.href='RealtyServlet?categoryf=Rent&command=allUser'
+
+                        break
+                    default:
+                    location.href='RealtyServlet?command=allUser'
+                                break
+                }
+
+            }
+        </script>
+
+
+        <select name="categoryf" id="categoryf" style="width:130px" onchange="selectDropdown()">
+            <option <%--disabled--%> value="All">Change category...</option>
+            <option value="All">All</option>
+            <option value="Purchase">Purchase</option>
+            <option value="Sale">Sale</option>
+            <option value="Rent">Rent</option>
+        </select>
 
         <div id="content">
 

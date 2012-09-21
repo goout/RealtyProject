@@ -11,7 +11,7 @@ import java.util.Date;
 public class Comment {
 
     //private String commentatorName;
-    private int commentId;
+    private Long commentId;
     private String addedDate;
     private String text;
     private Long userId;
@@ -31,7 +31,7 @@ public class Comment {
     @Id
     @Column(name = "comment_id")
     @GeneratedValue
-    public int getCommentId() {
+    public Long getCommentId() {
 
         return commentId;
     }
@@ -45,7 +45,7 @@ public class Comment {
 		commentatorName = newVal;
 	}*/
 
-    public void setCommentId(int newVal) {
+    public void setCommentId(Long newVal) {
         commentId = newVal;
     }
 

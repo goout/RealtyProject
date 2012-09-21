@@ -32,12 +32,29 @@ public class UserPageCommand implements Command {
 
         //AdvertJdbcDAO ad = new AdvertJdbcDAO();
         //List<Advert> alladverts = ad.findAll();
+      //  String city = request.getParameter("city");
+        String category = request.getParameter("categoryf");
 
         List<Advert> alladverts = advH.getAllAdverts();
+
+        //if (category.equals("All")||category==null){
+            if ("All".equals(category)||category==null){
+        alladverts = advH.getAllAdverts();}
+
+        if ("Rent".equals(category)){
+            alladverts = advH.getRentAdverts();}
+
+        if ("Sale".equals(category)){
+            alladverts = advH.getSaleAdverts();}
+
+        if ("Purchase".equals(category)){
+            alladverts = advH.getPurchaseAdverts();}
+
 
         List<AdvertUserDTO> allAdvertsUsrDto = createDTO(alladverts);
 
         request.setAttribute("allAdvertsUsrDto", allAdvertsUsrDto);
+
         UsrInfo iuser = (UsrInfo) session.getAttribute("userInfo");
 
         Boolean testb = (Boolean)session.getAttribute("admin");

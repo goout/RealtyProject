@@ -76,7 +76,7 @@
                                                 <tr>
                                                     <td><fmt:message key="advert.label.category"/>:
                                                     <td><select name="category" id="category" style="width:130px">
-                                                    <option disabled value="Purchase">Purchase</option>
+                                                    <option value="Purchase">Purchase</option>
                                                     <option value="Sale">Sale</option>
                                                     <option value="Rent">Rent</option>
                                                 </select>

@@ -24,7 +24,7 @@ public class DelUserCommand implements Command {
 		//UserJdbcDAO ad = new UserJdbcDAO();
 		String delUserId = request.getParameter("delUserId");
 		//ad.delete((Long)Long.parseLong(delUserId));                  //(Long)?
-        User del = usrH.read(User.class,(Long)Long.parseLong(delUserId));
+        User del = usrH.read(User.class,Long.parseLong(delUserId));
         usrH.delete(del);
 
 		//return CommandFactory.getCommand("allUser").execute(request, response);
