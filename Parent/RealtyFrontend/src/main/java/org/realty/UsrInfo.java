@@ -23,6 +23,7 @@ public class UsrInfo {
 
 	public void Logout() {
 		LoginFlag = false;
+        isAdmin = false;
 		setUserName("");
 
 	}

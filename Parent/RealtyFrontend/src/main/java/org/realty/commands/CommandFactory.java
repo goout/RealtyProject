@@ -47,13 +47,13 @@ public class CommandFactory {
     private static Map<String, List<Roles>> roleByCommand = new HashMap<String, List<Roles>>() {
         {
             put("addUser", ALL_ROLES);
-            put("allUser",  LOG_ADM);
+            put("allUser",  Arrays.asList(Roles.ADMIN));
             put("delUser",  LOG_ADM);
             put("addAdvert",  LOG_ADM);
-            put("allAdvert",  LOG_ADM);
+            put("allAdvert",  Arrays.asList(Roles.ADMIN));
             put("delAdvert", LOG_ADM);
             put("addComment", LOG_ADM);
-            put("allComment", ALL_ROLES);
+            put("allComment", Arrays.asList(Roles.ADMIN));
             put("delComment", LOG_ADM);
             put("signIn", Arrays.asList(Roles.ANONYMOUS));
             put("changeLang", ALL_ROLES);

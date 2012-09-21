@@ -44,6 +44,7 @@ public class AddUserCommand implements Command {
 		user.setName(userName);
 		user.setPassword(password);
 		user.setPhoneNumber(phoneNumber);
+        user.setAdmin(false);
 		usrH.create(user);
         }
 

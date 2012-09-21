@@ -1,6 +1,7 @@
 package org.realty.commands.data;
 
 
+import org.realty.UsrInfo;
 import org.realty.commands.Command;
 import org.realty.dao.AdvertJdbcDAO;
 import org.realty.dao.UserJdbcDAO;
@@ -13,6 +14,7 @@ import org.realty.hibernate.UserHibDAO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,7 @@ public class UserPageCommand implements Command {
     public String execute(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
 
-
+        HttpSession session = request.getSession();
 
 
         //AdvertJdbcDAO ad = new AdvertJdbcDAO();
@@ -36,7 +38,11 @@ public class UserPageCommand implements Command {
         List<AdvertUserDTO> allAdvertsUsrDto = createDTO(alladverts);
 
         request.setAttribute("allAdvertsUsrDto", allAdvertsUsrDto);
+        UsrInfo iuser = (UsrInfo) session.getAttribute("userInfo");
 
+        Boolean testb = (Boolean)session.getAttribute("admin");
+
+        session.setAttribute("admin", iuser.IsAdmin());
 
         return "UserPage.jsp";
 

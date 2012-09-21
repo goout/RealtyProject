@@ -1,8 +1,13 @@
 package org.realty;
 
+import org.realty.commands.Command;
 import org.realty.commands.CommandFactory;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.Filter;
@@ -67,7 +72,23 @@ public class ServletFilter implements Filter {
         if ((roles.contains(currentUser))) {
             chain.doFilter(request, response);
         } else {
-            httpResponse.sendRedirect("Authentication.jsp");
+            if (currentUser == Roles.LOGGED) {
+                ApplicationContext context = new ClassPathXmlApplicationContext("/springDI.xml");
+                BeanFactory factory = context;
+                CommandFactory test = (CommandFactory)factory.getBean("commandF");
+
+                Command c = test.getCommand("userPage");
+                String path = null;
+                try {
+                    path = c.execute(httpRequest, httpResponse);
+                } catch (ParseException e) {
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
+                request.getRequestDispatcher(path).forward(request, response);
+
+               // httpResponse.sendRedirect("UserPage.jsp");
+            } else
+                httpResponse.sendRedirect("Authentication.jsp");
         }
     }
 }
