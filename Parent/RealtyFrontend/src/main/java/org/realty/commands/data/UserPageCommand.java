@@ -32,24 +32,58 @@ public class UserPageCommand implements Command {
 
         //AdvertJdbcDAO ad = new AdvertJdbcDAO();
         //List<Advert> alladverts = ad.findAll();
-      //  String city = request.getParameter("city");
+        //  String city = request.getParameter("city");
         String category = request.getParameter("categoryf");
+        String sort = request.getParameter("sort");
 
-        List<Advert> alladverts = advH.getAllAdverts();
+        if(category==null){
+            category="All";
+        }
 
-        //if (category.equals("All")||category==null){
-            if ("All".equals(category)||category==null){
-        alladverts = advH.getAllAdverts();}
+        List<Advert> alladverts = advH.getAllAdvertsDESC();
 
-        if ("Rent".equals(category)){
-            alladverts = advH.getRentAdverts();}
 
-        if ("Sale".equals(category)){
-            alladverts = advH.getSaleAdverts();}
+        if ("dec".equals(sort) || sort == null) {
 
-        if ("Purchase".equals(category)){
-            alladverts = advH.getPurchaseAdverts();}
 
+            if ("All".equals(category) || category == null) {
+                alladverts = advH.getAllAdvertsDESC();
+            }
+
+            if ("Rent".equals(category)) {
+                alladverts = advH.getRentAdvertsDESC();
+            }
+
+            if ("Sale".equals(category)) {
+                alladverts = advH.getSaleAdvertsDESC();
+            }
+
+            if ("Purchase".equals(category)) {
+                alladverts = advH.getPurchaseAdvertsDESC();
+            }
+        } else {
+
+            if ("All".equals(category) || category == null) {
+                alladverts = advH.getAllAdverts();
+            }
+
+            if ("Rent".equals(category)) {
+                alladverts = advH.getRentAdverts();
+            }
+
+            if ("Sale".equals(category)) {
+                alladverts = advH.getSaleAdverts();
+            }
+
+            if ("Purchase".equals(category)) {
+                alladverts = advH.getPurchaseAdverts();
+            }
+
+
+        }
+
+        request.setAttribute("category", category);
+        request.setAttribute("sort", sort);
 
         List<AdvertUserDTO> allAdvertsUsrDto = createDTO(alladverts);
 
@@ -57,7 +91,7 @@ public class UserPageCommand implements Command {
 
         UsrInfo iuser = (UsrInfo) session.getAttribute("userInfo");
 
-        Boolean testb = (Boolean)session.getAttribute("admin");
+        Boolean testb = (Boolean) session.getAttribute("admin");
 
         session.setAttribute("admin", iuser.IsAdmin());
 
@@ -65,10 +99,10 @@ public class UserPageCommand implements Command {
 
     }
 
-    public List<AdvertUserDTO> createDTO (List<Advert> adverts)  {
+    public List<AdvertUserDTO> createDTO(List<Advert> adverts) {
 
         List<AdvertUserDTO> audto = new ArrayList<AdvertUserDTO>();
-        int i =0;
+        int i = 0;
         for (Advert o : adverts) {
             AdvertUserDTO aUDto = new AdvertUserDTO();
 
@@ -79,13 +113,13 @@ public class UserPageCommand implements Command {
             aUDto.setCoast(o.getCoast());
             aUDto.setDescription(o.getDescription());
 
-           // UserJdbcDAO ad = new UserJdbcDAO();
-           // User user = ad.getDomainById(o.getUserId());
-            User user = usrH.read(User.class,o.getUserId());
+            // UserJdbcDAO ad = new UserJdbcDAO();
+            // User user = ad.getDomainById(o.getUserId());
+            User user = usrH.read(User.class, o.getUserId());
             aUDto.setUserName(user.getName());
 
 
-            audto.add(i,aUDto);
+            audto.add(i, aUDto);
             i++;
         }
 

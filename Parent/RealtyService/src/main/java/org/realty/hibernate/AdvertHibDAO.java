@@ -12,6 +12,16 @@ public class AdvertHibDAO extends HibernateDAO<Advert> {
     @SuppressWarnings("unchecked")
     public List<Advert> getAllAdverts() {
         begin();
+        Query query = getSession().createQuery("FROM Advert order by advert_id");
+        List<Advert> LST = query.list();
+        commit();
+        return LST;
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public List<Advert> getAllAdvertsDESC() {
+        begin();
         Query query = getSession().createQuery("FROM Advert order by advert_id DESC");
         List<Advert> LST = query.list();
         commit();
@@ -28,11 +38,29 @@ public class AdvertHibDAO extends HibernateDAO<Advert> {
         return LST;
     }
 
+    @SuppressWarnings("unchecked")
+    public List<Advert> getRentAdvertsDESC() {
+        begin();
+        Query query = getSession().createQuery("FROM Advert WHERE category='Rent' order by advert_id DESC");
+        List<Advert> LST = query.list();
+        commit();
+        return LST;
+    }
+
 
     @SuppressWarnings("unchecked")
     public List<Advert> getSaleAdverts() {
         begin();
         Query query = getSession().createQuery("FROM Advert WHERE category='Sale'");
+        List<Advert> LST = query.list();
+        commit();
+        return LST;
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Advert> getSaleAdvertsDESC() {
+        begin();
+        Query query = getSession().createQuery("FROM Advert WHERE category='Sale' order by advert_id DESC");
         List<Advert> LST = query.list();
         commit();
         return LST;
@@ -46,5 +74,16 @@ public class AdvertHibDAO extends HibernateDAO<Advert> {
         commit();
         return LST;
     }
+
+
+    @SuppressWarnings("unchecked")
+    public List<Advert> getPurchaseAdvertsDESC() {
+        begin();
+        Query query = getSession().createQuery("FROM Advert WHERE category='Purchase' order by advert_id DESC");
+        List<Advert> LST = query.list();
+        commit();
+        return LST;
+    }
+
 
 }
