@@ -35,7 +35,8 @@
                 <li></li>
                 <li></li>
                 <li></li>
-                <li></li>
+                <li><fmt:message key="main" var="main"/>
+                    <input type="button" value="${main}" onclick="location.href='RealtyServlet?command=indexGuest'"/></li>
                 <li><fmt:message key="button.logout" var="Out"/>
                     <input type="button" value="${Out}" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
                 <li>
@@ -62,8 +63,8 @@
 
                         <h2><fmt:message key="addadvert"/></h2>
 
-
-                        <table height="590" border="0" align="center">
+                        <div id="table" style="width:1000px; height:600px; overflow:auto;">
+                        <table border="0" align="center">
                             <tr>
                                 <td>
 
@@ -144,7 +145,7 @@
                                                 {   var max=2;
                                                     var max2=8;
                                                     var min=1;
-                                                    var numericExpression = /^[1-9]+$/;
+                                                    var numericExpression = /^[0-9]+$/;
                                                     var x=document.forms["form1"]["rooms"].value;
                                                     var y=document.forms["form1"]["coast"].value;
                                                     if (x.match(numericExpression)&&min<=x.length&&x.length<=max)

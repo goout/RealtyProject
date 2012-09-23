@@ -36,7 +36,8 @@
                 </li>
                 <li></li>
                 <li></li>
-                <li></li>
+                <li><fmt:message key="main" var="main"/>
+                    <input type="button" value="${main}" onclick="location.href='RealtyServlet?command=indexGuest'"/></li>
                 <li><fmt:message key="button.logout" var="Out"/>
                     <input type="button" value="${Out}" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
                 <li>
@@ -66,16 +67,11 @@
             <table width="1000" height="0" border="0" cellpadding="5" style="background-color:#98FB98">
                 <tr>
                     <td>
-                        <div id="head2">
 
                             <h2><fmt:message key="advert"/></h2>
-                        </div>
 
 
-                        <div id="content">
-
-
-                            <div id="table"  style="width:1000px; height:340px; overflow:auto; /*border-style: double;*/ ">
+                            <div id="table"  style="width:1000px; height:330px;">
 
 
                                 <form id="form3" action="RealtyServlet">

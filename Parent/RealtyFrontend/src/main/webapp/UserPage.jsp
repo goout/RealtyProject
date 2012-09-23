@@ -17,12 +17,12 @@
 
 </head>
 
-<c:set var="commandForPage" value="userPage" scope="request"/>
+
 
 
 <body>
 
-<%--<br>--%>
+<br>
 <table width="1000" height="0" border="1" align="center" cellpadding="5" cellspacing="0"
        style="color:#dcdcdc;  background-color:#FFFFFf">
     <tr>
@@ -83,37 +83,11 @@
                     <td>
 
 
-                        <div id="head2">
-
                             <h2><fmt:message key="user.subhead"/></h2>
-                        </div>
-
-
-
-         <%--               <script>
-
-
-                            <%
-                  String sort = (String)request.getAttribute("sort");
-                  String category = (String)request.getAttribute("category");
-
-                  if(sort!=null){ %>
-
-                   document.frmRadio.choice[1].checked
-
-                 <%}
-
-                            %>
-
-                        </script>--%>
-
 
 
 
                         <script type="text/javascript">
-
-
-
 
                             function selectRadio() {
 
@@ -136,23 +110,23 @@
 
                                     switch (category) {
                                         case "All":
-                                            location.href = 'RealtyServlet?command=allUser'
+                                            location.href = 'RealtyServlet?command=userPage'
 
                                             break
                                         case "Purchase":
-                                            location.href = 'RealtyServlet?categoryf=Purchase&command=allUser'
+                                            location.href = 'RealtyServlet?categoryf=Purchase&command=userPage'
 
                                             break
                                         case "Sale":
-                                            location.href = 'RealtyServlet?categoryf=Sale&command=allUser'
+                                            location.href = 'RealtyServlet?categoryf=Sale&command=userPage'
 
                                             break
                                         case "Rent":
-                                            location.href = 'RealtyServlet?categoryf=Rent&command=allUser'
+                                            location.href = 'RealtyServlet?categoryf=Rent&command=userPage'
 
                                             break
                                         default:
-                                            location.href = 'RealtyServlet?command=allUser'
+                                            location.href = 'RealtyServlet?command=userPage'
                                             break
                                     }
                                 }
@@ -160,40 +134,30 @@
                                 if(radioValue==1){
                                     switch (category) {
                                         case "All":
-                                            location.href = 'RealtyServlet?sort=inc&command=allUser'
+                                            location.href = 'RealtyServlet?sort=inc&command=userPage'
 
                                             break
                                         case "Purchase":
-                                            location.href = 'RealtyServlet?sort=inc&categoryf=Purchase&command=allUser'
+                                            location.href = 'RealtyServlet?sort=inc&categoryf=Purchase&command=userPage'
 
                                             break
                                         case "Sale":
-                                            location.href = 'RealtyServlet?sort=inc&categoryf=Sale&command=allUser'
+                                            location.href = 'RealtyServlet?sort=inc&categoryf=Sale&command=userPage'
 
                                             break
                                         case "Rent":
-                                            location.href = 'RealtyServlet?sort=inc&categoryf=Rent&command=allUser'
+                                            location.href = 'RealtyServlet?sort=inc&categoryf=Rent&command=userPage'
 
                                             break
                                         default:
-                                            location.href = 'RealtyServlet?sort=inc&command=allUser'
+                                            location.href = 'RealtyServlet?sort=inc&command=userPage'
                                             break
                                     }
-
-
-
-
-
 
                                 }
 
 
                             }
-
-
-
-
-
 
 
                             function selectDropdown() {
@@ -209,29 +173,29 @@
                                     }
                                 }
 
-                               /* alert(radioValue);*/
+
 
                                 if (radioValue==2){
 
                                 switch (value) {
                                     case "All":
-                                        location.href = 'RealtyServlet?command=allUser'
+                                        location.href = 'RealtyServlet?command=userPage'
 
                                         break
                                     case "Purchase":
-                                        location.href = 'RealtyServlet?categoryf=Purchase&command=allUser'
+                                        location.href = 'RealtyServlet?categoryf=Purchase&command=userPage'
 
                                         break
                                     case "Sale":
-                                        location.href = 'RealtyServlet?categoryf=Sale&command=allUser'
+                                        location.href = 'RealtyServlet?categoryf=Sale&command=userPage'
 
                                         break
                                     case "Rent":
-                                        location.href = 'RealtyServlet?categoryf=Rent&command=allUser'
+                                        location.href = 'RealtyServlet?categoryf=Rent&command=userPage'
 
                                         break
                                     default:
-                                        location.href = 'RealtyServlet?command=allUser'
+                                        location.href = 'RealtyServlet?command=userPage'
                                         break
                                 }
                                 }
@@ -239,29 +203,25 @@
                                 if(radioValue==1){
                                     switch (value) {
                                         case "All":
-                                            location.href = 'RealtyServlet?sort=inc&command=allUser'
+                                            location.href = 'RealtyServlet?sort=inc&command=userPage'
 
                                             break
                                         case "Purchase":
-                                            location.href = 'RealtyServlet?sort=inc&categoryf=Purchase&command=allUser'
+                                            location.href = 'RealtyServlet?sort=inc&categoryf=Purchase&command=userPage'
 
                                             break
                                         case "Sale":
-                                            location.href = 'RealtyServlet?sort=inc&categoryf=Sale&command=allUser'
+                                            location.href = 'RealtyServlet?sort=inc&categoryf=Sale&command=userPage'
 
                                             break
                                         case "Rent":
-                                            location.href = 'RealtyServlet?sort=inc&categoryf=Rent&command=allUser'
+                                            location.href = 'RealtyServlet?sort=inc&categoryf=Rent&command=userPage'
 
                                             break
                                         default:
-                                            location.href = 'RealtyServlet?sort=inc&command=allUser'
+                                            location.href = 'RealtyServlet?sort=inc&command=userPage'
                                             break
                                     }
-
-
-
-
 
 
                                 }
@@ -291,19 +251,13 @@
                                 </form>      </td>
 
 
-                         <%--   <td><fmt:message key="increase" var="inc"/>
-                                <input name="gr1" type="radio" value="${inc}"/><fmt:message key="increase"/></td>
-
-                            <td><fmt:message key="decrease" var="dec"/>
-                                <input name="gr1" type="radio" value="${dec}" checked=""/><fmt:message key="decrease"/></td>--%>
-
                             </tr>
                           </table>
 
                         <div id="content">
 
 
-                            <div id="table" style="width:1000px; height:600px; overflow:auto;">
+                            <div id="table" style="width:1000px; height:560px; overflow:auto;">
                                 <br/>
 
                                 <form id="form3" action="RealtyServlet">
@@ -351,7 +305,7 @@
             </table>
         </td>
 </table>
-
+<c:set var="commandForPage" value="userPage" scope="request"/>
 
 <center>
     <div id="niz">

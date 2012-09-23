@@ -1,9 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
 <c:set var="language"
        value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
        scope="session"/>
@@ -50,11 +47,8 @@
                     </form>
                 </li>
                 <li>
-                    <div id="head">
-
-                        <h2><fmt:message key="index.subhead"/></h2>
-                    </div>
-                </li>
+                <h2><fmt:message key="index.subhead"/></h2>
+               </li>
             </div>
 
         </td>
@@ -69,16 +63,11 @@
             <table width="1000" height="0" border="0" cellpadding="5" style="background-color:#98FB98">
                 <tr>
                     <td>
-                        <div id="head2">
 
                             <h2><fmt:message key="index.subhead"/></h2>
-                        </div>
 
 
-                        <div id="content">
-
-
-                            <div id="table" class="" style="width:1000px; height:600px; overflow:auto;">
+                            <div id="table" style="width:1000px; height:600px; overflow:auto;">
                                 <br/>
 
                                 <form id="form3" action="RealtyServlet">
@@ -113,7 +102,7 @@
 
                             </div>
 
-                        </div>
+
 
 
                     </td>

@@ -33,7 +33,8 @@
                 <li></li>
                 <li></li>
                 <li></li>
-                <li></li>
+                <li><fmt:message key="main" var="main"/>
+                    <input type="button" value="${main}" onclick="location.href='RealtyServlet?command=indexGuest'"/></li>
                 <li>
                     <form id="form" action="RealtyServlet">
                         <fmt:message key="button.signIn" var="SignIn"/>
@@ -41,10 +42,8 @@
                     </form>
                 </li>
                 <li>
-                    <div id="head">
+              <h2><fmt:message key="registration.subhead"/></h2>
 
-                        <h2><fmt:message key="registration.subhead"/></h2>
-                    </div>
                 </li>
             </div>
 
@@ -57,15 +56,15 @@
         <td>
 
 
-            <table width="1000" height="600" border="0" cellpadding="5" style="background-color:#98FB98">
+            <table width="1000" height="0" border="0" cellpadding="5" style="background-color:#98FB98">
                 <tr>
                     <td>
                             <h2><fmt:message key="registration.subhead"/></h2>
 
 
 
-
-                            <table  height="590"  border="0" align="center">
+                        <div id="table" style="width:1000px; height:600px;">
+                            <table    border="0" align="center">
                                 <tr>
                                     <td>
 

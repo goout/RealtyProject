@@ -53,7 +53,7 @@ public class App {
             }
         }*/
 
-        UserHibDAO test = new UserHibDAO();
+/*        UserHibDAO test = new UserHibDAO();
 
         User testHib = new User();
         testHib.setName("testHibT2");
@@ -138,7 +138,7 @@ public class App {
         comtest.setUserId(1L);
         comtest.setAdvertId(1l);
 
-        comment.create(comtest);
+        comment.create(comtest);*/
 
 
 

@@ -37,7 +37,8 @@
                 <li></li>
                 <li></li>
                 <li></li>
-                <li></li>
+                <li><fmt:message key="main" var="main"/>
+                    <input type="button" value="${main}" onclick="location.href='RealtyServlet?command=indexGuest'"/></li>
                 <li><fmt:message key="button.logout" var="Out"/>
                     <input type="button" value="${Out}" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
                 <li>

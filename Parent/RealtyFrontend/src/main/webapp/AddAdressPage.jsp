@@ -41,7 +41,8 @@
                 <li></li>
                 <li></li>
                 <li></li>
-                <li></li>
+                <li><fmt:message key="main" var="main"/>
+                    <input type="button" value="${main}" onclick="location.href='RealtyServlet?command=indexGuest'"/></li>
                 <li><fmt:message key="button.logout" var="Out"/>
                     <input type="button" value="${Out}" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
                 <li>
@@ -68,8 +69,8 @@
 
             <h2><fmt:message key="adress.subhead"/></h2>
 
-
-            <table height="590" border="0" align="center">
+            <div id="table" style="width:1000px; height:600px;">
+            <table  border="0" align="center">
                 <tr>
                     <td>
 
@@ -248,7 +249,7 @@
 
                                     {   var max=3;
                                         var min=1;
-                                        var numericExpression = /^[1-9]+$/;
+                                        var numericExpression = /^[0-9]+$/;
                                         var x=document.forms["combo"]["homeNum"].value;
                                         var y=document.forms["combo"]["apartmentNum"].value;
                                         if (x.match(numericExpression)&&min<=x.length&&x.length<=max)

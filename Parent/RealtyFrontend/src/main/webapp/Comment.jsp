@@ -36,7 +36,8 @@
                 <li><a href="#"><span><fmt:message key="menu.comment"/></span></a></li>
                 <li><fmt:message key="button.logout" var="Out"/>
                     <input type="button" value="${Out}" onclick="location.href='RealtyServlet?command=LogOut'"/></li>
-                <li></li>
+                <li><fmt:message key="main" var="main"/>
+                    <input type="button" value="${main}" onclick="location.href='RealtyServlet?command=indexGuest'"/></li>
                 <li>
                     <div id="head">
 
