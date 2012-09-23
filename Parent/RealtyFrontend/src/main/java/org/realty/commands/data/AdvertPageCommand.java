@@ -71,19 +71,21 @@ public class AdvertPageCommand implements Command {
         aUADto.setAdvertId(advert.getAdvertId());
         aUADto.setAddedDate(advert.getAddedDate());
         aUADto.setCategory(advert.getCategory());
-        aUADto.setAdvertUserId(advert.getUserId());
+        User user2 = advert.getUser();
+        aUADto.setAdvertUserId(user2.getUserId());
         aUADto.setCoast(advert.getCoast());
         aUADto.setDescription(advert.getDescription());
-        aUADto.setAdvertAdressId(advert.getAdressId());
+        Adress adress2 = advert.getAdress();
+        aUADto.setAdvertAdressId(adress2.getAdressId());
         aUADto.setRooms(advert.getRooms());
 
         //UserJdbcDAO ad = new UserJdbcDAO();
         //  UserHibDAO usrH = new UserHibDAO();
-        User user = usrH.read(User.class,advert.getUserId());
+       // User user = usrH.read(User.class,advert.getUserId());
         //User user = ad.getDomainById(advert.getUserId());
 
-        aUADto.setName(user.getName());
-        aUADto.setPhoneNumber(user.getPhoneNumber());
+        aUADto.setName(user2.getName());
+        aUADto.setPhoneNumber(user2.getPhoneNumber());
 
         //AdressHibDAO adrH = new AdressHibDAO();
         Adress a =advert.getAdress();
@@ -125,7 +127,7 @@ public class AdvertPageCommand implements Command {
 
 
         for (Comment c : commL) {
-            if (c.getAdvertId() == advert.getAdvertId()) {
+            if (c.getAdvert().getAdvertId() == advert.getAdvertId()) {
                 resComL.add(c);
 
             }
@@ -134,8 +136,9 @@ public class AdvertPageCommand implements Command {
         aUADto.setComments(resComL);
 
         for (Comment c : resComL) {
-            User u = new User();
-            usrL.add(usrH.read(User.class,c.getUserId()));
+           // User u = new User();
+           // usrL.add(usrH.read(User.class,c.getUser().getUserId()));
+            usrL.add(c.getUser());
         }
 
         aUADto.setUsers(usrL);

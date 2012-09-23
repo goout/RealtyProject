@@ -88,10 +88,7 @@ public class User {
 				name, password, phoneNumber);
 	}
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumns ({
-            @JoinColumn(name="user_id", referencedColumnName = "user_id")
-    })
+    @OneToMany(mappedBy="user")
     public List<Advert> getAdverts() {
         return adverts;
     }
@@ -99,10 +96,8 @@ public class User {
     public void setAdverts(List<Advert> adverts) {
         this.adverts = adverts;
     }
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumns ({
-            @JoinColumn(name="user_id", referencedColumnName = "user_id")
-    })
+
+    @OneToMany(mappedBy="user")
     public List<Comment> getComments() {
         return comments;
     }

@@ -51,9 +51,11 @@ CREATE TABLE advert(
   description TEXT,
   user_id INT NOT NULL,
   PRIMARY KEY (advert_id),
-  FOREIGN KEY (user_id) REFERENCES User(user_id),
-  FOREIGN KEY (adressId) REFERENCES Adress(adressId));
+  FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE,
+  FOREIGN KEY (adressId) REFERENCES Adress(adressId) ON DELETE CASCADE);
 	   
+
+
 				   
 CREATE TABLE Comment (comment_id int AUTO_INCREMENT NOT NULL,
 addedDate varchar(25),
@@ -61,8 +63,8 @@ text text,
 user_id int NOT NULL,
 advert_id int NOT NULL,
 PRIMARY KEY (comment_id),
-FOREIGN KEY (user_id) REFERENCES User(user_id),
-FOREIGN KEY (advert_id) REFERENCES Advert(advert_id));				   
+FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE ,
+FOREIGN KEY (advert_id) REFERENCES Advert(advert_id)ON DELETE CASCADE);				   
 
 
 

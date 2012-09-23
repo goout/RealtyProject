@@ -109,13 +109,16 @@ public class UserPageCommand implements Command {
             aUDto.setAdvertId(o.getAdvertId());
             aUDto.setAddedDate(o.getAddedDate());
             aUDto.setCategory(o.getCategory());
-            aUDto.setAdvertUserId(o.getUserId());
+
+            User user2 = o.getUser();
+            aUDto.setAdvertUserId(user2.getUserId());
+
             aUDto.setCoast(o.getCoast());
             aUDto.setDescription(o.getDescription());
 
             // UserJdbcDAO ad = new UserJdbcDAO();
             // User user = ad.getDomainById(o.getUserId());
-            User user = usrH.read(User.class, o.getUserId());
+            User user = usrH.read(User.class, user2.getUserId());
             aUDto.setUserName(user.getName());
 
 

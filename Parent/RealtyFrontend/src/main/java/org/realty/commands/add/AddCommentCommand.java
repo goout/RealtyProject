@@ -15,11 +15,17 @@ import org.realty.UsrInfo;
 import org.realty.commands.Command;
 import org.realty.commands.CommandFactory;
 import org.realty.dao.CommentJdbcDAO;
+import org.realty.entity.Advert;
 import org.realty.entity.Comment;
+import org.realty.entity.User;
+import org.realty.hibernate.AdvertHibDAO;
 import org.realty.hibernate.CommentHibDAO;
+import org.realty.hibernate.UserHibDAO;
 
 public class AddCommentCommand implements Command {
     private CommentHibDAO cmntH;
+    private UserHibDAO usrH;
+    private AdvertHibDAO advH;
 
 	@Override
 	public String execute(HttpServletRequest request,
@@ -37,8 +43,12 @@ public class AddCommentCommand implements Command {
 
 		Comment comment = new Comment();
 		comment.setText(text);
-		comment.setUserId(Long.parseLong(userId));
-		comment.setAdvertId(Long.parseLong(advertId));
+
+        User user2 = usrH.read(User.class,Long.parseLong(userId));
+        Advert advert2 = advH.read(Advert.class,Long.parseLong(advertId));
+
+		comment.setUser(user2);
+		comment.setAdvert(advert2);
         comment.setAddedDate(dateFormat.format(date));
 
 
@@ -54,5 +64,13 @@ public class AddCommentCommand implements Command {
 
     public void setCmntH(CommentHibDAO cmntH) {
         this.cmntH = cmntH;
+    }
+
+    public void setUsrH(UserHibDAO usrH) {
+        this.usrH = usrH;
+    }
+
+    public void setAdvH(AdvertHibDAO advH) {
+        this.advH = advH;
     }
 }

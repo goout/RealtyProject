@@ -14,8 +14,10 @@ public class Comment {
     private Long commentId;
     private String addedDate;
     private String text;
-    private Long userId;
-    private Long advertId;
+    private User user;
+    private Advert advert;
+  //  private Long userId;
+  //  private Long advertId;
 
   //     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
   //Date date = new Date();
@@ -25,9 +27,7 @@ public class Comment {
     public Comment() {
     }
 
-    /*	public String getcommentatorName() {
-         return commentatorName;
-     }*/
+
     @Id
     @Column(name = "comment_id")
     @GeneratedValue
@@ -41,9 +41,6 @@ public class Comment {
         return text;
     }
 
-/*	public void setcommentatorName(String newVal) {
-		commentatorName = newVal;
-	}*/
 
     public void setCommentId(Long newVal) {
         commentId = newVal;
@@ -52,7 +49,7 @@ public class Comment {
     public void setText(String newVal) {
         text = newVal;
     }
-    @Column(name="user_id")
+/*    @Column(name="user_id")
     public Long getUserId() {
         return userId;
     }
@@ -67,7 +64,7 @@ public class Comment {
 
     public void setAdvertId(Long advertId) {
         this.advertId = advertId;
-    }
+    }*/
 
     public String getAddedDate() {
         return addedDate;
@@ -76,5 +73,24 @@ public class Comment {
     public void setAddedDate(String addedDate) {
 
           this.addedDate = addedDate;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    @ManyToOne
+    @JoinColumn(name="advert_id")
+    public Advert getAdvert() {
+        return advert;
+    }
+
+    public void setAdvert(Advert advert) {
+        this.advert = advert;
     }
 }

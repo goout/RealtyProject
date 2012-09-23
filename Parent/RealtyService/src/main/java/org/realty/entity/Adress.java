@@ -8,10 +8,10 @@ public class Adress {
 
     private Long adressId;
     private int apartmentNum;
-    private Long cityId;
-    private Long districtId;
+   // private Long cityId;
+  //  private Long districtId;
     private int houseNum;
-    private Long streetId;
+  //  private Long streetId;
     private City city;
     private District district;
     private Street street;
@@ -40,7 +40,7 @@ public class Adress {
         this.apartmentNum = apartmentNum;
     }
 
-    @Transient
+    /*@Transient
     public Long getCityId() {
         return cityId;
     }
@@ -56,7 +56,7 @@ public class Adress {
 
     public void setDistrictId(Long districtId) {
         this.districtId = districtId;
-    }
+    }*/
 
     @Column(name = "houseNum")
     public int getHouseNum() {
@@ -67,16 +67,16 @@ public class Adress {
         this.houseNum = houseNum;
     }
 
-    @Transient
+   /* @Transient
     public Long getStreetId() {
         return streetId;
     }
 
     public void setStreetId(Long streetId) {
         this.streetId = streetId;
-    }
+    }*/
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne/*(cascade = CascadeType.ALL)*/
     @JoinColumns({
             @JoinColumn(name = "cityId", referencedColumnName = "cityId")
     })
@@ -88,7 +88,7 @@ public class Adress {
         this.city = city;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne/*(cascade = CascadeType.ALL)*/
     @JoinColumns({
             @JoinColumn(name = "districtId", referencedColumnName = "districtId")
     })
@@ -100,7 +100,7 @@ public class Adress {
         this.district = district;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne/*(cascade = CascadeType.ALL)*/
     @JoinColumns({
             @JoinColumn(name = "streetId", referencedColumnName = "streetId")
     })

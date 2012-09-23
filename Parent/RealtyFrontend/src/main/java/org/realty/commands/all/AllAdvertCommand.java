@@ -12,7 +12,10 @@ import org.realty.UsrInfo;
 import org.realty.commands.Command;
 import org.realty.dao.AdvertJdbcDAO;
 import org.realty.dto.AdvertUserAdressDTO;
+import org.realty.entity.Adress;
 import org.realty.entity.Advert;
+import org.realty.entity.User;
+import org.realty.hibernate.AdressHibDAO;
 import org.realty.hibernate.AdvertHibDAO;
 
 import javax.servlet.http.HttpSession;
@@ -20,6 +23,7 @@ import javax.servlet.http.HttpSession;
 
 public class AllAdvertCommand implements Command {
     private AdvertHibDAO advH;
+    private AdressHibDAO adrH;
 
 	@Override
 	public String execute(HttpServletRequest request,
@@ -61,11 +65,16 @@ public class AllAdvertCommand implements Command {
             AdvertUserAdressDTO aud = new AdvertUserAdressDTO();
             aud.setAddedDate(o.getAddedDate());
             aud.setCategory(o.getCategory());
-            aud.setAdvertAdressId(o.getAdressId());
+            Adress adress = o.getAdress();
+            aud.setAdvertAdressId(adress.getAdressId());
             aud.setCoast(o.getCoast());
             aud.setDescription(o.getDescription());
             aud.setAdvertId(o.getAdvertId());
-            aud.setAdvertUserId(o.getUserId());
+
+            User user2 = o.getUser();
+
+            aud.setAdvertUserId(user2.getUserId());
+
             aud.setRooms(o.getRooms());
 
 
@@ -88,5 +97,9 @@ public class AllAdvertCommand implements Command {
 
     public void setAdvH(AdvertHibDAO advH) {
         this.advH = advH;
+    }
+
+    public void setAdrH(AdressHibDAO adrH) {
+        this.adrH = adrH;
     }
 }

@@ -16,6 +16,7 @@ import org.realty.dao.CommentJdbcDAO;
 import org.realty.dto.CommentUserAdvertDTO;
 import org.realty.entity.Advert;
 import org.realty.entity.Comment;
+import org.realty.entity.User;
 import org.realty.hibernate.AdvertHibDAO;
 import org.realty.hibernate.CommentHibDAO;
 
@@ -71,8 +72,10 @@ public class AllCommentCommand implements Command {
 
            cuad.setCommentId(c.getCommentId());
             cuad.setText(c.getText());
-            cuad.setCommentUserId(c.getUserId());
-            cuad.setCommentAdvertId(c.getAdvertId());
+            User user2 = c.getUser();
+            Advert adver2 = c.getAdvert();
+            cuad.setCommentUserId(user2.getUserId());
+            cuad.setCommentAdvertId(adver2.getAdvertId());
 
             lcuad.add(i, cuad);
             i++;

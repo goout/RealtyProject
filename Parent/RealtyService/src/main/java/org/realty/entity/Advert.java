@@ -11,13 +11,14 @@ public class Advert {
     private String addedDate;
     private String category;
     private int rooms;
-    private Long adressId;
+  //  private Long adressId;
     private int coast;
     private String description;
     private Long advertId;
-    private Long userId;
+  //  private Long userId;
     private List<Comment> comments;
     private Adress adress;
+    private User user;
 
 
     public Advert() {
@@ -76,14 +77,14 @@ public class Advert {
         this.advertId = newVal;
     }
 
-    @Column(name = "user_id")
+/*    @Column(name = "user_id")
     public Long getUserId() {
         return userId;
     }
 
     public void setUserId(Long userId) {
         this.userId = userId;
-    }
+    }*/
 
     @Column(name = "rooms")
     public int getRooms() {
@@ -94,7 +95,7 @@ public class Advert {
         this.rooms = rooms;
     }
 
-     // @Column(name="adressId")
+/*     // @Column(name="adressId")
     @Transient
     public Long getAdressId() {
         return adressId;
@@ -102,7 +103,7 @@ public class Advert {
 
     public void setAdressId(Long adressId) {
         this.adressId = adressId;
-    }
+    }*/
 
 
     @Override
@@ -118,17 +119,14 @@ public class Advert {
     }
 
 
-    @Override
+/*    @Override
     public String toString() {
         return String.format("Advert[addedDate=%s,category=%s,rooms=%s,adressId=%d," +
                 " coast=%d, description=%s, advertId=%d, userId=%d]",
                 addedDate, category, getRooms(), getAdressId(), coast, description, advertId, userId);
-    }
+    }*/
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumns({
-            @JoinColumn(name = "advert_id", referencedColumnName = "advert_id")
-    })
+    @OneToMany(mappedBy="advert")
     public List<Comment> getComments() {
         return comments;
     }
@@ -137,15 +135,24 @@ public class Advert {
         this.comments = comments;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumns({
-            @JoinColumn(name = "adressId", referencedColumnName = "adressId")
-    })
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name="adressId")
     public Adress getAdress() {
         return adress;
     }
 
     public void setAdress(Adress adress) {
         this.adress = adress;
+    }
+
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

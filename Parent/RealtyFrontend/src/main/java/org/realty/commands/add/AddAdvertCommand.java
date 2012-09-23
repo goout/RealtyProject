@@ -15,13 +15,16 @@ import org.realty.commands.CommandFactory;
 import org.realty.dao.AdvertJdbcDAO;
 import org.realty.entity.Adress;
 import org.realty.entity.Advert;
+import org.realty.entity.User;
 import org.realty.hibernate.AdressHibDAO;
 import org.realty.hibernate.AdvertHibDAO;
+import org.realty.hibernate.UserHibDAO;
 import org.springframework.beans.factory.BeanFactory;
 
 public class AddAdvertCommand implements Command {
         private AdvertHibDAO advH;
         private AdressHibDAO adrH;
+         private UserHibDAO usrH;
 
 	@Override
 	public String execute(HttpServletRequest request,
@@ -49,7 +52,7 @@ public class AddAdvertCommand implements Command {
 
       //  AdressHibDAO adrH = new AdressHibDAO();
 
-        Adress adr = adrH.read(Adress.class,adrH.read(Adress.class,Long.parseLong(adressId)).getAdressId());
+        Adress adr = adrH.read(Adress.class,Long.parseLong(adressId));
 
       //  advert.setAdressId(Long.parseLong(adressId));
         advert.setAdress(adr);
@@ -57,8 +60,9 @@ public class AddAdvertCommand implements Command {
         advert.setCoast(Integer.parseInt(coast));
         advert.setDescription(description);
 
+        User user2 = usrH.read(User.class,Long.parseLong(userId))   ;
 
-        advert.setUserId(Long.parseLong(userId));
+        advert.setUser(user2);
         //  advert.set         ???
 
         advert.setRooms(Integer.parseInt(rooms));
@@ -77,5 +81,9 @@ public class AddAdvertCommand implements Command {
 
     public void setAdrH(AdressHibDAO adrH) {
         this.adrH = adrH;
+    }
+
+    public void setUsrH(UserHibDAO usrH) {
+        this.usrH = usrH;
     }
 }

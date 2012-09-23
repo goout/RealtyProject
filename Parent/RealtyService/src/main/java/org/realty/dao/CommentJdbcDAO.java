@@ -28,8 +28,8 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 
         //ptmt.setDate(2, new java.sql.Date(today.getTime()),cal);
 		ptmt.setString(2, comment.getText());
-		ptmt.setLong(3, comment.getUserId());
-		ptmt.setLong(4, comment.getAdvertId());
+		//ptmt.setLong(3, comment.getUserId());
+		//ptmt.setLong(4, comment.getAdvertId());
 
 	}
 
@@ -93,8 +93,8 @@ public class CommentJdbcDAO extends AbstractDAO<Comment> {
 		comment.setCommentId(rs.getLong(1));
         comment.setAddedDate(rs.getString(2));
 		comment.setText(rs.getString(3));
-		comment.setUserId(rs.getLong(4));
-		comment.setAdvertId(rs.getLong(5));
+		//comment.setUserId(rs.getLong(4));
+		//comment.setAdvertId(rs.getLong(5));
 		return comment;
 	}
 

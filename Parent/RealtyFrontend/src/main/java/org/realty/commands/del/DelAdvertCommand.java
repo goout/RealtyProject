@@ -10,11 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.realty.commands.Command;
 import org.realty.commands.CommandFactory;
 import org.realty.dao.AdvertJdbcDAO;
+import org.realty.entity.Adress;
 import org.realty.entity.Advert;
+import org.realty.hibernate.AdressHibDAO;
 import org.realty.hibernate.AdvertHibDAO;
 
 public class DelAdvertCommand implements Command {
     private AdvertHibDAO advH;
+    private AdressHibDAO adrH;
 
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException, ParseException {
@@ -24,8 +27,10 @@ public class DelAdvertCommand implements Command {
 
 		String delAdvertId = request.getParameter("delAdvertId");
 
+       /* Adress del = adrH.read(Adress.class, Long.parseLong(delAdvertId));
+        adrH.delete(del);*/
         Advert del = advH.read(Advert.class, Long.parseLong(delAdvertId));
-        advH.delete(del);
+       advH.delete(del);
 
 	//	ad.delete(Long.parseLong(delAdvertId));
 
@@ -36,5 +41,9 @@ public class DelAdvertCommand implements Command {
 
     public void setAdvH(AdvertHibDAO advH) {
         this.advH = advH;
+    }
+
+    public void setAdrH(AdressHibDAO adrH) {
+        this.adrH = adrH;
     }
 }

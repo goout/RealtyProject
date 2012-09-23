@@ -27,10 +27,10 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
         ptmt.setString(1, null);
         ptmt.setString(2, advert.getCategory());
         ptmt.setInt(3, advert.getRooms());
-        ptmt.setLong(4, advert.getAdressId());
+       // ptmt.setLong(4, advert.getAdressId());
         ptmt.setInt(5, advert.getCoast());
         ptmt.setString(6, advert.getDescription());
-        ptmt.setLong(7, advert.getUserId());
+        //ptmt.setLong(7, advert.getUserId());
     }
 
     @Override
@@ -51,11 +51,11 @@ public class AdvertJdbcDAO extends AbstractDAO<Advert> {
         advert.setAdvertId(rs.getLong(1));
         advert.setAddedDate(rs.getString(2));
         advert.setCategory(rs.getString(3));
-        advert.setAdressId(rs.getLong(4));
+      //  advert.setAdressId(rs.getLong(4));
         advert.setRooms(rs.getInt(5));
         advert.setCoast(rs.getInt(6));
         advert.setDescription(rs.getString(7));
-        advert.setUserId(rs.getLong(8));
+        //advert.setUserId(rs.getLong(8));
         return advert;
     }
 

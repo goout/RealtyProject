@@ -60,6 +60,7 @@
     <bean id="addAdvert" class="org.realty.commands.add.AddAdvertCommand">
         <property name="adrH" ref="adressHDAO"/>
         <property name="advH" ref="advertHDAO"/>
+        <property name="usrH" ref="userHDAO"/>
     </bean>
 
     <bean id="advert" class="org.realty.commands.data.AdvertCommand">
@@ -70,14 +71,18 @@
 
     <bean id="allAdvert" class="org.realty.commands.all.AllAdvertCommand">
         <property name="advH" ref="advertHDAO"/>
+        <property name="adrH" ref="adressHDAO"/>
     </bean>
 
     <bean id="delAdvert" class="org.realty.commands.del.DelAdvertCommand">
+        <property name="adrH" ref="adressHDAO"/>
         <property name="advH" ref="advertHDAO"/>
     </bean>
 
     <bean id="addComment" class="org.realty.commands.add.AddCommentCommand">
         <property name="cmntH" ref="commentHDAO"/>
+        <property name="usrH" ref="userHDAO"/>
+        <property name="advH" ref="advertHDAO"/>
     </bean>
 
     <bean id="allComment" class="org.realty.commands.all.AllCommentCommand">

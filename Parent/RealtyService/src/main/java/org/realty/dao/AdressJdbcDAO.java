@@ -25,9 +25,9 @@ public class AdressJdbcDAO extends AbstractDAO<Adress> {
     protected void addStep(Adress adress) throws SQLException {
 
         ptmt.setString(1, null);
-        ptmt.setLong(2, adress.getCityId());
-        ptmt.setLong(3, adress.getDistrictId());
-        ptmt.setLong(4, adress.getStreetId());
+      //  ptmt.setLong(2, adress.getCityId());
+       // ptmt.setLong(3, adress.getDistrictId());
+       // ptmt.setLong(4, adress.getStreetId());
         ptmt.setInt(5, adress.getHouseNum());
         ptmt.setInt(6, adress.getApartmentNum());
 
@@ -47,9 +47,9 @@ public class AdressJdbcDAO extends AbstractDAO<Adress> {
     protected Adress findAllStep() throws SQLException {
         Adress adress = new Adress();
         adress.setAdressId(rs.getLong(1));
-        adress.setCityId(rs.getLong(2));
-        adress.setDistrictId(rs.getLong(3));
-        adress.setStreetId(rs.getLong(4));
+        //adress.setCityId(rs.getLong(2));
+       // adress.setDistrictId(rs.getLong(3));
+       // adress.setStreetId(rs.getLong(4));
         adress.setHouseNum(rs.getInt(5));
         adress.setApartmentNum(rs.getInt(6));
         return adress;
