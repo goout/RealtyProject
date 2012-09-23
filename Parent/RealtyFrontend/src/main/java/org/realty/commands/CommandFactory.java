@@ -55,7 +55,7 @@ public class CommandFactory {
             put("addComment", LOG_ADM);
             put("allComment", Arrays.asList(Roles.ADMIN));
             put("delComment", LOG_ADM);
-            put("signIn", ALL_ROLES);
+            put("signIn", Arrays.asList(Roles.ANONYMOUS));
             put("changeLang", ALL_ROLES);
             put("indexGuest", Arrays.asList(Roles.ADMIN, Roles.ANONYMOUS));
             put("LogOut", LOG_ADM);

@@ -72,7 +72,7 @@ public class ServletFilter implements Filter {
         if ((roles.contains(currentUser))) {
             chain.doFilter(request, response);
         } else {
-            if (currentUser == Roles.LOGGED) {
+            if (currentUser == Roles.LOGGED||currentUser == Roles.ADMIN) {
                 ApplicationContext context = new ClassPathXmlApplicationContext("/springDI.xml");
                 BeanFactory factory = context;
                 CommandFactory test = (CommandFactory)factory.getBean("commandF");

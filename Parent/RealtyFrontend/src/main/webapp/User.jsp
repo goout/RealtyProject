@@ -68,10 +68,6 @@
 
 
                             <div id="table" style="width:1000px; height:600px; overflow:auto;">
-                                <br/>
-
-                                <div id="table">
-                                    <br/>
 
                                     <table border="2" frame="below" width="100%" bordercolor=red>
                                         <thead>

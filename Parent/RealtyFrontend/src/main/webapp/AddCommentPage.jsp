@@ -64,8 +64,8 @@
 
                         <h2><fmt:message key="addcomment"/></h2>
 
-
-                        <table height="590" border="0" align="center">
+                        <div id="table" style="width:1000px; height:600px; overflow:auto;">
+                        <table border="0" align="center">
                             <tr>
                                 <td>
 

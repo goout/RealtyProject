@@ -90,9 +90,7 @@
                                         </tr>
                                         </thead>
 
-                                        </br>
-                                        </br>
-                                        </br>
+
                                         <c:forEach items="${alladvertsusers}" var="adv">
                                             <c:if test="${adv.userId==null }">
                                                 <tr>
