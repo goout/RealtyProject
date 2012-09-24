@@ -67,6 +67,7 @@ public class CommandFactory {
             put("advert", LOG_ADM);
             put("addAdmin", Arrays.asList(Roles.ADMIN));
             put("removeAdmin", Arrays.asList(Roles.ADMIN));
+
         }
     };
 
@@ -86,6 +87,10 @@ public class CommandFactory {
             put("AddAdvertPage.jsp", LOG_ADM);
             put("AddAdressPage.jsp", LOG_ADM);
             put("AddCommentPage.jsp", LOG_ADM);
+            put("images/logo2.jpg", ALL_ROLES);
+            put("images/niz.png", ALL_ROLES);
+            put("style.css", ALL_ROLES);
+
              }
     };
 
