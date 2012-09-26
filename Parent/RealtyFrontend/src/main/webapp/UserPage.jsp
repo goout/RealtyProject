@@ -6,7 +6,6 @@
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="org.realty.Translations"/>
 
-
 <html lang="${language}">
 
 <link href="style.css" rel="stylesheet" type="text/css">
