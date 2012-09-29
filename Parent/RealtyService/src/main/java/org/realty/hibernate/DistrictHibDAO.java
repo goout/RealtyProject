@@ -16,6 +16,7 @@ public class DistrictHibDAO extends HibernateDAO<District> {
         Query query = getSession().createQuery("FROM Advert");
         List<District> LST = query.list();
         commit();
+        close();
         return LST;
     }
 

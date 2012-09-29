@@ -14,6 +14,7 @@ public class CommentHibDAO extends HibernateDAO<Comment> {
         Query query = getSession().createQuery("FROM Comment");
         List<Comment> LST = query.list();
         commit();
+        close();
         return LST;
     }
 

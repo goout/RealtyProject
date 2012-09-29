@@ -32,7 +32,9 @@ public class AbstractHibDAO {
         getSession().getTransaction().commit();
     }
 
-
+    protected void close() {
+        getSession().close();
+    }
 
 
 }

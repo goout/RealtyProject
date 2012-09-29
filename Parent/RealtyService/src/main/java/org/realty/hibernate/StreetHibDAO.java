@@ -16,6 +16,7 @@ public class StreetHibDAO extends HibernateDAO<Street> {
         Query query = getSession().createQuery("FROM Advert");
         List<Street> LST = query.list();
         commit();
+        close();
         return LST;
     }
 

@@ -15,6 +15,7 @@ public class CityHibDAO extends HibernateDAO<City> {
         Query query = getSession().createQuery("FROM City");
         List<City> LST = query.list();
         commit();
+        close();
         return LST;
     }
 

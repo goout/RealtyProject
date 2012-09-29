@@ -9,6 +9,7 @@ public class HibernateDAO<T> extends AbstractHibDAO {
         begin();
         getSession().save(value);
         commit();
+        close();
         return value;
 
     }
@@ -19,6 +20,7 @@ public class HibernateDAO<T> extends AbstractHibDAO {
         begin();
         event = (T) getSession().get(clazz, id);
         commit();
+        close();
         return event;
     }
 
@@ -26,6 +28,7 @@ public class HibernateDAO<T> extends AbstractHibDAO {
         begin();
         getSession().update(clazz);
         commit();
+        close();
 
     }
 
@@ -33,6 +36,7 @@ public class HibernateDAO<T> extends AbstractHibDAO {
         begin();
         getSession().delete(clazz);
         commit();
+        close();
 
     }
 

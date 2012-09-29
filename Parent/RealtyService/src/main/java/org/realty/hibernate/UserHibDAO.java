@@ -14,6 +14,7 @@ public class UserHibDAO extends HibernateDAO<User> {
         Query query = getSession().createQuery("FROM User");
         List<User> LST = query.list();
         commit();
+        close();
         return LST;
     }
 }

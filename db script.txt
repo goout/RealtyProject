@@ -56,6 +56,7 @@ CREATE TABLE advert(
 	   
 
 
+
 				   
 CREATE TABLE Comment (comment_id int AUTO_INCREMENT NOT NULL,
 addedDate varchar(25),
@@ -68,19 +69,7 @@ FOREIGN KEY (advert_id) REFERENCES Advert(advert_id)ON DELETE CASCADE);
 
 
 
-CREATE TABLE city_district(
-  cityDistrId INT NOT NULL AUTO_INCREMENT,
-  cityId INT NOT NULL,
-  districtId INT NOT NULL,
-  PRIMARY KEY (cityDistrId),
-  FOREIGN KEY (cityId) REFERENCES city(cityId),
-  FOREIGN KEY (districtId) REFERENCES district(districtId));
 
-CREATE TABLE city_distr_str(
-  cityDistrId INT NOT NULL,
-  streetId INT NOT NULL,
-  FOREIGN KEY (cityDistrId) REFERENCES city_district(cityDistrId),
-  FOREIGN KEY (streetId) REFERENCES street(streetId));
 
 
 

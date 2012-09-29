@@ -15,6 +15,7 @@ public class AdressHibDAO extends HibernateDAO<Adress> {
         Query query = getSession().createQuery("FROM Adress");
         List<Adress> LST = query.list();
         commit();
+        close();
         return LST;
     }
 }
