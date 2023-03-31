@@ -1,0 +1,14 @@
+<!DOCTYPE html><html>
+<head>
+<link rel="stylesheet" href="style.css">
+<title>Model viewer</title>
+<script type="module" src="https://unpkg.com/@google/model-viewer@1.12.0/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+</head>
+<body><model-viewer ar id="model-viewer" ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls quick-look-browsers="safari chrome" autoplay src="example.gltf">
+<button slot="ar-button" style="background-color: transparent; border-radius: 4px; border: none; position: absolute; bottom: 24px; right: 24px;"><img src="AR.png"></button>
+</model-viewer><script>const modelViewer = document.getElementById('model-viewer');
+modelViewer.addEventListener('load', () => modelViewer.activateAR && modelViewer.activateAR());
+</script>
+</body>
+</html>
